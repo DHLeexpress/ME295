@@ -1,18 +1,22 @@
 """Tactile tools exposed to the LLM agent (layer C).
 
-The agent never sees raw sensor frames. It calls a few typed tools whose
-answers come from the low-level shear pipeline (layer A). Schemas use the
-Anthropic Messages API tool format (name / description / input_schema) and map
-1:1 to OpenAI-style function specs.
+The agent never sees raw sensor frames and never commands forces. It calls a
+few typed tools whose answers come from the low-level shear pipeline (layer A).
+Every call is validated against its JSON schema before it reaches a backend, so
+an out-of-range or malformed request from the model becomes an error message for
+the model, not a robot command.
 
-Backends implement the calls: ``MockBackend`` (offline, scripted book pull) now,
-a ROS 2 backend on the real gripper later.
+Schemas use the Anthropic Messages API tool format (name / description /
+input_schema); ``llm.to_openai_tools`` converts them for OpenAI-compatible APIs.
+Backends: ``MockBackend`` (offline, scripted book pull) now; ROS 2 on the real
+gripper later.
 """
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-SKILLS = ["tilt", "pinch", "pull", "regrasp", "release"]
+SKILLS = ["insert", "tilt", "pinch", "pull", "regrasp", "release"]
+Q_STAR_MAX = 0.8
 
 TOOLS: List[Dict[str, Any]] = [
     {
@@ -38,13 +42,17 @@ TOOLS: List[Dict[str, Any]] = [
         "description": "Set the target margin Q* of the low-level shear-margin controller (higher = squeeze harder).",
         "input_schema": {
             "type": "object",
-            "properties": {"q_star": {"type": "number", "minimum": 0.0, "maximum": 0.8}},
+            "properties": {"q_star": {"type": "number", "minimum": 0.0, "maximum": Q_STAR_MAX}},
             "required": ["q_star"],
         },
     },
     {
         "name": "execute_skill",
-        "description": "Run one book-extraction primitive and report the outcome.",
+        "description": (
+            "Run one book-extraction primitive: insert (slide the thin fingers into the gaps beside the "
+            "book), tilt (tip the book out by its top edge when the gaps are too tight), pinch, pull "
+            "(horizontally out of the shelf), regrasp, release."
+        ),
         "input_schema": {
             "type": "object",
             "properties": {
@@ -56,6 +64,49 @@ TOOLS: List[Dict[str, Any]] = [
     },
 ]
 TOOL_NAMES = [t["name"] for t in TOOLS]
+_SCHEMAS = {t["name"]: t["input_schema"] for t in TOOLS}
+
+
+def validate(name: str, args: Any) -> Optional[str]:
+    """Return an error message if ``args`` violates the tool's schema, else None."""
+    schema = _SCHEMAS[name]
+    if not isinstance(args, dict):
+        return "arguments must be a JSON object"
+    props = schema.get("properties", {})
+    missing = [k for k in schema.get("required", []) if k not in args]
+    if missing:
+        return f"missing required argument(s): {', '.join(missing)}"
+    unknown = [k for k in args if k not in props]
+    if unknown:
+        return f"unknown argument(s): {', '.join(unknown)}"
+    for key, val in args.items():
+        spec = props[key]
+        if spec.get("type") == "number":
+            if isinstance(val, bool) or not isinstance(val, (int, float)):
+                return f"{key} must be a number"
+            if "minimum" in spec and val < spec["minimum"]:
+                return f"{key} must be >= {spec['minimum']}"
+            if "maximum" in spec and val > spec["maximum"]:
+                return f"{key} must be <= {spec['maximum']}"
+        if spec.get("type") == "string" and not isinstance(val, str):
+            return f"{key} must be a string"
+        if "enum" in spec and val not in spec["enum"]:
+            return f"{key} must be one of {spec['enum']}"
+    return None
+
+
+def dispatch(backend: Any, name: str, args: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """Execute one tool call from the LLM; never raises, errors go back to the model."""
+    if name not in TOOL_NAMES:
+        return {"ok": False, "error": f"unknown tool {name!r}"}
+    args = {} if args is None else args
+    error = validate(name, args)
+    if error:
+        return {"ok": False, "error": error}
+    try:
+        return getattr(backend, name)(**args)
+    except Exception as e:  # backend failure is reported, not propagated to the loop
+        return {"ok": False, "error": f"{type(e).__name__}: {e}"}
 
 
 class MockBackend:
@@ -89,10 +140,8 @@ class MockBackend:
         return {"ok": True, "q_star": self.q_star}
 
     def execute_skill(self, skill: str, book_id: Optional[str] = None) -> Dict[str, Any]:
-        if skill not in SKILLS:
-            return {"ok": False, "error": f"unknown skill {skill!r}"}
-        if skill == "tilt":
-            self.phase = "tilted"
+        if skill in ("insert", "tilt"):
+            self.phase = "inserted" if skill == "insert" else "tilted"
         elif skill == "pinch":
             self.touching = {"left": True, "right": True}
             self.phase = "pinched"
@@ -112,10 +161,3 @@ class MockBackend:
     # ---- internals --------------------------------------------------------
     def _shear(self) -> float:
         return 0.5 * self.load if self.phase == "pulling" else 0.0
-
-
-def dispatch(backend: Any, name: str, args: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    """Execute a tool call coming from the LLM."""
-    if name not in TOOL_NAMES:
-        return {"ok": False, "error": f"unknown tool {name!r}"}
-    return getattr(backend, name)(**(args or {}))
