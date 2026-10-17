@@ -3,9 +3,10 @@
 
 Original illustration built from matplotlib primitives, so it is reproducible
 from the repo:  python scripts/make_hero.py
-Left: (B) a parallel-jaw gripper with thin tactile-skin fingers pulls one
-book out of a packed shelf. Right: (sense) the shear field, (A) the friction-cone
-margin controller, (C) an LLM agent that calls touch as a tool.
+Left (B): a parallel-jaw gripper approaches a packed shelf horizontally, slides
+its thin tactile-skin fingers into the gaps and pulls one book out sideways
+(there is no headroom to lift it). Right: (sense) the shear field, (A) the
+friction-cone margin controller, (C) an LLM agent that calls touch as a tool.
 """
 from __future__ import annotations
 
@@ -146,9 +147,13 @@ class Canvas:
         self.rect(x, y + 3, w, h, "#0F172A", r=r, alpha=0.04)
         return self.rect(x, y, w, h, "white", ec=LINE, lw=1.2, r=r)
 
-    def tag(self, x, y, label, fg, bg, width):
-        self.rect(x, y, width, 24, bg, r=12)
-        self.text(x + width / 2, y + 16.5, label, 12, color=fg, weight="bold", ha="center")
+    def tag(self, x, y, label, fg, bg, width, clip=None):
+        self.rect(x, y, width, 24, bg, r=12, clip=clip)
+        self.text(x + width / 2, y + 16.5, label, 12, color=fg, weight="bold", ha="center", clip=clip)
+
+    def pill(self, cx, cy, label, fg, width, size=12.5, clip=None, bg="white"):
+        self.rect(cx - width / 2, cy - 12, width, 24, bg, ec=LINE, lw=1, r=12, clip=clip)
+        self.text(cx, cy + 4.5, label, size, color=fg, weight="bold", ha="center", clip=clip)
 
     def save(self, *paths):
         self.ax.set_xlim(0, W)
@@ -162,152 +167,99 @@ class Canvas:
 
 
 # ------------------------------------------------------------------ scene (B)
-BASE = 700                         # front edge of the shelf board
-DX, DY = 0.42, -0.24               # oblique projection per unit depth
-SHELF_D, BOOK_D, FINGER_D = 130, 110, 34
+BASE = 560                  # front edge of the shelf board the books stand on
+TOP_Y = 238                 # underside of the shelf above: almost no headroom
+DX, DY = 0.48, -0.27        # oblique projection per unit depth (into the shelf = up-right)
+SHELF_D, BOOK_D = 130, 118
+PULL = 100                  # how far the target book is already pulled out
+FY0, FY1 = 356, 418         # finger height band
+FD0, FD1 = -112, 28         # finger depth extent: jaw -> tip inside the gap
+
+LEFT_BOOKS = [  # x0, width, height, colour, style
+    (132, 44, 290, "#4C6A92", 0), (176, 36, 266, "#D9A441", 1), (212, 58, 306, "#B5543C", 2),
+    (270, 40, 262, "#7A9E7E", 0), (310, 50, 296, "#2F3E5C", 1), (360, 38, 280, "#4F7C82", 2),
+    (398, 60, 300, "#3F4448", 0),
+]
+TARGET = (470, 56, 296, ORANGE)
+RIGHT_BOOKS = [
+    (538, 38, 282, "#7B4F7A", 0), (576, 62, 312, "#5B6C8F", 2), (638, 34, 266, "#C08497", 1),
+    (672, 48, 300, "#8A8F4A", 0), (720, 54, 288, "#4F7C82", 2), (774, 40, 274, "#C9B48A", 1),
+    (814, 46, 306, "#7C8B6A", 0),
+]
 
 
 def P(x, y, d):
     return (x + DX * d, y + DY * d)
 
 
-BOOKS = [  # x0, width, height, colour, style
-    (72, 44, 300, "#4C6A92", 0), (116, 36, 270, "#D9A441", 1), (152, 58, 318, "#B5543C", 2),
-    (210, 40, 258, "#7A9E7E", 0), (250, 50, 296, "#2F3E5C", 1),
-    (380, 38, 282, "#7B4F7A", 0), (418, 62, 326, "#3F4448", 2), (480, 34, 262, "#C08497", 1),
-    (514, 48, 304, "#8A8F4A", 0), (562, 54, 290, "#4F7C82", 2), (616, 40, 272, "#C9B48A", 1),
-    (656, 46, 314, "#5B6C8F", 0), (702, 36, 284, "#7C8B6A", 2),
-]
-TARGET = (312, 56, 306, ORANGE)
-LIFT = 84
-
-
-def draw_book(c, clip, x0, w, h, color, style=0, lift=0.0, band=None):
-    yb = BASE - lift
-    yt = yb - h
+def draw_book(c, clip, x0, w, h, color, style=0, d0=0.0, band=None):
+    """Upright book whose spine (front face) sits at depth d0 (negative = pulled out)."""
+    yb, yt = BASE, BASE - h
     light = band or tint(color, 0.5)
-    c.poly([(x0 + w, yt), P(x0 + w, yt, BOOK_D), P(x0 + w, yb, BOOK_D), (x0 + w, yb)],
+
+    def Q(x, y, d):
+        return P(x, y, d0 + d)
+
+    c.poly([Q(x0 + w, yt, 0), Q(x0 + w, yt, BOOK_D), Q(x0 + w, yb, BOOK_D), Q(x0 + w, yb, 0)],
            shade(color, 0.66), clip=clip)
-    c.poly([(x0, yt), (x0 + w, yt), P(x0 + w, yt, BOOK_D), P(x0, yt, BOOK_D)], shade(color, 0.86), clip=clip)
-    c.poly([P(x0 + 3, yt, 3), P(x0 + w - 3, yt, 3), P(x0 + w - 3, yt, BOOK_D - 2), P(x0 + 3, yt, BOOK_D - 2)],
+    c.poly([Q(x0, yt, 0), Q(x0 + w, yt, 0), Q(x0 + w, yt, BOOK_D), Q(x0, yt, BOOK_D)], shade(color, 0.86),
+           clip=clip)
+    c.poly([Q(x0 + 3, yt, 3), Q(x0 + w - 3, yt, 3), Q(x0 + w - 3, yt, BOOK_D - 2), Q(x0 + 3, yt, BOOK_D - 2)],
            PAGES, clip=clip)
-    c.rect(x0, yt, w, h, color, ec=shade(color, 0.6), lw=0.8, clip=clip)
+    fx, fy = Q(x0, yt, 0)
+    c.rect(fx, fy, w, h, color, ec=shade(color, 0.6), lw=0.8, clip=clip)
     if style in (0, 2):
-        c.rect(x0, yt + 0.08 * h, w, 3.5, light, clip=clip)
-        c.rect(x0 + w / 2 - 2.2, yt + 0.22 * h, 4.4, 0.30 * h, light, r=2.2, alpha=0.85, clip=clip)
+        c.rect(fx, fy + 0.08 * h, w, 3.5, light, clip=clip)
+        c.rect(fx + w / 2 - 2.2, fy + 0.22 * h, 4.4, 0.30 * h, light, r=2.2, alpha=0.85, clip=clip)
     if style == 2:
-        c.rect(x0, yt + 0.08 * h + 7, w, 2, light, clip=clip)
+        c.rect(fx, fy + 0.08 * h + 7, w, 2, light, clip=clip)
     if style == 1:
-        c.rect(x0 + 4, yt + 0.16 * h, w - 8, 0.15 * h, light, r=2, alpha=0.9, clip=clip)
-    c.rect(x0, yb - 0.10 * h, w, 3.5, light, clip=clip)
-    c.rect(x0 + 1, yt, 2.5, h, "white", alpha=0.10, clip=clip)
-    c.rect(x0 + w - 4, yt, 4, h, "black", alpha=0.10, clip=clip)
+        c.rect(fx + 4, fy + 0.16 * h, w - 8, 0.15 * h, light, r=2, alpha=0.9, clip=clip)
+    c.rect(fx, fy + h - 0.10 * h, w, 3.5, light, clip=clip)
+    c.rect(fx + 1, fy, 2.5, h, "white", alpha=0.10, clip=clip)
+    c.rect(fx + w - 4, fy, 4, h, "black", alpha=0.10, clip=clip)
 
 
-def draw_finger(c, clip, x_plate, sensor_side):
-    """Thin finger plate (8 px metal + 4 px tactile skin) hanging into a gap."""
-    y0, y1 = 290, 474
-    if sensor_side == "right":
-        xb, xs = x_plate, x_plate + 8
-    else:
-        xs, xb = x_plate, x_plate + 4
-    x_right = x_plate + 12
-    c.poly([(x_right, y0), P(x_right, y0, FINGER_D), P(x_right, y1 - 4, FINGER_D), (x_right, y1 - 4)],
-           "#64748B", clip=clip)
-    c.rect(xb, y0, 8, y1 - y0, "#A3B1C2", ec="#475569", lw=0.8, r=2.5, clip=clip)
-    c.rect(xb + 1.6, y0 + 2, 2, y1 - y0 - 6, "white", alpha=0.4, clip=clip)
-    c.rect(xs, 332, 4, 134, TEAL_L, ec=TEAL, lw=0.6, r=1.5, clip=clip)
+def draw_box(c, clip, x0, x1, y0, y1, d_near, d_far, front, top, side, r=0.0):
+    """Box seen from front-right-above: top face, right face, then the face toward the viewer."""
+    c.poly([P(x0, y0, d_near), P(x1, y0, d_near), P(x1, y0, d_far), P(x0, y0, d_far)], top, clip=clip)
+    c.poly([P(x1, y0, d_near), P(x1, y0, d_far), P(x1, y1, d_far), P(x1, y1, d_near)], side, clip=clip)
+    fx, fy = P(x0, y0, d_near)
+    return c.rect(fx, fy, x1 - x0, y1 - y0, front, r=r, clip=clip)
 
 
-def draw_scene(c):
-    x, y, w, h = 30, 30, 800, 740
-    clip = c.card(x, y, w, h, r=26)
-    c.gradient(x, y, w, h, ["#FCFAF6", "#F1EADF"], "v", clip=clip)
+def draw_right_finger(c, clip):
+    """Thin finger in the gap right of the target: 6 px skin (inner side) + 6 px metal."""
+    xs0, xs1, xm1 = 526, 532, 538
+    face = [P(xm1, FY0, FD0), P(xm1, FY0, FD1), P(xm1, FY1, FD1), P(xm1, FY1, FD0)]
+    c.poly(face, "none", ec="white", lw=4, clip=clip)
+    c.poly(face, "#B8C4D2", ec="#475569", lw=1, clip=clip)
+    c.poly([P(xm1, FY0 + 7, FD0), P(xm1, FY0 + 7, FD1), P(xm1, FY0 + 14, FD1), P(xm1, FY0 + 14, FD0)],
+           "white", alpha=0.45, clip=clip)
+    c.poly([P(xs1, FY0, FD0), P(xm1, FY0, FD0), P(xm1, FY0, FD1), P(xs1, FY0, FD1)], "#E2E8F0", clip=clip)
+    c.poly([P(xs0, FY0, FD0), P(xs1, FY0, FD0), P(xs1, FY0, FD1), P(xs0, FY0, FD1)], TEAL_L,
+           ec=TEAL, lw=0.6, clip=clip)
 
-    # bookcase interior (back panel, lower compartment, inner side, board top)
-    c.poly([P(72, 330, SHELF_D), P(738, 330, SHELF_D), P(738, 800, SHELF_D), P(72, 800, SHELF_D)],
-           "#E3CFB2", clip=clip)
-    c.poly([(72, 330), P(72, 330, SHELF_D), P(72, 800, SHELF_D), (72, 800)], "#C99A6B", clip=clip)
-    c.poly([(72, 700), (738, 700), P(738, 700, SHELF_D), P(72, 700, SHELF_D)], "#D8AE80", clip=clip)
 
-    # lower shelf: a few book tops peeking out under the board
-    xl = 72
-    for i, (bw, bh, col) in enumerate([(40, 0, "#5B6C8F"), (52, 6, "#B5543C"), (34, 2, "#7A9E7E"),
-                                       (60, 8, "#2F3E5C"), (44, 0, "#D9A441"), (38, 5, "#7B4F7A"),
-                                       (56, 1, "#4F7C82"), (46, 7, "#8A8F4A"), (40, 3, "#C08497"),
-                                       (50, 0, "#3F4448"), (36, 6, "#C9B48A"), (48, 2, "#4C6A92"),
-                                       (40, 4, "#A0522D"), (32, 0, "#7C8B6A")]):
-        if xl + bw > 738:
-            break
-        top = 750 + bh
-        c.poly([(xl, top), (xl + bw, top), P(xl + bw, top, BOOK_D), P(xl, top, BOOK_D)], PAGES, clip=clip)
-        c.rect(xl, top, bw, 60, col, ec=shade(col, 0.6), lw=0.8, clip=clip)
-        xl += bw
-    c.rect(72, 726, 666, 16, "black", alpha=0.18, clip=clip)
+def draw_arm_link(c, clip, x0, y0, x1, y1, wd):
+    c.line([x0, x1], [y0, y1], "#94A3B8", wd + 6, clip=clip)
+    c.line([x0, x1], [y0, y1], "#DDE4EB", wd, clip=clip)
+    d = np.array([x1 - x0, y1 - y0], float)
+    nrm = np.array([d[1], -d[0]]) / np.linalg.norm(d)
+    if nrm[1] > 0:
+        nrm = -nrm
+    off = nrm * wd * 0.22
+    c.line([x0 + off[0], x1 + off[0]], [y0 + off[1], y1 + off[1]], "#F8FAFC", wd * 0.25, clip=clip)
 
-    # top shelf books, left to right, with the two fingers in the gaps
-    for x0, bw, bh, col, st in BOOKS[:5]:
-        draw_book(c, clip, x0, bw, bh, col, st)
-    tx, tw, th, tcol = TARGET
-    c.rect(tx - 9, BASE - LIFT - th - 9, tw + 18, th + 18, "#FDBA74", r=12, alpha=0.35, clip=clip)
-    draw_finger(c, clip, 300, "right")
-    draw_book(c, clip, tx, tw, th, tcol, 0, lift=LIFT, band="#FCD34D")
-    draw_finger(c, clip, 368, "left")
-    for x0, bw, bh, col, st in BOOKS[5:]:
-        draw_book(c, clip, x0, bw, bh, col, st)
 
-    # board front and side panels
-    c.rect(72, 700, 666, 26, "#B37B4E", clip=clip)
-    c.rect(72, 700, 666, 3, "#D9A877", clip=clip)
-    for px in (50, 738):
-        c.rect(px, 330, 22, 470, "#B9855A", clip=clip)
-        c.poly([(px, 330), (px + 22, 330), P(px + 22, 330, SHELF_D), P(px, 330, SHELF_D)], "#E2BC92", clip=clip)
-    c.poly([(760, 330), P(760, 330, SHELF_D), P(760, 800, SHELF_D), (760, 800)], "#9C6B44", clip=clip)
+def draw_joint(c, clip, jx, jy, r):
+    c.circle(jx, jy, r, "#E8EDF2", ec="#94A3B8", lw=2, clip=clip)
+    c.circle(jx, jy, r * 0.78, "none", ec=TEAL_L, lw=3, clip=clip)
+    c.circle(jx, jy, r * 0.62, "#CBD5E1", clip=clip)
 
-    # gripper: carriages, housing, flange
-    for cx in (282, 368):
-        c.poly([(cx + 30, 254), P(cx + 30, 254, 30), P(cx + 30, 292, 30), (cx + 30, 292)], "#334155", clip=clip)
-        c.rect(cx, 250, 30, 42, "#475569", r=5, clip=clip)
-        c.circle(cx + 15, 271, 3.2, "#94A3B8", clip=clip)
-    c.poly([(274, 170), (406, 170), P(406, 170, 60), P(274, 170, 60)], "#475569", clip=clip)
-    c.poly([(412, 178), P(412, 178, 60), P(412, 248, 60), (412, 248)], "#1E293B", clip=clip)
-    c.rect(268, 170, 144, 84, "#334155", r=10, clip=clip)
-    c.rect(278, 234, 124, 8, "#1E293B", r=4, clip=clip)
-    c.circle(396, 188, 4.5, TEAL_L, clip=clip)
-    flange = c.rect(306, 96, 68, 76, "#CBD5E1", clip=clip)
-    c.gradient(306, 96, 68, 76, ["#F1F5F9", "#CBD5E1", "#94A3B8"], "h", clip=flange)
-    c.rect(300, 150, 80, 22, "#64748B", r=4, clip=clip)
 
-    # arm (generic 6-DoF arm, cropped by the frame)
-    for (x0, y0, x1, y1, wd) in [(880, -95, 540, 22, 74), (540, 22, 340, 70, 58)]:
-        c.line([x0, x1], [y0, y1], "#94A3B8", wd + 6, clip=clip)
-        c.line([x0, x1], [y0, y1], "#DDE4EB", wd, clip=clip)
-        d = np.array([x1 - x0, y1 - y0], float)
-        nrm = np.array([d[1], -d[0]]) / np.linalg.norm(d)
-        if nrm[1] > 0:
-            nrm = -nrm
-        off = nrm * wd * 0.22
-        c.line([x0 + off[0], x1 + off[0]], [y0 + off[1], y1 + off[1]], "#F8FAFC", wd * 0.25, clip=clip)
-    for jx, jy, r in [(540, 22, 46), (340, 70, 36)]:
-        c.circle(jx, jy, r, "#E8EDF2", ec="#94A3B8", lw=2, clip=clip)
-        c.circle(jx, jy, r * 0.78, "none", ec=TEAL_L, lw=3, clip=clip)
-        c.circle(jx, jy, r * 0.62, "#CBD5E1", clip=clip)
-
-    # pull arrow
-    c.arrow(458, 248, 458, 150, ORANGE, lw=4.5, head=18, clip=clip)
-    c.text(470, 206, "pull", 16, ORANGE, weight="bold", clip=clip)
-
-    # magnifier on the right finger contact
-    fx, fy, fr = 374, 442, 18
-    mx, my, mr = 646, 222, 98
-    s = 6.0
-
-    def zx(v):
-        return mx + s * (v - fx)
-
-    def zy(v):
-        return my + s * (v - fy)
-
+def draw_magnifier(c, clip, fx, fy, fr, mx, my, mr):
+    """Top view inside the right gap: book | skin | finger | next book."""
     D = np.hypot(mx - fx, my - fy)
     th = np.arctan2(my - fy, mx - fx)
     alpha = np.arccos((fr - mr) / D)
@@ -315,44 +267,135 @@ def draw_scene(c):
         n = np.array([np.cos(th + sgn * alpha), np.sin(th + sgn * alpha)])
         p1 = np.array([fx, fy]) + fr * n
         p2 = np.array([mx, my]) + mr * n
-        c.line([p1[0], p2[0]], [p1[1], p2[1]], INK, 1.4, alpha=0.5, clip=clip)
+        c.line([p1[0], p2[0]], [p1[1], p2[1]], INK, 1.4, alpha=0.55, clip=clip)
     c.circle(fx, fy, fr, "none", ec="white", lw=5, clip=clip)
     c.circle(fx, fy, fr, "none", ec=INK, lw=2, clip=clip)
-    c.circle(mx + 3, my + 6, mr + 4, "#0F172A", alpha=0.10, clip=clip)
+    c.circle(mx + 3, my + 6, mr + 4, "#0F172A", alpha=0.12, clip=clip)
     lens = c.circle(mx, my, mr, "white", clip=clip)
-    c.rect(mx - mr, my - mr, zx(368) - (mx - mr), 2 * mr, ORANGE, clip=lens)
-    c.gradient(mx - mr, my - mr, zx(368) - (mx - mr), 2 * mr, [shade(ORANGE, 1.05), shade(ORANGE, 0.82)],
-               "h", clip=lens)
-    c.rect(zx(368), my - mr, 24, 2 * mr, TEAL_L, clip=lens)
+
+    top, bot = my - mr, my + mr
+    y_spine = my + 18                      # front edge of the neighbouring book
+    y_tip = y_spine - 46                   # finger tip, already inside the gap
+    x_tc, x_sk, x_mt, x_nc, x_np = mx - 30, mx - 24, mx - 6, mx + 30, mx + 36
+
+    c.rect(mx - mr, top, x_tc - (mx - mr), 2 * mr, PAGES, clip=lens)          # target pages
+    for xx in np.arange(mx - mr + 3, x_tc, 4):
+        c.line([xx, xx], [top, bot], "#E5D9C3", 0.8, clip=lens)
+    c.rect(x_tc, top, x_sk - x_tc, 2 * mr, ORANGE, clip=lens)                  # target cover
+    c.rect(x_sk, top, x_nc - x_sk, y_tip - top, "#334155", clip=lens)          # empty slot ahead of the tip
+    c.rect(x_nc, top, mx + mr - x_nc, y_spine - top, PAGES, clip=lens)         # next book
+    for xx in np.arange(x_np + 3, mx + mr, 4):
+        c.line([xx, xx], [top, y_spine], "#E5D9C3", 0.8, clip=lens)
+    c.rect(x_nc, top, x_np - x_nc, y_spine - top, "#7B4F7A", clip=lens)        # its cover
+    c.rect(x_nc, y_spine, mx + mr - x_nc, bot - y_spine, "#EEF2F6", clip=lens)  # outside the shelf
+    c.line([x_nc, mx + mr], [y_spine, y_spine], "#64748B", 1.4, ls=(0, (4, 3)), clip=lens)
+
+    c.rect(x_sk, y_tip, x_mt - x_sk, bot - y_tip, TEAL_L, clip=lens)           # skin
     rng = np.random.default_rng(7)
-    for _ in range(260):
-        px_, py_ = rng.uniform(zx(368) + 1, zx(372) - 1), rng.uniform(my - mr, my + mr)
-        c.circle(px_, py_, rng.uniform(0.6, 1.9), "white" if rng.random() < 0.7 else "#0F766E",
+    for _ in range(220):
+        px_, py_ = rng.uniform(x_sk + 1, x_mt - 1), rng.uniform(y_tip + 2, bot)
+        c.circle(px_, py_, rng.uniform(0.6, 1.8), "white" if rng.random() < 0.7 else "#0F766E",
                  alpha=rng.uniform(0.25, 0.75), clip=lens)
-    c.rect(zx(372), my - mr, 48, 2 * mr, "#A3B1C2", clip=lens)
-    c.rect(zx(372) + 7, my - mr, 9, 2 * mr, "white", alpha=0.35, clip=lens)
-    c.circle(zx(376), my + 62, 7, "#64748B", clip=lens)
-    c.rect(zx(380), my - mr, 120, 2 * mr, "#7B4F7A", clip=lens)
-    yb9 = 418 + 0.08 * 282
-    c.rect(zx(380), zy(yb9), 120, 3.5 * s, tint("#7B4F7A", 0.5), clip=lens)
-    for yy in (my - 70, my - 22, my + 26):
-        c.arrow(zx(370), yy, zx(370), yy + 36, "white", lw=2.6, head=10, clip=lens, outline=INK)
-    c.text(mx - 60, my - 52, "book", 13, "white", weight="bold", ha="center", clip=lens)
-    c.text(zx(376), my - 56, "finger", 11, INK, weight="bold", ha="center", rotation=90, va="center", clip=lens)
+    c.rect(x_mt, y_tip, x_nc - x_mt, bot - y_tip, "#A3B1C2", clip=lens)        # finger metal
+    c.rect(x_mt + 8, y_tip, 8, bot - y_tip, "white", alpha=0.35, clip=lens)
+    c.circle(x_sk + (x_nc - x_sk) / 2, y_tip, (x_nc - x_sk) / 2, "#A3B1C2", clip=lens)
+
+    for y0 in (my + 6, my + 42):                                               # shear on the skin
+        c.arrow((x_sk + x_mt) / 2, y0, (x_sk + x_mt) / 2, y0 - 28, "white", lw=2.4, head=9,
+                clip=lens, outline=INK)
+    c.arrow(x_mt + 24, my - 14, x_mt + 24, my + 62, ORANGE, lw=3, head=11, clip=lens, outline="white")
+    c.text(mx - 62, my + 4, "book", 12, INK, weight="bold", ha="center", va="center", rotation=90, clip=lens)
+    c.text((x_sk + x_mt) / 2, my + 68, "skin", 10.5, "white", weight="bold", ha="center",
+           va="center", rotation=90, clip=lens,
+           path_effects=[pe.withStroke(linewidth=3 * PT, foreground="#0F766E")])
+    c.text(x_mt + 9, my + 40, "finger", 10.5, INK, weight="bold", ha="center", va="center", rotation=90,
+           clip=lens)
+    c.text(x_np + 26, my - 34, "next book", 11, INK, weight="bold", ha="center", va="center", rotation=90,
+           clip=lens)
     c.circle(mx, my, mr, "none", ec="white", lw=7, clip=clip)
     c.circle(mx, my, mr, "none", ec=INK, lw=2.5, clip=clip)
-    c.text(mx - 12, my + mr + 26, "the skin shears as the book drags", 14, SLATE, ha="center", clip=clip,
-           path_effects=[pe.withStroke(linewidth=4 * PT, foreground="#F7F2EA")])
-    c.text(zx(370), my + mr - 14, "skin", 11, "white", weight="bold", ha="center", clip=lens)
+    c.pill(mx, top - 18, "top view inside the gap", INK, 168, size=12, clip=clip)
 
-    # caption + leader to the left finger
-    c.tag(60, 58, "B · APPLICATION", ORANGE, ORANGE_XL, 150)
-    c.text(60, 112, "Pull one book", 24, INK, weight="bold", clip=clip)
-    c.text(60, 140, "from a packed shelf", 24, INK, weight="bold", clip=clip)
-    c.text(60, 178, "thin, shear-sensing fingers", 15, SLATE, clip=clip)
-    c.text(60, 198, "slide into the gap", 15, SLATE, clip=clip)
-    c.arrow(120, 212, 294, 412, INK, lw=1.4, head=8, alpha=0.6, clip=clip, ls=(0, (4, 3)), rad=0.3)
-    c.card_outline = c.rect(x, y, w, h, "none", ec=LINE, lw=1.2, r=26)
+
+def draw_scene(c):
+    x, y, w, h = 30, 30, 800, 740
+    clip = c.card(x, y, w, h, r=26)
+    c.gradient(x, y, w, h, ["#FCFAF6", "#F1EADF"], "v", clip=clip)
+
+    # bookcase interior: back panel, inner left side, board top
+    c.poly([P(132, TOP_Y, SHELF_D), P(940, TOP_Y, SHELF_D), P(940, 820, SHELF_D), P(132, 820, SHELF_D)],
+           "#E3CFB2", clip=clip)
+    c.poly([(132, TOP_Y), P(132, TOP_Y, SHELF_D), P(132, 820, SHELF_D), (132, 820)], "#C99A6B", clip=clip)
+    c.poly([(132, BASE), (940, BASE), P(940, BASE, SHELF_D), P(132, BASE, SHELF_D)], "#D8AE80", clip=clip)
+
+    # lower shelf: book tops under the board
+    xl = 132
+    for bw, dh, col in [(40, 0, "#5B6C8F"), (52, 6, "#B5543C"), (34, 2, "#7A9E7E"), (60, 8, "#2F3E5C"),
+                        (44, 0, "#D9A441"), (38, 5, "#7B4F7A"), (56, 1, "#4F7C82"), (46, 7, "#8A8F4A"),
+                        (40, 3, "#C08497"), (50, 0, "#3F4448"), (36, 6, "#C9B48A"), (48, 2, "#4C6A92"),
+                        (40, 4, "#A0522D"), (32, 0, "#7C8B6A"), (52, 3, "#B5543C"), (44, 6, "#5B6C8F")]:
+        top = 612 + dh
+        c.poly([(xl, top), (xl + bw, top), P(xl + bw, top, BOOK_D), P(xl, top, BOOK_D)], PAGES, clip=clip)
+        c.rect(xl, top, bw, 200, col, ec=shade(col, 0.6), lw=0.8, clip=clip)
+        xl += bw
+    c.rect(132, BASE + 26, 808, 16, "black", alpha=0.18, clip=clip)
+
+    # board front (drawn first so the pulled-out book overhangs it)
+    c.rect(132, BASE, 808, 26, "#B37B4E", clip=clip)
+    c.rect(132, BASE, 808, 3, "#D9A877", clip=clip)
+
+    # top shelf: books left of the target, the target (pulled out), finger, books right
+    for x0, bw, bh, col, st in LEFT_BOOKS:
+        draw_book(c, clip, x0, bw, bh, col, st)
+    tx, tw, th, tcol = TARGET
+    sx0, sy0 = P(tx, BASE, -PULL)
+    c.poly([(sx0 + 4, sy0), (sx0 + tw + 10, sy0), (sx0 + tw + 22, sy0 + 8), (sx0 + 12, sy0 + 8)],
+           "black", alpha=0.18, clip=clip)
+    draw_book(c, clip, tx, tw, th, tcol, 0, d0=-PULL, band="#FCD34D")
+    draw_right_finger(c, clip)
+    for x0, bw, bh, col, st in RIGHT_BOOKS:
+        draw_book(c, clip, x0, bw, bh, col, st)
+
+    # left side panel, shelf above (little headroom)
+    c.rect(110, 216, 22, 600, "#B9855A", clip=clip)
+    c.poly([(110, 216), (940, 216), P(940, 216, SHELF_D), P(110, 216, SHELF_D)], "#E2BC92", clip=clip)
+    c.rect(110, 216, 830, 22, "#B9855A", clip=clip)
+    c.rect(110, 235, 830, 3, "black", alpha=0.12, clip=clip)
+
+    # gripper: jaws, body, flange, wrist, arm (all in front of the shelf)
+    for jx0, jx1 in ((446, 470), (526, 550)):
+        draw_box(c, clip, jx0, jx1, 348, 426, -134, -112, "#475569", "#64748B", "#334155", r=3)
+    draw_box(c, clip, 436, 560, 346, 430, -196, -134, "#334155", "#475569", "#1E293B", r=8)
+    rx, ry = P(436, 346, -196)
+    c.rect(rx + 12, ry + 66, 100, 7, "#1E293B", r=3.5, clip=clip)
+    c.circle(rx + 108, ry + 14, 4.5, TEAL_L, clip=clip)
+
+    far, near = np.array(P(498, 388, -196)), np.array(P(498, 388, -238))
+    u = (near - far) / np.linalg.norm(near - far)
+    n = np.array([u[1], -u[0]])
+    r_fl = 27
+    c.poly([far + r_fl * n, near + r_fl * n, near - r_fl * n, far - r_fl * n], "#B8C4D2", clip=clip)
+    c.circle(*near, r_fl, "#E2E8F0", ec="#94A3B8", lw=1.5, clip=clip)
+    wx, wy = P(498, 388, -252)
+    draw_arm_link(c, clip, wx, wy, 210, 840, 58)
+    draw_joint(c, clip, 210, 840, 52)
+    draw_joint(c, clip, wx, wy, 36)
+
+    # pull direction (toward the viewer)
+    ax0, ay0 = P(606, 452, -30)
+    ax1, ay1 = P(606, 452, -190)
+    c.arrow(ax0, ay0, ax1, ay1, ORANGE, lw=5, head=20, clip=clip, outline="white")
+    c.pill(ax0 + 44, ay0 - 8, "pull out", ORANGE, 82, size=14, clip=clip)
+
+    # magnifier: top view of the gap where the right finger enters
+    draw_magnifier(c, clip, 540, 387, 16, 706, 648, 92)
+
+    # caption
+    c.tag(60, 52, "B · APPLICATION", ORANGE, ORANGE_XL, 150, clip=clip)
+    c.text(60, 106, "Pull one book out of a packed shelf", 24, INK, weight="bold", clip=clip)
+    c.text(60, 134, "No headroom to lift it: thin shear-sensing fingers slide", 15, SLATE, clip=clip)
+    c.text(60, 155, "into the gaps and pull the book out sideways.", 15, SLATE, clip=clip)
+    c.rect(x, y, w, h, "none", ec=LINE, lw=1.2, r=26)
 
 
 # ------------------------------------------------------------------ right panel
@@ -483,7 +526,7 @@ def draw_agent_card(c):
 
     sx = 1434
     c.text(sx, 590, "skills", 12, MUTED, weight="bold")
-    for i, name in enumerate(["tilt", "pinch", "pull"]):
+    for i, name in enumerate(["insert", "pinch", "pull"]):
         yy = 600 + 46 * i
         c.rect(sx, yy, 96, 30, ORANGE_XL, ec="#FDBA74", lw=1.2, r=15)
         c.text(sx + 48, yy + 20, name, 14, ORANGE, weight="bold", ha="center")
