@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+
+# Raw sensor data and recordings stay out of git (share via lab storage)
+data/
+recordings/
+*.bmp
+*.mat
+*.bag
+*.mcap
+results/raw/
+
+# Internal lab material (unpublished sensor design, meeting decks)
+internal/
+*.pptx
+papers/*.pdf
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
