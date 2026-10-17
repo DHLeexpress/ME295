@@ -153,8 +153,12 @@ class Canvas:
     def save(self, *paths):
         self.ax.set_xlim(0, W)
         self.ax.set_ylim(H, 0)
+        plt.rcParams["svg.hashsalt"] = "shear-agent-hero"   # deterministic SVG ids
         for p in paths:
-            self.fig.savefig(p, dpi=150 if str(p).endswith(".png") else DPI)
+            if str(p).endswith(".png"):
+                self.fig.savefig(p, dpi=150)
+            else:
+                self.fig.savefig(p, dpi=DPI, metadata={"Date": None})
 
 
 # ------------------------------------------------------------------ scene (B)
