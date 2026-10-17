@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Block commits that add a .env file or something that looks like an API key.
+# Enable once per clone:   git config core.hooksPath .githooks
+set -euo pipefail
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+if printf '%s\n' "$staged" | grep -Ev '(^|/)\.env\.example$' | grep -Eq '(^|/)\.env($|\.)'; then
+  echo "pre-commit: refusing to commit a .env file (keys stay local; use .env.example as the template)" >&2
+  exit 1
+fi
+
+pattern='sk-ant-[A-Za-z0-9_-]{16,}|sk-(proj-)?[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}'
+if git diff --cached -U0 --no-color -- . ':(exclude).githooks/*' | grep -E '^\+' | grep -Eq "$pattern"; then
+  echo "pre-commit: staged changes contain something that looks like an API key." >&2
+  echo "            Move it to .env (git-ignored) and commit again." >&2
+  exit 1
+fi

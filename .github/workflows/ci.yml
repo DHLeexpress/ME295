@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Unit tests (no API key needed)
+        run: python -m unittest discover -s tests -v
+      - name: Offline agent episode
+        run: python scripts/run_agent.py --mock --no-log
+      - name: No API keys or .env files in the repo
+        run: |
+          if git ls-files | grep -Ev '(^|/)\.env\.example$' | grep -Eq '(^|/)\.env($|\.)'; then
+            echo "A .env file is tracked"; exit 1
+          fi
+          if git grep -nE 'sk-ant-[A-Za-z0-9_-]{16,}|sk-(proj-)?[A-Za-z0-9_-]{20,}' -- . ':(exclude).githooks/*' ':(exclude).github/*'; then
+            echo "Possible API key committed"; exit 1
+          fi

@@ -7,10 +7,14 @@ venv/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# Secrets
+# Secrets: keys live only in a local .env (template: .env.example)
 .env
+.env.*
+!.env.example
+*.pem
+*.key
 
-# Raw sensor data and recordings stay out of git (share via lab storage)
+# Raw sensor data, recordings and agent run logs stay out of git
 data/
 recordings/
 *.bmp
@@ -18,11 +22,15 @@ recordings/
 *.bag
 *.mcap
 results/raw/
+results/agent_runs/
 
 # Internal lab material (unpublished sensor design, meeting decks)
 internal/
 *.pptx
 papers/*.pdf
+
+# Office lock files
+~$*
 
 # OS / editors
 .DS_Store
