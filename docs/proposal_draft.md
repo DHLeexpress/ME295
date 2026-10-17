@@ -21,8 +21,12 @@ Does real-time shear sensing on a thin parallel-jaw finger, used **(A)** inside 
   - f̂_n comes from the gripper force/current.
   - μ̂ starts from a prior (an LLM guess, DeliGrasp-style) and is lowered online at slip onsets.
   - Command the gentlest closure with Q ≥ Q\*, plus a slip reflex.
-- **B: application.** A shelf testbed with adjustable packing, and a book set that varies thickness, weight and cover friction. The primitives are *tilt* (pull the top edge), *pinch* (fingers into the gaps) and *pull*.
-- **C: agent.** An LLM agent with tool calls: `contact_state`, `shear_margin`, `incipient_slip`, `set_margin`, `execute_skill`. It chooses the primitive sequence, watches Q while pulling, and triggers recovery (regrasp, re-tilt, push a neighbour aside).
+- **B: application.** A shelf testbed with adjustable packing, and a book set that varies thickness, weight and cover friction. The book comes out *sideways*: real shelves leave no headroom to lift it. The primitives are:
+  - *insert*: slide the thin fingers into the gaps beside the book
+  - *pinch*
+  - *pull*: horizontally, toward the robot
+  - *tilt* (fallback): tip the book out by its top edge when the gaps are too tight to insert
+- **C: agent.** An LLM agent with tool calls: `contact_state`, `shear_margin`, `incipient_slip`, `set_margin`, `execute_skill`. It chooses the primitive sequence, watches Q while pulling, and triggers recovery (regrasp, re-tilt, push a neighbour aside). Tool calls are schema-validated, so the model never commands forces directly.
 
 ## Baselines and comparisons
 | ID | Method | Role |

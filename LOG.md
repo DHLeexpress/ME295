@@ -2,6 +2,18 @@
 
 Newest first. One entry per working session: **what we did → result → next**. Bottlenecks are tagged **[block]**.
 
+## 2026-10-17 (Sat) · Dohyun
+- **Repo.** Created the public repo [DHLeexpress/ME295](https://github.com/DHLeexpress/ME295) and pointed the local repo at it (`origin`). Next: add Jihoon (@jhahn2) as a collaborator.
+- **Hero figure.** Redrew it so the book comes out *sideways*, not lifted. Real shelves leave no headroom, so the gripper approaches horizontally, slides the thin fingers into the gaps, pinches and pulls. Added a top-view inset of the gap showing book | skin | finger | next book, with the shear direction.
+- **API handling for a public repo.**
+  - Keys: `.env*` is git-ignored (template `.env.example`). A pre-commit hook (`git config core.hooksPath .githooks`) blocks key-shaped strings and `.env` files; tested on a throwaway clone. CI runs the tests, an offline agent episode and a key scan.
+  - Client: dependency-free `LLMClient` (Anthropic by default, OpenAI-compatible optional) with a 60 s timeout, up to 4 retries with backoff on 429/5xx/529 that honour Retry-After, token and turn caps, and token-usage reporting. The key is never printed or put into errors.
+  - Robot safety: every tool call is schema-validated before it reaches the robot backend (skill enum, 0 ≤ Q\* ≤ 0.8, no unknown arguments).
+  - Agent loop + `MockLLM`: `scripts/run_agent.py --mock` runs the full episode offline. Added `insert` to the skills.
+  - 23 unit tests pass.
+- **Report.** Made a 2-page Word version of Lab Report 1 (Times New Roman) with the revised hero.
+- **[block]** API key still not verified (`scripts/check_llm_api.py`).
+
 ## 2026-10-16 (Fri) · Dohyun
 - Created the repo. Python ≥3.10 with numpy + matplotlib only. Raw sensor data, recordings and internal lab material are git-ignored.
 - Wrote the [related-work note](docs/related_work.md) (3 core papers + 9 adjacent) and the [draft proposal](docs/proposal_draft.md) for the A+B+C direction.

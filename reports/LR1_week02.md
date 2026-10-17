@@ -2,28 +2,33 @@
 
 **Shear-Aware Agentic Grasping** · Dohyun ([@DHLeexpress](https://github.com/DHLeexpress)) & Jihoon ([@jhahn2](https://github.com/jhahn2)) · AM/ME/CE 295
 
-![Hero: thin tactile-skin fingers pull one book from a packed shelf; side panels show the shear field, the friction-margin controller and the LLM agent's tactile tool calls](../docs/figures/hero.png)
+![Hero: the gripper approaches the packed shelf horizontally, slides thin tactile-skin fingers into the gaps and pulls one book out sideways; side panels show the shear field, the friction-margin controller and the LLM agent's tactile tool calls](../docs/figures/hero.png)
 
 | | |
 |---|---|
-| **Repository** | [github.com/DHLeexpress/ME295](https://github.com/DHLeexpress/ME295) · [commit history](https://github.com/DHLeexpress/ME295/commits/main) |
-| **README** | up to date: idea, A/B/C layers, layout, quickstart ([README](../README.md)) |
+| **Repository** | [github.com/DHLeexpress/ME295](https://github.com/DHLeexpress/ME295) (public) · [commit history](https://github.com/DHLeexpress/ME295/commits/main) |
+| **README** | up to date: idea, A/B/C layers, layout, quickstart, API/key handling ([README](../README.md)) |
 | **Running log** | [LOG.md](../LOG.md), started Oct 15 |
 | **Draft proposal** | [docs/proposal_draft.md](../docs/proposal_draft.md) |
+| **Word version** | [LR1_week02.docx](LR1_week02.docx) (2 pages) |
 
-**Goal (draft, to be locked in LR2).** A parallel-jaw gripper knows how far it closed and roughly how hard it squeezes, but not how close each contact is to slipping, and vision cannot see that inside a packed shelf. We ask whether real-time shear sensing from Jihoon's thin tactile skin on a Robotiq 2F-140 helps when it is used two ways: **(A)** inside a friction-margin grip controller and **(C)** as tools an LLM agent can call. The test is **(B)** pulling one book out of a tightly packed shelf. "Helps" means more reliable and gentler than fixed-force, slip-reactive, LLM-prior and vision-only baselines.
+**Goal (draft, to be locked in LR2).** A parallel-jaw gripper knows how far it closed and roughly how hard it squeezes, but not how close each contact is to slipping, and vision cannot see that inside a packed shelf. We ask whether real-time shear sensing from Jihoon's thin tactile skin on a Robotiq 2F-140 helps when it is used two ways: **(A)** inside a friction-margin grip controller and **(C)** as tools an LLM agent can call. The test is **(B)** pulling one book out of a tightly packed shelf *sideways*: shelves leave no headroom to lift a book, so the thin fingers slide into the gaps beside it, pinch, and pull it out horizontally. "Helps" means more reliable and gentler than fixed-force, slip-reactive, LLM-prior and vision-only baselines.
 
 ## 1. Progress (from the running log)
 
 **Done**
 - **Literature.** Read 3 core papers and 9 adjacent ones, written up as a [related-work note](../docs/related_work.md) (§3).
 - **Direction.** Picked A+B+C. The book-shelf application comes from our last discussion with Prof. Burdick. Two other directions were set aside: a learned visuo-tactile policy stays as a stretch comparison, and pretrained optical tactile encoders are dropped (they are trained on camera images, not on our skin's signals).
-- **Repo and environment.** Python package `shear_agent` (numpy + matplotlib only), 13 unit tests passing, raw data and internal material git-ignored, `.env.example` for API keys.
+- **Repo and environment.** Public repo `DHLeexpress/ME295`. Python package `shear_agent` (numpy + matplotlib only), 23 unit tests passing offline. Raw data and internal material are git-ignored.
+- **API access, set up for a public repo.**
+  - Keys live only in a git-ignored `.env`; a pre-commit hook and CI reject key-shaped strings and `.env` files.
+  - A dependency-free LLM client (Anthropic by default, any OpenAI-compatible endpoint optional) with timeouts, capped retries with backoff, and token/turn limits. It never prints the key.
+  - Every tool call from the model is schema-validated before it can reach the robot.
 - **Small working pieces (§2).**
   - friction-margin Q and a gentlest-closure helper
   - toy evaluation harness with 4 controllers and a latency sweep
-  - agent tool schemas with an offline dry run
-  - LLM tool-use check script
+  - tactile tool schemas and the agent's tool-use loop, runnable offline with a scripted mock LLM
+  - LLM access check script
 - **Hardware carried in from earlier lab work.**
   - Tactile gripper v1: thin tactile skin on one 2F-140 finger, dummy finger on the other.
   - Real-time pipeline: sensor → strain → ROS → UR10e, ~50 ms per cycle.
@@ -57,17 +62,18 @@ What we learned:
 2. Slip grows roughly linearly with latency (ours: 0.4 → 1.2 → 3.0 mm at 0 / 50 / 200 ms), so streaming features instead of images is worth doing.
 3. Our first controller had more failed pulls than slip-reactive at ≥150 ms latency. Measured shear saturates at the friction limit during gross slip, so the controller needs a slip reflex, and its feed-forward lead must match the loop delay. Both are fixed now.
 
-**(b) Agent tool loop, offline** (`python scripts/agent_dry_run.py`, output trimmed). A scripted policy stands in for the LLM:
+**(b) Agent tool loop, offline** (`python scripts/run_agent.py --mock`, output trimmed). A scripted mock LLM drives the same loop the real model will use:
 ```
-> execute_skill(skill='pull', book_id='7')  -> {"phase": "pulling"}
-> shear_margin()                            -> {"Q": 0.0, "mu_hat": 0.45, "grip_N": 10.0}
-> incipient_slip()                          -> {"incipient_slip": true}
-# touch says the book is about to slip -> raise the margin and regrasp
-> set_margin(q_star=0.3)                    -> {"ok": true}
-> execute_skill(skill='regrasp', ...)       -> {"phase": "pulling"}
-> shear_margin()                            -> {"Q": 0.3, "grip_N": 14.3}
+> execute_skill(skill='insert', book_id='7') -> {"phase": "inserted"}
+> execute_skill(skill='pinch', book_id='7')  -> {"phase": "pinched"}
+> execute_skill(skill='pull', book_id='7')   -> {"phase": "pulling"}
+> shear_margin()                             -> {"Q": 0.0, "mu_hat": 0.45, "grip_N": 10.0}
+> incipient_slip()                           -> {"incipient_slip": true}
+> set_margin(q_star=0.3)                     -> {"ok": true}
+> execute_skill(skill='regrasp', ...)        -> {"phase": "pulling"}
+> shear_margin()                             -> {"Q": 0.3, "grip_N": 14.3}
 ```
-`scripts/check_llm_api.py` sends the same tool schemas to a real model and executes one tool-use round trip. It currently stops at "key not set".
+Without `--mock`, the same command uses the real model from `.env`. `scripts/check_llm_api.py` verifies the key, the network and tool calling in one short episode. It currently stops at "no API key".
 
 ## 3. Related work: what has been tried, where the gap is
 Full note with 9 more papers: [docs/related_work.md](../docs/related_work.md).
@@ -87,3 +93,4 @@ Full note with 9 more papers: [docs/related_work.md](../docs/related_work.md).
 | Verify the LLM API key; first real agent run against the mock backend | Dohyun | `check_llm_api.py` exits 0 |
 | Shelf testbed v0 (adjustable packing); finger thickness vs. book gaps; first scripted-baseline pulls | both | photos + trials in LOG |
 | Integrate the new acquisition hardware when it arrives (both fingers sensing) | Jihoon | both sides streaming |
+| Move sensing-side code (acquisition, strain pipeline) into `sensing/` | Jihoon | first commits in the repo |
