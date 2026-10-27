@@ -1,0 +1,375 @@
+<!--
+  UR10e + Robotiq 2F-140 (no AGC fingertips) + custom blade gripper_dohyun_v1 on both fingers,
+  bolted through the AGC lug hole, with its thin PDMS layer + wrist camera.
+
+  Sources (see model/*/LICENSE):
+    model/ur10e/          MuJoCo Menagerie universal_robots_ur10e (BSD-3)
+    model/robotiq_2f140/  PickNik ros2_robotiq_gripper robotiq_description (BSD-3);
+                          link frames, joint origins and mimic ratios are copied from
+                          robotiq_2f_140.xacro (kept alongside the meshes)
+    model/gripper_dohyun_v1.stl  custom blade (mm); body/PDMS split, collision pieces and the
+                          PDMS layer come from scripts_sim/make_blade_assets.py ->
+                          assembly/blade_*.xml, assembly/pdms_*.xml
+    model/agc_tip_140/    Robotiq AGC pad STEP (reference only, not in the assembly): its lug
+                          hole pattern is shared with the blade and fixes the blade mount
+
+  Gripper control: actuator "fingers", ctrl 0 (open) .. 255 (closed), as in the Robotiq
+  register interface. One driven knuckle; the other five hinges follow it through joint
+  equalities (the URDF mimic joints), so the fingertips stay parallel.
+
+  Euler angles use the URDF convention (fixed-axis roll-pitch-yaw).
+-->
+<mujoco model="ur10e_2f140">
+  <compiler angle="radian" meshdir="../model" autolimits="true" eulerseq="XYZ"/>
+
+  <!-- 0.5 ms: stiff PDMS contact on light finger links -->
+  <option integrator="implicitfast" timestep="0.0005" cone="elliptic" impratio="10"/>
+
+  <default>
+    <default class="ur10e">
+      <material specular="0.5" shininess="0.25"/>
+      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1"/>
+      <general biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="5000" biasprm="0 -5000 -500"/>
+      <default class="size4">
+        <joint damping="10"/>
+        <general forcerange="-330 330"/>
+      </default>
+      <default class="size3">
+        <joint damping="5"/>
+        <general forcerange="-150 150"/>
+        <default class="size3_limited">
+          <joint range="-3.1415 3.1415"/>
+          <general ctrlrange="-3.1415 3.1415"/>
+        </default>
+      </default>
+      <default class="size2">
+        <joint damping="2"/>
+        <general forcerange="-56 56"/>
+      </default>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom type="capsule" group="3"/>
+        <default class="eef_collision">
+          <geom type="cylinder"/>
+        </default>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+    </default>
+
+    <default class="2f140">
+      <mesh scale="1 1 1"/>
+      <joint axis="1 0 0" armature="0.001" damping="0.05" frictionloss="0.01"/>
+      <default class="2f140_visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" material="robotiq_black"/>
+      </default>
+      <!-- links: anodized aluminium -->
+      <default class="2f140_collision">
+        <geom type="mesh" group="3" friction="0.6 0.005 0.0001" condim="4" rgba="0.8 0.3 0.3 0.4"/>
+      </default>
+      <!-- custom blade: printed polymer (assumed), lower friction, stiffer -->
+      <default class="blade_collision">
+        <geom type="mesh" condim="4" friction="0.4 0.005 0.0001" solref="0.004 1"
+              group="3" rgba="0.3 0.4 0.9 0.4"/>
+      </default>
+    </default>
+  </default>
+
+  <asset>
+    <material class="ur10e" name="black" rgba="0.033 0.033 0.033 1"/>
+    <material class="ur10e" name="jointgray" rgba="0.278 0.278 0.278 1"/>
+    <material class="ur10e" name="linkgray" rgba="0.82 0.82 0.82 1"/>
+    <material class="ur10e" name="urblue" rgba="0.49 0.678 0.8 1"/>
+    <material name="robotiq_black" rgba="0.08 0.08 0.08 1" specular="0.4" shininess="0.3"/>
+    <material name="coupling_gray" rgba="0.75 0.75 0.77 1" specular="0.6" shininess="0.5"/>
+    <material name="pdms_mat" rgba="0.95 0.45 0.1 1" specular="0.3" shininess="0.6"/>
+    <material name="blade_mat" rgba="0.12 0.12 0.12 1" specular="0.2"/>
+    <material name="camera_mat" rgba="0.15 0.15 0.17 1" specular="0.3"/>
+
+    <mesh file="ur10e/assets/base_0.obj"/>
+    <mesh file="ur10e/assets/base_1.obj"/>
+    <mesh file="ur10e/assets/shoulder_0.obj"/>
+    <mesh file="ur10e/assets/shoulder_1.obj"/>
+    <mesh file="ur10e/assets/shoulder_2.obj"/>
+    <mesh file="ur10e/assets/upperarm_0.obj"/>
+    <mesh file="ur10e/assets/upperarm_1.obj"/>
+    <mesh file="ur10e/assets/upperarm_2.obj"/>
+    <mesh file="ur10e/assets/upperarm_3.obj"/>
+    <mesh file="ur10e/assets/forearm_0.obj"/>
+    <mesh file="ur10e/assets/forearm_1.obj"/>
+    <mesh file="ur10e/assets/forearm_2.obj"/>
+    <mesh file="ur10e/assets/forearm_3.obj"/>
+    <mesh file="ur10e/assets/wrist1_0.obj"/>
+    <mesh file="ur10e/assets/wrist1_1.obj"/>
+    <mesh file="ur10e/assets/wrist1_2.obj"/>
+    <mesh file="ur10e/assets/wrist2_0.obj"/>
+    <mesh file="ur10e/assets/wrist2_1.obj"/>
+    <mesh file="ur10e/assets/wrist2_2.obj"/>
+    <mesh file="ur10e/assets/wrist3.obj"/>
+
+    <mesh class="2f140" name="coupling" file="robotiq_2f140/visual/robotiq_2f_140_coupling.stl" scale="0.001 0.001 0.001"/>
+    <mesh class="2f140" name="base_v" file="robotiq_2f140/visual/robotiq_2f_140_base_link.stl"/>
+    <mesh class="2f140" name="outer_knuckle_v" file="robotiq_2f140/visual/robotiq_2f_140_outer_knuckle.stl"/>
+    <mesh class="2f140" name="outer_finger_v" file="robotiq_2f140/visual/robotiq_2f_140_outer_finger.stl"/>
+    <mesh class="2f140" name="inner_knuckle_v" file="robotiq_2f140/visual/robotiq_2f_140_inner_knuckle.stl"/>
+    <mesh class="2f140" name="inner_finger_v" file="robotiq_2f140/visual/robotiq_2f_140_inner_finger.stl"/>
+    <mesh class="2f140" name="base_c" file="robotiq_2f140/collision/robotiq_2f_140_base_link.stl"/>
+    <mesh class="2f140" name="outer_knuckle_c" file="robotiq_2f140/collision/robotiq_2f_140_outer_knuckle.stl"/>
+    <mesh class="2f140" name="outer_finger_c" file="robotiq_2f140/collision/robotiq_2f_140_outer_finger.stl"/>
+    <mesh class="2f140" name="inner_knuckle_c" file="robotiq_2f140/collision/robotiq_2f_140_inner_knuckle.stl"/>
+    <mesh class="2f140" name="inner_finger_c" file="robotiq_2f140/collision/robotiq_2f_140_inner_finger.stl"/>
+
+    <include file="blade_assets.xml"/>
+  </asset>
+
+  <worldbody>
+    <!-- link offsets are the UR10e DH parameters (d1 0.1807, a2 0.6127, a3 0.57155, d4 0.17415,
+         d5 0.11985, d6 0.11655), so getl()/movel() poses match the real controller;
+         gravcomp on the arm links: the UR controller compensates gravity; without it the
+         Menagerie position servos let the tool sag ~12 mm -->
+    <body name="base" quat="0 0 0 -1" childclass="ur10e">
+      <inertial mass="4.0" pos="0 0 0" diaginertia="0.0061063308908 0.0061063308908 0.01125"/>
+      <geom mesh="base_0" material="black" class="visual"/>
+      <geom mesh="base_1" material="jointgray" class="visual"/>
+      <body name="shoulder_link" gravcomp="1" pos="0 0 0.1807">
+        <inertial pos="0 0 0" mass="7.778" diaginertia="0.0314743 0.0314743 0.0218756"/>
+        <joint name="shoulder_pan_joint" class="size4" axis="0 0 1"/>
+        <geom mesh="shoulder_0" material="urblue" class="visual"/>
+        <geom mesh="shoulder_1" material="black" class="visual"/>
+        <geom mesh="shoulder_2" material="jointgray" class="visual"/>
+        <geom class="collision" size="0.078 0.05" pos="0 0 -0.02"/>
+        <body name="upper_arm_link" gravcomp="1" pos="0 0.176 0" quat="1 0 1 0">
+          <inertial pos="0 0 0.3065" mass="12.93" diaginertia="0.423074 0.423074 0.0363656"/>
+          <joint name="shoulder_lift_joint" class="size4"/>
+          <geom mesh="upperarm_0" material="black" class="visual"/>
+          <geom mesh="upperarm_1" material="jointgray" class="visual"/>
+          <geom mesh="upperarm_2" material="urblue" class="visual"/>
+          <geom mesh="upperarm_3" material="linkgray" class="visual"/>
+          <geom class="collision" pos="0 -0.05 0" quat="1 1 0 0" size="0.078 0.08"/>
+          <geom class="collision" size="0.06 0.3" pos="0 0 0.3"/>
+          <body name="forearm_link" gravcomp="1" pos="0 -0.137 0.6127">
+            <inertial pos="0 0 0.2855" mass="3.87" diaginertia="0.11059 0.11059 0.0108844"/>
+            <joint name="elbow_joint" class="size3_limited"/>
+            <geom mesh="forearm_0" material="urblue" class="visual"/>
+            <geom mesh="forearm_1" material="black" class="visual"/>
+            <geom mesh="forearm_2" material="jointgray" class="visual"/>
+            <geom mesh="forearm_3" material="linkgray" class="visual"/>
+            <geom class="collision" pos="0 0.08 0" quat="1 1 0 0" size="0.058 0.065"/>
+            <geom class="collision" size="0.043 0.28" pos="0 0 0.29"/>
+            <body name="wrist_1_link" gravcomp="1" pos="0 0 0.57155" quat="1 0 1 0">
+              <inertial pos="0 0.135 0" quat="0.5 0.5 -0.5 0.5" mass="1.96"
+                diaginertia="0.0055125 0.00510825 0.00510825"/>
+              <joint name="wrist_1_joint" class="size2"/>
+              <geom mesh="wrist1_0" material="black" class="visual"/>
+              <geom mesh="wrist1_1" material="urblue" class="visual"/>
+              <geom mesh="wrist1_2" material="jointgray" class="visual"/>
+              <geom class="collision" pos="0 0.06 0" quat="1 1 0 0" size="0.05 0.07"/>
+              <body name="wrist_2_link" gravcomp="1" pos="0 0.13515 0">
+                <inertial pos="0 0 0.12" quat="0.5 0.5 -0.5 0.5" mass="1.96"
+                  diaginertia="0.0055125 0.00510825 0.00510825"/>
+                <joint name="wrist_2_joint" axis="0 0 1" class="size2"/>
+                <geom mesh="wrist2_0" material="black" class="visual"/>
+                <geom mesh="wrist2_1" material="urblue" class="visual"/>
+                <geom mesh="wrist2_2" material="jointgray" class="visual"/>
+                <geom class="collision" size="0.046 0.065" pos="0 0 0.05"/>
+                <geom class="collision" pos="0 0.028 0.12" quat="1 1 0 0" size="0.046 0.043"/>
+                <body name="wrist_3_link" gravcomp="1" pos="0 0 0.11985">
+                  <inertial pos="0 0.092 0" quat="0 1 -1 0" mass="0.202"
+                    diaginertia="0.000204525 0.000144346 0.000144346"/>
+                  <joint name="wrist_3_joint" class="size2"/>
+                  <geom material="linkgray" mesh="wrist3" class="visual"/>
+                  <geom class="eef_collision" pos="0 0.097 0" quat="1 1 0 0" size="0.046 0.02"/>
+
+                  <!-- tool flange = UR tool0: +z out of the flange face, d6 = 0.11655 m from the wrist-3
+                       axis (Menagerie puts its attachment_site 16.6 mm inside the flange at 0.1) -->
+                  <body name="flange" pos="0 0.11655 0" quat="-1 1 0 0">
+                    <site name="attachment_site"/>
+
+                    <!-- wrist camera (RealSense D435-sized box) on a side bracket, looking along the tool -->
+                    <body name="wrist_camera" pos="0 -0.075 0.02">
+                      <inertial mass="0.072" pos="0 0 0" diaginertia="5e-5 1e-5 5e-5"/>
+                      <geom name="camera_bracket" type="box" size="0.012 0.03 0.004" pos="0 0.035 -0.004"
+                            material="coupling_gray" contype="0" conaffinity="0" group="2"/>
+                      <geom name="camera_housing" type="box" size="0.045 0.0125 0.0125" pos="0 0 0.0125"
+                            material="camera_mat" group="2"/>
+                      <!-- MuJoCo cameras look along their -z; flip so it looks along the tool +z -->
+                      <camera name="wrist_cam" pos="0 0 0.026" quat="0 1 0 0" fovy="42"/>
+                    </body>
+
+                    <!-- Robotiq coupling (GRP-CPL-062 style), 13.9 mm thick -->
+                    <geom name="coupling" mesh="coupling" class="2f140_visual" material="coupling_gray"
+                          pos="0 0 0.007"/>
+
+                    <!-- 2F-140 base; the URDF rotates it pi/2 about z to match the 2F-85 -->
+                    <body name="gripper_base" childclass="2f140" pos="0 0 0.0139" euler="0 0 1.5707963">
+                      <inertial mass="0.22652" pos="0 0 0.03145" diaginertia="0.00020005 0.00017832 0.00013478"/>
+                      <geom mesh="base_v" class="2f140_visual"/>
+                      <geom mesh="base_c" class="2f140_collision"/>
+                      <site name="pinch" pos="0 0 0.2007" group="4" rgba="1 0 0 1" size="0.003"/>
+
+                      <!-- ===== left finger (driven) ===== -->
+                      <body name="left_outer_knuckle" pos="0 -0.030601 0.054905" euler="2.2957963 0 0">
+                        <inertial mass="0.00853" pos="-0.0002 0.01994 0.02922" diaginertia="2.9e-6 1.9e-6 1.2e-6"/>
+                        <joint name="left_driver_joint" axis="-1 0 0" range="0 0.7"/>
+                        <geom mesh="outer_knuckle_v" class="2f140_visual" material="coupling_gray"/>
+                        <geom mesh="outer_knuckle_c" class="2f140_collision"/>
+                        <body name="left_outer_finger" pos="0 0.01821998610742 0.0260018192872234">
+                          <inertial mass="0.02261" pos="0.0003 0.03739 -0.0208" diaginertia="1.5e-5 6.2e-6 1.2e-5"/>
+                          <geom mesh="outer_finger_v" class="2f140_visual"/>
+                          <geom mesh="outer_finger_c" class="2f140_collision"/>
+                          <body name="left_inner_finger" pos="0 0.0817554015893473 -0.0282203446692936" euler="-0.725 0 0">
+                            <inertial mass="0.0104" pos="0.0003 0.016 -0.0137" diaginertia="2.7e-6 7.7e-7 2.3e-6"/>
+                            <joint name="left_follower_joint" range="-0.8757 0.8757"/>
+                            <geom mesh="inner_finger_v" class="2f140_visual"/>
+                            <geom mesh="inner_finger_c" class="2f140_collision"/>
+                            <!-- fingertip frame (the URDF pad frame): +y toward the tip, +z away from the object.
+                                 The inner finger's distal bar ends at y = -1.24 mm; its screw hole (shared by the
+                                 AGC lug and the blade lug) is at x = -0.2, z = 10.05 mm, along y. -->
+                            <body name="left_fingertip" pos="0 0.0457554015893473 -0.0272203446692936">
+                              <!-- blade, 0.12 kg placeholder (111 cm3 printed polymer), COM from its convex pieces -->
+                              <inertial mass="0.12" pos="-0.0004 -0.0041 0.0436" diaginertia="4e-4 6e-5 4e-4"/>
+                              <!-- BLADE MOUNT: blade STL axes = fingertip axes (STL -z faces the object).
+                                   The blade lug's Ø5.4 hole (STL x 6.07, z -3.20 mm) is put on the finger's
+                                   screw hole and its end face (STL y -44.37 mm) on the bar's end face;
+                                   the blade then clears the inner finger (0.06 cm3 hull overlap). -->
+                              <frame name="left_blade_mount" pos="-0.00627 0.04313 0.01325">
+                                <geom name="left_blade_visual" mesh="blade_visual" class="2f140_visual" material="blade_mat"/>
+                                <include file="blade_geoms_left.xml"/>
+                                <include file="pdms_left.xml"/>
+                              </frame>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                      <body name="left_inner_knuckle" pos="0 -0.0127 0.06142" euler="2.2957963 0 0">
+                        <inertial mass="0.02712" pos="0.0001 0.05079 0.001" diaginertia="2.6e-5 2.8e-6 2.8e-5"/>
+                        <joint name="left_inner_knuckle_joint" range="-0.8757 0.8757"/>
+                        <geom mesh="inner_knuckle_v" class="2f140_visual"/>
+                        <geom mesh="inner_knuckle_c" class="2f140_collision"/>
+                      </body>
+
+                      <!-- ===== right finger (mirror: URDF yaw pi) ===== -->
+                      <body name="right_outer_knuckle" pos="0 0.030601 0.054905" euler="2.2957963 0 3.1415927">
+                        <inertial mass="0.00853" pos="-0.0002 0.01994 0.02922" diaginertia="2.9e-6 1.9e-6 1.2e-6"/>
+                        <joint name="right_driver_joint" range="-0.725 0.725"/>
+                        <geom mesh="outer_knuckle_v" class="2f140_visual" material="coupling_gray"/>
+                        <geom mesh="outer_knuckle_c" class="2f140_collision"/>
+                        <body name="right_outer_finger" pos="0 0.01821998610742 0.0260018192872234">
+                          <inertial mass="0.02261" pos="0.0003 0.03739 -0.0208" diaginertia="1.5e-5 6.2e-6 1.2e-5"/>
+                          <geom mesh="outer_finger_v" class="2f140_visual"/>
+                          <geom mesh="outer_finger_c" class="2f140_collision"/>
+                          <body name="right_inner_finger" pos="0 0.0817554015893473 -0.0282203446692936" euler="-0.725 0 0">
+                            <inertial mass="0.0104" pos="0.0003 0.016 -0.0137" diaginertia="2.7e-6 7.7e-7 2.3e-6"/>
+                            <joint name="right_follower_joint" range="-0.8757 0.8757"/>
+                            <geom mesh="inner_finger_v" class="2f140_visual"/>
+                            <geom mesh="inner_finger_c" class="2f140_collision"/>
+                            <body name="right_fingertip" pos="0 0.0457554015893473 -0.0272203446692936">
+                              <!-- blade, 0.12 kg placeholder (111 cm3 printed polymer), COM from its convex pieces -->
+                              <inertial mass="0.12" pos="-0.0004 -0.0041 0.0436" diaginertia="4e-4 6e-5 4e-4"/>
+                              <!-- BLADE MOUNT: blade STL axes = fingertip axes (STL -z faces the object).
+                                   The blade lug's Ø5.4 hole (STL x 6.07, z -3.20 mm) is put on the finger's
+                                   screw hole and its end face (STL y -44.37 mm) on the bar's end face;
+                                   the blade then clears the inner finger (0.06 cm3 hull overlap). -->
+                              <frame name="right_blade_mount" pos="-0.00627 0.04313 0.01325">
+                                <geom name="right_blade_visual" mesh="blade_visual" class="2f140_visual" material="blade_mat"/>
+                                <include file="blade_geoms_right.xml"/>
+                                <include file="pdms_right.xml"/>
+                              </frame>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                      <body name="right_inner_knuckle" pos="0 0.0127 0.06142" euler="2.2957963 0 -3.1415927">
+                        <inertial mass="0.02712" pos="0.0001 0.05079 0.001" diaginertia="2.6e-5 2.8e-6 2.8e-5"/>
+                        <joint name="right_inner_knuckle_joint" range="-0.8757 0.8757"/>
+                        <geom mesh="inner_knuckle_v" class="2f140_visual"/>
+                        <geom mesh="inner_knuckle_c" class="2f140_collision"/>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <!-- the linkage's own parts touch at pins and overlap as convex hulls: no self-contact
+         inside the gripper except finger-vs-finger (the blades can meet when closed) -->
+    <exclude body1="wrist_3_link" body2="gripper_base"/>
+    <exclude body1="gripper_base" body2="left_outer_finger"/>
+    <exclude body1="gripper_base" body2="left_inner_finger"/>
+    <exclude body1="gripper_base" body2="left_fingertip"/>
+    <exclude body1="gripper_base" body2="right_outer_finger"/>
+    <exclude body1="gripper_base" body2="right_inner_finger"/>
+    <exclude body1="gripper_base" body2="right_fingertip"/>
+    <exclude body1="left_outer_knuckle" body2="left_inner_knuckle"/>
+    <exclude body1="left_outer_knuckle" body2="left_inner_finger"/>
+    <exclude body1="left_outer_finger" body2="left_inner_knuckle"/>
+    <exclude body1="left_outer_finger" body2="left_fingertip"/>
+    <exclude body1="left_inner_knuckle" body2="left_inner_finger"/>
+    <exclude body1="left_inner_knuckle" body2="left_fingertip"/>
+    <exclude body1="right_outer_knuckle" body2="right_inner_knuckle"/>
+    <exclude body1="right_outer_knuckle" body2="right_inner_finger"/>
+    <exclude body1="right_outer_finger" body2="right_inner_knuckle"/>
+    <exclude body1="right_outer_finger" body2="right_fingertip"/>
+    <exclude body1="right_inner_knuckle" body2="right_inner_finger"/>
+    <exclude body1="right_inner_knuckle" body2="right_fingertip"/>
+    <exclude body1="left_inner_knuckle" body2="right_inner_knuckle"/>
+    <exclude body1="left_outer_knuckle" body2="right_outer_knuckle"/>
+  </contact>
+
+  <equality>
+    <!-- URDF mimic joints: every hinge follows left_driver_joint (q). solref 0.001 s (2 x dt):
+         stiff enough that a 120 N squeeze tilts the fingertips < 0.1 deg, so normal force does
+         not leak into the PDMS shear reading -->
+    <joint joint1="right_driver_joint" joint2="left_driver_joint" polycoef="0 -1 0 0 0" solref="0.001 1"/>
+    <joint joint1="left_inner_knuckle_joint" joint2="left_driver_joint" polycoef="0 -1 0 0 0" solref="0.001 1"/>
+    <joint joint1="right_inner_knuckle_joint" joint2="left_driver_joint" polycoef="0 -1 0 0 0" solref="0.001 1"/>
+    <joint joint1="left_follower_joint" joint2="left_driver_joint" polycoef="0 1 0 0 0" solref="0.001 1"/>
+    <joint joint1="right_follower_joint" joint2="left_driver_joint" polycoef="0 1 0 0 0" solref="0.001 1"/>
+  </equality>
+
+  <actuator>
+    <general class="size4" name="shoulder_pan" joint="shoulder_pan_joint"/>
+    <general class="size4" name="shoulder_lift" joint="shoulder_lift_joint"/>
+    <general class="size3_limited" name="elbow" joint="elbow_joint"/>
+    <general class="size2" name="wrist_1" joint="wrist_1_joint"/>
+    <general class="size2" name="wrist_2" joint="wrist_2_joint"/>
+    <general class="size2" name="wrist_3" joint="wrist_3_joint"/>
+    <!-- Robotiq-style servo on the driven knuckle: ctrl 0..255 -> q 0..0.7 rad. Stiff (kp = 1000
+         N m/rad) so that, as on the Robotiq, a blocked closing squeezes at the force cap rather
+         than at kp x (position error); forcerange 24 N m ~ 120-128 N per finger on 40-100 mm
+         objects. The fingers translate (parallelogram), so the squeeze is the same anywhere on
+         the blade. The real gripper also limits speed (20-250 mm/s): ramp ctrl at that rate
+         rather than stepping it (gripper_ramp in scripts_sim/sim_gripper.py). -->
+    <general name="fingers" joint="left_driver_joint" ctrlrange="0 255" forcerange="-24 24"
+             gainprm="2.745098" biastype="affine" biasprm="0 -1000 -4"/>
+  </actuator>
+
+  <sensor>
+    <!-- UR10e built-in flange force/torque sensor: wrench between wrist_3_link and everything
+         mounted on the flange (site frame = tool0), see SimRobot.get_tcp_force() -->
+    <force name="flange_force" site="attachment_site"/>
+    <torque name="flange_torque" site="attachment_site"/>
+    <jointpos name="finger_pos" joint="left_driver_joint"/>
+    <actuatorfrc name="finger_force" actuator="fingers"/>
+    <!-- PDMS layer: force/torque it transmits to the blade at the bond (site frame: z = face
+         normal, away from the object; x, y = shear) and the normal force on its free face -->
+    <force name="left_pdms_force" site="left_pdms_bond"/>
+    <torque name="left_pdms_torque" site="left_pdms_bond"/>
+    <touch name="left_pdms_touch" site="left_pdms_surface"/>
+    <force name="right_pdms_force" site="right_pdms_bond"/>
+    <torque name="right_pdms_torque" site="right_pdms_bond"/>
+    <touch name="right_pdms_touch" site="right_pdms_surface"/>
+  </sensor>
+
+  <keyframe>
+    <key name="home" qpos="-1.5708 -1.5708 1.5708 -1.5708 -1.5708 0 0 0 0 0 0 0"
+         ctrl="-1.5708 -1.5708 1.5708 -1.5708 -1.5708 0 0"/>
+  </keyframe>
+</mujoco>

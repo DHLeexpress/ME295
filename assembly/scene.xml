@@ -1,0 +1,46 @@
+<!--
+  Test scene for the UR10e + 2F-140 + blade assembly: floor, a table, and a free box to grasp. Object poses are set by scripts_sim/sim_gripper.py
+  relative to the gripper, so they are only placeholders here.
+-->
+<mujoco model="ur10e_2f140_scene">
+  <include file="ur10e_2f140.xml"/>
+
+  <statistic center="-0.15 0.6 0.45" extent="0.6"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1" contactpoint="1 0.2 0.2 1" contactforce="0.2 0.9 0.2 1"/>
+    <global azimuth="120" elevation="-20" offwidth="1600" offheight="1200"/>
+    <scale contactwidth="0.03" contactheight="0.01" forcewidth="0.01"/>
+    <map force="0.005"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+             rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="cloth" rgba="0.92 0.92 0.9 1"/>
+    <material name="cardboard" rgba="0.72 0.55 0.35 1"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 2.5" dir="0 0 -1" directional="true"/>
+    <light pos="-0.6 1.6 1.4" dir="0.3 -0.8 -0.5" diffuse="0.4 0.4 0.4"/>
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+
+    <!-- narrow pedestal under the tool at the home pose (height set by the script); the blades
+         reach 74 mm past the pads, so the box must stand on something they can straddle -->
+    <body name="table" pos="-0.17 0.69 0.15">
+      <geom name="table_top" type="box" size="0.015 0.03 0.15" material="cloth" friction="0.5 0.005 0.0001"/>
+    </body>
+
+    <!-- 300 g box, cardboard on NBR friction is set by the pad's priority -->
+    <body name="box" pos="-0.17 0.69 0.5">
+      <freejoint name="box"/>
+      <geom name="box" type="box" size="0.025 0.04 0.03" mass="0.3" material="cardboard"
+            friction="0.5 0.005 0.0001"/>
+    </body>
+
+  </worldbody>
+</mujoco>

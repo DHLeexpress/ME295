@@ -27,6 +27,12 @@ src/shear_agent/
   agent/tools.py       tactile tool schemas + input validation + offline mock gripper
   agent/llm.py         dependency-free LLM client (Anthropic / OpenAI-compatible) + MockLLM
   agent/loop.py        tool-use loop with turn/token accounting
+  robot/               python-urx-compatible UR10e + Robotiq in MuJoCo, PDMS skin readout,
+                       Filament/classic renderer, real-robot adapter (urx + Robotiq URCap socket)
+  control/             controller interface for the contact phase + rule-based placeholder (MPC/MPPI/VLFA slots)
+model/                 CAD: UR10e, Robotiq 2F-140, blade gripper_dohyun_v1 (+ PDMS), AGC tip (reference)
+assembly/              MuJoCo models: robot + gripper, test scene, desk + bookshelf scene
+scripts_sim/           librarian demo (viewer / video / real robot), gripper checks, asset generators
 scripts/               run_toy_benchmark.py · run_agent.py · check_llm_api.py · make_hero.py
 tests/                 unit tests (stdlib unittest; pytest also works), no API key needed
 docs/                  proposal draft, related-work note, refs.bib, figures
@@ -44,7 +50,7 @@ git clone https://github.com/DHLeexpress/ME295.git && cd ME295
 git config core.hooksPath .githooks           # once per clone: blocks committed keys
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt               # numpy, matplotlib (+ pytest); or: pip install -e .
-python -m unittest discover -s tests          # 23 tests, offline
+python -m unittest discover -s tests          # 36 tests, offline (incl. MuJoCo)
 python scripts/run_toy_benchmark.py           # -> docs/figures/lr1_toy_benchmark.png, results/toy_benchmark.md
 python scripts/run_agent.py --mock            # agent loop on the mock gripper, no key needed
 cp .env.example .env                          # add your key, then:
@@ -52,6 +58,15 @@ python scripts/check_llm_api.py               # verifies key, network and tool u
 python scripts/run_agent.py                   # same episode with the real model
 ```
 Scripts and tests add `src/` to the path themselves, so no install is required.
+
+## MuJoCo simulation
+```bash
+python -m mujoco.viewer --mjcf assembly/scene_bookshelf.xml        # browse the cell
+python scripts_sim/run_librarian.py --viewer                        # live task + HUD (macOS: mjpython ...)
+python scripts_sim/run_librarian.py --video results/librarian.mp4   # skin | MuJoCo | wrist camera video
+python scripts_sim/run_librarian.py --backend urx --host <robot ip> # same task on the real UR10e
+```
+Demo: [docs/media/librarian_demo.mp4](docs/media/librarian_demo.mp4) (approach horizontally, slide the blades beside a book, pull it out, lift it, stand it on the desk). The task is written against the python-urx API (`movej`, `movel`, `getj`, `get_tcp_force`, `gripper_action`, ...), so it transfers to the robot unchanged. Setup per OS, rendering backends, the controller slot and how MuJoCo defines force and displacement are in [docs/SIM.md](docs/SIM.md); the gripper model is described in [assembly/README.md](assembly/README.md).
 
 ## LLM API and keys (public repo)
 - **Keys live only in `.env`**, which is git-ignored; `.env.example` is the template. The pre-commit hook and CI reject anything that looks like a key, and any `.env*` file other than the template.

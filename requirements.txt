@@ -1,4 +1,8 @@
 numpy>=1.24
 matplotlib>=3.7
+mujoco>=3.17          # simulation: assembly/, scripts_sim/, src/shear_agent/robot (Filament renderer: 3.17+)
+trimesh>=4            # blade meshes (exact gaps, figures)
+imageio-ffmpeg        # ffmpeg binary for the demo videos
 # dev
 pytest>=7
+# regenerate blade assets / figures only: pip install coacd shapely  (gmsh for STEP -> STL)

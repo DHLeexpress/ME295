@@ -23,6 +23,9 @@ recordings/
 *.mcap
 results/raw/
 results/agent_runs/
+results/sim_runs/
+results/*.mp4
+MUJOCO_LOG.TXT
 
 # Internal lab material (unpublished sensor design, meeting decks)
 internal/

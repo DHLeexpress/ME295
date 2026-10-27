@@ -1,0 +1,519 @@
+<!--
+  Bookshelf scene for the librarian demo: UR10e + 2F-140 + blade gripper at the origin (assembly/ur10e_2f140.xml),
+  desk, bookshelf with two tiers of books, room, lights, cameras. World frame = UR base frame, metres.
+  Textures: python scripts_sim/make_scene_textures.py  ->  assembly/textures/*.png
+
+  Layout
+    desk    top x -0.75..0.75, y -0.45..1.20, z -0.04..0 (robot bolted at the origin); steel legs to the floor z = -0.74
+    room    floor plane z = -0.74, back wall plane y = 1.45, side wall plane x = -1.3 (backdrop; nothing touches them)
+    shelf   open front toward -y, no top board; side panels x +-0.36..+-0.34, y 0.80..1.10, z 0..0.70;
+            back panel y 1.09..1.10; plinth z 0..0.095 (y 0.82..1.09); bottom board top z = 0.12 and middle board top
+            z = 0.42 (both x -0.34..0.34, y 0.80..1.09)
+    books   free bodies (freejoint named like the body), one collision box geom named like the body, spines toward -y,
+            every spine face at y = 0.82, standing on a board; friction 0.5, mass 0.25-1.0 kg (paper, 650 kg/m3)
+      upper   book_target 0.040 x 0.170 x 0.230 (x, y, z) centred at (0, 0.905, 0.535), 0.80 kg; its neighbours
+              book_L1 / book_R1 leave exactly 10 mm of air on each side (faces at x = -0.030 and +0.030);
+              book_L2.. / book_R2.. packed outward with 0.5-1 mm gaps (thickness 0.020-0.045, height 0.19-0.25,
+              depth 0.15-0.18); steel bookends bookend_L / bookend_R 4 mm past the last book
+      lower   book_low_01..13 standing on the bottom board (heights 0.20-0.26, 0.5-1 mm gaps) and book_flat_1..3
+              lying in a stack at the right end
+    Spine bands, labels and page blocks are visual-only geoms (no contact, no mass), at most 0.5 mm proud of the box.
+    The arm works in x -0.5..0.5, y -0.2..0.85, z 0..1.3; only the shelf front (y >= 0.80) reaches into that box.
+
+  Cameras (fixed, xyaxes computed from the look-at points)
+    cam_main   3/4 view from the front-left: whole robot, desk and shelf
+    cam_close  upper tier around book_target, 0.5 m in front of the shelf and a hand's width right of the target:
+               both 10 mm gaps, the page tops and the shelf front edge. A front-left camera is blocked at the
+               home pose (tool at x = -0.17, y = 0.69 and the wrist sit on the sight line to the target)
+    cam_side   from the robot's left at shelf-front height: gripper in profile in front of the shelf
+-->
+<mujoco model="ur10e_2f140_bookshelf">
+  <include file="ur10e_2f140.xml"/>
+
+  <statistic center="0 0.55 0.1" extent="1.6"/>
+
+  <visual>
+    <quality shadowsize="4096" offsamples="8"/>
+    <global azimuth="60" elevation="-20" offwidth="1920" offheight="1080"/>
+    <headlight ambient="0.46 0.46 0.46" diffuse="0.08 0.08 0.08" specular="0 0 0"/>
+    <rgba haze="0.80 0.80 0.78 1"/>
+    <!-- tight shadow-map depth range: the default (1) leaves speckle on the desk top at 3 m; 0.16 keeps full shadows -->
+    <map shadowclip="0.16"/>
+  </visual>
+
+  <asset>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.82 0.82 0.80" rgb2="0.70 0.70 0.69" width="32" height="512"/>
+    <texture name="desk_wood" type="2d" file="textures/desk_wood.png"/>
+    <texture name="shelf_wood" type="2d" file="textures/shelf_wood.png"/>
+    <texture name="shelf_wood_v" type="2d" file="textures/shelf_wood_v.png"/>
+    <texture name="floor" type="2d" file="textures/floor.png"/>
+    <texture name="wall" type="2d" file="textures/wall.png"/>
+    <texture name="book_cloth" type="2d" file="textures/book_cloth.png"/>
+    <texture name="book_paper" type="2d" file="textures/book_paper.png"/>
+
+    <material name="desk_wood" texture="desk_wood" specular="0.25" shininess="0.3"/>
+    <material name="shelf_wood" texture="shelf_wood" specular="0.2" shininess="0.25"/>
+    <material name="shelf_wood_v" texture="shelf_wood_v" specular="0.2" shininess="0.25"/>
+    <material name="floor" texture="floor" texrepeat="10 10" rgba="0.78 0.78 0.77 1" specular="0.15" shininess="0.2"/>
+    <material name="wall" texture="wall" texrepeat="10 2.6" rgba="0.98 0.97 0.94 1" specular="0.02" shininess="0.05"/>
+    <material name="baseboard" rgba="0.93 0.92 0.89 1" specular="0.1" shininess="0.2"/>
+    <material name="steel" rgba="0.15 0.15 0.16 1" specular="0.5" shininess="0.4"/>
+    <material name="bookend" rgba="0.24 0.25 0.27 1" specular="0.6" shininess="0.5"/>
+    <material name="book_cloth" texture="book_cloth" specular="0.08" shininess="0.1"/>
+    <material name="paper" texture="book_paper" rgba="0.93 0.90 0.80 1" specular="0.02" shininess="0.05"/>
+    <material name="gold" rgba="0.80 0.62 0.20 1" specular="0.6" shininess="0.7"/>
+    <material name="silver" rgba="0.72 0.73 0.75 1" specular="0.6" shininess="0.7"/>
+    <material name="label_cream" rgba="0.86 0.81 0.68 1" specular="0.05" shininess="0.1"/>
+    <material name="ink" rgba="0.07 0.065 0.06 1" specular="0.05" shininess="0.1"/>
+  </asset>
+
+  <default>
+    <default class="furniture">
+      <geom friction="0.5 0.005 0.0001" solref="0.004 1"/>
+    </default>
+    <default class="steel">
+      <geom type="box" friction="0.4 0.005 0.0001" solref="0.004 1"/>
+    </default>
+    <!-- every book: one collision box, 0.5 friction (paper on wood), stiff contact so books do not sink -->
+    <default class="book">
+      <geom type="box" material="book_cloth" friction="0.5 0.005 0.0001" condim="4" solref="0.004 1"/>
+    </default>
+    <default class="book_low">
+      <geom type="box" material="book_cloth" friction="0.5 0.005 0.0001" condim="3" solref="0.004 1"/>
+    </default>
+    <!-- visual-only spine bands, labels, page blocks: no contacts, no mass, at most 0.5 mm proud of the box -->
+    <default class="deco">
+      <geom type="box" contype="0" conaffinity="0" mass="0"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <!-- key light: sun-like, from the robot side and above (coming from front-right so the left wall does not
+         shadow it), with shadows; two soft point fills without shadows lift the shaded sides -->
+    <light name="key" type="directional" pos="0.5 -1.0 2.4" dir="-0.30 0.42 -0.86" castshadow="true"
+           diffuse="0.64 0.62 0.58" specular="0.12 0.12 0.12"/>
+    <light name="fill_left" type="point" pos="-1.2 0.3 0.9" castshadow="false"
+           diffuse="0.26 0.28 0.32" specular="0 0 0"/>
+    <light name="fill_right" type="point" pos="0.9 0.0 1.4" castshadow="false"
+           diffuse="0.16 0.15 0.13" specular="0 0 0"/>
+
+    <!-- room: floor, back wall (normal -y) and left side wall (normal +x), skirting boards; the robot include sets
+         angle="radian", so the wall rotations are given as quaternions (90 deg about x / about y) -->
+    <geom name="floor" type="plane" pos="0 0 -0.74" size="10 10 0.1" material="floor" class="furniture"/>
+    <geom name="wall_back" type="plane" pos="0 1.45 1.6" quat="0.7071068 0.7071068 0 0" size="10 2.6 0.1" material="wall" class="furniture"/>
+    <geom name="wall_left" type="plane" pos="-1.3 0 1.6" quat="0.7071068 0 0.7071068 0" size="2.6 10 0.1" material="wall" class="furniture"/>
+    <geom name="skirt_back" type="box" pos="0 1.4425 -0.69" size="10 0.0075 0.05" material="baseboard" contype="0" conaffinity="0"/>
+    <geom name="skirt_left" type="box" pos="-1.2925 0 -0.69" size="0.0075 10 0.05" material="baseboard" contype="0" conaffinity="0"/>
+
+    <!-- desk: top x -0.75..0.75, y -0.45..1.20, z -0.04..0; steel legs and aprons -->
+    <body name="desk">
+      <geom name="desk_top" class="furniture" type="box" pos="0 0.375 -0.02" size="0.75 0.825 0.02" material="desk_wood"/>
+      <geom name="desk_leg_fl" class="furniture" type="box" pos="-0.70 -0.40 -0.39" size="0.025 0.025 0.35" material="steel"/>
+      <geom name="desk_leg_fr" class="furniture" type="box" pos="0.70 -0.40 -0.39" size="0.025 0.025 0.35" material="steel"/>
+      <geom name="desk_leg_bl" class="furniture" type="box" pos="-0.70 1.15 -0.39" size="0.025 0.025 0.35" material="steel"/>
+      <geom name="desk_leg_br" class="furniture" type="box" pos="0.70 1.15 -0.39" size="0.025 0.025 0.35" material="steel"/>
+      <geom name="desk_apron_front" class="furniture" type="box" pos="0 -0.40 -0.08" size="0.675 0.01 0.04" material="steel"/>
+      <geom name="desk_apron_back" class="furniture" type="box" pos="0 1.15 -0.08" size="0.675 0.01 0.04" material="steel"/>
+      <geom name="desk_apron_left" class="furniture" type="box" pos="-0.70 0.375 -0.08" size="0.01 0.75 0.04" material="steel"/>
+      <geom name="desk_apron_right" class="furniture" type="box" pos="0.70 0.375 -0.08" size="0.01 0.75 0.04" material="steel"/>
+    </body>
+
+    <!-- bookshelf: open front toward -y, open top -->
+    <body name="bookshelf">
+      <geom name="shelf_side_L" class="furniture" type="box" pos="-0.35 0.95 0.35" size="0.01 0.15 0.35" material="shelf_wood_v"/>
+      <geom name="shelf_side_R" class="furniture" type="box" pos="0.35 0.95 0.35" size="0.01 0.15 0.35" material="shelf_wood_v"/>
+      <geom name="shelf_back" class="furniture" type="box" pos="0 1.095 0.35" size="0.36 0.005 0.35" material="shelf_wood_v"/>
+      <geom name="shelf_plinth" class="furniture" type="box" pos="0 0.955 0.0475" size="0.34 0.135 0.0475" material="shelf_wood"/>
+      <geom name="shelf_bottom" class="furniture" type="box" pos="0 0.945 0.1075" size="0.34 0.145 0.0125" material="shelf_wood"/>
+      <geom name="shelf_middle" class="furniture" type="box" pos="0 0.945 0.41" size="0.34 0.145 0.01" material="shelf_wood"/>
+      <geom name="bookend_R" class="steel" size="0.002 0.070 0.085" pos="0.2755 0.905 0.505" material="bookend"/>
+      <geom name="bookend_R_foot" class="steel" size="0.015 0.070 0.001" pos="0.2925 0.905 0.421" material="bookend"/>
+      <geom name="bookend_L" class="steel" size="0.002 0.070 0.085" pos="-0.2537 0.905 0.505" material="bookend"/>
+      <geom name="bookend_L_foot" class="steel" size="0.015 0.070 0.001" pos="-0.2707 0.905 0.421" material="bookend"/>
+    </body>
+
+    <!-- upper tier (z base 0.42): book_target with 10 mm of air to book_L1 and book_R1 -->
+    <body name="book_target" pos="0 0.905 0.535">
+      <freejoint name="book_target"/>
+      <geom name="book_target" class="book" size="0.02 0.085 0.115" mass="0.8" rgba="0.055 0.115 0.36 1"/>
+      <geom class="deco" size="0.0198 0.0005 0.0025" pos="0 -0.08475 0.095" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.0025" pos="0 -0.08475 -0.095" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.0025" pos="0 -0.08475 0.084" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.0025" pos="0 -0.08475 -0.084" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.0025" pos="0 -0.08475 0.073" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.0025" pos="0 -0.08475 -0.073" material="gold"/>
+      <geom class="deco" size="0.016 0.0005 0.029" pos="0 -0.08485 0.02" rgba="0.42 0.07 0.08 1"/>
+      <geom class="deco" size="0.01014 0.0005 0.0009" pos="0 -0.08495 0.0385" material="gold"/>
+      <geom class="deco" size="0.00715 0.0005 0.0009" pos="0 -0.08495 0.022" material="gold"/>
+      <geom class="deco" size="0.00858 0.0005 0.0009" pos="0 -0.08495 0.0055" material="gold"/>
+      <geom class="deco" size="0.0115 0.0005 0.006" pos="0 -0.08485 -0.04" material="gold"/>
+      <geom class="deco" size="0.0175 0.082 0.001" pos="0 0.0005 0.1144" material="paper"/>
+    </body>
+
+    <!-- upper tier, right of the target: book_R1 .. book_R7, then bookend_R -->
+    <body name="book_R1" pos="0.048 0.9 0.5275">
+      <freejoint name="book_R1"/>
+      <geom name="book_R1" class="book" size="0.018 0.08 0.1075" mass="0.805" rgba="0.42675 0.09145 0.11177 1"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.07975 0.0855" material="gold"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.07975 -0.0855" material="gold"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.07975 0.0775" material="gold"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.07975 -0.0775" material="gold"/>
+      <geom class="deco" size="0.0135 0.0005 0.025" pos="0 -0.07985 0.0295" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0084 0.0005 0.0008" pos="0 -0.07995 0.046" material="gold"/>
+      <geom class="deco" size="0.00577 0.0005 0.0008" pos="0 -0.07995 0.01" material="gold"/>
+      <geom class="deco" size="0.0155 0.077 0.001" pos="0 0.0005 0.1069" material="paper"/>
+    </body>
+    <body name="book_R2" pos="0.0801 0.906 0.539">
+      <freejoint name="book_R2"/>
+      <geom name="book_R2" class="book" size="0.0135 0.086 0.119" mass="0.718" rgba="0.77888 0.72046 0.58416 1"/>
+      <geom class="deco" size="0.0133 0.0005 0.012" pos="0 -0.08575 0.089" rgba="0.42838 0.39626 0.32129 1"/>
+      <geom class="deco" size="0.009 0.0005 0.0325" pos="0 -0.08585 0.024" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0048 0.0005 0.0008" pos="0 -0.08595 0.048" material="label_cream"/>
+      <geom class="deco" size="0.0033 0.0005 0.0008" pos="0 -0.08595 0.0225" material="label_cream"/>
+      <geom class="deco" size="0.0042 0.0005 0.0008" pos="0 -0.08595 -0.003" material="label_cream"/>
+      <geom class="deco" size="0.0075 0.0005 0.006" pos="0 -0.08585 -0.097" material="label_cream"/>
+      <geom class="deco" size="0.011 0.083 0.001" pos="0 0.0005 0.1184" material="paper"/>
+    </body>
+    <body name="book_R3" pos="0.1165 0.895 0.5225">
+      <freejoint name="book_R3"/>
+      <geom name="book_R3" class="book" size="0.022 0.075 0.1025" mass="0.879" rgba="0.10521 0.27354 0.17885 1"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.07475 0.0865" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.07475 -0.0865" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.07475 0.08" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.07475 -0.08" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.07475 0.0735" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.07475 -0.0735" material="gold"/>
+      <geom class="deco" size="0.0175 0.0005 0.023" pos="0 -0.07485 0.0205" material="label_cream"/>
+      <geom class="deco" size="0.0116 0.0005 0.0008" pos="0 -0.07495 0.035" material="ink"/>
+      <geom class="deco" size="0.0087 0.0005 0.0008" pos="0 -0.07495 0.003" material="ink"/>
+      <geom class="deco" size="0.0195 0.072 0.001" pos="0 0.0005 0.1019" material="paper"/>
+    </body>
+    <body name="book_R4" pos="0.1545 0.91 0.543">
+      <freejoint name="book_R4"/>
+      <geom name="book_R4" class="book" size="0.0155 0.09 0.123" mass="0.892" rgba="0.64994 0.48253 0.13787 1"/>
+      <geom class="deco" size="0.0153 0.0005 0.0022" pos="0 -0.08975 0.101" material="ink"/>
+      <geom class="deco" size="0.0153 0.0005 0.0022" pos="0 -0.08975 -0.101" material="ink"/>
+      <geom class="deco" size="0.0153 0.0005 0.0022" pos="0 -0.08975 0.093" material="ink"/>
+      <geom class="deco" size="0.0153 0.0005 0.0022" pos="0 -0.08975 -0.093" material="ink"/>
+      <geom class="deco" size="0.011 0.0005 0.025" pos="0 -0.08985 0.045" material="label_cream"/>
+      <geom class="deco" size="0.0064 0.0005 0.0008" pos="0 -0.08995 0.0615" material="ink"/>
+      <geom class="deco" size="0.0044 0.0005 0.0008" pos="0 -0.08995 0.0255" material="ink"/>
+      <geom class="deco" size="0.013 0.087 0.001" pos="0 0.0005 0.1224" material="paper"/>
+    </body>
+    <body name="book_R5" pos="0.191 0.9025 0.533">
+      <freejoint name="book_R5"/>
+      <geom name="book_R5" class="book" size="0.02 0.0825 0.113" mass="0.97" rgba="0.25333 0.14778 0.095 1"/>
+      <geom class="deco" size="0.0198 0.0005 0.002" pos="0 -0.08225 0.097" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.002" pos="0 -0.08225 -0.097" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.002" pos="0 -0.08225 0.0905" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.002" pos="0 -0.08225 -0.0905" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.002" pos="0 -0.08225 0.084" material="gold"/>
+      <geom class="deco" size="0.0198 0.0005 0.002" pos="0 -0.08225 -0.084" material="gold"/>
+      <geom class="deco" size="0.0155 0.0005 0.023" pos="0 -0.08235 0.031" material="label_cream"/>
+      <geom class="deco" size="0.01 0.0005 0.0008" pos="0 -0.08245 0.0455" material="ink"/>
+      <geom class="deco" size="0.0075 0.0005 0.0008" pos="0 -0.08245 0.0135" material="ink"/>
+      <geom class="deco" size="0.0175 0.0795 0.001" pos="0 0.0005 0.1124" material="paper"/>
+    </body>
+    <body name="book_R6" pos="0.2232 0.8975 0.519">
+      <freejoint name="book_R6"/>
+      <geom name="book_R6" class="book" size="0.0115 0.0775 0.099" mass="0.459" rgba="0.14563 0.35921 0.37863 1"/>
+      <geom class="deco" size="0.0113 0.0005 0.012" pos="0 -0.07725 0.069" rgba="0.08009 0.19757 0.20825 1"/>
+      <geom class="deco" size="0.007 0.0005 0.0325" pos="0 -0.07735 0.004" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0032 0.0005 0.0008" pos="0 -0.07745 0.028" material="gold"/>
+      <geom class="deco" size="0.0022 0.0005 0.0008" pos="0 -0.07745 0.0025" material="gold"/>
+      <geom class="deco" size="0.0028 0.0005 0.0008" pos="0 -0.07745 -0.023" material="gold"/>
+      <geom class="deco" size="0.0055 0.0005 0.006" pos="0 -0.07735 -0.077" material="ink"/>
+      <geom class="deco" size="0.009 0.0745 0.001" pos="0 0.0005 0.0984" material="paper"/>
+    </body>
+    <body name="book_R7" pos="0.2525 0.9075 0.536">
+      <freejoint name="book_R7"/>
+      <geom name="book_R7" class="book" size="0.017 0.0875 0.116" mass="0.897" rgba="0.30212 0.13092 0.27191 1"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 0.094" material="gold"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 -0.094" material="gold"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 0.086" material="gold"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 -0.086" material="gold"/>
+      <geom class="deco" size="0.0125 0.0005 0.025" pos="0 -0.08735 0.038" material="label_cream"/>
+      <geom class="deco" size="0.0076 0.0005 0.0008" pos="0 -0.08745 0.0545" material="ink"/>
+      <geom class="deco" size="0.00523 0.0005 0.0008" pos="0 -0.08745 0.0185" material="ink"/>
+      <geom class="deco" size="0.0145 0.0845 0.001" pos="0 0.0005 0.1154" material="paper"/>
+    </body>
+
+    <!-- upper tier, left of the target: book_L1 .. book_L6, then bookend_L -->
+    <body name="book_L1" pos="-0.047 0.9075 0.5375">
+      <freejoint name="book_L1"/>
+      <geom name="book_L1" class="book" size="0.017 0.0875 0.1175" mass="0.909" rgba="0.2842 0.06631 0.07579 1"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 0.0955" material="gold"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 -0.0955" material="gold"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 0.0875" material="gold"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08725 -0.0875" material="gold"/>
+      <geom class="deco" size="0.0125 0.0005 0.025" pos="0 -0.08735 0.0395" material="label_cream"/>
+      <geom class="deco" size="0.0076 0.0005 0.0008" pos="0 -0.08745 0.056" material="ink"/>
+      <geom class="deco" size="0.00523 0.0005 0.0008" pos="0 -0.08745 0.02" material="ink"/>
+      <geom class="deco" size="0.0145 0.0845 0.001" pos="0 0.0005 0.1169" material="paper"/>
+    </body>
+    <body name="book_L2" pos="-0.0851 0.899 0.526">
+      <freejoint name="book_L2"/>
+      <geom name="book_L2" class="book" size="0.0205 0.079 0.106" mass="0.893" rgba="0.2541 0.33229 0.45934 1"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.07875 0.09" material="label_cream"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.07875 -0.09" material="label_cream"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.07875 0.0835" material="label_cream"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.07875 -0.0835" material="label_cream"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.07875 0.077" material="label_cream"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.07875 -0.077" material="label_cream"/>
+      <geom class="deco" size="0.016 0.0005 0.023" pos="0 -0.07885 0.024" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0104 0.0005 0.0008" pos="0 -0.07895 0.0385" material="gold"/>
+      <geom class="deco" size="0.0078 0.0005 0.0008" pos="0 -0.07895 0.0065" material="gold"/>
+      <geom class="deco" size="0.018 0.076 0.001" pos="0 0.0005 0.1054" material="paper"/>
+    </body>
+    <body name="book_L3" pos="-0.1195 0.905 0.544">
+      <freejoint name="book_L3"/>
+      <geom name="book_L3" class="book" size="0.013 0.085 0.124" mass="0.713" rgba="0.84615 0.81593 0.72527 1"/>
+      <geom class="deco" size="0.0128 0.0005 0.012" pos="0 -0.08475 0.094" rgba="0.46538 0.44876 0.3989 1"/>
+      <geom class="deco" size="0.0085 0.0005 0.0325" pos="0 -0.08485 0.029" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0044 0.0005 0.0008" pos="0 -0.08495 0.053" material="label_cream"/>
+      <geom class="deco" size="0.00302 0.0005 0.0008" pos="0 -0.08495 0.0275" material="label_cream"/>
+      <geom class="deco" size="0.00385 0.0005 0.0008" pos="0 -0.08495 0.002" material="label_cream"/>
+      <geom class="deco" size="0.007 0.0005 0.006" pos="0 -0.08485 -0.102" material="label_cream"/>
+      <geom class="deco" size="0.0105 0.082 0.001" pos="0 0.0005 0.1234" material="paper"/>
+    </body>
+    <body name="book_L4" pos="-0.1555 0.895 0.52">
+      <freejoint name="book_L4"/>
+      <geom name="book_L4" class="book" size="0.0225 0.075 0.1" mass="0.877" rgba="0.5024 0.32849 0.18357 1"/>
+      <geom class="deco" size="0.0223 0.0005 0.0022" pos="0 -0.07475 0.078" material="label_cream"/>
+      <geom class="deco" size="0.0223 0.0005 0.0022" pos="0 -0.07475 -0.078" material="label_cream"/>
+      <geom class="deco" size="0.0223 0.0005 0.0022" pos="0 -0.07475 0.07" material="label_cream"/>
+      <geom class="deco" size="0.0223 0.0005 0.0022" pos="0 -0.07475 -0.07" material="label_cream"/>
+      <geom class="deco" size="0.018 0.0005 0.025" pos="0 -0.07485 0.022" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.012 0.0005 0.0008" pos="0 -0.07495 0.0385" material="gold"/>
+      <geom class="deco" size="0.00825 0.0005 0.0008" pos="0 -0.07495 0.0025" material="gold"/>
+      <geom class="deco" size="0.02 0.072 0.001" pos="0 0.0005 0.0994" material="paper"/>
+    </body>
+    <body name="book_L5" pos="-0.194 0.91 0.54">
+      <freejoint name="book_L5"/>
+      <geom name="book_L5" class="book" size="0.015 0.09 0.12" mass="0.842" rgba="0.16037 0.16037 0.17924 1"/>
+      <geom class="deco" size="0.0148 0.0005 0.0022" pos="0 -0.08975 0.098" material="silver"/>
+      <geom class="deco" size="0.0148 0.0005 0.0022" pos="0 -0.08975 -0.098" material="silver"/>
+      <geom class="deco" size="0.0148 0.0005 0.0022" pos="0 -0.08975 0.09" material="silver"/>
+      <geom class="deco" size="0.0148 0.0005 0.0022" pos="0 -0.08975 -0.09" material="silver"/>
+      <geom class="deco" size="0.0105 0.0005 0.025" pos="0 -0.08985 0.042" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.006 0.0005 0.0008" pos="0 -0.08995 0.0585" material="gold"/>
+      <geom class="deco" size="0.00413 0.0005 0.0008" pos="0 -0.08995 0.0225" material="gold"/>
+      <geom class="deco" size="0.0125 0.087 0.001" pos="0 0.0005 0.1194" material="paper"/>
+    </body>
+    <body name="book_L6" pos="-0.2287 0.901 0.531">
+      <freejoint name="book_L6"/>
+      <geom name="book_L6" class="book" size="0.019 0.081 0.111" mass="0.888" rgba="0.43905 0.51223 0.37633 1"/>
+      <geom class="deco" size="0.0188 0.0005 0.002" pos="0 -0.08075 0.095" material="ink"/>
+      <geom class="deco" size="0.0188 0.0005 0.002" pos="0 -0.08075 -0.095" material="ink"/>
+      <geom class="deco" size="0.0188 0.0005 0.002" pos="0 -0.08075 0.0885" material="ink"/>
+      <geom class="deco" size="0.0188 0.0005 0.002" pos="0 -0.08075 -0.0885" material="ink"/>
+      <geom class="deco" size="0.0188 0.0005 0.002" pos="0 -0.08075 0.082" material="ink"/>
+      <geom class="deco" size="0.0188 0.0005 0.002" pos="0 -0.08075 -0.082" material="ink"/>
+      <geom class="deco" size="0.0145 0.0005 0.023" pos="0 -0.08085 0.029" material="label_cream"/>
+      <geom class="deco" size="0.0092 0.0005 0.0008" pos="0 -0.08095 0.0435" material="ink"/>
+      <geom class="deco" size="0.0069 0.0005 0.0008" pos="0 -0.08095 0.0115" material="ink"/>
+      <geom class="deco" size="0.0165 0.078 0.001" pos="0 0.0005 0.1104" material="paper"/>
+    </body>
+
+    <!-- lower tier (z base 0.12): decorative row, then a stack of three books lying flat at the right end -->
+    <body name="book_low_01" pos="-0.317 0.906 0.238">
+      <freejoint name="book_low_01"/>
+      <geom name="book_low_01" class="book_low" size="0.017 0.086 0.118" mass="0.897" rgba="0.50091 0.22155 0.10596 1"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08575 0.096" material="label_cream"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08575 -0.096" material="label_cream"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08575 0.088" material="label_cream"/>
+      <geom class="deco" size="0.0168 0.0005 0.0022" pos="0 -0.08575 -0.088" material="label_cream"/>
+      <geom class="deco" size="0.0125 0.0005 0.025" pos="0 -0.08585 0.04" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0076 0.0005 0.0008" pos="0 -0.08595 0.0565" material="gold"/>
+      <geom class="deco" size="0.00523 0.0005 0.0008" pos="0 -0.08595 0.0205" material="gold"/>
+      <geom class="deco" size="0.0145 0.083 0.001" pos="0 0.0005 0.1174" material="paper"/>
+    </body>
+    <body name="book_low_02" pos="-0.2854 0.9 0.227">
+      <freejoint name="book_low_02"/>
+      <geom name="book_low_02" class="book_low" size="0.014 0.08 0.107" mass="0.623" rgba="0.33169 0.34116 0.16111 1"/>
+      <geom class="deco" size="0.0138 0.0005 0.012" pos="0 -0.07975 0.077" rgba="0.18243 0.18764 0.08861 1"/>
+      <geom class="deco" size="0.0095 0.0005 0.0325" pos="0 -0.07985 0.012" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0052 0.0005 0.0008" pos="0 -0.07995 0.036" material="gold"/>
+      <geom class="deco" size="0.00358 0.0005 0.0008" pos="0 -0.07995 0.0105" material="gold"/>
+      <geom class="deco" size="0.00455 0.0005 0.0008" pos="0 -0.07995 -0.015" material="gold"/>
+      <geom class="deco" size="0.008 0.0005 0.006" pos="0 -0.07985 -0.085" material="ink"/>
+      <geom class="deco" size="0.0115 0.077 0.001" pos="0 0.0005 0.1064" material="paper"/>
+    </body>
+    <body name="book_low_03" pos="-0.25 0.909 0.249">
+      <freejoint name="book_low_03"/>
+      <geom name="book_low_03" class="book_low" size="0.0205 0.089 0.129" mass="1" rgba="0.09019 0.1403 0.30065 1"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.08875 0.113" material="silver"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.08875 -0.113" material="silver"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.08875 0.1065" material="silver"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.08875 -0.1065" material="silver"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.08875 0.1" material="silver"/>
+      <geom class="deco" size="0.0203 0.0005 0.002" pos="0 -0.08875 -0.1" material="silver"/>
+      <geom class="deco" size="0.016 0.0005 0.023" pos="0 -0.08885 0.047" material="label_cream"/>
+      <geom class="deco" size="0.0104 0.0005 0.0008" pos="0 -0.08895 0.0615" material="ink"/>
+      <geom class="deco" size="0.0078 0.0005 0.0008" pos="0 -0.08895 0.0295" material="ink"/>
+      <geom class="deco" size="0.018 0.086 0.001" pos="0 0.0005 0.1284" material="paper"/>
+    </body>
+    <body name="book_low_04" pos="-0.2165 0.895 0.2225">
+      <freejoint name="book_low_04"/>
+      <geom name="book_low_04" class="book_low" size="0.0125 0.075 0.1025" mass="0.5" rgba="0.67592 0.50182 0.14338 1"/>
+      <geom class="deco" size="0.0123 0.0005 0.012" pos="0 -0.07475 0.0725" rgba="0.37176 0.276 0.07886 1"/>
+      <geom class="deco" size="0.008 0.0005 0.0325" pos="0 -0.07485 0.0075" material="label_cream"/>
+      <geom class="deco" size="0.004 0.0005 0.0008" pos="0 -0.07495 0.0315" material="ink"/>
+      <geom class="deco" size="0.00275 0.0005 0.0008" pos="0 -0.07495 0.006" material="ink"/>
+      <geom class="deco" size="0.0035 0.0005 0.0008" pos="0 -0.07495 -0.0195" material="ink"/>
+      <geom class="deco" size="0.0065 0.0005 0.006" pos="0 -0.07485 -0.0805" material="ink"/>
+      <geom class="deco" size="0.01 0.072 0.001" pos="0 0.0005 0.1019" material="paper"/>
+    </body>
+    <body name="book_low_05" pos="-0.185 0.904 0.242">
+      <freejoint name="book_low_05"/>
+      <geom name="book_low_05" class="book_low" size="0.018 0.084 0.122" mass="0.959" rgba="0.10066 0.26172 0.17112 1"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.08375 0.1" material="gold"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.08375 -0.1" material="gold"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.08375 0.092" material="gold"/>
+      <geom class="deco" size="0.0178 0.0005 0.0022" pos="0 -0.08375 -0.092" material="gold"/>
+      <geom class="deco" size="0.0135 0.0005 0.025" pos="0 -0.08385 0.044" material="label_cream"/>
+      <geom class="deco" size="0.0084 0.0005 0.0008" pos="0 -0.08395 0.0605" material="ink"/>
+      <geom class="deco" size="0.00577 0.0005 0.0008" pos="0 -0.08395 0.0245" material="ink"/>
+      <geom class="deco" size="0.0155 0.081 0.001" pos="0 0.0005 0.1214" material="paper"/>
+    </body>
+    <body name="book_low_06" pos="-0.1443 0.908 0.233">
+      <freejoint name="book_low_06"/>
+      <geom name="book_low_06" class="book_low" size="0.022 0.088 0.113" mass="1" rgba="0.4017 0.08608 0.10521 1"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.08775 0.097" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.08775 -0.097" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.08775 0.0905" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.08775 -0.0905" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.08775 0.084" material="gold"/>
+      <geom class="deco" size="0.0218 0.0005 0.002" pos="0 -0.08775 -0.084" material="gold"/>
+      <geom class="deco" size="0.0175 0.0005 0.023" pos="0 -0.08785 0.031" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0116 0.0005 0.0008" pos="0 -0.08795 0.0455" material="gold"/>
+      <geom class="deco" size="0.0087 0.0005 0.0008" pos="0 -0.08795 0.0135" material="gold"/>
+      <geom class="deco" size="0.0195 0.085 0.001" pos="0 0.0005 0.1124" material="paper"/>
+    </body>
+    <body name="book_low_07" pos="-0.1065 0.9 0.246">
+      <freejoint name="book_low_07"/>
+      <geom name="book_low_07" class="book_low" size="0.015 0.08 0.126" mass="0.786" rgba="0.83869 0.77579 0.62902 1"/>
+      <geom class="deco" size="0.0148 0.0005 0.012" pos="0 -0.07975 0.096" rgba="0.46128 0.42668 0.34596 1"/>
+      <geom class="deco" size="0.0105 0.0005 0.0325" pos="0 -0.07985 0.031" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.006 0.0005 0.0008" pos="0 -0.07995 0.055" material="label_cream"/>
+      <geom class="deco" size="0.00413 0.0005 0.0008" pos="0 -0.07995 0.0295" material="label_cream"/>
+      <geom class="deco" size="0.00525 0.0005 0.0008" pos="0 -0.07995 0.004" material="label_cream"/>
+      <geom class="deco" size="0.009 0.0005 0.006" pos="0 -0.07985 -0.104" material="label_cream"/>
+      <geom class="deco" size="0.0125 0.077 0.001" pos="0 0.0005 0.1254" material="paper"/>
+    </body>
+    <body name="book_low_08" pos="-0.0719 0.906 0.225">
+      <freejoint name="book_low_08"/>
+      <geom name="book_low_08" class="book_low" size="0.019 0.086 0.105" mass="0.892" rgba="0.29345 0.12716 0.2641 1"/>
+      <geom class="deco" size="0.0188 0.0005 0.0022" pos="0 -0.08575 0.083" material="gold"/>
+      <geom class="deco" size="0.0188 0.0005 0.0022" pos="0 -0.08575 -0.083" material="gold"/>
+      <geom class="deco" size="0.0188 0.0005 0.0022" pos="0 -0.08575 0.075" material="gold"/>
+      <geom class="deco" size="0.0188 0.0005 0.0022" pos="0 -0.08575 -0.075" material="gold"/>
+      <geom class="deco" size="0.0145 0.0005 0.025" pos="0 -0.08585 0.027" material="label_cream"/>
+      <geom class="deco" size="0.0092 0.0005 0.0008" pos="0 -0.08595 0.0435" material="ink"/>
+      <geom class="deco" size="0.00633 0.0005 0.0008" pos="0 -0.08595 0.0075" material="ink"/>
+      <geom class="deco" size="0.0165 0.083 0.001" pos="0 0.0005 0.1044" material="paper"/>
+    </body>
+    <body name="book_low_09" pos="-0.0385 0.8975 0.236">
+      <freejoint name="book_low_09"/>
+      <geom name="book_low_09" class="book_low" size="0.0135 0.0775 0.116" mass="0.631" rgba="0.14921 0.36805 0.38794 1"/>
+      <geom class="deco" size="0.0133 0.0005 0.0022" pos="0 -0.07725 0.094" material="label_cream"/>
+      <geom class="deco" size="0.0133 0.0005 0.0022" pos="0 -0.07725 -0.094" material="label_cream"/>
+      <geom class="deco" size="0.0133 0.0005 0.0022" pos="0 -0.07725 0.086" material="label_cream"/>
+      <geom class="deco" size="0.0133 0.0005 0.0022" pos="0 -0.07725 -0.086" material="label_cream"/>
+      <geom class="deco" size="0.009 0.0005 0.025" pos="0 -0.07735 0.038" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0048 0.0005 0.0008" pos="0 -0.07745 0.0545" material="gold"/>
+      <geom class="deco" size="0.0033 0.0005 0.0008" pos="0 -0.07745 0.0185" material="gold"/>
+      <geom class="deco" size="0.011 0.0745 0.001" pos="0 0.0005 0.1154" material="paper"/>
+    </body>
+    <body name="book_low_10" pos="-0.008 0.91 0.25">
+      <freejoint name="book_low_10"/>
+      <geom name="book_low_10" class="book_low" size="0.0165 0.09 0.13" mass="1" rgba="0.24072 0.14042 0.09027 1"/>
+      <geom class="deco" size="0.0163 0.0005 0.002" pos="0 -0.08975 0.114" material="gold"/>
+      <geom class="deco" size="0.0163 0.0005 0.002" pos="0 -0.08975 -0.114" material="gold"/>
+      <geom class="deco" size="0.0163 0.0005 0.002" pos="0 -0.08975 0.1075" material="gold"/>
+      <geom class="deco" size="0.0163 0.0005 0.002" pos="0 -0.08975 -0.1075" material="gold"/>
+      <geom class="deco" size="0.0163 0.0005 0.002" pos="0 -0.08975 0.101" material="gold"/>
+      <geom class="deco" size="0.0163 0.0005 0.002" pos="0 -0.08975 -0.101" material="gold"/>
+      <geom class="deco" size="0.012 0.0005 0.023" pos="0 -0.08985 0.048" material="label_cream"/>
+      <geom class="deco" size="0.0072 0.0005 0.0008" pos="0 -0.08995 0.0625" material="ink"/>
+      <geom class="deco" size="0.0054 0.0005 0.0008" pos="0 -0.08995 0.0305" material="ink"/>
+      <geom class="deco" size="0.014 0.087 0.001" pos="0 0.0005 0.1294" material="paper"/>
+    </body>
+    <body name="book_low_11" pos="0.0305 0.9025 0.229">
+      <freejoint name="book_low_11"/>
+      <geom name="book_low_11" class="book_low" size="0.021 0.0825 0.109" mass="0.982" rgba="0.2722 0.35595 0.49205 1"/>
+      <geom class="deco" size="0.0208 0.0005 0.0022" pos="0 -0.08225 0.087" material="label_cream"/>
+      <geom class="deco" size="0.0208 0.0005 0.0022" pos="0 -0.08225 -0.087" material="label_cream"/>
+      <geom class="deco" size="0.0208 0.0005 0.0022" pos="0 -0.08225 0.079" material="label_cream"/>
+      <geom class="deco" size="0.0208 0.0005 0.0022" pos="0 -0.08225 -0.079" material="label_cream"/>
+      <geom class="deco" size="0.0165 0.0005 0.025" pos="0 -0.08235 0.031" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0108 0.0005 0.0008" pos="0 -0.08245 0.0475" material="gold"/>
+      <geom class="deco" size="0.00743 0.0005 0.0008" pos="0 -0.08245 0.0115" material="gold"/>
+      <geom class="deco" size="0.0185 0.0795 0.001" pos="0 0.0005 0.1084" material="paper"/>
+    </body>
+    <body name="book_low_12" pos="0.0667 0.899 0.24">
+      <freejoint name="book_low_12"/>
+      <geom name="book_low_12" class="book_low" size="0.0145 0.079 0.12" mass="0.715" rgba="0.5273 0.34477 0.19267 1"/>
+      <geom class="deco" size="0.0143 0.0005 0.002" pos="0 -0.07875 0.104" material="label_cream"/>
+      <geom class="deco" size="0.0143 0.0005 0.002" pos="0 -0.07875 -0.104" material="label_cream"/>
+      <geom class="deco" size="0.0143 0.0005 0.002" pos="0 -0.07875 0.0975" material="label_cream"/>
+      <geom class="deco" size="0.0143 0.0005 0.002" pos="0 -0.07875 -0.0975" material="label_cream"/>
+      <geom class="deco" size="0.0143 0.0005 0.002" pos="0 -0.07875 0.091" material="label_cream"/>
+      <geom class="deco" size="0.0143 0.0005 0.002" pos="0 -0.07875 -0.091" material="label_cream"/>
+      <geom class="deco" size="0.01 0.0005 0.023" pos="0 -0.07885 0.038" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0056 0.0005 0.0008" pos="0 -0.07895 0.0525" material="gold"/>
+      <geom class="deco" size="0.0042 0.0005 0.0008" pos="0 -0.07895 0.0205" material="gold"/>
+      <geom class="deco" size="0.012 0.076 0.001" pos="0 0.0005 0.1194" material="paper"/>
+    </body>
+    <body name="book_low_13" pos="0.0995 0.905 0.234">
+      <freejoint name="book_low_13"/>
+      <geom name="book_low_13" class="book_low" size="0.0175 0.085 0.114" mass="0.882" rgba="0.16272 0.16272 0.18186 1"/>
+      <geom class="deco" size="0.0173 0.0005 0.0022" pos="0 -0.08475 0.092" material="silver"/>
+      <geom class="deco" size="0.0173 0.0005 0.0022" pos="0 -0.08475 -0.092" material="silver"/>
+      <geom class="deco" size="0.0173 0.0005 0.0022" pos="0 -0.08475 0.084" material="silver"/>
+      <geom class="deco" size="0.0173 0.0005 0.0022" pos="0 -0.08475 -0.084" material="silver"/>
+      <geom class="deco" size="0.013 0.0005 0.025" pos="0 -0.08485 0.036" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.008 0.0005 0.0008" pos="0 -0.08495 0.0525" material="gold"/>
+      <geom class="deco" size="0.0055 0.0005 0.0008" pos="0 -0.08495 0.0165" material="gold"/>
+      <geom class="deco" size="0.015 0.082 0.001" pos="0 0.0005 0.1134" material="paper"/>
+    </body>
+    <body name="book_flat_1" pos="0.2295 0.905 0.14">
+      <freejoint name="book_flat_1"/>
+      <geom name="book_flat_1" class="book_low" size="0.1025 0.085 0.02" mass="0.906" rgba="0.28884 0.0674 0.07702 1"/>
+      <geom class="deco" size="0.0022 0.0005 0.0198" pos="-0.0805 -0.08475 0" material="gold"/>
+      <geom class="deco" size="0.0022 0.0005 0.0198" pos="0.0805 -0.08475 0" material="gold"/>
+      <geom class="deco" size="0.0022 0.0005 0.0198" pos="-0.0725 -0.08475 0" material="gold"/>
+      <geom class="deco" size="0.0022 0.0005 0.0198" pos="0.0725 -0.08475 0" material="gold"/>
+      <geom class="deco" size="0.025 0.0005 0.0155" pos="-0.0245 -0.08485 0" material="label_cream"/>
+      <geom class="deco" size="0.0008 0.0005 0.01" pos="-0.041 -0.08495 0" material="ink"/>
+      <geom class="deco" size="0.0008 0.0005 0.00688" pos="-0.005 -0.08495 0" material="ink"/>
+    </body>
+    <body name="book_flat_2" pos="0.231 0.9 0.175">
+      <freejoint name="book_flat_2"/>
+      <geom name="book_flat_2" class="book_low" size="0.095 0.08 0.015" mass="0.593" rgba="0.33958 0.34929 0.16494 1"/>
+      <geom class="deco" size="0.0022 0.0005 0.0148" pos="-0.073 -0.07975 0" material="label_cream"/>
+      <geom class="deco" size="0.0022 0.0005 0.0148" pos="0.073 -0.07975 0" material="label_cream"/>
+      <geom class="deco" size="0.0022 0.0005 0.0148" pos="-0.065 -0.07975 0" material="label_cream"/>
+      <geom class="deco" size="0.0022 0.0005 0.0148" pos="0.065 -0.07975 0" material="label_cream"/>
+      <geom class="deco" size="0.025 0.0005 0.0105" pos="-0.017 -0.07985 0" rgba="0.1 0.085 0.075 1"/>
+      <geom class="deco" size="0.0008 0.0005 0.006" pos="-0.0335 -0.07995 0" material="gold"/>
+      <geom class="deco" size="0.0008 0.0005 0.00413" pos="0.0025 -0.07995 0" material="gold"/>
+    </body>
+    <body name="book_flat_3" pos="0.2425 0.8975 0.203">
+      <freejoint name="book_flat_3"/>
+      <geom name="book_flat_3" class="book_low" size="0.0875 0.0775 0.013" mass="0.458" rgba="0.09119 0.14185 0.30396 1"/>
+      <geom class="deco" size="0.0022 0.0005 0.0128" pos="-0.0655 -0.07725 0" material="silver"/>
+      <geom class="deco" size="0.0022 0.0005 0.0128" pos="0.0655 -0.07725 0" material="silver"/>
+      <geom class="deco" size="0.0022 0.0005 0.0128" pos="-0.0575 -0.07725 0" material="silver"/>
+      <geom class="deco" size="0.0022 0.0005 0.0128" pos="0.0575 -0.07725 0" material="silver"/>
+      <geom class="deco" size="0.025 0.0005 0.0085" pos="-0.0095 -0.07735 0" material="label_cream"/>
+      <geom class="deco" size="0.0008 0.0005 0.0044" pos="-0.026 -0.07745 0" material="ink"/>
+      <geom class="deco" size="0.0008 0.0005 0.00302" pos="0.01 -0.07745 0" material="ink"/>
+    </body>
+
+    <!-- fixed cameras (xyaxes computed from the look-at points) -->
+    <camera name="cam_main" mode="fixed" pos="-1.25 -2.3 1" xyaxes="0.86725 -0.49787 0 0.15226 0.26522 0.95209" fovy="37"/>
+    <camera name="cam_close" mode="fixed" pos="0.06 0.42 0.78" xyaxes="0.99083 0.13511 0 -0.06214 0.45569 0.88797" fovy="33"/>
+    <camera name="cam_side" mode="fixed" pos="-1 0.3 0.58" xyaxes="0.45097 -0.89254 0 0.0669 0.0338 0.99719" fovy="44"/>
+  </worldbody>
+</mujoco>

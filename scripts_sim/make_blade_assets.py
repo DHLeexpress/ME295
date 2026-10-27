@@ -1,0 +1,191 @@
+"""Build the MuJoCo assets for the custom blade (gripper_dohyun_vN.stl).
+
+The blade replaces the Robotiq AGC fingertip: it bolts to the 2F-140 inner finger through the
+same lug hole. On its flat object-facing side (-z in the STL) there is a thin extrusion, the
+PDMS layer. This script
+
+  1. finds the PDMS extrusion (the largest flat -z face that is a full rectangle, and the
+     plate face it stands proud of) and splits the STL into blade body + PDMS for colouring,
+  2. convex-decomposes the blade (CoACD) for collision; pieces under the PDMS are cut back to
+     the plate face so the PDMS is what touches objects,
+  3. writes the MuJoCo include files:
+
+    model/<stem>_visual/<stem>_{body,pdms}.stl    visual meshes (STL units)
+    model/<stem>_collision/<stem>_NN.stl          convex pieces (metres)
+    assembly/blade_assets.xml                     <mesh> entries
+    assembly/blade_geoms_{left,right}.xml         collision pieces (MuJoCo will not include
+                                                  one file twice)
+    assembly/pdms_{left,right}.xml                PDMS layer body: bonded to the blade, a grid
+                                                  of taxel boxes for collision (the tactile
+                                                  "skin": each taxel gets its own contact
+                                                  forces), bond and surface sites
+
+Usage: python scripts_sim/make_blade_assets.py model/gripper_dohyun_v1.stl [--mu 1.0 ...]
+       python scripts_sim/make_blade_assets.py model/gripper_dohyun_v1.stl --pdms-only --taxels 5x7
+Re-run whenever the blade STL or the PDMS contact parameters change (--pdms-only skips the
+convex decomposition and rewrites only assembly/pdms_*.xml).
+"""
+import argparse
+from collections import defaultdict
+from pathlib import Path
+
+import coacd
+import numpy as np
+import trimesh
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def flat_levels(mesh, normal):
+    """Planar regions facing `normal`: {offset along normal: face indices}."""
+    sel = np.where(mesh.face_normals @ normal > 0.999)[0]
+    groups = defaultdict(list)
+    for i, level in zip(sel, np.round(mesh.triangles_center[sel] @ normal, 2)):
+        groups[level].append(i)
+    return groups
+
+
+def find_pdms(mesh):
+    """PDMS extrusion on the -z side: (x/y footprint min, max, z of its face, z of the plate)."""
+    groups = flat_levels(mesh, np.array([0.0, 0.0, -1.0]))
+    face = max(groups.values(), key=lambda g: mesh.area_faces[g].sum())
+    v = mesh.triangles[face].reshape(-1, 3)
+    lo, hi = v.min(0)[:2], v.max(0)[:2]
+    fill = mesh.area_faces[face].sum() / np.prod(hi - lo)
+    z_face = v[0, 2]
+    # the plate face the extrusion stands on: the nearest -z facing plane behind it
+    behind = [-lvl for lvl in groups if z_face < -lvl <= z_face + 3.0]
+    if fill < 0.95 or not behind:
+        raise SystemExit(f"no PDMS extrusion found (fill {fill:.2f}); check the blade STL")
+    return lo, hi, z_face, min(behind)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("stl", type=Path)
+    ap.add_argument("--scale", type=float, default=1e-3, help="STL units -> metres (STL is in mm)")
+    ap.add_argument("--threshold", type=float, default=0.03, help="CoACD concavity threshold")
+    ap.add_argument("--resolution", type=int, default=200, help="CoACD remesh resolution (sets surface error)")
+    # PDMS contact (placeholders: Sylgard-184-like, to be replaced by measured values)
+    ap.add_argument("--mu", type=float, default=1.0, help="PDMS sliding friction")
+    ap.add_argument("--mu-torsion", type=float, default=0.01, help="PDMS torsional friction (m)")
+    ap.add_argument("--mu-roll", type=float, default=0.0002, help="PDMS rolling friction (m)")
+    ap.add_argument("--solref", default="0.02 1", help="PDMS contact solref (time constant, damping ratio)")
+    ap.add_argument("--solimp", default="0.9 0.95 0.002",
+                    help="PDMS contact solimp (dmin dmax width): with --solref, ~75 um penetration at "
+                         "~30 N, the compliance of PDMS + the object's surface that spreads the load")
+    ap.add_argument("--density", type=float, default=965.0, help="PDMS density (kg/m^3)")
+    ap.add_argument("--taxels", default="5x7", help="taxel grid across x (blade width) x along y (finger)")
+    ap.add_argument("--pdms-only", action="store_true", help="only rewrite assembly/pdms_*.xml")
+    args = ap.parse_args()
+
+    stl = args.stl.resolve()
+    s = args.scale
+    raw = trimesh.load(stl, force="mesh")
+
+    # 1. PDMS extrusion and visual split
+    lo, hi, z_face, z_plate = find_pdms(raw)
+    tri = raw.triangles
+    tol = 0.05
+    in_pdms = (np.all((tri[:, :, 0] >= lo[0] - tol) & (tri[:, :, 0] <= hi[0] + tol), axis=1)
+               & np.all((tri[:, :, 1] >= lo[1] - tol) & (tri[:, :, 1] <= hi[1] + tol), axis=1)
+               & np.all((tri[:, :, 2] >= z_face - tol) & (tri[:, :, 2] <= z_plate + tol), axis=1))
+    header = (f"<!-- generated by scripts_sim/make_blade_assets.py from "
+              f"{stl.relative_to(ROOT / 'model').as_posix()}; do not edit -->\n")
+    write_pdms(args, lo, hi, z_face, z_plate, header)
+    if args.pdms_only:
+        return
+    vis = stl.parent / f"{stl.stem}_visual"
+    vis.mkdir(exist_ok=True)
+    raw.submesh([np.where(~in_pdms)[0]], append=True).export(vis / f"{stl.stem}_body.stl")
+    raw.submesh([np.where(in_pdms)[0]], append=True).export(vis / f"{stl.stem}_pdms.stl")
+
+    # 2. collision pieces
+    mesh = raw.copy()
+    mesh.merge_vertices()
+    mesh.apply_scale(s)
+    parts = coacd.run_coacd(coacd.Mesh(mesh.vertices, mesh.faces), threshold=args.threshold,
+                            preprocess_mode="on", preprocess_resolution=args.resolution, max_convex_hull=40)
+    out = stl.parent / f"{stl.stem}_collision"
+    out.mkdir(exist_ok=True)
+    for old in out.glob("*.stl"):
+        old.unlink()
+    names, cut = [], 0
+    for v, f in parts:
+        piece = trimesh.Trimesh(np.asarray(v), np.asarray(f))
+        b = piece.bounds / s
+        over_pdms = (b[0, 0] < hi[0] and b[1, 0] > lo[0] and b[0, 1] >= lo[1] - 2.0 and b[1, 1] > lo[1]
+                     and b[0, 2] < z_plate)
+        if over_pdms:  # plate piece: cut it back to the plate face so only the PDMS sticks out
+            # convex piece: the hull of the sliced surface is the capped piece
+            piece = piece.slice_plane([0, 0, z_plate * s], [0, 0, 1]).convex_hull
+            cut += 1
+        if piece.volume < 1e-9:  # drop slivers (< 1 mm^3)
+            continue
+        name = f"{stl.stem}_{len(names):02d}"
+        piece.export(out / f"{name}.stl")
+        names.append(name)
+
+    # 3. include files
+    rel = lambda p: p.relative_to(ROOT / "model").as_posix()
+    sc = f'scale="{s} {s} {s}"'
+    assets = [f'  <mesh name="blade_visual" file="{rel(vis / (stl.stem + "_body.stl"))}" {sc}/>',
+              f'  <mesh name="pdms_visual" file="{rel(vis / (stl.stem + "_pdms.stl"))}" {sc}/>']
+    assets += [f'  <mesh name="{n}" file="{rel(out / (n + ".stl"))}"/>' for n in names]
+    (ROOT / "assembly/blade_assets.xml").write_text(header + "<mujoco>\n" + "\n".join(assets) + "\n</mujoco>\n")
+
+    for side in ("left", "right"):
+        geoms = [f'  <geom name="{side}_blade_{i:02d}" class="blade_collision" mesh="{n}"/>'
+                 for i, n in enumerate(names)]
+        (ROOT / f"assembly/blade_geoms_{side}.xml").write_text(
+            header + "<mujoco>\n" + "\n".join(geoms) + "\n</mujoco>\n")
+    print(f"PDMS split: {in_pdms.sum()} triangles; {len(names)} convex pieces, {cut} cut back to the plate")
+
+
+def write_pdms(args, lo, hi, z_face, z_plate, header):
+    """assembly/pdms_{left,right}.xml: the PDMS layer as a welded body with a taxel grid."""
+    s = args.scale
+    nx, ny = (int(v) for v in args.taxels.lower().split("x"))
+    a, b = (hi - lo) * s
+    t = (z_plate - z_face) * s
+    cx, cy = (lo + hi) / 2 * s
+    cz = (z_face + z_plate) / 2 * s
+    mass = args.density * a * b * t
+    I = mass / 12 * np.array([b * b + t * t, a * a + t * t, a * a + b * b])
+    dx, dy = a / nx, b / ny
+    contact = (f'priority="2" condim="4" friction="{args.mu:g} {args.mu_torsion:g} {args.mu_roll:g}" '
+               f'solref="{args.solref}" solimp="{args.solimp} 0.5 2"')
+    for side in ("left", "right"):
+        n = f"{side}_pdms"
+        taxels = "\n".join(
+            f'    <geom name="{n}_{i}_{j}" type="box" pos="{(i + 0.5) * dx - a / 2:.5f} {(j + 0.5) * dy - b / 2:.5f} 0" '
+            f'size="{dx / 2:.5f} {dy / 2:.5f} {t / 2:.5f}" {contact} group="3" rgba="0.95 0.5 0.1 0.5"/>'
+            for j in range(ny) for i in range(nx))
+        (ROOT / f"assembly/pdms_{side}.xml").write_text(f"""{header}<mujoco>
+  <!-- PDMS layer {a * 1e3:.1f} x {b * 1e3:.1f} x {t * 1e3:.2f} mm on the blade's flat face.
+       Boundary conditions: back face bonded to the blade (child body with no joint = welded;
+       the force/torque sensors at {n}_bond read what the layer transmits to the blade);
+       front face (-z) free, frictional contact; sides free.
+       Collision: {nx} x {ny} taxel boxes ({dx * 1e3:.2f} x {dy * 1e3:.2f} mm, i across the blade width x,
+       j along the finger y), so the contact solver gives a normal/shear force per taxel,
+       the simulated counterpart of the shear-sensing skin. {n} itself is a non-colliding
+       envelope used for distance queries. -->
+  <body name="{n}" pos="{cx:.5f} {cy:.5f} {cz:.5f}">
+    <inertial pos="0 0 0" mass="{mass:.6f}" diaginertia="{I[0]:.6e} {I[1]:.6e} {0.999 * I[2]:.6e}"/>
+    <geom name="{n}_visual" type="mesh" mesh="pdms_visual" pos="{-cx:.5f} {-cy:.5f} {-cz:.5f}"
+          contype="0" conaffinity="0" group="2" material="pdms_mat"/>
+    <geom name="{n}" type="box" size="{a / 2:.5f} {b / 2:.5f} {t / 2:.5f}" contype="0" conaffinity="0"
+          group="5" rgba="0.95 0.5 0.1 0.3"/>
+{taxels}
+    <site name="{n}_bond" pos="0 0 {t / 2:.5f}" size="0.002" group="4"/>
+    <!-- touch-sensor zone over the free face, 2 mm larger all round so edge contacts count -->
+    <site name="{n}_surface" type="box" pos="0 0 {-t / 2:.5f}" size="{a / 2 + 0.002:.5f} {b / 2 + 0.002:.5f} 0.002" group="4"/>
+  </body>
+</mujoco>
+""")
+    print(f"PDMS {a * 1e3:.1f} x {b * 1e3:.1f} x {t * 1e3:.2f} mm, {nx} x {ny} taxels "
+          f"(face z = {z_face:.2f}, plate z = {z_plate:.2f} in STL units)")
+
+
+if __name__ == "__main__":
+    main()
