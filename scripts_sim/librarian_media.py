@@ -60,12 +60,13 @@ class Recorder:
         self.log = Log()
         self.frames: Dict[str, object] = {}
         self.phase = "start"
-        self.grasp_ref = None  # book position in the TCP frame when the grasp closes
+        self.grasp_ref = None  # book pose in the TCP frame when the grasp closes
         rob.callbacks.append(self._on_tick)
 
     def _book_in_tcp(self):
         T = self.rob.get_pose()
-        return T[:3, :3].T @ (self.d.xpos[self.book] - T[:3, 3])
+        R = T[:3, :3].T @ self.d.xmat[self.book].reshape(3, 3)
+        return T[:3, :3].T @ (self.d.xpos[self.book] - T[:3, 3]), R
 
     def mark_grasp(self):
         self.grasp_ref = self._book_in_tcp()
@@ -80,13 +81,17 @@ class Recorder:
         tact = {s: k.read(self.d) for s, k in self.skins.items()}
         self.frames = tact
         f = np.asarray(rob.get_tcp_force())
-        slip = np.linalg.norm(self._book_in_tcp() - self.grasp_ref) if self.grasp_ref is not None else 0.0
+        slip, turn = 0.0, 0.0
+        if self.grasp_ref is not None:  # book motion relative to the tool since the grasp closed
+            p, R = self._book_in_tcp()
+            slip = np.linalg.norm(p - self.grasp_ref[0])
+            turn = np.degrees(np.arccos(np.clip((np.trace(self.grasp_ref[1].T @ R) - 1) / 2, -1, 1)))
         disturb = max((np.linalg.norm(self.d.xpos[b] - p0) for b, p0 in self.others0.items()), default=0.0)
         row = dict(t=rob.time, phase=self.phase, gripper_pos=self.gripper.get_position(),
                    gripper_req=self.gripper.get_requested_position(), gripper_force=int(self.gripper.force),
                    gripper_obj=self.gripper.get_object_status(),
                    fx=f[0], fy=f[1], fz=f[2], tx=f[3], ty=f[4], tz=f[5],
-                   slip_mm=1e3 * slip, neighbours_mm=1e3 * disturb,
+                   slip_mm=1e3 * slip, slip_deg=turn, neighbours_mm=1e3 * disturb,
                    book_x=self.d.xpos[self.book][0], book_y=self.d.xpos[self.book][1], book_z=self.d.xpos[self.book][2])
         for i, q in enumerate(rob.getj()):
             row[f"q{i + 1}"] = q
@@ -96,7 +101,8 @@ class Recorder:
             row[f"{side}_shear_x"], row[f"{side}_shear_y"] = (float(v) for v in fr.total_shear)
             row[f"{side}_margin"] = fr.net_margin()
             row[f"{side}_margin_local"] = fr.grasp_margin()
-            row[f"{side}_pen_um"] = 1e6 * float(fr.penetration.max())
+            row[f"{side}_comp_um"] = 1e6 * float(fr.deformation[..., 2].max())
+            row[f"{side}_sdisp_um"] = 1e6 * float(np.linalg.norm(fr.deformation[..., :2], axis=-1).max())
             raw = getattr(self.skins[side], "raw", None)
             if raw is not None:  # the unfiltered sample (every control tick) for diagnostics
                 row[f"{side}_normal_raw"] = raw.total_normal
@@ -106,88 +112,107 @@ class Recorder:
 
 # ------------------------------------------------------------------ panels
 class SensorPanel:
-    """'What the skin feels': taxel maps + time series (matplotlib, redrawn per frame)."""
+    """'What the skin feels', per blade: contact force per cell (from MuJoCo's contact solver) and the PDMS
+    layer's deformation per cell (the cells' joint positions), plus time series (matplotlib, redrawn per frame)."""
 
     def __init__(self, width: int = 560, height: int = 1026, window: float = 12.0, q_star: float = 0.5,
-                 taxel_max: float = 4.0, arrow_mm_per_n: float = 6.0):
-        self.window, self.arrow_gain = window, arrow_mm_per_n
+                 force_max: float = 3.0, deform_max: float = 3.0, arrow_mm_per_n: float = 25.0,
+                 arrow_mm_per_um: float = 1.5):
+        self.window, self.arrow_gain, self.disp_gain = window, arrow_mm_per_n, arrow_mm_per_um
         dpi = 100
         self.fig = plt.figure(figsize=(width / dpi, height / dpi), dpi=dpi, facecolor="#101418")
-        gs = self.fig.add_gridspec(5, 2, height_ratios=[2.25, 1, 1, 1, 1], hspace=0.55, wspace=0.25,
-                                   left=0.13, right=0.97, top=0.93, bottom=0.05)
+        gs = self.fig.add_gridspec(6, 2, height_ratios=[2.0, 2.0, 0.72, 0.72, 0.72, 0.72], hspace=0.62, wspace=0.10,
+                                   left=0.11, right=0.86, top=0.895, bottom=0.035)
         txt = dict(color="#e8e8e8")
-        self.fig.suptitle("What the skin feels (PDMS 5 x 7 taxels, 20 Hz frames)", fontsize=12, **txt)
-        self.maps, self.quivers, self.labels = {}, {}, {}
-        for k, side in enumerate(SIDES):
-            ax = self.fig.add_subplot(gs[0, k])
-            self._style(ax)
-            im = ax.imshow(np.zeros((7, 5)), cmap="magma", vmin=0, vmax=taxel_max, origin="lower",
-                           extent=(-25.5, 25.5, -35.5, 35.5), aspect="equal")
-            xs = np.linspace(-20.4, 20.4, 5)
-            ys = np.linspace(-30.4, 30.4, 7)
-            X, Y = np.meshgrid(xs, ys)
-            self.quivers[side] = ax.quiver(X, Y, np.zeros_like(X), np.zeros_like(Y), color="#4fd1ff",
-                                           angles="xy", scale_units="xy", scale=1.0, width=0.018)
-            ax.set_title(f"{side} blade", fontsize=9, color=COLORS[side] if side == "left" else "#ff8080", pad=4)
-            ax.set_xlabel("across (mm)", fontsize=8, **txt)
-            if k == 0:
-                ax.set_ylabel("along finger (mm), tip up", fontsize=8, **txt)
-            self.maps[side] = im
-            self.labels[side] = ax.text(0.5, -0.32, "", transform=ax.transAxes, fontsize=7.5, color="#e8e8e8",
-                                        ha="center", va="top")
-        cb = self.fig.colorbar(self.maps["right"], ax=[self.fig.axes[0], self.fig.axes[1]], fraction=0.035, pad=0.02)
-        cb.ax.tick_params(labelsize=7, colors="#e8e8e8")
-        cb.set_label(f"normal per taxel (N); arrows: shear, {arrow_mm_per_n:g} mm/N", fontsize=7.5, **txt)
+        self.fig.text(0.5, 0.982, "What the skin feels: idealised PDMS layer, 5 x 7 cells, 20 Hz (assumed)",
+                      fontsize=10.5, ha="center", va="top", **txt)
+        xs, ys = np.linspace(-20.4, 20.4, 5), np.linspace(-30.4, 30.4, 7)
+        X, Y = np.meshgrid(xs, ys)
+        self.maps, self.quivers, self.titles = {}, {}, {}
+        rows = [("force", "contact force per cell, from the contact solver: colour normal (N), arrows shear",
+                 "magma", force_max, "#4fd1ff", "N"),
+                ("deform", "PDMS deformation per cell (elastic layer): colour compression, arrows shear",
+                 "viridis", deform_max, "#ff9f43", "um")]
+        for r, (key, title, cmap, vmax, qcol, unit) in enumerate(rows):
+            for k, side in enumerate(SIDES):
+                ax = self.fig.add_subplot(gs[r, k])
+                self._style(ax)
+                ax.grid(False)
+                im = ax.imshow(np.zeros((7, 5)), cmap=cmap, vmin=0, vmax=vmax, origin="lower",
+                               extent=(-25.5, 25.5, -35.5, 35.5), aspect="equal")
+                self.maps[key, side] = im
+                self.quivers[key, side] = ax.quiver(X, Y, np.zeros_like(X), np.zeros_like(Y), color=qcol,
+                                                    angles="xy", scale_units="xy", scale=1.0, width=0.02)
+                self.titles[key, side] = ax.set_title(side, fontsize=7.5, pad=3,
+                                                      color=COLORS[side] if side == "left" else "#ff8080")
+                ax.tick_params(labelsize=6)
+                if k == 0:
+                    ax.set_ylabel("along finger (mm)", fontsize=7, **txt)
+            pos = self.fig.axes[-2].get_position()
+            self.fig.text(0.02, pos.y1 + 0.03, title, fontsize=8, color="#f2c94c", ha="left", va="bottom")
+            cax = self.fig.add_axes([0.875, pos.y0, 0.018, pos.height])
+            cb = self.fig.colorbar(self.maps[key, "right"], cax=cax)
+            cb.ax.tick_params(labelsize=6, colors="#e8e8e8")
+            cb.set_label(unit, fontsize=7, **txt)
 
-        self.ax_n = self.fig.add_subplot(gs[1, :])
-        self.ax_s = self.fig.add_subplot(gs[2, :])
-        self.ax_q = self.fig.add_subplot(gs[3, :])
-        self.ax_w = self.fig.add_subplot(gs[4, :])
+        self.ax_n = self.fig.add_subplot(gs[2, :])
+        self.ax_s = self.fig.add_subplot(gs[3, :])
+        self.ax_q = self.fig.add_subplot(gs[4, :])
+        self.ax_w = self.fig.add_subplot(gs[5, :])
         self.lines = {}
-        for ax, title, ylab in [(self.ax_n, "normal force on each skin", "N"),
+        for ax, title, ylab in [(self.ax_n, "normal force on each skin (sum of cells)", "N"),
                                 (self.ax_s, "shear (friction) force on each skin", "N"),
-                                (self.ax_q, "margin q = 1 - |shear| / (mu normal) per blade  &  grip force", "q"),
-                                (self.ax_w, "arm F/T (book load) and book slip", "N / mm")]:
+                                (self.ax_q, "margin q (patch, assumed mu) & grip force register", "q"),
+                                (self.ax_w, "arm F/T (book load) and book slip in the grasp", "N / mm")]:
             self._style(ax)
-            ax.set_title(title, fontsize=9, color="#e8e8e8", loc="left")
-            ax.set_ylabel(ylab, fontsize=8, **txt)
+            ax.set_title(title, fontsize=8.5, color="#e8e8e8", loc="left")
+            ax.set_ylabel(ylab, fontsize=7.5, **txt)
         for side in SIDES:
-            self.lines[f"n_{side}"], = self.ax_n.plot([], [], color=COLORS[side], lw=1.6, label=side)
-            self.lines[f"s_{side}"], = self.ax_s.plot([], [], color=COLORS[side], lw=1.6, label=side)
-            self.lines[f"q_{side}"], = self.ax_q.plot([], [], color=COLORS[side], lw=1.6, label=f"Q {side}")
+            self.lines[f"n_{side}"], = self.ax_n.plot([], [], color=COLORS[side], lw=1.5, label=side)
+            self.lines[f"s_{side}"], = self.ax_s.plot([], [], color=COLORS[side], lw=1.5, label=side)
+            self.lines[f"q_{side}"], = self.ax_q.plot([], [], color=COLORS[side], lw=1.5, label=f"q {side}")
         self.ax_q.axhline(q_star, color="#bbbbbb", lw=0.8, ls="--")
         self.ax_q.text(0.99, q_star, "q*", transform=self.ax_q.get_yaxis_transform(), color="#bbbbbb",
                        fontsize=7, ha="right", va="bottom")
         self.ax_f = self.ax_q.twinx()
         self.lines["force_reg"], = self.ax_f.plot([], [], color="#f2c94c", lw=1.2, ls="-", label="force register")
         self.ax_f.set_ylim(-5, 260)
-        self.ax_f.tick_params(labelsize=7, colors="#f2c94c")
-        self.lines["fz"], = self.ax_w.plot([], [], color="#9be7a1", lw=1.4, label="-Fz (N)")
-        self.lines["fy"], = self.ax_w.plot([], [], color="#c39bd3", lw=1.2, label="-Fy pull (N)")
-        self.lines["slip"], = self.ax_w.plot([], [], color="#ffb86c", lw=1.4, label="slip (mm)")
+        self.ax_f.tick_params(labelsize=6.5, colors="#f2c94c")
+        self.lines["fz"], = self.ax_w.plot([], [], color="#9be7a1", lw=1.3, label="-Fz (N, 3 Hz low-pass)")
+        self.lines["slip"], = self.ax_w.plot([], [], color="#ffb86c", lw=1.3, label="slip (mm)")
+        self.lines["turn"], = self.ax_w.plot([], [], color="#c39bd3", lw=1.2, label="rotation (deg)")
         for ax in (self.ax_n, self.ax_s, self.ax_w):
-            ax.legend(fontsize=7, loc="upper left", facecolor="#101418", labelcolor="#e8e8e8", framealpha=0.6, ncol=3)
-        self.ax_q.legend(handles=[self.lines["q_left"], self.lines["q_right"], self.lines["force_reg"]], fontsize=7,
+            ax.legend(fontsize=6.5, loc="upper left", facecolor="#101418", labelcolor="#e8e8e8", framealpha=0.6, ncol=3)
+        self.ax_q.legend(handles=[self.lines["q_left"], self.lines["q_right"], self.lines["force_reg"]], fontsize=6.5,
                          loc="lower left", facecolor="#101418", labelcolor="#e8e8e8", framealpha=0.6, ncol=3)
         self.ax_q.set_ylim(-0.1, 1.05)
 
     @staticmethod
     def _style(ax):
         ax.set_facecolor("#171c22")
-        ax.tick_params(labelsize=7, colors="#cfcfcf")
+        ax.tick_params(labelsize=6.5, colors="#cfcfcf")
         for sp in ax.spines.values():
             sp.set_color("#555")
         ax.grid(alpha=0.18)
 
+    @staticmethod
+    def _clip(uv, top=14.0):
+        n = np.linalg.norm(uv, axis=-1, keepdims=True)
+        return uv * np.minimum(1.0, top / np.maximum(n, 1e-9))  # arrows at most 14 mm (cell pitch ~10 mm)
+
     def draw(self, frames, log: Log) -> np.ndarray:
         for side, fr in frames.items():
-            self.maps[side].set_data(fr.normal)
-            uv = fr.shear * self.arrow_gain                                  # mm on the map
-            n = np.linalg.norm(uv, axis=-1, keepdims=True)
-            uv = uv * np.minimum(1.0, 14.0 / np.maximum(n, 1e-9))            # clip at 14 mm (taxel pitch ~10 mm)
-            self.quivers[side].set_UVC(uv[..., 0], uv[..., 1])
-            self.labels[side].set_text(f"N {fr.total_normal:5.1f} N  |T| {np.linalg.norm(fr.total_shear):4.2f} N  "
-                                       f"q {fr.net_margin():+.2f}")
+            self.maps["force", side].set_data(fr.normal)
+            uv = self._clip(fr.shear * self.arrow_gain)
+            self.quivers["force", side].set_UVC(uv[..., 0], uv[..., 1])
+            self.titles["force", side].set_text(f"{side}: N {fr.total_normal:4.1f} N, |T| {np.linalg.norm(fr.total_shear):3.1f} N"
+                                                f", q {fr.net_margin():+.2f}")
+            u = fr.deformation * 1e6                                         # um
+            self.maps["deform", side].set_data(u[..., 2])
+            uv = self._clip(u[..., :2] * self.disp_gain)
+            self.quivers["deform", side].set_UVC(uv[..., 0], uv[..., 1])
+            self.titles["deform", side].set_text(f"{side}: max {u[..., 2].max():3.1f} um compr., "
+                                                 f"{np.linalg.norm(u[..., :2], axis=-1).max():3.1f} um shear")
         rows = log.rows
         if rows:
             t = log.column("t")
@@ -201,20 +226,57 @@ class SensorPanel:
                 q = np.clip(log.column(f"{side}_margin")[sel], -0.1, 1.05)
                 self.lines[f"q_{side}"].set_data(ts, q)
             self.lines["force_reg"].set_data(ts, log.column("gripper_force")[sel])
-            self.lines["fz"].set_data(ts, -log.column("fz")[sel])
-            self.lines["fy"].set_data(ts, -log.column("fy")[sel])
+            self.lines["fz"].set_data(ts, -lowpass(log.column("fz"), log.column("t"), 3.0)[sel])
             self.lines["slip"].set_data(ts, log.column("slip_mm")[sel])
+            self.lines["turn"].set_data(ts, log.column("slip_deg")[sel])
             for ax in (self.ax_n, self.ax_s, self.ax_q, self.ax_w):
                 ax.set_xlim(t0, max(t0 + self.window, t1))
             nmax = max(5.0, np.max([log.column(f"{s}_normal")[sel].max() for s in SIDES]) * 1.15)
             smax = max(1.0, np.max([log.column(f"{s}_shear")[sel].max() for s in SIDES]) * 1.25)
-            wmax = max(2.0, np.max(np.abs(np.r_[log.column("fz")[sel], log.column("fy")[sel],
-                                                log.column("slip_mm")[sel]])) * 1.2)
+            wmax = max(2.0, np.max(np.abs(np.r_[log.column("fz")[sel], log.column("slip_mm")[sel],
+                                                log.column("slip_deg")[sel]])) * 1.2)
             self.ax_n.set_ylim(0, nmax)
             self.ax_s.set_ylim(0, smax)
             self.ax_w.set_ylim(-wmax * 0.3, wmax)
         self.fig.canvas.draw()
         return np.asarray(self.fig.canvas.buffer_rgba())[..., :3].copy()
+
+
+def lowpass(x: np.ndarray, t: np.ndarray, cutoff_hz: float = 3.0) -> np.ndarray:
+    """First-order low-pass for display (the wrist F/T chatters while the book drags on the shelf board)."""
+    y = np.array(x, float)
+    for i in range(1, len(y)):
+        a = 1.0 - np.exp(-2 * np.pi * cutoff_hz * max(t[i] - t[i - 1], 0.0))
+        y[i] = y[i - 1] + a * (y[i] - y[i - 1])
+    return y
+
+
+def orbit_camera(t: float) -> mujoco.MjvCamera:
+    """Slow arc in front of the robot, looking down at the desk and both shelves (shelf A behind, B to the right)."""
+    cam = mujoco.MjvCamera()
+    cam.lookat[:] = (0.32, 0.62, 0.34)
+    cam.distance, cam.elevation = 2.1, -32.0
+    cam.azimuth = 78.0 + 0.6 * t
+    return cam
+
+
+def close_up_camera(rob):
+    """Camera that follows the TCP from 52 deg left of the tool's heading, low-pass filtered so it glides."""
+    state = {"p": None, "az": None}
+
+    def cam_at(t: float) -> mujoco.MjvCamera:
+        T = rob.get_pose()
+        p = T[:3, 3] + T[:3, 2] * 0.025 + np.array([0.0, 0.0, -0.01])
+        az = np.degrees(np.arctan2(T[1, 2], T[0, 2])) - 52.0
+        if state["p"] is None:
+            state["p"], state["az"] = p, az
+        state["p"] = 0.92 * state["p"] + 0.08 * p
+        state["az"] = 0.95 * state["az"] + 0.05 * az
+        cam = mujoco.MjvCamera()
+        cam.lookat[:] = state["p"]
+        cam.distance, cam.azimuth, cam.elevation = 0.42, state["az"], -30.0
+        return cam
+    return cam_at
 
 
 def _font(size: int, bold: bool = False):
@@ -353,10 +415,10 @@ class ViewerHUD:
         self.viewer = mujoco.viewer.launch_passive(rec.m, rec.d, show_left_ui=False, show_right_ui=False)
         with self.viewer.lock():
             self.viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTFORCE] = True
-            self.viewer.cam.lookat[:] = (0.0, 0.75, 0.45)
-            self.viewer.cam.distance, self.viewer.cam.azimuth, self.viewer.cam.elevation = 1.6, 200, -20
+            self.viewer.cam.lookat[:] = (0.32, 0.62, 0.34)  # both shelves, from in front of the robot
+            self.viewer.cam.distance, self.viewer.cam.azimuth, self.viewer.cam.elevation = 2.1, 95, -30
         self.fig_n, self.fig_q = mujoco.MjvFigure(), mujoco.MjvFigure()
-        for fig, title in ((self.fig_n, "skin normal / shear (N)"), (self.fig_q, "grasp margin Q")):
+        for fig, title in ((self.fig_n, "skin normal / shear (N)"), (self.fig_q, "grasp margin q")):
             fig.title = title
             fig.flg_extend = 1
             fig.figurergba[3] = 0.5

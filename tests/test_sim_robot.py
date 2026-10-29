@@ -104,7 +104,7 @@ class TestBookshelfScene(unittest.TestCase):
     def test_books_rest_where_the_task_expects_them(self):
         rob = SimRobot(ROOT / "assembly" / "scene_bookshelf.xml", verbose=False)
         m, d = rob.m, rob.d
-        books = [b for b in range(m.nbody) if m.body(b).name.startswith("book_")]
+        books = [b for b in range(m.nbody) if m.body(b).name.startswith("book")]  # shelf A and shelf B
         p0 = {b: d.xpos[b].copy() for b in books}
         rob.sleep(0.5)
         self.assertLess(max(np.linalg.norm(d.xpos[b] - p0[b]) for b in books), 1e-3)
@@ -114,6 +114,12 @@ class TestBookshelfScene(unittest.TestCase):
         right = d.xpos[m.body("book_R1").id][0] - half("book_R1")
         self.assertAlmostEqual(left, -0.030, delta=1e-3)   # 10 mm of air beside the 40 mm target book
         self.assertAlmostEqual(right, 0.030, delta=1e-3)
+        # shelf B: a 70 mm slot (the 40 mm book + 15 mm per blade) centred on the front-edge centre
+        across = np.array([np.sqrt(0.5), -np.sqrt(0.5), 0.0])   # shelf B's x' axis (turned 45 deg)
+        centre = np.array([0.612, 0.612, 0.0])
+        face = lambda name, sign: (d.xpos[m.body(name).id] - centre) @ across + sign * half(name)
+        self.assertAlmostEqual(face("bookB_L1", +1), -0.035, delta=1e-3)
+        self.assertAlmostEqual(face("bookB_R1", -1), 0.035, delta=1e-3)
 
 
 @unittest.skipIf(mujoco is None, "mujoco not installed")
@@ -129,14 +135,20 @@ class TestSkinAndController(unittest.TestCase):
         self.rob.set_tcp(TCP)
         self.gripper = SimRobotiqGripper(self.rob, force=40)
 
-    def test_skin_matches_bond_sensor_and_detects_object(self):
+    def test_skin_forces_match_layer_deformation_and_detect_object(self):
         rob, g = self.rob, self.gripper
         rob.sleep(0.3)
         g.close_gripper()
+        rob.sleep(0.2)
         self.assertEqual(g.get_object_status(), 2)  # stopped on an object while closing
         frame = PDMSSkin(rob.m, "left").read(rob.d)
         self.assertGreater(frame.total_normal, 10.0)
-        self.assertAlmostEqual(frame.total_normal, abs(rob.d.sensor("left_pdms_force").data[2]), delta=0.5)
+        # contact forces from the solver = what the deformable layer carries (stiffness x deformation)
+        elastic = frame.elastic_force().sum((0, 1))
+        self.assertAlmostEqual(frame.total_normal, elastic[2], delta=0.02 * frame.total_normal + 0.2)
+        np.testing.assert_allclose(frame.total_shear, elastic[:2], atol=0.3)
+        self.assertGreater(frame.deformation[..., 2].max(), 0.0)  # compressed, by micrometres
+        self.assertLess(frame.deformation[..., 2].max(), 50e-6)
         self.assertGreater(frame.net_margin(), 0.0)
 
     def test_controller_loop_lifts_the_box(self):

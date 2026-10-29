@@ -1,7 +1,7 @@
 """Slots for the controllers that will replace the rule-based placeholder (same interface).
 
-Each receives an Observation (joints, TCP pose/wrench, Robotiq registers, the skin's per-taxel
-normal/shear, optional camera images) and returns a Command (speedl twist + Robotiq position/
+Each receives an Observation (joints, TCP pose/wrench, Robotiq registers, the skin's per-cell
+normal/shear force and deformation, optional camera images) and returns a Command (speedl twist + Robotiq position/
 force) at rate_hz. In simulation, a model-based controller can roll out copies of the MuJoCo
 model (SimRobot.m, mujoco.MjData copies, or mujoco.rollout) to predict the skin's response.
 """
@@ -30,8 +30,8 @@ class MPPIController(Controller):
 
 
 class VLFAPolicy(Controller):
-    """Learned vision-language-force-action policy: wrist image + instruction + skin (normal/shear
-    maps) + wrench -> Command."""
+    """Learned vision-language-force-action policy: wrist image + instruction + skin (normal/shear and
+    deformation maps) + wrench -> Command."""
     name = "VLFA policy (placeholder)"
 
     def __init__(self, instruction: str = "pull out the blue book"):

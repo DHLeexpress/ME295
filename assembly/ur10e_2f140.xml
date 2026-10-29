@@ -22,8 +22,14 @@
 <mujoco model="ur10e_2f140">
   <compiler angle="radian" meshdir="../model" autolimits="true" eulerseq="XYZ"/>
 
-  <!-- 0.5 ms: stiff PDMS contact on light finger links -->
-  <option integrator="implicitfast" timestep="0.0005" cone="elliptic" impratio="10"/>
+  <!-- 0.5 ms time step. integrator "discrete" (MuJoCo >= 3.13) is implicit in position: the stiff springs of
+       the PDMS layer (assembly/pdms_*.xml, ~0.8 MN/m per cell on 50 mg) and the servo gains enter the effective
+       inertia M + hD + h^2 K, so they are stable at this step; an explicit integrator would need h < ~16 us. CG solver:
+       one iteration costs less than a Newton step once the ~200 cell dofs join the gripper's contact island.
+       impratio 100: friction rows 100x stiffer than normal ones. Soft friction lets a sustained tangential load creep;
+       with the compliant, light PDMS cells and the book's 0.5 N m twist that was ~0.8 mm/s at impratio 10, now
+       ~0.02 mm/s (noslip post-processing was less robust here). -->
+  <option integrator="discrete" solver="CG" timestep="0.0005" cone="elliptic" impratio="100"/>
 
   <default>
     <default class="ur10e">
@@ -56,6 +62,11 @@
         </default>
       </default>
       <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+    </default>
+
+    <!-- PDMS cells (assembly/pdms_*.xml): plain slide joints, stiffness and damping set per joint -->
+    <default class="pdms_cell">
+      <joint type="slide" armature="0" damping="0" frictionloss="0"/>
     </default>
 
     <default class="2f140">
@@ -358,14 +369,6 @@
     <torque name="flange_torque" site="attachment_site"/>
     <jointpos name="finger_pos" joint="left_driver_joint"/>
     <actuatorfrc name="finger_force" actuator="fingers"/>
-    <!-- PDMS layer: force/torque it transmits to the blade at the bond (site frame: z = face
-         normal, away from the object; x, y = shear) and the normal force on its free face -->
-    <force name="left_pdms_force" site="left_pdms_bond"/>
-    <torque name="left_pdms_torque" site="left_pdms_bond"/>
-    <touch name="left_pdms_touch" site="left_pdms_surface"/>
-    <force name="right_pdms_force" site="right_pdms_bond"/>
-    <torque name="right_pdms_torque" site="right_pdms_bond"/>
-    <touch name="right_pdms_touch" site="right_pdms_surface"/>
   </sensor>
 
   <keyframe>

@@ -65,8 +65,17 @@ python -m mujoco.viewer --mjcf assembly/scene_bookshelf.xml        # browse the 
 python scripts_sim/run_librarian.py --viewer                        # live task + HUD (macOS: mjpython ...)
 python scripts_sim/run_librarian.py --video results/librarian.mp4   # skin | MuJoCo | wrist camera video
 python scripts_sim/run_librarian.py --backend urx --host <robot ip> # same task on the real UR10e
+python scripts_sim/ablation.py                                      # skin vs fixed grip, 40 runs in parallel
 ```
-Demo: [docs/media/librarian_demo.mp4](docs/media/librarian_demo.mp4) (approach horizontally, slide the blades beside a book, pull it out, lift it, stand it on the desk). The task is written against the python-urx API (`movej`, `movel`, `getj`, `get_tcp_force`, `gripper_action`, ...), so it transfers to the robot unchanged. Setup per OS, rendering backends, the controller slot and how MuJoCo defines force and displacement are in [docs/SIM.md](docs/SIM.md); the gripper model is described in [assembly/README.md](assembly/README.md).
+- **Demo:** [docs/media/librarian_demo.mp4](docs/media/librarian_demo.mp4). The robot approaches shelf A horizontally, slides the blades beside a book, squeezes, pulls it out and lifts it, then carries it to shelf B and shelves it in the free slot.
+- **Transfer to the robot:** the task is written against the python-urx API (`movej`, `movel`, `getj`, `get_tcp_force`, `gripper_action`, ...), so it runs on the UR10e unchanged.
+- **Deformable PDMS:** the blades' PDMS layer is simulated as a deformable body (5 × 7 elastic cells), so the skin panel shows both the contact force and the deformation of each cell.
+- **Report:** [docs/report_sim/librarian_sim.pdf](docs/report_sim/librarian_sim.pdf), 3 pages:
+  - how MuJoCo computes force and displacement;
+  - what the plots show, and which parts are assumptions about the sensor;
+  - the control;
+  - when the skin helps.
+- **Setup and backends:** per-OS setup, rendering backends and the controller slot are in [docs/SIM.md](docs/SIM.md); the gripper model is in [assembly/README.md](assembly/README.md).
 
 ## LLM API and keys (public repo)
 - **Keys live only in `.env`**, which is git-ignored; `.env.example` is the template. The pre-commit hook and CI reject anything that looks like a key, and any `.env*` file other than the template.

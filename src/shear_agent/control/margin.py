@@ -1,12 +1,18 @@
-"""Placeholder contact-phase policy: squeeze just enough, then pull the book out and lift it.
+"""Placeholder contact-phase policies: squeeze, pull the book out and lift it.
 
-Layer A of the project in its simplest rule-based form. Each blade's skin gives the margin of its
-contact patch against sliding and twisting, q = 1 - sqrt((|T|/(mu N))^2 + (|M|/(mu N r))^2)
-(TactileFrame.net_margin; the twist M comes from the shear field, 20 Hz frames, see
-robot.tactile.SkinSensor); the grasp margin is the weaker blade, Q = min(q_left, q_right). The gripper force register is raised whenever Q < q_star and the arm pauses while
-Q < q_pause. (The per-taxel minimum is not used: edge taxels sit near the friction limit at any
-squeeze, the partial-slip rim of a frictional contact.) To be replaced by MPC / MPPI / a learned
-policy with the same Controller interface.
+ShearMarginGrasp is the project's skin-in-the-loop controller in its simplest rule-based form. Each blade's
+skin gives the margin of its contact patch against sliding and twisting,
+q = 1 - sqrt((|T|/(mu N))^2 + (|M|/(mu N r))^2) (TactileFrame.net_margin; the twist M comes from the shear
+field; 20 Hz frames, see robot.tactile.SkinSensor); the grasp margin is the weaker blade, Q = min(q_left,
+q_right). The gripper force register is raised whenever Q < q_star and the arm pauses while Q < q_pause.
+If the register is at its maximum and Q stays below q_pause for abort_time, the grasp cannot hold the book:
+the controller stops with phase "abort" and the task puts the book back. mu is an assumption (the PDMS-
+cover friction is not measured), so Q is only as good as mu.
+
+FixedForceGrasp is the same sequence without the skin: a constant force register, contact detected by the
+Robotiq's own object detection. It is the no-sensor baseline of the ablation (scripts_sim/ablation.py).
+
+Both are placeholders for MPC / MPPI / learned policies with the same Controller interface.
 """
 from __future__ import annotations
 
@@ -21,14 +27,15 @@ class ShearMarginGrasp(Controller):
 
     def __init__(self, pull_dir=(0.0, -1.0, 0.0), pull_dist: float = 0.20, pull_speed: float = 0.04,
                  lift: float = 0.10, lift_speed: float = 0.03, q_star: float = 0.5, q_pause: float = 0.2,
-                 contact_force: float = 3.0, force_start: int = 0, force_step: int = 6, hold_time: float = 1.0):
+                 contact_force: float = 3.0, force_start: int = 0, force_step: int = 6, hold_time: float = 1.0,
+                 abort_time: float = 1.0):
         self.pull_dir = np.asarray(pull_dir, float) / np.linalg.norm(pull_dir)
         self.pull_dist, self.pull_speed = pull_dist, pull_speed
         self.lift, self.lift_speed = lift, lift_speed
         self.q_star, self.q_pause = q_star, q_pause
         self.contact_force = contact_force
         self.force_start, self.force_step = force_start, force_step
-        self.hold_time = hold_time
+        self.hold_time, self.abort_time = hold_time, abort_time
 
     def reset(self, obs: Observation) -> None:
         self.phase = "close"
@@ -37,6 +44,7 @@ class ShearMarginGrasp(Controller):
         self.t_phase = obs.t
         self.margin = 1.0
         self.stamp = None
+        self.t_stuck = None
 
     def _margin(self, obs: Observation) -> float:
         if not obs.tactile:
@@ -60,6 +68,12 @@ class ShearMarginGrasp(Controller):
 
         if q < self.q_star and fresh:  # the patch is approaching slip: squeeze harder
             self.force = int(min(255, self.force + self.force_step))
+        if self.force >= 255 and q < self.q_pause:  # squeezing as hard as it can and still near slip
+            self.t_stuck = obs.t if self.t_stuck is None else self.t_stuck
+            if obs.t - self.t_stuck > self.abort_time:
+                return Command(np.zeros(6), gripper_force=self.force, done=True, phase="abort")
+        else:
+            self.t_stuck = None
         v = np.zeros(6)
         moved = obs.tcp_pose[:3] - self.p0
         if self.phase == "pull":
@@ -77,3 +91,18 @@ class ShearMarginGrasp(Controller):
         if q < self.q_pause:  # close to slipping: stop the arm until the squeeze catches up
             v[:] = 0.0
         return Command(v, gripper_force=self.force, phase=self.phase)
+
+
+class FixedForceGrasp(ShearMarginGrasp):
+    """No skin: the same close -> pull -> lift -> hold with a constant Robotiq force register (0..255; 10..125 N
+    per finger), contact from the gripper's object detection (gOBJ = 2). The ablation's baseline."""
+    name = "fixed force (no skin)"
+
+    def __init__(self, force: int = 128, **kw):
+        super().__init__(force_start=int(force), q_star=-np.inf, q_pause=-np.inf, **kw)
+
+    def _margin(self, obs: Observation) -> float:
+        return 1.0
+
+    def _normal(self, obs: Observation) -> float:
+        return np.inf if obs.gripper_object == 2 else 0.0

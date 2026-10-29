@@ -39,3 +39,8 @@ papers/*.pdf
 .DS_Store
 .vscode/
 .idea/
+results/*.log
+results/ablation/*.log
+docs/report_sim/*.aux
+docs/report_sim/*.log
+docs/report_sim/*.out

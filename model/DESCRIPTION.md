@@ -20,3 +20,11 @@ Note that Jihoon said even if you fully close the gripper, there must be a ~ 1cm
 PDMS (2026-10-27) -> Y: the 0.5 mm extrusion on the blade's flat face is the PDMS layer (orange), no extra box;
 bonded back face, free front face, friction/stiffness are parameters of scripts_sim/make_blade_assets.py.
 Objects are held by the PDMS (python scripts_sim/sim_gripper.py); figures: docs/figures/sim_*.png.
+
+10.28 17:25pm
+Make sure you simulate the thin PDMS layer as a deformable body. 
+Include the details how MuJoCo works for that kind of materials in the report upon the request. 
+DONE? (Y/n) -> Y (2026-10-28): 5 x 7 cells, each a PDMS column on three elastic joints (compression + 2 shear,
+k from E, nu, t: thin-layer limit of linear elasticity), MuJoCo "discrete" integrator; placeholders E = 1 MPa,
+nu = 0.45 (scripts_sim/make_blade_assets.py). MuJoCo's flex (FEM) was tried first; why it was not kept, and how
+MuJoCo handles such materials: docs/report_sim/librarian_sim.pdf (Sec. 2.3), assembly/README.md.

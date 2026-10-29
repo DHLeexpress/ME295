@@ -50,10 +50,11 @@ class TestAssembly(unittest.TestCase):
         self.assertEqual(set(f), {("left", "pdms"), ("right", "pdms")})  # not the blade body
         self.assertGreater(min(v[0] for v in f.values()), 100.0)
         self.assertAlmostEqual(f[("left", "pdms")][0], f[("right", "pdms")][0], delta=5.0)
-        # the bond sensor sees what the contacts push on the layer
+        # the deformable layer carries what the contacts push on it (stiffness x deformation), and the
+        # deformation is micrometres: 0.5 mm of PDMS (E = 1 MPa placeholder) under ~120 N
         state = sim.pdms_state(m, d)["left"]
         self.assertAlmostEqual(state["normal"], f[("left", "pdms")][0], delta=1.0)
-        self.assertAlmostEqual(state["touch"], f[("left", "pdms")][0], delta=1.0)
+        self.assertTrue(0.5 < state["compression_um"] < 30.0)
 
 
 if __name__ == "__main__":

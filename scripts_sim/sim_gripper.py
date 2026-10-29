@@ -11,8 +11,8 @@ Checks:
      exact from the mesh vertices
   1. open/close sweep: ctrl 0..255 -> gaps; no gripper self-contact
   2. grasp-and-lift: close on a 300 g box between the PDMS faces, lift the tool 10 cm with
-     differential IK; report force per part (pdms / blade / link), the PDMS bond force
-     (normal, shear) and how far the box slipped
+     differential IK; report force per part (pdms / blade / link), what the deformable PDMS layer
+     carries (stiffness x deformation) and how far the box slipped
   3. squeeze force at the max force setting for 40-100 mm wide boxes (PDMS only)
 Rendering is headless on Linux without a display (MUJOCO_GL=egl). The exploded view and the closed section
 come from scripts_sim/plot_connection.py.
@@ -155,13 +155,21 @@ def finger_forces(m, d, obj_geom):
 
 
 def pdms_state(m, d):
-    """Force the PDMS layer transmits to the blade (bond sensor, site frame: z = face normal)
-    split into normal and shear, plus the touch force on its free face, per side (N)."""
+    """What the deformable PDMS layer carries, per side: normal and shear force from its elasticity
+    (cell stiffness x deformation, summed over the cells, N) and the largest compression and shear
+    displacement of a cell (um). Quasi-statically the force equals the contact force on the layer."""
     out = {}
     for side in SIDES:
-        f = d.sensor(f"{side}_pdms_force").data
-        out[side] = {"normal": abs(f[2]), "shear": np.hypot(f[0], f[1]),
-                     "touch": d.sensor(f"{side}_pdms_touch").data[0]}
+        u, f = {}, {}
+        for j in range(m.njnt):
+            name = m.joint(j).name
+            if name.startswith(f"{side}_pdms_"):
+                q = d.qpos[m.jnt_qposadr[j]]
+                u.setdefault(name[-1], []).append(q)
+                f.setdefault(name[-1], []).append(m.jnt_stiffness[j] * q)
+        ux, uy = np.array(u["x"]), np.array(u["y"])
+        out[side] = {"normal": float(np.sum(f["z"])), "shear": float(np.hypot(np.sum(f["x"]), np.sum(f["y"]))),
+                     "compression_um": 1e6 * float(np.max(u["z"])), "shear_um": 1e6 * float(np.hypot(ux, uy).max())}
     return out
 
 
@@ -255,7 +263,8 @@ def check_grasp(m, d, render_cb=None):
     print("   holding: " + " | ".join(f"{s} {p}: N = {v[0]:.1f} N, T = {v[1]:.2f} N" for (s, p), v in sorted(f.items()))
           + f"  (box weight {0.3 * 9.81:.2f} N)")
     for side, r in pdms_state(m, d).items():
-        print(f"   {side} PDMS bond: normal {r['normal']:.1f} N, shear {r['shear']:.2f} N, touch {r['touch']:.1f} N")
+        print(f"   {side} PDMS layer: normal {r['normal']:.1f} N, shear {r['shear']:.2f} N (stiffness x deformation); "
+              f"max compression {r['compression_um']:.2f} um, max shear displacement {r['shear_um']:.2f} um")
     if render_cb:
         render_cb("grasp")
     return lifted, slip, f
