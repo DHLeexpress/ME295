@@ -18,7 +18,7 @@
 | `compare/` | errors vs ground truth, cost, the cell-structure choice (`README.md`, `summary.json`, `recommended_pdms_flex.xml`, `fig/`) |
 | `robot/` | the robot divergence: island-metric bug, minimal repro (`repro/`), engine patch (`fix/`), contact settings |
 | `video/` | the close-up video's simulation and rendering scripts |
-| `torsion/` | torsional grip of a grasped box: cells vs the 6x8x2 flex (`torsion.py`, `out_*.json`) |
+| `torsion/` | torsional grip of a grasped box: cells vs the flex at 6x8x2, 11x15x2 and 11x15x3 vertices (`torsion.py`, `out_*.json`) |
 
 The scripts were written for the scratch layout in which they ran (`flexstudy/<task>/`, mirrored here as
 `study/<task>/`); a few still refer to `<scratch>` paths outside the study and need adjusting before a re-run.
