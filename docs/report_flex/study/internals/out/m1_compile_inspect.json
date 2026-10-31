@@ -1,0 +1,243 @@
+{
+ "A_fixed": {
+  "nvert": 495,
+  "nelem": 1680,
+  "nedge": 2550,
+  "npinned": 165,
+  "nfree": 330,
+  "nbody_created": 330,
+  "ndof": 990,
+  "tets_per_hex": [
+   6
+  ],
+  "nhex": 280,
+  "hex000_shared_diagonal_gridcoords": [
+   [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ]
+  ],
+  "freeface_diagonal_dirs": {
+   "(1, -1, 0)": 280
+  },
+  "elem_layers": {
+   "0": 700,
+   "1": 556,
+   "2": 424
+  },
+  "activelayers": 1,
+  "active_elems": 700,
+  "volume": 5.4314694000000055e-06,
+  "mass_attr_total": 0.0034942666666666674,
+  "mass_lumped_free": 0.003931025978250003,
+  "mass_lumped_all": 0.005241367971000005,
+  "vertex_body_mass": 1.058868686868687e-05,
+  "mass_ratio_mj_over_lumped": [
+   0.565660022275952,
+   6.787920267311427
+  ],
+  "pinned_vertbody": "pdms",
+  "pinned_vert_local": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    -0.025500000000000002,
+    -0.0354998,
+    0.00075
+   ]
+  ],
+  "dof_armature": [
+   0.0
+  ],
+  "dof_damping": [
+   0.0
+  ],
+  "dof_frictionloss": [
+   0.0
+  ],
+  "jnt_stiffness": [
+   0.0
+  ],
+  "body_invweight0_trans": [
+   94440.41668256572,
+   94440.41668256572,
+   94440.41668256572
+  ],
+  "inv_vertex_mass": 94440.41668256572,
+  "flex_simple": 1,
+  "flex_rigid": 0,
+  "flex_centered": 0,
+  "flex_interp": 0,
+  "radius": 0.0,
+  "margin": 0.0,
+  "gap": 0.0,
+  "solref": [
+   0.0001,
+   1.0
+  ],
+  "solimp": [
+   0.99,
+   0.99,
+   0.001,
+   0.5,
+   2.0
+  ],
+  "priority": 2,
+  "condim": 3,
+  "friction": [
+   1.0,
+   0.005,
+   0.0001
+  ],
+  "selfcollide": 0,
+  "stiffness_record_len": 24,
+  "parent_weld_dofnum": 0,
+  "parent_weld_body": "world",
+  "compile_warnings": []
+ },
+ "B_robot_left": {
+  "nvert": 495,
+  "nelem": 1680,
+  "nedge": 2550,
+  "npinned": 165,
+  "nfree": 330,
+  "nbody_created": 330,
+  "ndof": 990,
+  "tets_per_hex": [
+   6
+  ],
+  "nhex": 280,
+  "hex000_shared_diagonal_gridcoords": [
+   [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ]
+  ],
+  "freeface_diagonal_dirs": {
+   "(1, -1, 0)": 280
+  },
+  "elem_layers": {
+   "0": 700,
+   "1": 556,
+   "2": 424
+  },
+  "activelayers": 1,
+  "active_elems": 700,
+  "volume": 5.4314693999999885e-06,
+  "mass_attr_total": 0.0034942666666666674,
+  "mass_lumped_free": 0.003931025978249989,
+  "mass_lumped_all": 0.005241367970999989,
+  "vertex_body_mass": 1.058868686868687e-05,
+  "mass_ratio_mj_over_lumped": [
+   0.565660022275928,
+   6.7879202673112395
+  ],
+  "pinned_vertbody": "left_pdms",
+  "pinned_vert_local": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    -0.025500000000000002,
+    -0.0354998,
+    0.00075
+   ]
+  ],
+  "dof_armature": [
+   0.0
+  ],
+  "dof_damping": [
+   0.0
+  ],
+  "dof_frictionloss": [
+   0.0
+  ],
+  "jnt_stiffness": [
+   0.0
+  ],
+  "body_invweight0_trans": [
+   94440.41668256574,
+   94440.41668256574,
+   94440.41668256574
+  ],
+  "inv_vertex_mass": 94440.41668256572,
+  "flex_simple": 0,
+  "flex_rigid": 0,
+  "flex_centered": 0,
+  "flex_interp": 0,
+  "radius": 0.0,
+  "margin": 0.0,
+  "gap": 0.0,
+  "solref": [
+   0.0001,
+   1.0
+  ],
+  "solimp": [
+   0.99,
+   0.99,
+   0.001,
+   0.5,
+   2.0
+  ],
+  "priority": 2,
+  "condim": 3,
+  "friction": [
+   1.0,
+   0.005,
+   0.0001
+  ],
+  "selfcollide": 0,
+  "stiffness_record_len": 24,
+  "parent_weld_dofnum": 1,
+  "parent_weld_body": "left_inner_finger",
+  "compile_warnings": []
+ },
+ "B_robot_opt": {
+  "timestep": 0.0005,
+  "integrator": 4,
+  "solver": 1,
+  "iterations": 100,
+  "tolerance": 1e-08,
+  "ls_iterations": 50,
+  "cone": 1,
+  "impratio": 100.0,
+  "disableflags": 4096,
+  "enableflags": 0,
+  "nv": 1998,
+  "nflex": 2,
+  "memory_narena": 67108864,
+  "njmax": -1,
+  "nconmax": -1
+ }
+}

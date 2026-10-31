@@ -1,0 +1,19 @@
+docs/report_flex/study/gt_transform/validate.py:185: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  num = integrate.quad(f, 0, b, points=pts_, limit=400, epsabs=1e-14)[0]
+V1 nu=0.45: worst relative difference (closed form vs ODE routes) = 5.39e-08
+V1 nu=0.49: worst relative difference (closed form vs ODE routes) = 2.71e-06
+V1 nu=0.499: worst relative difference (closed form vs ODE routes) = 1.21e-07
+V2 0.45 {'halfspace_Czz': 1.0, 'halfspace_CL': 1.0, 'halfspace_CT': 1.0, 'halfspace_Cc': 1.0, 'thin_Czz_over_t_by_M': 1.000000000218182, 'thin_CL_over_t_by_mu': 0.9999999998540734, 'thin_CT_over_t_by_mu': 0.9999999999666666}
+V2 0.49 {'halfspace_Czz': 1.0, 'halfspace_CL': 1.0, 'halfspace_CT': 1.0, 'halfspace_Cc': 1.0, 'thin_Czz_over_t_by_M': 1.0000000015372548, 'thin_CL_over_t_by_mu': 0.9999999998374673, 'thin_CT_over_t_by_mu': 0.9999999999666667}
+V2 0.499 {'halfspace_Czz': 1.0, 'halfspace_CL': 1.0, 'halfspace_CT': 1.0, 'halfspace_Cc': 1.0, 'thin_Czz_over_t_by_M': 1.0000000165337326, 'thin_CL_over_t_by_mu': 0.9999999998333652, 'thin_CT_over_t_by_mu': 0.9999999999666664}
+V3 0.45 {'table_build_s': 17.781838, 'moment_zz_over_t_by_M': 1.0, 'moment_inplane_over_t_by_mu': 1.0, 'base_pressure_total': 1.0, 'base_shear_isotropic_total': 1.0, 'total_zz_at_10t_over_hs': -0.000232, 'total_zz_at_20t_over_hs': -0.0, 'total_a_at_20t_over_hs': 0.0, 'table_maxdiff_rel_gzz': 0.0, 'table_maxdiff_rel_a': 0.0, 'table_maxdiff_rel_f2': 0.0, 'table_maxdiff_rel_f1': 0.0, 'table_maxdiff_rel_bzz': 0.0, 'table_maxdiff_rel_hzx': 0.0, 'table_maxdiff_rel_hxz': 0.0, 'table_maxdiff_rel_ab': 0.0, 'table_maxdiff_rel_f2b': 0.0}
+V3 0.49 {'table_build_s': 12.091474, 'moment_zz_over_t_by_M': 1.0, 'moment_inplane_over_t_by_mu': 1.0, 'base_pressure_total': 1.0, 'base_shear_isotropic_total': 1.0, 'total_zz_at_10t_over_hs': -0.000461, 'total_zz_at_20t_over_hs': -0.0, 'total_a_at_20t_over_hs': 1e-06, 'table_maxdiff_rel_gzz': 0.0, 'table_maxdiff_rel_a': 0.0, 'table_maxdiff_rel_f2': 0.0, 'table_maxdiff_rel_f1': 0.0, 'table_maxdiff_rel_bzz': 0.0, 'table_maxdiff_rel_hzx': 0.0, 'table_maxdiff_rel_hxz': 0.0, 'table_maxdiff_rel_ab': 0.0, 'table_maxdiff_rel_f2b': 0.0}
+V3 0.499 {'table_build_s': 16.946477, 'moment_zz_over_t_by_M': 1.0, 'moment_inplane_over_t_by_mu': 1.0, 'base_pressure_total': 1.0, 'base_shear_isotropic_total': 1.0, 'total_zz_at_10t_over_hs': -0.000537, 'total_zz_at_20t_over_hs': -0.0, 'total_a_at_20t_over_hs': 1e-06, 'table_maxdiff_rel_gzz': 0.0, 'table_maxdiff_rel_a': 0.0, 'table_maxdiff_rel_f2': 0.0, 'table_maxdiff_rel_f1': 0.0, 'table_maxdiff_rel_bzz': 0.0, 'table_maxdiff_rel_hzx': 0.0, 'table_maxdiff_rel_hxz': 0.0, 'table_maxdiff_rel_ab': 0.0, 'table_maxdiff_rel_f2b': 0.0}
+V4 rectangle closed forms, max rel diff vs dblquad: 8.023267676878272e-14
+V5 {'disk_w r=0.0 b=1.0': '0.0e+00', 'disk_w r=0.3 b=1.0': '7.6e-13', 'disk_w r=0.999 b=1.0': 'nan', 'disk_w r=1.5 b=1.0': '6.2e-16', 'disk_w r=4.0 b=1.0': '2.9e-15', 'I00 r=0.5 s=1.0': '3.2e-07', 'I11 r=0.5 s=1.0': '1.1e-06', 'I00 r=0.9 s=1.0': '4.3e-06', 'I11 r=0.9 s=1.0': '8.0e-06', 'I00 r=2.0 s=0.7': '6.9e-08', 'I11 r=2.0 s=0.7': '2.7e-07', 'I00 r=0.05 s=1.0': '9.9e-08', 'I11 r=0.05 s=1.0': '2.6e-05', 'I11 branch smoothness max |2nd diff|/value': '9.3e-08', 'ring_quad I11 r=0.5 [0.2,1.0]': '1.7e-09', 'ring_quad I11 r=0.2 [0.25,0.3]': '2.9e-16', 'ring_quad I11 r=1.3 [0.2,1.0]': '1.1e-15'}
+V6 Q1 Struve vs quadrature: 3.557909351802338e-15
+V7 0.45 {'(0.0,0.0)mm': '3.6e-10', '(3.0,2.0)mm': '2.0e-10', '(5.1,0.0)mm': '5.8e-10', '(7.0,0.0)mm': '1.4e-09', '(0.0,12.0)mm': '1.8e-08', '(15.3,0.0)mm': '1.1e-07'}
+V7 0.499 {'(0.0,0.0)mm': '1.3e-09', '(3.0,2.0)mm': '4.2e-10', '(5.1,0.0)mm': '3.2e-09', '(7.0,0.0)mm': '9.0e-10', '(0.0,12.0)mm': '9.0e-09', '(15.3,0.0)mm': '5.1e-08'}
+done

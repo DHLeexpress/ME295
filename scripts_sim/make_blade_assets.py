@@ -15,14 +15,18 @@ PDMS layer. This script
     assembly/blade_assets.xml                     <mesh> entries
     assembly/blade_geoms_{left,right}.xml         collision pieces (MuJoCo will not include
                                                   one file twice)
-    assembly/pdms_{left,right}.xml                the PDMS layer as a deformable body: a grid of
-                                                  cells, each a column of PDMS on three elastic
-                                                  slide joints (compression + two shear
-                                                  directions), bonded to the blade; one contact
-                                                  point per cell (flat ellipsoid)
+    assembly/pdms_{left,right}.xml                the PDMS layer as a deformable body, bonded to the
+                                                  blade at its back face, either
+                                                  --pdms-model flex: a 3D finite-element flex (MuJoCo
+                                                    flexcomp, linear tetrahedra), back-face vertices
+                                                    pinned to the blade, contact on its free face; or
+                                                  --pdms-model cells: a grid of cells, each a column of
+                                                    PDMS on three elastic slide joints (compression +
+                                                    two shear directions), one contact point per cell
+                                                    (thin-layer / Winkler limit)
 
 Usage: python scripts_sim/make_blade_assets.py model/gripper_dohyun_v1.stl [--young 1e6 ...]
-       python scripts_sim/make_blade_assets.py model/gripper_dohyun_v1.stl --pdms-only --cells 5x7
+       python scripts_sim/make_blade_assets.py model/gripper_dohyun_v1.stl --pdms-only --pdms-model cells
 Re-run whenever the blade STL or the PDMS parameters change (--pdms-only skips the convex
 decomposition and rewrites only assembly/pdms_*.xml).
 """
@@ -67,19 +71,33 @@ def main():
     ap.add_argument("--scale", type=float, default=1e-3, help="STL units -> metres (STL is in mm)")
     ap.add_argument("--threshold", type=float, default=0.03, help="CoACD concavity threshold")
     ap.add_argument("--resolution", type=int, default=200, help="CoACD remesh resolution (sets surface error)")
-    # PDMS layer (placeholders until the material is chosen: Sylgard-184-like)
+    # PDMS layer (placeholders until the material is chosen: Sylgard-184-like), linear elastic
+    ap.add_argument("--pdms-model", choices=["flex", "cells"], default="cells",
+                    help="flex: 3D finite elements (MuJoCo flexcomp); cells: thin-layer (Winkler) cells")
+    ap.add_argument("--thickness", type=float, default=1.5e-3,
+                    help="PDMS thickness (m). The STL extrusion is the part proud of the blade face (0.5 mm); "
+                         "the rest sits in a pocket behind it, so the back face is this far behind the free face")
     ap.add_argument("--young", type=float, default=1.0e6, help="PDMS Young's modulus (Pa)")
     ap.add_argument("--poisson", type=float, default=0.45, help="PDMS Poisson's ratio (real PDMS: ~0.49)")
-    ap.add_argument("--tau", type=float, default=1e-3,
-                    help="Kelvin-Voigt time constant of the layer (s): damping = tau * stiffness")
+    ap.add_argument("--tau", type=float, default=0.0,
+                    help="cells: Kelvin-Voigt time constant (s), damping = tau * stiffness; flex: Rayleigh "
+                         "damping (s). 0 = linear elastic, no damping (default)")
     ap.add_argument("--density", type=float, default=965.0, help="PDMS density (kg/m^3)")
-    ap.add_argument("--cells", default="5x7", help="cell grid across x (blade width) x along y (finger)")
+    ap.add_argument("--cells", default="5x7", help="cells: grid across x (blade width) x along y (finger)")
+    ap.add_argument("--flex-grid", default="6x8x2",
+                    help="flex: vertices across x, along y, through the thickness. 6x8x2 (one element per taxel, one "
+                         "through the thickness) is the robot choice of docs/report_flex (21 ms per step with the "
+                         "stiff contact); 41x57x3 is the fixed-rig choice. More than 3 vertices through the thickness "
+                         "makes the contact softer, not the result better (lighter vertices)")
     # contact on the free face
     ap.add_argument("--mu", type=float, default=1.0, help="PDMS sliding friction")
-    ap.add_argument("--solref", default="0.005 1",
-                    help="contact solref of each cell (time constant, damping ratio): the compliance of the "
-                         "object's surface (e.g. a book cover), not of the PDMS")
-    ap.add_argument("--solimp", default="0.9 0.95 0.002", help="contact solimp of each cell (dmin dmax width)")
+    ap.add_argument("--solref", default=None,
+                    help="contact solref (time constant, damping ratio). cells (default 0.003 1): the "
+                         "compliance of the object's surface (e.g. a book cover), not of the PDMS. flex "
+                         "(default 0.0001 1, below the time step: needs <flag refsafe='disable'/>): a stiff "
+                         "contact, so the deformation is the PDMS's")
+    ap.add_argument("--solimp", default=None, help="contact solimp (dmin dmax width); cells default "
+                    "0.9 0.95 0.002, flex 0.99 0.99 0.001")
     ap.add_argument("--pdms-only", action="store_true", help="only rewrite assembly/pdms_*.xml")
     args = ap.parse_args()
 
@@ -146,70 +164,139 @@ def main():
     print(f"PDMS split: {in_pdms.sum()} triangles; {len(names)} convex pieces, {cut} cut back to the plate")
 
 
-def write_pdms(args, lo, hi, z_face, z_plate, header):
-    """assembly/pdms_{left,right}.xml: the PDMS layer as a deformable body (lumped thin layer).
+def flex_lame_inputs(E, nu):
+    """young/poisson to give a MuJoCo 3.17 dof="full" flex so that it behaves as linear elasticity with (E, nu).
 
-    The layer (a x b x t) is split into nx x ny cells. Each cell is a column of PDMS bonded to the
-    blade at its back face: a point mass on three slide joints in the PDMS frame (x across the blade,
-    y toward the tip, z the face normal, +z into the layer) with linear-elastic stiffness
-        k_n = E (1 - nu) / ((1 + nu) (1 - 2 nu)) * A / t     confined compression
-        k_s = E / (2 (1 + nu)) * A / t                       shear
-    and Kelvin-Voigt damping tau * k. For t much smaller than the cell size this is the thin-layer limit
-    of linear elasticity (a Winkler foundation): each column deforms under its own traction only.
+    Its StVK metric (user_flexcomp.cc, MetricTensor) weights (tr E)^2 by lambda instead of lambda/2, i.e. the
+    flex has (mu, 2 lambda). Keep mu = E/(2(1+nu)) and halve lambda: nu_in/(1 - 2 nu_in) = nu/(2(1 - 2 nu)).
+    """
+    G = E / (2 * (1 + nu))
+    nu_in = nu / (2 * (1 - nu))
+    return 2 * G * (1 + nu_in), nu_in
+
+
+def write_pdms(args, lo, hi, z_face, z_plate, header):
+    """assembly/pdms_{left,right}.xml: the PDMS layer as a deformable body, bonded to the blade at its back face.
+
+    PDMS frame ({side}_pdms, welded to the fingertip, at the middle of the layer): x across the blade width, y
+    toward the tip, z the face normal, +z into the layer. The free face is at z = -t/2; the STL extrusion is the
+    part of the layer that stands proud of the blade face, the rest of the thickness t sits in a pocket.
+
+    flex   a 3D flexcomp grid (linear tetrahedra; MuJoCo's elasticity is Saint Venant-Kirchhoff: Hooke's law on
+           the Green strain, i.e. linear elasticity at these micro-strains), vertices of the back face pinned to
+           the PDMS body, Young's modulus E, Poisson's ratio nu, Rayleigh damping tau (0: none). MuJoCo 3.17's
+           dof="full" StVK energy is mu tr(E^2) + lambda (tr E)^2, twice the standard lambda term (patch tests:
+           shear exact, uniaxial strain 1.82x at nu = 0.45), so flex_lame_inputs() passes the young/poisson
+           whose doubled lambda and unchanged mu are those of (E, nu).
+    cells  nx x ny columns, each a point mass on three slide joints with
+               k_n = E (1 - nu) / ((1 + nu) (1 - 2 nu)) * A / t     confined compression
+               k_s = E / (2 (1 + nu)) * A / t                       shear
+           and damping tau * k (0: none). This is the thin-layer (Winkler) limit of linear elasticity: each
+           column deforms under its own traction only.
     """
     s = args.scale
-    nx, ny = (int(v) for v in args.cells.lower().split("x"))
     a, b = (hi - lo) * s
-    t = (z_plate - z_face) * s
+    t = args.thickness
+    t_proud = (z_plate - z_face) * s
     cx, cy = (lo + hi) / 2 * s
-    cz = (z_face + z_plate) / 2 * s
-    dx, dy = a / nx, b / ny
-    area = dx * dy
-    E, nu = args.young, args.poisson
-    kn = E * (1 - nu) / ((1 + nu) * (1 - 2 * nu)) * area / t
-    ks = E / (2 * (1 + nu)) * area / t
-    mass = args.density * area * t
-    contact = (f'priority="2" condim="3" friction="{args.mu:g} 0.005 0.0001" solref="{args.solref}" '
-               f'solimp="{args.solimp} 0.5 2" contype="2" conaffinity="1"')
+    cz = z_face * s + t / 2   # middle of the layer (STL z grows into the blade)
+    E, nu, rho = args.young, args.poisson, args.density
+    M = E * (1 - nu) / ((1 + nu) * (1 - 2 * nu))
+    G = E / (2 * (1 + nu))
+    flex = args.pdms_model == "flex"
+    solref = args.solref or ("0.0001 1" if flex else "0.003 1")
+    solimp = args.solimp or ("0.99 0.99 0.001" if flex else "0.9 0.95 0.002")
     for side in ("left", "right"):
         n = f"{side}_pdms"
-        cells = []
-        for j in range(ny):
-            for i in range(nx):
-                c = f"{n}_{i}_{j}"
-                x, y = cx + (i + 0.5) * dx - a / 2, cy + (j + 0.5) * dy - b / 2
-                cells.append(f"""  <body name="{c}" pos="{x:.5f} {y:.5f} {cz:.5f}" childclass="pdms_cell">
-    <joint name="{c}_x" axis="1 0 0" stiffness="{ks:.6g}" damping="{args.tau * ks:.6g}"/>
-    <joint name="{c}_y" axis="0 1 0" stiffness="{ks:.6g}" damping="{args.tau * ks:.6g}"/>
-    <joint name="{c}_z" axis="0 0 1" stiffness="{kn:.6g}" damping="{args.tau * kn:.6g}"/>
-    <geom name="{c}" type="ellipsoid" size="{dx / 2:.5f} {dy / 2:.5f} {t / 2:.5f}" mass="{mass:.6g}" {contact}
-          group="3" rgba="0.95 0.5 0.1 0.5"/>
-  </body>""")
-        (ROOT / f"assembly/pdms_{side}.xml").write_text(f"""{header}<mujoco>
-  <!-- PDMS layer {a * 1e3:.1f} x {b * 1e3:.1f} x {t * 1e3:.2f} mm on the blade's flat face, as a deformable body of
-       {nx} x {ny} cells ({dx * 1e3:.2f} x {dy * 1e3:.2f} mm; i across the blade width x, j along the finger y).
-       Material (placeholders): E = {E / 1e6:g} MPa, nu = {nu:g}, {args.density:g} kg/m^3, Kelvin-Voigt time {args.tau * 1e3:g} ms.
-       Each cell is a column of PDMS bonded to the blade at its back face: a point mass on three slide joints in
-       the PDMS frame (+z into the layer), compression stiffness k_n = E(1-nu)/((1+nu)(1-2nu)) A/t = {kn:.4g} N/m,
-       shear stiffness k_s = E/(2(1+nu)) A/t = {ks:.4g} N/m, damping {args.tau * 1e3:g} ms x stiffness. The joint
-       positions {n}_i_j_x/y/z are the layer's deformation (m). Thin-layer limit of linear elasticity (Winkler):
-       the layer is {t * 1e3:.2f} mm thick, so each column deforms under its own traction only.
-       Contact: one point per cell (a flat ellipsoid filling the cell: its apex is the free face and it does not
-       reach past the layer), priority 2, friction {args.mu:g}; the
-       contact solref/solimp stand for the compliance of the object's surface, not of the PDMS.
-       {n} is the welded reference body (PDMS frame): visual mesh, a non-colliding envelope box for distance
-       queries, and the surface site. -->
-  <body name="{n}" pos="{cx:.5f} {cy:.5f} {cz:.5f}">
+        ref = f"""  <body name="{n}" pos="{cx:.5f} {cy:.5f} {cz:.5f}" childclass="pdms">
     <inertial pos="0 0 0" mass="1e-6" diaginertia="1e-12 1e-12 1e-12"/>
     <geom name="{n}_visual" type="mesh" mesh="pdms_visual" pos="{-cx:.5f} {-cy:.5f} {-cz:.5f}"
           contype="0" conaffinity="0" group="2" material="pdms_mat"/>
     <geom name="{n}" type="box" size="{a / 2:.5f} {b / 2:.5f} {t / 2:.5f}" contype="0" conaffinity="0"
           group="5" rgba="0.95 0.5 0.1 0.3"/>
-    <site name="{n}_surface" type="box" pos="0 0 {-t / 2:.5f}" size="{a / 2:.5f} {b / 2:.5f} 0.0001" group="4"/>
-  </body>
-""" + "\n".join(cells) + "\n</mujoco>\n")
-    print(f"PDMS {a * 1e3:.1f} x {b * 1e3:.1f} x {t * 1e3:.2f} mm, {nx} x {ny} cells: k_n {kn:.4g} N/m, "
-          f"k_s {ks:.4g} N/m per cell (face z = {z_face:.2f}, plate z = {z_plate:.2f} in STL units)")
+    <site name="{n}_surface" type="box" pos="0 0 {-t / 2:.5f}" size="{a / 2:.5f} {b / 2:.5f} 0.0001" group="4"/>"""
+        if flex:
+            vx, vy, vz = (int(v) for v in args.flex_grid.lower().split("x"))
+            E_in, nu_in = flex_lame_inputs(E, nu)
+            body = f"""{ref}
+    <flexcomp name="{n}_flex" type="grid" dim="3" count="{vx} {vy} {vz}"
+              spacing="{a / (vx - 1):.7f} {b / (vy - 1):.7f} {t / (vz - 1):.7f}" radius="0"
+              mass="{rho * a * b * t:.6g}" group="3" rgba="0.95 0.5 0.1 0.6">
+      <!-- E = {E:g} Pa, nu = {nu:g}, entered as young/poisson that give MuJoCo's doubled lambda its intended value -->
+      <elasticity young="{E_in:.6g}" poisson="{nu_in:.6f}" damping="{args.tau:g}"/>
+      <contact contype="2" conaffinity="2" condim="3" priority="2" friction="{args.mu:g} 0.005 0.0001"
+               solref="{solref}" solimp="{solimp}" selfcollide="none"/>
+      <pin gridrange="0 0 {vz - 1} {vx - 1} {vy - 1} {vz - 1}"/>
+    </flexcomp>
+  </body>"""
+            what = (f"a 3D finite-element flex of {vx} x {vy} x {vz} vertices (linear tetrahedra, Saint Venant-Kirchhoff\n"
+                    f"       elasticity = Hooke's law at these strains, young/poisson remapped for MuJoCo's doubled lambda;\n"
+                    f"       Rayleigh damping {args.tau:g} s). The {vx * vy} vertices of the\n"
+                    f"       back face are pinned to {n} (bonded); the free face (z = -t/2) and the sides are free.\n"
+                    f"       Contact: the flex's own surface, contype/conaffinity 2 (objects need conaffinity bit 2), priority 2,\n"
+                    f"       friction {args.mu:g}, solref {solref} below the 0.5 ms step (refsafe disabled in the option) and solimp\n"
+                    f"       {solimp}: a stiff contact, so the deformation is the PDMS's own. {n}_flex vertex positions\n"
+                    f"       relative to {n} are the layer's displacement field.")
+            summary = f"flex {vx} x {vy} x {vz} vertices"
+        else:
+            nx, ny = (int(v) for v in args.cells.lower().split("x"))
+            dx, dy = a / nx, b / ny
+            area = dx * dy
+            kn, ks = M * area / t, G * area / t
+            mass = rho * area * t
+            contact = (f'priority="2" condim="3" friction="{args.mu:g} 0.005 0.0001" solref="{solref}" '
+                       f'solimp="{solimp} 0.5 2" contype="2" conaffinity="1"')
+            damp = lambda k: f' damping="{args.tau * k:.6g}"' if args.tau > 0 else ""
+            cells = []
+            for j in range(ny):
+                for i in range(nx):
+                    c = f"{n}_{i}_{j}"
+                    x, y = cx + (i + 0.5) * dx - a / 2, cy + (j + 0.5) * dy - b / 2
+                    cells.append(f"""  <body name="{c}" pos="{x:.5f} {y:.5f} {cz:.5f}" childclass="pdms">
+    <joint name="{c}_x" axis="1 0 0" stiffness="{ks:.6g}"{damp(ks)}/>
+    <joint name="{c}_y" axis="0 1 0" stiffness="{ks:.6g}"{damp(ks)}/>
+    <joint name="{c}_z" axis="0 0 1" stiffness="{kn:.6g}"{damp(kn)}/>
+    <geom name="{c}" type="ellipsoid" pos="0 0 {(t_proud - t) / 2:.5f}" size="{dx / 2:.5f} {dy / 2:.5f} {t_proud / 2:.5f}"
+          mass="{mass:.6g}" {contact}
+          group="3" rgba="0.95 0.5 0.1 0.5"/>
+  </body>""")
+            body = f"{ref}\n  </body>\n" + "\n".join(cells)
+            what = (f"{nx} x {ny} cells ({dx * 1e3:.2f} x {dy * 1e3:.2f} mm): each a column of PDMS on three slide joints in the\n"
+                    f"       PDMS frame, k_n = E(1-nu)/((1+nu)(1-2nu)) A/t = {kn:.4g} N/m, k_s = E/(2(1+nu)) A/t = {ks:.4g} N/m,\n"
+                    f"       damping {args.tau:g} s x stiffness (thin-layer / Winkler limit: each column deforms under its own\n"
+                    f"       traction only). The joint positions {n}_i_j_x/y/z are the layer's deformation (m). Contact: one\n"
+                    f"       point per cell (a flat ellipsoid filling the cell's protruding part), priority 2, friction {args.mu:g}, solref {solref},\n"
+                    f"       solimp {solimp}: the compliance of the object's surface, not of the PDMS.")
+            summary = f"{nx} x {ny} cells: k_n {kn:.4g} N/m, k_s {ks:.4g} N/m per cell"
+        (ROOT / f"assembly/pdms_{side}.xml").write_text(f"""{header}<mujoco>
+  <!-- PDMS layer {a * 1e3:.1f} x {b * 1e3:.1f} x {t * 1e3:.2f} mm on the blade's flat face ({t_proud * 1e3:.2f} mm proud of it, the rest in
+       a pocket), linear elastic (placeholders): E = {E / 1e6:g} MPa, nu = {nu:g}, {rho:g} kg/m^3; bonded at its back face.
+       Model: {what}
+       {n} is the welded reference body (PDMS frame at mid-thickness: x across the blade, y toward the tip, +z into
+       the layer): visual mesh, a non-colliding envelope box for distance queries, and the free-face site. -->
+{body}
+</mujoco>
+""")
+    # solver settings that depend on the PDMS model, merged into the <option> of ur10e_2f140.xml by an include
+    if flex:
+        opt = '<option solver="CG" iterations="1000" tolerance="1e-10">\n    <flag island="disable"/>\n  </option>'
+        why = ("CG: the only solver MuJoCo allows for a flex pinned to a moving body. 1000 iterations, tolerance 1e-10: the\n"
+               "       stiff flex contact needs a converged solve, otherwise transient overloads invert the layer (the StVK\n"
+               "       edge-length energy has no inversion barrier). Islands disabled: MuJoCo 3.17's island constraint solver\n"
+               "       leaves the stiffness of a flex with articulated attachments out of its metric (engine_metric.c,\n"
+               "       flexMatrixFree), and the layer diverges within a few steps.")
+    else:
+        opt = '<option solver="Newton"/>'
+        why = ("Newton: converges the ~250 contact rows of a grasp in a few iterations; CG at its 100-iteration cap left up\n"
+               "       to 10 N of force imbalance on a grasped book.")
+    (ROOT / "assembly/pdms_option.xml").write_text(f"""{header}<mujoco>
+  <!-- Solver settings for the PDMS model ({args.pdms_model}), merged into the <option> of ur10e_2f140.xml.
+       {why} -->
+  {opt}
+</mujoco>
+""")
+    print(f"PDMS {a * 1e3:.1f} x {b * 1e3:.1f} x {t * 1e3:.2f} mm ({t_proud * 1e3:.2f} mm proud), {summary} "
+          f"(face z = {z_face:.2f}, plate z = {z_plate:.2f} in STL units)")
 
 
 if __name__ == "__main__":

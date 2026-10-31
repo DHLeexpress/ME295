@@ -1,0 +1,716 @@
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.88e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.57e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 144. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.42e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 24. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.43e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 87. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.26e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 81. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.11e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 96. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.74e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 12. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.24e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 119. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.04e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 119. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.74e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 119. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.84e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 23. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.14e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 104. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.40e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 101. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.94e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.54e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 495. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.88e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.59e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 453. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.27e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 297. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.18e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 93. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.41e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 493. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.24e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 449. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.71e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 5. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.42e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 306. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.82e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 44. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.79e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 353. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.19e-06 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 287. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.54e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 989. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.49e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 173. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.90e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 83. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.28e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 245. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.45e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 821. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.72e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 11. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.91e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 89. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.00e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 899. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.64e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 593. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.18e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 527. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.47e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 821. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.59e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 11. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.68e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 611. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.44e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 818. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.06e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 767. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.10e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 896. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.26e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 899. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.30e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 960. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.07e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 341. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.08e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 102. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.35e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.60e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 90. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.75e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 347. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.08e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 198. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 5.07e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 900. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.54e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 72. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.10e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 24. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.04e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 182. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.33e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 186. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.95e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 594. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.85e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 24. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.61e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 900. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.02e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 906. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.33e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 17. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.75e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 180. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.50e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 903. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.10e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 414. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.21e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1778. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.07e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 81. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.33e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 383. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.13e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 294. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.09e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 653. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.19e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 85. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.63e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 681. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.59e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 684. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.00e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 296. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.09e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 78. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.54e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 167. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.36e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 18. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.09e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 341. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.82e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 204. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.36e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 381. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.67e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.53e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3317. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.18e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1785. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.84e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.92e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 173. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 8.99e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1020. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.30e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 341. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.54e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1974. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 5.53e-06 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3317. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.76e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1806. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.49e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 569. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.38e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 174. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.95e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 477. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.87e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 69. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.01e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 677. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.76e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 683. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.71e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 6956. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.95e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 365. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.87e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 17. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.24e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 365. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.47e-06 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3492. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.04e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 192. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.60e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 8.16e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1013. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.90e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 186. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.09e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 174. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.38e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3480. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.62e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1830. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.70e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 168. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.35e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3486. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.94e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 6665. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.16e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 6665. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.75e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2556. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.68e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 966. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.58e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 6966. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.78e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 384. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.30e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 729. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.76e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.35e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 30. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.11e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 6972. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.20e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 7302. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.15e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 3708. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.09e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 336. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.58e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.40e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 258. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.22e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 4749. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.14e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 23273. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.96e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1349. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 9.69e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1355. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.04e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 27356. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.44e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1385. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.73e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 692. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.83e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 26690. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.66e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 26696. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.48e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2033. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.59e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 22469. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.08e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 6053. Check model. Time = 0.0000.
+
+WARNING: flex 'pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'pdms_flex', id 0
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.19e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 27369. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.76e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1404. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.27e+00 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1401. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.45e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 27363. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.08e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1356. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.05e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 675. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.44e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 675. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 8.09e-03 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 27372. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.82e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1362. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.21e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 26688. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.66e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 16413. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.20e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 27369. Check model. Time = 0.0000.
+
+WARNING: flex 'left_pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'left_pdms_flex', id 0
+
+WARNING: flex 'right_pdms_flex' is not rigid and has no equality constraints or passive forces
+Element name 'right_pdms_flex', id 1
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.47e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 919. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 8.63e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 7.86e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.63e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.03e-01 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.66e-02 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 6.30e-04 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 2. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.55e-05 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1510. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 4.30e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1336. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 3.77e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 1288. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.43e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 907. Check model. Time = 0.0000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 2.19e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 493. Check model. Time = 0.0000.
+
+{'label': '(6, 8, 2) fixed', 'count': (6, 8, 2), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 144, 'nefmK': 2538, 'nefmdof': 48, 'efm_active': 1, 'ms_forward_it100': 0.39887428283691406, 'pcg_iterations_to_tol': 14, 'probe_wall_s': 0.002270936965942383, 'ms_forward_converged': 0.23102760314941406}
+{'label': '(6, 8, 2) hinge', 'count': (6, 8, 2), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 145, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 0.45871734619140625, 'pcg_iterations_to_tol': 49, 'probe_wall_s': 0.0035066604614257812, 'ms_forward_converged': 0.36644935607910156}
+{'label': '(11, 15, 2) fixed', 'count': (11, 15, 2), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 495, 'nefmK': 9477, 'nefmdof': 165, 'efm_active': 1, 'ms_forward_it100': 1.241922378540039, 'pcg_iterations_to_tol': 23, 'probe_wall_s': 0.009137392044067383, 'ms_forward_converged': 0.95367431640625}
+{'label': '(11, 15, 2) hinge', 'count': (11, 15, 2), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 496, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 1.8970966339111328, 'pcg_iterations_to_tol': 69, 'probe_wall_s': 0.017664194107055664, 'ms_forward_converged': 1.7392635345458984}
+{'label': '(11, 15, 3) fixed', 'count': (11, 15, 3), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 990, 'nefmK': 29916, 'nefmdof': 330, 'efm_active': 1, 'ms_forward_it100': 2.8502941131591797, 'pcg_iterations_to_tol': 36, 'probe_wall_s': 0.026012659072875977, 'ms_forward_converged': 2.286195755004883}
+{'label': '(11, 15, 3) hinge', 'count': (11, 15, 3), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 991, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 6.742954254150391, 'pcg_iterations_to_tol': 133, 'probe_wall_s': 0.0887761116027832, 'ms_forward_converged': 8.120536804199219}
+{'label': '(21, 29, 3) fixed', 'count': (21, 29, 3), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 3654, 'nefmK': 115236, 'nefmdof': 1218, 'efm_active': 1, 'ms_forward_it100': 13.508319854736328, 'pcg_iterations_to_tol': 49, 'probe_wall_s': 0.07049131393432617, 'ms_forward_converged': 6.821393966674805}
+{'label': '(21, 29, 3) hinge', 'count': (21, 29, 3), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 3655, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 16.74032211303711, 'pcg_iterations_to_tol': 147, 'probe_wall_s': 0.235382080078125, 'ms_forward_converged': 22.441864013671875}
+{'label': '(11, 15, 5) fixed', 'count': (11, 15, 5), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 1980, 'nefmK': 70794, 'nefmdof': 660, 'efm_active': 1, 'ms_forward_it100': 8.026838302612305, 'pcg_iterations_to_tol': 67, 'probe_wall_s': 0.07073116302490234, 'ms_forward_converged': 4.433155059814453}
+{'label': '(11, 15, 5) hinge', 'count': (11, 15, 5), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 1981, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 8.464574813842773, 'pcg_iterations_to_tol': 262, 'probe_wall_s': 0.21932697296142578, 'ms_forward_converged': 18.8143253326416}
+{'label': '(21, 29, 5) fixed', 'count': (21, 29, 5), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 7308, 'nefmK': 272538, 'nefmdof': 2436, 'efm_active': 1, 'ms_forward_it100': 20.53380012512207, 'pcg_iterations_to_tol': 83, 'probe_wall_s': 0.21320605278015137, 'ms_forward_converged': 18.403053283691406}
+{'label': '(21, 29, 5) hinge', 'count': (21, 29, 5), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 7309, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 31.564950942993164, 'pcg_iterations_to_tol': 267, 'probe_wall_s': 0.8423829078674316, 'ms_forward_converged': 73.78578186035156}
+{'label': '(41, 57, 5) fixed', 'count': (41, 57, 5), 'parent': 'fixed', 'rhs': 'gravity', 'nv': 28044, 'nefmK': 1069146, 'nefmdof': 9348, 'efm_active': 1, 'ms_forward_it100': 95.93009948730469, 'pcg_iterations_to_tol': 107, 'probe_wall_s': 0.969879150390625, 'ms_forward_converged': 91.40539169311523}
+{'label': '(41, 57, 5) hinge', 'count': (41, 57, 5), 'parent': 'hinge', 'rhs': 'gravity', 'nv': 28045, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 261.09766960144043, 'pcg_iterations_to_tol': 269, 'probe_wall_s': 5.3934009075164795, 'ms_forward_converged': 364.57109451293945}
+{'label': '(11,15,3) fixed qvel', 'count': (11, 15, 3), 'parent': 'fixed', 'rhs': 'gravity+qvel', 'nv': 990, 'nefmK': 29916, 'nefmdof': 330, 'efm_active': 1, 'ms_forward_it100': 1.7390251159667969, 'pcg_iterations_to_tol': 34, 'probe_wall_s': 0.015669822692871094, 'ms_forward_converged': 1.4181137084960938}
+{'label': '(11,15,3) hinge qvel', 'count': (11, 15, 3), 'parent': 'hinge', 'rhs': 'gravity+qvel', 'nv': 991, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 4.509925842285156, 'pcg_iterations_to_tol': 110, 'probe_wall_s': 0.04190969467163086, 'ms_forward_converged': 4.662990570068359}
+{'label': '(11,15,3) slide', 'count': (11, 15, 3), 'parent': 'slide', 'rhs': 'gravity', 'nv': 991, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 1.5468597412109375, 'pcg_iterations_to_tol': 1, 'probe_wall_s': 0.0014116764068603516, 'ms_forward_converged': 1.1234283447265625}
+{'label': '(11,15,3) free', 'count': (11, 15, 3), 'parent': 'free', 'rhs': 'gravity', 'nv': 996, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'ms_forward_it100': 0.7359981536865234, 'pcg_iterations_to_tol': 1, 'probe_wall_s': 0.00074005126953125, 'ms_forward_converged': 0.6856918334960938}
+{'label': 'robot 11x15x3 (home keyframe)', 'nv': 1998, 'nefmK': 0, 'nefmdof': 0, 'efm_active': 1, 'pcg_iterations_to_tol': 116, 'probe_wall_s': 0.19091033935546875}
+wrote docs/report_flex/study/internals/out/i1_metric_pcg.json

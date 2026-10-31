@@ -1,0 +1,161 @@
+t 1.1005 bad 0 it 100 ctrl  191.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1015 bad 0 it  83 ctrl  191.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1025 bad 0 it  81 ctrl  191.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1035 bad 0 it  74 ctrl  192.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1045 bad 0 it  64 ctrl  192.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1055 bad 0 it  64 ctrl  192.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1065 bad 0 it  66 ctrl  193.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1075 bad 0 it  64 ctrl  193.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1085 bad 0 it  64 ctrl  193.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1095 bad 0 it  68 ctrl  193.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1105 bad 0 it  64 ctrl  194.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1115 bad 0 it  60 ctrl  194.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1125 bad 0 it  60 ctrl  194.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1135 bad 0 it  46 ctrl  194.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1145 bad 0 it  55 ctrl  195.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1155 bad 0 it  48 ctrl  195.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1165 bad 0 it  48 ctrl  195.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1175 bad 0 it  47 ctrl  196.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1185 bad 0 it  51 ctrl  196.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1195 bad 0 it  60 ctrl  196.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1205 bad 0 it  51 ctrl  196.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1215 bad 0 it  51 ctrl  197.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1225 bad 0 it  51 ctrl  197.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1235 bad 0 it  44 ctrl  197.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1245 bad 0 it  44 ctrl  197.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1255 bad 0 it  44 ctrl  198.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1265 bad 0 it  48 ctrl  198.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1275 bad 0 it  54 ctrl  198.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1285 bad 0 it  50 ctrl  199.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1295 bad 0 it  44 ctrl  199.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1305 bad 0 it  51 ctrl  199.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1315 bad 0 it   8 ctrl  199.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1325 bad 0 it  12 ctrl  200.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1335 bad 0 it  17 ctrl  200.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1345 bad 0 it  13 ctrl  200.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1355 bad 0 it   8 ctrl  200.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1365 bad 0 it  12 ctrl  201.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1375 bad 0 it  47 ctrl  201.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1385 bad 0 it   8 ctrl  201.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1395 bad 0 it   8 ctrl  202.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1405 bad 0 it  14 ctrl  202.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1415 bad 0 it  17 ctrl  202.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1425 bad 0 it  48 ctrl  202.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1435 bad 0 it   8 ctrl  203.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1445 bad 0 it   8 ctrl  203.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1455 bad 0 it  15 ctrl  203.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1465 bad 0 it   8 ctrl  204.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1475 bad 0 it  14 ctrl  204.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1485 bad 0 it  21 ctrl  204.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1495 bad 0 it  14 ctrl  204.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1505 bad 0 it  44 ctrl  205.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1515 bad 0 it  27 ctrl  205.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1525 bad 0 it  12 ctrl  205.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1535 bad 0 it   8 ctrl  205.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1545 bad 0 it   7 ctrl  206.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1555 bad 0 it  14 ctrl  206.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1565 bad 0 it  14 ctrl  206.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1575 bad 0 it   8 ctrl  207.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1585 bad 0 it  14 ctrl  207.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1595 bad 0 it   8 ctrl  207.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1605 bad 0 it  14 ctrl  207.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1615 bad 0 it   8 ctrl  208.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1625 bad 0 it   8 ctrl  208.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1635 bad 0 it   6 ctrl  208.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1645 bad 0 it  12 ctrl  208.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1655 bad 0 it   8 ctrl  209.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1665 bad 0 it  14 ctrl  209.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1675 bad 0 it   8 ctrl  209.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1685 bad 0 it  12 ctrl  210.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1695 bad 0 it  10 ctrl  210.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1705 bad 0 it  14 ctrl  210.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1715 bad 0 it   8 ctrl  210.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1725 bad 0 it   8 ctrl  211.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1735 bad 0 it  14 ctrl  211.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1745 bad 0 it   8 ctrl  211.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1755 bad 0 it   8 ctrl  211.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1765 bad 0 it   8 ctrl  212.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1775 bad 0 it  11 ctrl  212.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1785 bad 0 it   9 ctrl  212.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1795 bad 0 it   8 ctrl  213.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1805 bad 0 it  18 ctrl  213.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1815 bad 0 it  10 ctrl  213.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1825 bad 0 it   8 ctrl  213.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1835 bad 0 it   7 ctrl  214.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1845 bad 0 it   7 ctrl  214.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1855 bad 0 it  14 ctrl  214.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1865 bad 0 it  15 ctrl  214.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1875 bad 0 it   8 ctrl  215.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1885 bad 0 it   8 ctrl  215.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1895 bad 0 it   8 ctrl  215.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1905 bad 0 it  12 ctrl  216.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1915 bad 0 it  10 ctrl  216.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1925 bad 0 it  14 ctrl  216.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1935 bad 0 it   8 ctrl  216.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1945 bad 0 it   8 ctrl  217.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1955 bad 0 it  14 ctrl  217.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1965 bad 0 it  14 ctrl  217.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1975 bad 0 it  18 ctrl  217.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1985 bad 0 it  11 ctrl  218.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.1995 bad 0 it  11 ctrl  218.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2005 bad 0 it   9 ctrl  218.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2015 bad 0 it   8 ctrl  219.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2025 bad 0 it   8 ctrl  219.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2035 bad 0 it   8 ctrl  219.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2045 bad 0 it  44 ctrl  219.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2055 bad 0 it  12 ctrl  220.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2065 bad 0 it   8 ctrl  220.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2075 bad 0 it  12 ctrl  220.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2085 bad 0 it   8 ctrl  220.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2095 bad 0 it  14 ctrl  221.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2105 bad 0 it  10 ctrl  221.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2115 bad 0 it   6 ctrl  221.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2125 bad 0 it   8 ctrl  222.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2135 bad 0 it  13 ctrl  222.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2145 bad 0 it  10 ctrl  222.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2155 bad 0 it  11 ctrl  222.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2165 bad 0 it   7 ctrl  223.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2175 bad 0 it   8 ctrl  223.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2185 bad 0 it   7 ctrl  223.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/2.9N
+t 1.2195 bad 0 it 100 ctrl  223.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | left_pdms_flex:274/157.1N right_pdms_flex:274/110.8N table_top:4/22.9N
+t 1.2205 bad 0 it 100 ctrl  224.2 | l comp max  0.027mm inv    0 | r comp max  0.021mm inv    0 | left_pdms_flex:274/85.2N right_pdms_flex:209/28.8N table_top:4/65.8N
+t 1.2215 bad 0 it 100 ctrl  224.4 | l comp max  0.035mm inv    0 | r comp max  0.029mm inv    0 | left_pdms_flex:272/140.5N right_pdms_flex:133/42.0N table_top:4/93.1N
+t 1.2225 bad 0 it 100 ctrl  224.7 | l comp max  0.061mm inv    0 | r comp max  0.053mm inv    0 | left_pdms_flex:274/234.2N right_pdms_flex:159/110.8N table_top:4/118.5N
+t 1.2235 bad 0 it 100 ctrl  225.0 | l comp max  0.075mm inv    0 | r comp max  0.082mm inv    0 | left_pdms_flex:275/315.2N right_pdms_flex:202/197.4N table_top:4/127.7N
+t 1.2245 bad 0 it 100 ctrl  225.3 | l comp max  0.095mm inv    0 | r comp max  0.125mm inv    0 | left_pdms_flex:275/410.0N right_pdms_flex:229/307.1N table_top:4/131.0N
+t 1.2255 bad 0 it 100 ctrl  225.5 | l comp max  0.122mm inv    0 | r comp max  0.158mm inv    0 | left_pdms_flex:275/428.6N right_pdms_flex:261/370.6N table_top:4/135.9N
+t 1.2265 bad 0 it 100 ctrl  225.8 | l comp max  0.131mm inv    0 | r comp max  0.185mm inv    0 | left_pdms_flex:275/462.0N right_pdms_flex:273/438.7N table_top:4/132.1N
+t 1.2275 bad 0 it 100 ctrl  226.1 | l comp max  0.151mm inv    0 | r comp max  0.216mm inv    0 | left_pdms_flex:275/505.7N right_pdms_flex:268/463.9N table_top:4/139.2N
+t 1.2285 bad 0 it 100 ctrl  226.4 | l comp max  0.189mm inv    0 | r comp max  0.245mm inv    0 | left_pdms_flex:275/489.7N right_pdms_flex:254/441.6N table_top:4/83.0N
+t 1.2295 bad 0 it 100 ctrl  226.6 | l comp max  0.188mm inv    0 | r comp max  0.227mm inv    0 | left_pdms_flex:275/520.8N right_pdms_flex:250/473.3N table_top:4/122.1N
+t 1.2305 bad 0 it 100 ctrl  226.9 | l comp max  0.211mm inv    0 | r comp max  0.237mm inv    0 | left_pdms_flex:274/597.2N right_pdms_flex:251/490.7N table_top:4/125.3N
+t 1.2315 bad 0 it 100 ctrl  227.2 | l comp max  0.256mm inv    0 | r comp max  0.271mm inv    0 | left_pdms_flex:275/582.0N right_pdms_flex:259/577.9N table_top:4/130.0N
+t 1.2325 bad 0 it 100 ctrl  227.5 | l comp max  0.252mm inv    0 | r comp max  0.313mm inv    0 | left_pdms_flex:274/643.6N right_pdms_flex:259/585.9N table_top:4/116.3N
+t 1.2335 bad 0 it 100 ctrl  227.7 | l comp max  0.287mm inv    0 | r comp max  0.361mm inv    0 | left_pdms_flex:276/713.5N right_pdms_flex:267/655.3N table_top:4/142.0N
+t 1.2345 bad 0 it 100 ctrl  228.0 | l comp max  0.327mm inv    0 | r comp max  0.383mm inv    0 | left_pdms_flex:274/730.1N right_pdms_flex:273/682.0N table_top:4/112.7N
+t 1.2355 bad 0 it 100 ctrl  228.3 | l comp max  0.348mm inv    0 | r comp max  0.426mm inv    0 | left_pdms_flex:289/814.0N right_pdms_flex:271/697.3N table_top:4/156.2N
+t 1.2365 bad 0 it 100 ctrl  228.5 | l comp max  0.378mm inv    0 | r comp max  0.441mm inv    0 | left_pdms_flex:294/868.2N right_pdms_flex:260/736.2N table_top:4/135.6N
+t 1.2375 bad 0 it 100 ctrl  228.8 | l comp max  0.393mm inv    0 | r comp max  0.476mm inv    0 | left_pdms_flex:305/925.7N right_pdms_flex:258/724.0N table_top:4/101.0N
+t 1.2385 bad 0 it 100 ctrl  229.1 | l comp max  0.436mm inv    0 | r comp max  0.490mm inv    0 | left_pdms_flex:304/929.0N right_pdms_flex:265/780.1N table_top:4/135.2N
+t 1.2395 bad 0 it 100 ctrl  229.4 | l comp max  0.497mm inv    0 | r comp max  0.633mm inv    0 | left_pdms_flex:308/979.1N right_blade_00:1/7.9N right_pdms_flex:268/810.8N table_top:4/167.0N
+t 1.2405 bad 0 it 100 ctrl  229.6 | l comp max  0.501mm inv    0 | r comp max  0.573mm inv    0 | left_pdms_flex:299/938.0N right_blade_00:2/43.3N right_pdms_flex:268/855.5N table_top:4/78.4N
+t 1.2415 bad 0 it 100 ctrl  229.9 | l comp max  0.562mm inv    0 | r comp max  0.740mm inv    0 | left_pdms_flex:303/951.9N right_blade_00:2/27.4N right_pdms_flex:270/823.9N table_top:4/151.3N
+t 1.2425 bad 0 it 100 ctrl  230.2 | l comp max  0.583mm inv    0 | r comp max  0.933mm inv    9 | left_pdms_flex:303/989.0N right_blade_00:2/49.5N right_pdms_flex:273/846.4N table_top:4/138.6N
+t 1.2435 bad 0 it 100 ctrl  230.5 | l comp max  0.501mm inv    0 | r comp max  1.457mm inv    9 | left_blade_00:1/0.0N left_pdms_flex:304/1011.7N right_blade_00:2/96.2N right_pdms_flex:269/850.5N table_top:4/101.6N
+t 1.2445 bad 0 it 100 ctrl  230.7 | l comp max  0.821mm inv    1 | r comp max  1.543mm inv   21 | left_blade_00:2/0.0N left_pdms_flex:306/944.5N right_blade_00:2/65.4N right_pdms_flex:274/944.3N table_top:4/80.5N
+t 1.2455 bad 0 it 100 ctrl  231.0 | l comp max  1.354mm inv    3 | r comp max  1.542mm inv   57 | left_blade_00:2/23.4N left_pdms_flex:306/878.9N right_blade_00:2/62.3N right_pdms_flex:296/948.2N table_top:4/99.0N
+t 1.2465 bad 0 it 100 ctrl  231.3 | l comp max  1.562mm inv    3 | r comp max  1.792mm inv   57 | left_blade_00:2/29.0N left_pdms_flex:302/987.7N right_blade_00:2/65.9N right_pdms_flex:300/889.0N table_top:4/146.5N
+t 1.2475 bad 0 it 100 ctrl  231.5 | l comp max  1.572mm inv    9 | r comp max  1.658mm inv   57 | left_blade_00:2/6.1N left_pdms_flex:308/1047.9N right_blade_00:2/63.4N right_pdms_flex:301/914.4N table_top:4/153.5N
+t 1.2485 bad 0 it 100 ctrl  231.8 | l comp max  1.628mm inv   27 | r comp max  1.568mm inv   57 | left_blade_00:2/0.0N left_pdms_flex:305/1024.9N right_blade_00:2/114.7N right_pdms_flex:300/932.8N table_top:4/137.8N
+t 1.2495 bad 0 it 100 ctrl  232.1 | l comp max  1.569mm inv   51 | r comp max  1.881mm inv   66 | left_blade_00:1/20.7N left_pdms_flex:305/992.2N right_blade_00:2/44.5N right_pdms_flex:297/1030.3N table_top:4/131.2N
+t 1.2505 bad 0 it 100 ctrl  232.4 | l comp max  1.561mm inv   51 | r comp max  1.623mm inv  107 | left_blade_00:1/0.0N left_pdms_flex:305/1030.8N right_blade_00:2/134.0N right_pdms_flex:304/1001.9N table_top:4/136.2N
+t 1.2515 bad 0 it 100 ctrl  232.6 | l comp max  1.545mm inv   51 | r comp max  1.694mm inv  166 | left_blade_00:1/19.3N left_pdms_flex:304/1100.2N right_blade_00:2/4.3N right_pdms_flex:297/1164.3N table_top:4/140.7N
+t 1.2525 bad 0 it 100 ctrl  232.9 | l comp max  1.535mm inv   51 | r comp max  1.823mm inv  230 | left_blade_00:1/18.3N left_pdms_flex:306/1133.6N right_blade_00:2/3.8N right_pdms_flex:283/1194.1N table_top:4/166.7N
+t 1.2535 bad 0 it 100 ctrl  233.2 | l comp max  1.536mm inv   51 | r comp max  1.749mm inv  266 | left_blade_00:2/22.8N left_pdms_flex:305/1119.1N right_blade_00:2/62.5N right_pdms_flex:262/1182.4N table_top:4/172.7N
+t 1.2545 bad 0 it 100 ctrl  233.5 | l comp max  1.551mm inv   51 | r comp max  1.953mm inv  288 | left_blade_00:2/0.0N left_pdms_flex:302/1133.4N right_blade_00:2/237.1N right_pdms_flex:256/1066.7N table_top:4/149.8N
+t 1.2555 bad 0 it 100 ctrl  233.7 | l comp max  1.542mm inv   57 | r comp max  1.876mm inv  308 | left_blade_00:1/29.6N left_pdms_flex:304/1048.5N right_blade_00:3/284.4N right_pdms_flex:248/1157.6N table_top:4/146.3N
+t 1.2565 bad 0 it 100 ctrl  234.0 | l comp max  1.550mm inv   57 | r comp max  1.982mm inv  342 | left_blade_00:2/0.0N left_pdms_flex:303/1119.1N right_blade_00:4/248.7N right_pdms_flex:236/1086.0N table_top:4/196.7N
+t 1.2575 bad 0 it 100 ctrl  234.3 | l comp max  1.546mm inv   57 | r comp max  2.151mm inv  394 | left_blade_00:2/0.0N left_pdms_flex:305/1127.6N right_blade_00:4/323.4N right_pdms_flex:202/1125.2N table_top:4/173.4N
+t 1.2585 bad 0 it 100 ctrl  234.6 | l comp max  1.551mm inv   60 | r comp max  2.254mm inv  448 | left_blade_00:2/5.6N left_pdms_flex:302/1182.9N right_blade_00:4/424.8N right_pdms_flex:198/972.1N table_top:4/239.6N
+t 1.2595 bad 0 it 100 ctrl  234.8 | l comp max  1.555mm inv   60 | r comp max  3.134mm inv  525 | left_blade_00:2/208.7N left_pdms_flex:301/1085.0N right_blade_00:4/0.0N right_pdms_flex:199/1487.5N table_top:4/387.6N
+t 1.2600 bad 0 it 100 ctrl  235.0 | l comp max  1.535mm inv   60 | r comp max  3.039mm inv  556 | left_blade_00:2/67.8N left_pdms_flex:301/975.5N right_blade_00:4/153.7N right_pdms_flex:172/1218.9N table_top:4/158.0N

@@ -1,0 +1,157 @@
+[
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"tag": "c_fast"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.0005,
+1
+],
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.0005"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.001,
+1
+],
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.001"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.002,
+1
+],
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.002"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.005,
+1
+],
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.005"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.02,
+1
+],
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.02"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"it": 1000,
+"tol": 1e-10,
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_it1000"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.002,
+1
+],
+"it": 1000,
+"tol": 1e-10,
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.002_it1000"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"h": 0.0001,
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_h1e-4"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.002,
+1
+],
+"tag": "c_fast_sr0.002"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": false,
+"flex_solref": [
+0.002,
+1
+],
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.002_noalign"
+},
+{
+"grid": "6x8x2",
+"island": false,
+"f1": true,
+"align": true,
+"flex_solref": [
+0.002,
+1
+],
+"h": 0.0001,
+"slow_from": 215,
+"speed_slow": 20,
+"tag": "c_slow_sr0.002_h1e-4"
+}
+]

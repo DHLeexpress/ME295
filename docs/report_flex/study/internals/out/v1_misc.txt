@@ -1,0 +1,19 @@
+a_childclass {'nvertbody': 330, 'armature': [np.float64(0.01)], 'damping': [np.float64(0.0)], 'jnt_stiffness': [np.float64(5.0)], 'frictionloss': [np.float64(0.001)]}
+b_mass {'mass_attr': 0.0052414, 'npnt': 495, 'nfree': 330, 'body_mass_each': 1.058868686868687e-05, 'total_flex_body_mass': 0.003494266666666668, 'ratio': 0.6666666666666669, 'warnings': []}
+c_island {'count': (3, 3, 2), 'row': 'none', 'island': True, 'nv': 28, 'first_bad_step': None, 'qvel_max': 1.0947718831735813e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (3, 3, 2), 'row': 'none', 'island': False, 'nv': 28, 'first_bad_step': None, 'qvel_max': 1.0947718831735813e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (3, 3, 2), 'row': 'limit', 'island': True, 'nv': 28, 'first_bad_step': None, 'qvel_max': 1.0947718831735813e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (3, 3, 2), 'row': 'limit', 'island': False, 'nv': 28, 'first_bad_step': None, 'qvel_max': 1.0947718831735813e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (3, 3, 2), 'row': 'eq', 'island': True, 'nv': 28, 'first_bad_step': 3, 'qvel_max': 35.17371712372362, 'nisland_last': 1, 'nefc_last': 1}
+c_island {'count': (3, 3, 2), 'row': 'eq', 'island': False, 'nv': 28, 'first_bad_step': None, 'qvel_max': 1.0948224734693365e-05, 'nisland_last': 0, 'nefc_last': 1}
+c_island {'count': (11, 15, 3), 'row': 'none', 'island': True, 'nv': 991, 'first_bad_step': None, 'qvel_max': 3.988981644958895e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (11, 15, 3), 'row': 'none', 'island': False, 'nv': 991, 'first_bad_step': None, 'qvel_max': 3.988981644958895e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (11, 15, 3), 'row': 'limit', 'island': True, 'nv': 991, 'first_bad_step': None, 'qvel_max': 3.988981644958895e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (11, 15, 3), 'row': 'limit', 'island': False, 'nv': 991, 'first_bad_step': None, 'qvel_max': 3.988981644958895e-05, 'nisland_last': 0, 'nefc_last': 0}
+c_island {'count': (11, 15, 3), 'row': 'eq', 'island': True, 'nv': 991, 'first_bad_step': 3, 'qvel_max': 55.481677708819205, 'nisland_last': 1, 'nefc_last': 1}
+c_island {'count': (11, 15, 3), 'row': 'eq', 'island': False, 'nv': 991, 'first_bad_step': None, 'qvel_max': 3.9881990154064215e-05, 'nisland_last': 0, 'nefc_last': 1}
+d_contact_ceiling {'timeconst': 0.001, 'ncon': 165, 'k_contact_measured': 1058.8687363285892, 'k_pred_K_imp_over_fR': 264.71717171717154, 'k_unfloored': 1058.868686868686, 'ceiling_maximp': 423505.1200000467, 'm_vertex': 1.058868686868687e-05, 'total_face_contact_stiffness_N_per_um': 0.17471334149421722}
+d_contact_ceiling {'timeconst': 0.0001, 'ncon': 165, 'k_contact_measured': 105886.87145927107, 'k_pred_K_imp_over_fR': 26471.717171717148, 'k_unfloored': 105886.86868686858, 'ceiling_maximp': 423505.1200000467, 'm_vertex': 1.058868686868687e-05, 'total_face_contact_stiffness_N_per_um': 17.471333790779727}
+d_contact_ceiling {'timeconst': 3e-05, 'ncon': 165, 'k_contact_measured': 376930.10362896445, 'k_pred_K_imp_over_fR': 94232.5314801931, 'k_unfloored': 1176520.763187429, 'ceiling_maximp': 423505.1200000467, 'm_vertex': 1.058868686868687e-05, 'total_face_contact_stiffness_N_per_um': 62.19346709877913}
+d_contact_ceiling {'timeconst': 1e-05, 'ncon': 165, 'k_contact_measured': 407061.45839665434, 'k_pred_K_imp_over_fR': 101765.36626439517, 'k_unfloored': 10588686.868686857, 'ceiling_maximp': 423505.1200000467, 'm_vertex': 1.058868686868687e-05, 'total_face_contact_stiffness_N_per_um': 67.16514063544795}
+d_contact_ceiling {'timeconst': 1e-06, 'ncon': 165, 'k_contact_measured': 421816.1697068042, 'k_pred_K_imp_over_fR': 105454.04621712017, 'k_unfloored': 1058868686.8686861, 'ceiling_maximp': 423505.1200000467, 'm_vertex': 1.058868686868687e-05, 'total_face_contact_stiffness_N_per_um': 69.59966800162269}

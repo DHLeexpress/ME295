@@ -1,0 +1,72 @@
+{
+ "tag": "min3x3x2_fix1",
+ "o": {
+  "tag": "min3x3x2_fix1",
+  "xml": "docs/report_flex/study/robot/repro/min_m_eq_g3x3x2.xml"
+ },
+ "nv": 28,
+ "n_flexdof": 27,
+ "n_other": 1,
+ "nisland": 1,
+ "island_nv": 28,
+ "h": 0.0005,
+ "relerr_mono_vs_h2Kflex": {
+  "flex-flex": 2.5177039391395194e-09,
+  "flex-other": 41.57806897910753,
+  "other-other": 1844674448816992.0,
+  "all": 0.0006337648987129696
+ },
+ "relerr_mono_vs_full": {
+  "flex-flex": 2.5177039391395194e-09,
+  "flex-other": 41.57806897910753,
+  "other-other": 2.246794438866278e-08,
+  "all": 3.1608476004598235e-09
+ },
+ "norm_mono_flexflex": 1.57787221162794,
+ "relerr_isl_vs_h2Kflex": {
+  "flex-flex": 2.5177039391395194e-09,
+  "flex-other": 41.57806897910753,
+  "other-other": 1844674448816992.8,
+  "all": 0.0006337648987129699
+ },
+ "relerr_isl_vs_full": {
+  "flex-flex": 2.5177039391395194e-09,
+  "flex-other": 41.57806897910753,
+  "other-other": 2.2467944605503215e-08,
+  "all": 3.1608476004604426e-09
+ },
+ "norm_isl_flexflex": 1.57787221162794,
+ "norm_h2Kfd_flexflex": 1.5778722117793964,
+ "norm_M_flexflex": 0.0015130618504652523,
+ "Kfd_asym": 4.680733688380003e-11,
+ "eig_M": {
+  "min": 0.0002910170256007167,
+  "max": 0.10896253671258013,
+  "n_neg": 0
+ },
+ "eig_A_ref": {
+  "min": 0.00902325628976991,
+  "max": 1.0424190280249999,
+  "n_neg": 0
+ },
+ "eig_M+S_mono": {
+  "min": 0.009023256908453474,
+  "max": 1.0424190271303337,
+  "n_neg": 0
+ },
+ "eig_M+S_isl": {
+  "min": 0.009023256908453474,
+  "max": 1.0424190271303337,
+  "n_neg": 0
+ },
+ "eig_M+h2Kfd": {
+  "min": 0.00902325628280063,
+  "max": 1.042419028022815,
+  "n_neg": 0
+ },
+ "eig_Kfd_flex_min_max": [
+  34928.27238940095,
+  4168511.348387045
+ ],
+ "max_eig_(M+S_isl)^-1(M+S_mono)": 1.0000000000000018
+}

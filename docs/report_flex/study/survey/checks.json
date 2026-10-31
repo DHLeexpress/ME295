@@ -1,0 +1,80 @@
+{
+ "mujoco": "3.17.0",
+ "C1_patch": [
+  {
+   "nu_target": 0.45,
+   "young_in": 1000000.0,
+   "poisson_in": 0.45,
+   "elastic3d": 0,
+   "stride": 24,
+   "uniaxial": 1.818179,
+   "shear": 1.0,
+   "hydro": 1.931032,
+   "lambda_eff/lambda": 2.0
+  },
+  {
+   "nu_target": 0.45,
+   "young_in": 1000000.0,
+   "poisson_in": 0.45,
+   "elastic3d": 1,
+   "stride": 24,
+   "uniaxial": 1.0,
+   "shear": 1.0,
+   "hydro": 0.999997,
+   "lambda_eff/lambda": 1.0
+  },
+  {
+   "nu_target": 0.45,
+   "young_in": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "elastic3d": 0,
+   "stride": 24,
+   "uniaxial": 0.999998,
+   "shear": 1.0,
+   "hydro": 0.999998,
+   "lambda_eff/lambda": 1.0,
+   "note": "F1 workaround inputs on StVK"
+  },
+  {
+   "nu_target": 0.49,
+   "young_in": 1000000.0,
+   "poisson_in": 0.49,
+   "elastic3d": 0,
+   "stride": 24,
+   "uniaxial": 1.960781,
+   "shear": 1.0,
+   "hydro": 1.986574,
+   "lambda_eff/lambda": 2.0
+  },
+  {
+   "nu_target": 0.49,
+   "young_in": 1000000.0,
+   "poisson_in": 0.49,
+   "elastic3d": 1,
+   "stride": 24,
+   "uniaxial": 1.0,
+   "shear": 1.0,
+   "hydro": 0.999997,
+   "lambda_eff/lambda": 1.0
+  },
+  {
+   "nu_target": 0.49,
+   "young_in": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "elastic3d": 0,
+   "stride": 24,
+   "uniaxial": 0.999998,
+   "shear": 1.0,
+   "hydro": 0.999998,
+   "lambda_eff/lambda": 1.0,
+   "note": "F1 workaround inputs on StVK"
+  }
+ ],
+ "C2_integrators_with_elasticity": {
+  "implicitfast": "ERROR: Error: engine error: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicitfast': set integrator='discrete'",
+  "implicit": "ERROR: Error: engine error: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicitfast': set integrator='discrete'",
+  "Euler": "compiled and stepped",
+  "discrete": "compiled and stepped"
+ },
+ "C3_edge_equality_plus_elasticity": "ERROR: Error: flex constraints and elasticity (young) cannot both be present"
+}

@@ -1,0 +1,6426 @@
+[
+ {
+  "id": "full_corr_nt1_nz2_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 2,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000148543,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001161558,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001159235,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz2_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 2,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000148537,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000004383334,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001154465,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz3_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000092109,
+   "interior_force_rel": 4.455792315494362e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000003877716,
+   "interior_force_rel": 4.566377287586027e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001335028,
+   "interior_force_rel": 1.4477368517097982e-11
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz3_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000921083,
+   "interior_force_rel": 9.613296788544137e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000015988397,
+   "interior_force_rel": 2.0989280055250795e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000131653,
+   "interior_force_rel": 1.2764031812346489e-11
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz4_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 4,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000002067495,
+   "interior_force_rel": 1.598049571458722e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000007884924,
+   "interior_force_rel": 4.57221961897616e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000158091,
+   "interior_force_rel": 9.881741225469021e-12
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz4_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 4,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000002067488,
+   "interior_force_rel": 1.5903599723378762e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000034814318,
+   "interior_force_rel": 2.0994898783667932e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000153958,
+   "interior_force_rel": 8.498290093091896e-12
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz5_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 5,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 27.2,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003605405,
+   "interior_force_rel": 1.088552510104473e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000013569041,
+   "interior_force_rel": 4.538552801250919e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000190288,
+   "interior_force_rel": 9.788208005941739e-12
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz5_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 5,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 27.2,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003605398,
+   "interior_force_rel": 1.0652383061405282e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000061236174,
+   "interior_force_rel": 2.096082630009216e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001829505,
+   "interior_force_rel": 6.3818042855930035e-12
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz6_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 6,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 33.99999999999999,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000005603202,
+   "interior_force_rel": 1.1206709194762297e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000002097072,
+   "interior_force_rel": 4.534757571006594e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002323508,
+   "interior_force_rel": 1.601109825090541e-11
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz6_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 6,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 33.99999999999999,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000005603193,
+   "interior_force_rel": 1.1067391302040708e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000095318968,
+   "interior_force_rel": 2.0956010142801945e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002209095,
+   "interior_force_rel": 6.077281243652982e-12
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz7_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 40.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000805426,
+   "interior_force_rel": 1.083673789505677e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000029689962,
+   "interior_force_rel": 5.350251920792797e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002840916,
+   "interior_force_rel": 1.0481061083232922e-11
+  }
+ },
+ {
+  "id": "full_corr_nt1_nz7_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 1,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 40.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008054244,
+   "interior_force_rel": 1.0642578583240139e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000136611207,
+   "interior_force_rel": 2.096852634523896e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002676122,
+   "interior_force_rel": 4.882610113345196e-12
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz2_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 2,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000015821,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001425637,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000109377,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz2_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 2,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000158205,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000542248,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001088398,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz3_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000093076,
+   "interior_force_rel": 4.464518254922878e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000392434,
+   "interior_force_rel": 1.0852883914245239e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000126954,
+   "interior_force_rel": 3.813888514694304e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz3_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000930747,
+   "interior_force_rel": 9.633659668063111e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000001680944,
+   "interior_force_rel": 5.026825031526721e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001250453,
+   "interior_force_rel": 3.394679215885114e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz4_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 4,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000002077158,
+   "interior_force_rel": 1.6180378950621058e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000008018715,
+   "interior_force_rel": 1.0897575468021738e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001515394,
+   "interior_force_rel": 2.57603686982712e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz4_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 4,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000002077152,
+   "interior_force_rel": 1.5946468006186465e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000035720482,
+   "interior_force_rel": 5.0312026782039126e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001473497,
+   "interior_force_rel": 2.2696221941495777e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz5_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 5,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003615066,
+   "interior_force_rel": 1.0886406786098004e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000013690487,
+   "interior_force_rel": 1.0888525098289802e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001837372,
+   "interior_force_rel": 1.918179517924477e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz5_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 5,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003615064,
+   "interior_force_rel": 1.0652440788343634e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000062131749,
+   "interior_force_rel": 5.030469734225243e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001763425,
+   "interior_force_rel": 1.699529380892924e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz6_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 6,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 16.999999999999996,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000005612861,
+   "interior_force_rel": 1.150742087928985e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000021016517,
+   "interior_force_rel": 1.0850995709850847e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000225799,
+   "interior_force_rel": 1.5513178754755527e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz6_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 6,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 16.999999999999996,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000005612857,
+   "interior_force_rel": 1.1132610346318446e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000009613416,
+   "interior_force_rel": 5.0266157410947565e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002143004,
+   "interior_force_rel": 1.3628737814049613e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz7_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008063923,
+   "interior_force_rel": 1.0687669454816551e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000002996798,
+   "interior_force_rel": 1.0933744576927142e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.00000000027755,
+   "interior_force_rel": 1.2859958327100718e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz7_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008063923,
+   "interior_force_rel": 1.0609548485198393e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000137677305,
+   "interior_force_rel": 5.034789780918462e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002610048,
+   "interior_force_rel": 1.134424720835542e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz2_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 2,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000196874,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000002538054,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001169327,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz2_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 2,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000196867,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000009640357,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001161562,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz3_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000969422,
+   "interior_force_rel": 7.43459170850646e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000004992515,
+   "interior_force_rel": 2.4738113620753736e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001345102,
+   "interior_force_rel": 1.385158489453522e-10
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz3_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000969411,
+   "interior_force_rel": 1.6049954116141492e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.00000000209884,
+   "interior_force_rel": 1.1440735708992237e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001323652,
+   "interior_force_rel": 1.237716690202354e-10
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz4_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 4,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000002115828,
+   "interior_force_rel": 1.6381102265570668e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000906821,
+   "interior_force_rel": 2.4793487826994254e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001591067,
+   "interior_force_rel": 9.280696615169113e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz4_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 4,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000211581,
+   "interior_force_rel": 1.5989611238523946e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000039876837,
+   "interior_force_rel": 1.1446302417042096e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001546683,
+   "interior_force_rel": 8.260441188579986e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz5_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 5,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003653735,
+   "interior_force_rel": 1.103545493608385e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000001474211,
+   "interior_force_rel": 2.46768512520814e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001912843,
+   "interior_force_rel": 6.990605678476512e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz5_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 5,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003653726,
+   "interior_force_rel": 1.0684618063759869e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000066291315,
+   "interior_force_rel": 1.14345799235523e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001836564,
+   "interior_force_rel": 6.201190746958137e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz6_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 6,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 8.499999999999998,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000005651528,
+   "interior_force_rel": 1.1611243181089294e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000022102078,
+   "interior_force_rel": 3.013116595508783e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002333658,
+   "interior_force_rel": 8.17293669688762e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz6_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 6,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 8.499999999999998,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000565152,
+   "interior_force_rel": 1.1155700749469617e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000100298123,
+   "interior_force_rel": 1.1980053065876226e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002216183,
+   "interior_force_rel": 5.46320752189357e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz7_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008102583,
+   "interior_force_rel": 1.0836814361464138e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000003103858,
+   "interior_force_rel": 2.4781948559368643e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002850968,
+   "interior_force_rel": 4.639934338383528e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz7_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008102587,
+   "interior_force_rel": 1.0641731349102205e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000141838377,
+   "interior_force_rel": 1.144514643995701e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002683218,
+   "interior_force_rel": 4.130137113020531e-11
+  }
+ },
+ {
+  "id": "full_corr_nt8_nz3_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 8,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000001124068,
+   "interior_force_rel": 5.991589127495887e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000842417,
+   "interior_force_rel": 5.121605124628644e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001432943,
+   "interior_force_rel": 5.075063004795788e-10
+  }
+ },
+ {
+  "id": "full_corr_nt8_nz3_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 8,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000001124083,
+   "interior_force_rel": 1.2971792508622261e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000036823353,
+   "interior_force_rel": 2.374532742922339e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000140204,
+   "interior_force_rel": 4.5678184570150856e-10
+  }
+ },
+ {
+  "id": "full_corr_nt8_nz7_nu0.45",
+  "config": {
+   "variant": "full_corr",
+   "nt": 8,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 971786.8338557995,
+   "poisson_in": 0.40909090909090906,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008257264,
+   "interior_force_rel": 1.083621755335759e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000034521759,
+   "interior_force_rel": 5.121814131393548e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002939053,
+   "interior_force_rel": 1.691380989108783e-10
+  }
+ },
+ {
+  "id": "full_corr_nt8_nz7_nu0.49",
+  "config": {
+   "variant": "full_corr",
+   "nt": 8,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 993551.7831293591,
+   "poisson_in": 0.48039215686274506,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008257248,
+   "interior_force_rel": 1.0641823837463378e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000157745084,
+   "interior_force_rel": 2.3745362570010428e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002761606,
+   "interior_force_rel": 1.5225462356117688e-10
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz2_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 2,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818182088274,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001886613,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344829819226,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz2_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 2,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843137546177,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000008329453,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771814372855,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz3_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.81818181834929,
+   "interior_force_rel": 2.4522171439492126e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000006602623,
+   "interior_force_rel": 8.261312267871263e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.93103448301428,
+   "interior_force_rel": 1.3451685541956549e-11
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz3_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843139060974,
+   "interior_force_rel": 4.9234231438966956e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000030822425,
+   "interior_force_rel": 4.110759017748866e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.986577181469153,
+   "interior_force_rel": 1.2558499236034594e-11
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz4_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 4,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818185577274,
+   "interior_force_rel": 1.5936363461445396e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000001394656,
+   "interior_force_rel": 8.266271107172736e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344830591257,
+   "interior_force_rel": 8.938061755556774e-12
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz4_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 4,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843141308834,
+   "interior_force_rel": 1.5892754903601955e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000067797612,
+   "interior_force_rel": 4.111240611264067e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771815129198,
+   "interior_force_rel": 8.366719082832757e-12
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz5_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 5,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 27.2,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818188373473,
+   "interior_force_rel": 1.0750892708684086e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000024296716,
+   "interior_force_rel": 8.232954446411086e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344831175927,
+   "interior_force_rel": 6.770421903289199e-12
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz5_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 5,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 27.2,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843144324333,
+   "interior_force_rel": 1.0620671683572206e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000119623356,
+   "interior_force_rel": 4.10801768702214e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771815697497,
+   "interior_force_rel": 6.2791815538433404e-12
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz6_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 6,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 33.99999999999999,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818192005819,
+   "interior_force_rel": 1.1129048704138139e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000037700427,
+   "interior_force_rel": 8.229602299328394e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.931034483194067,
+   "interior_force_rel": 1.0064651317932386e-11
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz6_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 6,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 33.99999999999999,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843148241584,
+   "interior_force_rel": 1.1048634946477405e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000186365132,
+   "interior_force_rel": 4.107490658085364e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771816441766,
+   "interior_force_rel": 5.027491875420665e-12
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz7_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 40.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818196462307,
+   "interior_force_rel": 1.0724737146034505e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000053739149,
+   "interior_force_rel": 8.240170471453912e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344832881585,
+   "interior_force_rel": 7.1290343411943114e-12
+  }
+ },
+ {
+  "id": "full_raw_nt1_nz7_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 1,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 40.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843153047584,
+   "interior_force_rel": 1.0615456443022199e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000267601326,
+   "interior_force_rel": 4.1083674845708923e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.986577181735757,
+   "interior_force_rel": 4.21040442403091e-12
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz2_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 2,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818182105849,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000002325191,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344829692119,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz2_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 2,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843137565129,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000001031782,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771814241475,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz3_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.818181818351047,
+   "interior_force_rel": 2.455558218135987e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000006823804,
+   "interior_force_rel": 1.9721001372944175e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344830015702,
+   "interior_force_rel": 3.562923801928585e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz3_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843139079926,
+   "interior_force_rel": 4.932814837766977e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000032594363,
+   "interior_force_rel": 9.855134010887176e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771814560143,
+   "interior_force_rel": 3.344349719936338e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz4_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 4,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818185594845,
+   "interior_force_rel": 1.6045731465640746e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000014248922,
+   "interior_force_rel": 1.976657640370269e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344830464126,
+   "interior_force_rel": 2.3925460119742437e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz4_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 4,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843141327779,
+   "interior_force_rel": 1.591453767618554e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000069651969,
+   "interior_force_rel": 9.859578058942598e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771814997804,
+   "interior_force_rel": 2.2328433967226994e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz5_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 5,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818188391043,
+   "interior_force_rel": 1.0751868251475531e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000024590148,
+   "interior_force_rel": 1.9758194023094826e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.931034483104873,
+   "interior_force_rel": 1.787328086534873e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz5_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 5,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843144343289,
+   "interior_force_rel": 1.0621113082857038e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000012148317,
+   "interior_force_rel": 9.858703362606398e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771815566136,
+   "interior_force_rel": 1.6732880862827194e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz6_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 6,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 16.999999999999996,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818192023398,
+   "interior_force_rel": 1.1292198505187626e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000037916787,
+   "interior_force_rel": 1.971934207859932e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.931034483181344,
+   "interior_force_rel": 1.4385402218607798e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz6_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 6,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 16.999999999999996,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843148260526,
+   "interior_force_rel": 1.1082449751294052e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000188140368,
+   "interior_force_rel": 9.854952285788783e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771816310385,
+   "interior_force_rel": 1.3402679362994482e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz7_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818196479866,
+   "interior_force_rel": 1.0642800497893222e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000054184957,
+   "interior_force_rel": 1.9804620175615684e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344832754442,
+   "interior_force_rel": 1.1952193516540678e-11
+  }
+ },
+ {
+  "id": "full_raw_nt2_nz7_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 2,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.960784315306654,
+   "interior_force_rel": 1.0598929299886957e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000269599674,
+   "interior_force_rel": 9.863317801896265e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771817226205,
+   "interior_force_rel": 1.1162295297746103e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz2_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 2,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818182176148,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000004134106,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344829835246,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz2_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 2,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843137640935,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000018329636,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771814386228,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz3_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.818181818358077,
+   "interior_force_rel": 4.090158545395893e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000008589536,
+   "interior_force_rel": 4.4913507367053124e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344830158854,
+   "interior_force_rel": 1.2968845666491237e-10
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz3_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843139155734,
+   "interior_force_rel": 8.216617097008428e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000040561872,
+   "interior_force_rel": 2.2425184074871796e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.986577181470493,
+   "interior_force_rel": 1.2200170542062937e-10
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz4_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 4,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818185665144,
+   "interior_force_rel": 1.6156763448548896e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000001599983,
+   "interior_force_rel": 4.4969317903268407e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.93103448306073,
+   "interior_force_rel": 8.669895586449348e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz4_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 4,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843141403585,
+   "interior_force_rel": 1.593696284055532e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000007760529,
+   "interior_force_rel": 2.243076400523285e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771815142574,
+   "interior_force_rel": 8.137984070269847e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz5_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 5,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818188461338,
+   "interior_force_rel": 1.0833107409497913e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000026353981,
+   "interior_force_rel": 4.485325772153176e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.931034483119192,
+   "interior_force_rel": 6.517974201650951e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz5_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 5,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843144419101,
+   "interior_force_rel": 1.0637015665452968e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000012942913,
+   "interior_force_rel": 2.2419036999135594e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771815710926,
+   "interior_force_rel": 6.106423351960631e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz6_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 6,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 8.499999999999998,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818192093686,
+   "interior_force_rel": 1.1351281012858718e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000039690673,
+   "interior_force_rel": 5.030746985563922e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344831956807,
+   "interior_force_rel": 6.55074684426076e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz6_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 6,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    6
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.30000000000000004,
+   "elements_through_thickness": 5,
+   "aspect_dx_over_dz": 8.499999999999998,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.30000000000000004
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843148336348,
+   "interior_force_rel": 1.1092760775142943e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000196130248,
+   "interior_force_rel": 2.2964425794191013e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771816455153,
+   "interior_force_rel": 5.1379664356046053e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz7_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818196550168,
+   "interior_force_rel": 1.0724468711490252e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000055962828,
+   "interior_force_rel": 4.495878051563533e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344832897417,
+   "interior_force_rel": 4.3348001029060245e-11
+  }
+ },
+ {
+  "id": "full_raw_nt4_nz7_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 4,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.9607843153142341,
+   "interior_force_rel": 1.0615155286947463e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000277604095,
+   "interior_force_rel": 2.2429620982468814e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771817371072,
+   "interior_force_rel": 4.0689401072025434e-11
+  }
+ },
+ {
+  "id": "full_raw_nt8_nz3_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 8,
+   "nz": 3,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818183862006,
+   "interior_force_rel": 3.295518076679479e-13
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000001480635,
+   "interior_force_rel": 9.311970713748814e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344830317436,
+   "interior_force_rel": 4.771394660961503e-10
+  }
+ },
+ {
+  "id": "full_raw_nt8_nz3_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 8,
+   "nz": 3,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.960784313945897,
+   "interior_force_rel": 6.615619811928711e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000071656492,
+   "interior_force_rel": 4.655926467277606e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771814858357,
+   "interior_force_rel": 4.5069137832288605e-10
+  }
+ },
+ {
+  "id": "full_raw_nt8_nz7_nu0.45",
+  "config": {
+   "variant": "full_raw",
+   "nt": 8,
+   "nz": 7,
+   "nu": 0.45,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.8181818196831356,
+   "interior_force_rel": 1.0725120376366163e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000062241756,
+   "interior_force_rel": 9.312164605625583e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9310344833056223,
+   "interior_force_rel": 1.5903141918180307e-10
+  }
+ },
+ {
+  "id": "full_raw_nt8_nz7_nu0.49",
+  "config": {
+   "variant": "full_raw",
+   "nt": 8,
+   "nz": 7,
+   "nu": 0.49,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.960784315344558,
+   "interior_force_rel": 1.0616109014980175e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000308705606,
+   "interior_force_rel": 4.6559281281875916e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.9865771817524371,
+   "interior_force_rel": 1.5022783285600403e-10
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz1_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 1,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    2
+   ],
+   "cellcount": [
+    5,
+    7,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000004487,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000698541,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000131564,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz1_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 1,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    2
+   ],
+   "cellcount": [
+    5,
+    7,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000042808,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000757556,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001315652,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz2_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 2,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    3
+   ],
+   "cellcount": [
+    5,
+    7,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005679,
+   "interior_force_rel": 1.6102036064856838e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000486413,
+   "interior_force_rel": 4.872213549286326e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001475102,
+   "interior_force_rel": 9.118624065370518e-10
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz2_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 2,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    3
+   ],
+   "cellcount": [
+    5,
+    7,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.00000000000564,
+   "interior_force_rel": 3.789460700919093e-12
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000623845,
+   "interior_force_rel": 6.540456412811826e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.00000000014751,
+   "interior_force_rel": 2.0472449374315208e-10
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz3_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    4
+   ],
+   "cellcount": [
+    5,
+    7,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005399,
+   "interior_force_rel": 1.9785974314155325e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000068481,
+   "interior_force_rel": 9.3926063467878e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001153497,
+   "interior_force_rel": 6.770604307887034e-10
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz3_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    4
+   ],
+   "cellcount": [
+    5,
+    7,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000054214,
+   "interior_force_rel": 2.0104298218797237e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000903788,
+   "interior_force_rel": 4.6660914721412495e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000115351,
+   "interior_force_rel": 2.0633496298657608e-10
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz4_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 4,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    5
+   ],
+   "cellcount": [
+    5,
+    7,
+    4
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 27.2,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000061366,
+   "interior_force_rel": 1.9957490041046544e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000379874,
+   "interior_force_rel": 4.057673164194483e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001380116,
+   "interior_force_rel": 1.948396630576202e-09
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz4_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 4,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    5
+   ],
+   "cellcount": [
+    5,
+    7,
+    4
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 27.2,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000006319,
+   "interior_force_rel": 1.7733413611122364e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000671105,
+   "interior_force_rel": 4.512251945413038e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001379967,
+   "interior_force_rel": 3.7913250989889586e-10
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz6_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 6,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    7
+   ],
+   "cellcount": [
+    5,
+    7,
+    6
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 40.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000048488,
+   "interior_force_rel": 3.776852163980975e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000300437,
+   "interior_force_rel": 8.563769152975688e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000799552,
+   "interior_force_rel": 1.4556590892049833e-09
+  }
+ },
+ {
+  "id": "trilinear_nt1_cz6_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 1,
+   "cz": 6,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    6,
+    8,
+    7
+   ],
+   "cellcount": [
+    5,
+    7,
+    6
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 40.8,
+   "node_dx_mm": 10.2,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000048919,
+   "interior_force_rel": 3.399552652374118e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000742815,
+   "interior_force_rel": 8.872739704097815e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000799434,
+   "interior_force_rel": 2.8849460670214946e-10
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz1_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 1,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": [
+    10,
+    14,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 0.9999999999971386,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000081323,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001151683,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz1_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 1,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": [
+    10,
+    14,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 0.9999999999960422,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000898126,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001151708,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz2_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 2,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": [
+    10,
+    14,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000052265,
+   "interior_force_rel": 1.9808389056536058e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000412408,
+   "interior_force_rel": 9.607542381668801e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001181155,
+   "interior_force_rel": 1.442667999703654e-09
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz2_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 2,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": [
+    10,
+    14,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005379,
+   "interior_force_rel": 5.708067262059322e-12
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000064905,
+   "interior_force_rel": 1.4012958207764213e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001181188,
+   "interior_force_rel": 3.0210052497228566e-10
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz3_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": [
+    10,
+    14,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005479,
+   "interior_force_rel": 3.13941040285528e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000644544,
+   "interior_force_rel": 1.0996993435066964e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000997868,
+   "interior_force_rel": 8.367760803989651e-10
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz3_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": [
+    10,
+    14,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000056193,
+   "interior_force_rel": 3.3745227867630123e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000103732,
+   "interior_force_rel": 5.766835492427979e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000997917,
+   "interior_force_rel": 5.877759688369468e-10
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz4_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 4,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": [
+    10,
+    14,
+    4
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005722,
+   "interior_force_rel": 4.0492014240176137e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000085628,
+   "interior_force_rel": 3.824479556436255e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001136478,
+   "interior_force_rel": 1.1572131066693312e-09
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz4_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 4,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": [
+    10,
+    14,
+    4
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000059055,
+   "interior_force_rel": 2.5463404704864674e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001407743,
+   "interior_force_rel": 1.6133741541553542e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001136473,
+   "interior_force_rel": 1.1956145915041493e-09
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz6_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 6,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": [
+    10,
+    14,
+    6
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000049856,
+   "interior_force_rel": 6.112154882354729e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000067985,
+   "interior_force_rel": 9.204123423458259e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001226967,
+   "interior_force_rel": 2.1885004408542657e-09
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz6_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 6,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": [
+    10,
+    14,
+    6
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005112,
+   "interior_force_rel": 3.677035787199358e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001560403,
+   "interior_force_rel": 1.5270315544378079e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001226985,
+   "interior_force_rel": 1.1675915225850307e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz1_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 1,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": [
+    20,
+    28,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000034572,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000519589,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000761018,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz1_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 1,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": [
+    20,
+    28,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000032137,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000060027,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000761082,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz2_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 2,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": [
+    20,
+    28,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000050313,
+   "interior_force_rel": 3.776788720253339e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000870932,
+   "interior_force_rel": 1.0770729960822928e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000993576,
+   "interior_force_rel": 2.1513627676144955e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz2_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 2,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": [
+    20,
+    28,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000051443,
+   "interior_force_rel": 2.7369490512651584e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001213163,
+   "interior_force_rel": 3.710485887226682e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000993678,
+   "interior_force_rel": 1.5210114686322627e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz3_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": [
+    20,
+    28,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000046405,
+   "interior_force_rel": 7.980037127499636e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000994977,
+   "interior_force_rel": 1.625356351395274e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001430336,
+   "interior_force_rel": 1.8485952003089562e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz3_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": [
+    20,
+    28,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000046978,
+   "interior_force_rel": 5.925113490401057e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001632225,
+   "interior_force_rel": 8.592598714456127e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000143045,
+   "interior_force_rel": 1.8448995746027794e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz4_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 4,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": [
+    20,
+    28,
+    4
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000032303,
+   "interior_force_rel": 6.02301208949084e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000051188,
+   "interior_force_rel": 3.533213535459853e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.00000000012832,
+   "interior_force_rel": 3.911087365088394e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz4_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 4,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": [
+    20,
+    28,
+    4
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000031373,
+   "interior_force_rel": 3.4654575555300216e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001455367,
+   "interior_force_rel": 1.6971590008173664e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000128334,
+   "interior_force_rel": 2.6187405614375183e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz6_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 6,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": [
+    20,
+    28,
+    6
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000004065,
+   "interior_force_rel": 7.317161035920096e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000923488,
+   "interior_force_rel": 8.063898422874258e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001135434,
+   "interior_force_rel": 5.235834387968307e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz6_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 6,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": [
+    20,
+    28,
+    6
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000040845,
+   "interior_force_rel": 8.650408410604778e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000002492244,
+   "interior_force_rel": 3.4015172462229256e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001135563,
+   "interior_force_rel": 2.4017985822723834e-09
+  }
+ },
+ {
+  "id": "trilinear_nt8_cz3_nu0.45",
+  "config": {
+   "variant": "trilinear",
+   "nt": 8,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    4
+   ],
+   "cellcount": [
+    40,
+    56,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 2.55,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000012164,
+   "interior_force_rel": 2.366049388862793e-10
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000860894,
+   "interior_force_rel": 2.866344961668231e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001110156,
+   "interior_force_rel": 6.2569094581324885e-09
+  }
+ },
+ {
+  "id": "trilinear_nt8_cz3_nu0.49",
+  "config": {
+   "variant": "trilinear",
+   "nt": 8,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    4
+   ],
+   "cellcount": [
+    40,
+    56,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 2.55,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000008573,
+   "interior_force_rel": 2.415452925425966e-10
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001689842,
+   "interior_force_rel": 1.4319285451815595e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001110578,
+   "interior_force_rel": 5.302257051845116e-09
+  }
+ },
+ {
+  "id": "quadratic_nt1_cz1_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 1,
+   "cz": 1,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": [
+    5,
+    7,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000049032,
+   "interior_force_rel": 2.4443804666478424e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000660183,
+   "interior_force_rel": 7.069144312942062e-09
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001317477,
+   "interior_force_rel": 1.3857592623355948e-10
+  }
+ },
+ {
+  "id": "quadratic_nt1_cz1_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 1,
+   "cz": 1,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": [
+    5,
+    7,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000049036,
+   "interior_force_rel": 1.8058776582536922e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000654337,
+   "interior_force_rel": 3.295568264110929e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001317486,
+   "interior_force_rel": 6.882091620943956e-11
+  }
+ },
+ {
+  "id": "quadratic_nt1_cz2_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 1,
+   "cz": 2,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": [
+    5,
+    7,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000053664,
+   "interior_force_rel": 1.5918813905611285e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000843017,
+   "interior_force_rel": 1.0003138464552244e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000100297,
+   "interior_force_rel": 1.8894575370326358e-10
+  }
+ },
+ {
+  "id": "quadratic_nt1_cz2_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 1,
+   "cz": 2,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": [
+    5,
+    7,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005448,
+   "interior_force_rel": 1.5971732802136623e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.00000000008482,
+   "interior_force_rel": 2.5888789521203527e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000100305,
+   "interior_force_rel": 7.388045548123765e-11
+  }
+ },
+ {
+  "id": "quadratic_nt1_cz3_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 1,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": [
+    5,
+    7,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000036675,
+   "interior_force_rel": 1.8076062419969777e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000516842,
+   "interior_force_rel": 1.6751546294232461e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000954932,
+   "interior_force_rel": 2.031505730389536e-10
+  }
+ },
+ {
+  "id": "quadratic_nt1_cz3_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 1,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": [
+    5,
+    7,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 10.2,
+   "elem_dy_mm": 10.142857142857142,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.00000000000345,
+   "interior_force_rel": 1.5848027925281995e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000517504,
+   "interior_force_rel": 2.912730268790699e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.00000000009554,
+   "interior_force_rel": 1.6162106083087053e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz1_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 1,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": [
+    10,
+    14,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000004903,
+   "interior_force_rel": 4.685062561075021e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000644431,
+   "interior_force_rel": 3.0061583547639925e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001164204,
+   "interior_force_rel": 2.709641953174469e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz1_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 1,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": [
+    10,
+    14,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000049036,
+   "interior_force_rel": 1.8058776582536897e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000628666,
+   "interior_force_rel": 1.429671888920157e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001164233,
+   "interior_force_rel": 2.14708606720093e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz2_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 2,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": [
+    10,
+    14,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000055338,
+   "interior_force_rel": 1.798644404778939e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000062361,
+   "interior_force_rel": 8.463536103447938e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001158826,
+   "interior_force_rel": 4.4966564158595667e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz2_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 2,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": [
+    10,
+    14,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000056446,
+   "interior_force_rel": 1.818219929080591e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000060315,
+   "interior_force_rel": 2.294492789161534e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001158833,
+   "interior_force_rel": 2.530602024882457e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz3_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": [
+    10,
+    14,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000060256,
+   "interior_force_rel": 1.6849094504898466e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000631228,
+   "interior_force_rel": 1.129332581108696e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001115337,
+   "interior_force_rel": 5.509179610970792e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz3_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": [
+    10,
+    14,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000062201,
+   "interior_force_rel": 1.7142067371768345e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000618696,
+   "interior_force_rel": 4.494879187666068e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001115168,
+   "interior_force_rel": 3.217454850343009e-10
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz1_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 1,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": [
+    20,
+    28,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000004903,
+   "interior_force_rel": 4.226741223578544e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000055621,
+   "interior_force_rel": 5.8694872820439894e-08
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001135994,
+   "interior_force_rel": 1.0076055990994905e-09
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz1_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 1,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": [
+    20,
+    28,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000049032,
+   "interior_force_rel": 3.9052104359735975e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000472946,
+   "interior_force_rel": 2.741100291918934e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001135736,
+   "interior_force_rel": 8.62829845763076e-10
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz2_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 2,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    5
+   ],
+   "cellcount": [
+    20,
+    28,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000123312,
+   "interior_force_rel": 3.717895900279844e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000560412,
+   "interior_force_rel": 1.2984285205617655e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001225646,
+   "interior_force_rel": 9.667770792618932e-10
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz2_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 2,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    5
+   ],
+   "cellcount": [
+    20,
+    28,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000136255,
+   "interior_force_rel": 4.864692169213825e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000476907,
+   "interior_force_rel": 4.2701263741657726e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001225724,
+   "interior_force_rel": 1.0210859502432579e-09
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz3_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": [
+    20,
+    28,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000073765,
+   "interior_force_rel": 2.2916013403405453e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000630587,
+   "interior_force_rel": 1.9575753167070826e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001340967,
+   "interior_force_rel": 1.6067612097142816e-09
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz3_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": [
+    20,
+    28,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000007811,
+   "interior_force_rel": 2.8475308881782673e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000550555,
+   "interior_force_rel": 7.835873996199981e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001341265,
+   "interior_force_rel": 1.1421993178255055e-09
+  }
+ },
+ {
+  "id": "quadratic_nt8_cz3_nu0.45",
+  "config": {
+   "variant": "quadratic",
+   "nt": 8,
+   "cz": 3,
+   "nu": 0.45,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    81,
+    113,
+    7
+   ],
+   "cellcount": [
+    40,
+    56,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.45,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.45,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 2.55,
+   "node_dx_mm": 0.6375,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000015985,
+   "interior_force_rel": 1.7509974551546176e-10
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000591205,
+   "interior_force_rel": 2.406211277001895e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000087377,
+   "interior_force_rel": 4.3202277444847036e-09
+  }
+ },
+ {
+  "id": "quadratic_nt8_cz3_nu0.49",
+  "config": {
+   "variant": "quadratic",
+   "nt": 8,
+   "cz": 3,
+   "nu": 0.49,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    81,
+    113,
+    7
+   ],
+   "cellcount": [
+    40,
+    56,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.49,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.49,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 2.55,
+   "node_dx_mm": 0.6375,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000010192,
+   "interior_force_rel": 1.8972898108443777e-10
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000369869,
+   "interior_force_rel": 1.1448280006410718e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000087494,
+   "interior_force_rel": 4.245444207509796e-09
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz3_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 3,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000930782,
+   "interior_force_rel": 9.954341698396077e-15
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000016178276,
+   "interior_force_rel": 4.936873406698474e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001246345,
+   "interior_force_rel": 3.303440076430225e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz5_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 5,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 13.6,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.00000000036151,
+   "interior_force_rel": 1.0594631822439435e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000607099464,
+   "interior_force_rel": 4.937236741969773e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000174737,
+   "interior_force_rel": 1.6519292714125835e-11
+  }
+ },
+ {
+  "id": "full_corr_nt2_nz7_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 2,
+   "nz": 7,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 20.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000806395,
+   "interior_force_rel": 1.0590912569713704e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000134929156,
+   "interior_force_rel": 4.937678344500769e-07
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000257409,
+   "interior_force_rel": 1.1014305551099842e-11
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz1_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 1,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    2
+   ],
+   "cellcount": [
+    10,
+    14,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 0.9999999999957712,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001853229,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001151708,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz1_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 1,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": [
+    10,
+    14,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000004903,
+   "interior_force_rel": 3.698845023934313e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000415203,
+   "interior_force_rel": 1.4283035839884637e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001164266,
+   "interior_force_rel": 2.0246423716319263e-10
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz2_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 2,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    3
+   ],
+   "cellcount": [
+    10,
+    14,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000054166,
+   "interior_force_rel": 5.16363039548014e-12
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000329218,
+   "interior_force_rel": 1.062445714953369e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001181195,
+   "interior_force_rel": 2.2535285218478387e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz2_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 2,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": [
+    10,
+    14,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000056704,
+   "interior_force_rel": 1.8233711765503135e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000416813,
+   "interior_force_rel": 2.597404160638826e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.000000000115887,
+   "interior_force_rel": 2.1374322222481434e-10
+  }
+ },
+ {
+  "id": "trilinear_nt2_cz3_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 2,
+   "cz": 3,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    11,
+    15,
+    4
+   ],
+   "cellcount": [
+    10,
+    14,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 5.1,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000005654,
+   "interior_force_rel": 3.4326190915334495e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000000544952,
+   "interior_force_rel": 5.827189542912036e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000997924,
+   "interior_force_rel": 5.914636079393731e-10
+  }
+ },
+ {
+  "id": "quadratic_nt2_cz3_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 2,
+   "cz": 3,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": [
+    10,
+    14,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 5.1,
+   "elem_dy_mm": 5.071428571428571,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000062672,
+   "interior_force_rel": 1.721304622792115e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000000428257,
+   "interior_force_rel": 4.448350208736869e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001115246,
+   "interior_force_rel": 3.2653840200520574e-10
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz3_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 3,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000096945,
+   "interior_force_rel": 1.6460073948107584e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000200789785,
+   "interior_force_rel": 1.123185726761451e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001318994,
+   "interior_force_rel": 1.205617319311459e-10
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz5_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 5,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    5
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.375,
+   "elements_through_thickness": 4,
+   "aspect_dx_over_dz": 6.8,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000003653757,
+   "interior_force_rel": 1.0598449746470824e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000646215188,
+   "interior_force_rel": 1.1231272227464653e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001820026,
+   "interior_force_rel": 6.029354653804918e-11
+  }
+ },
+ {
+  "id": "full_corr_nt4_nz7_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 4,
+   "nz": 7,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 10.2,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008102619,
+   "interior_force_rel": 1.0593897442885966e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000001388387036,
+   "interior_force_rel": 1.1232269387238193e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002646718,
+   "interior_force_rel": 4.019172560637434e-11
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz1_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 1,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    2
+   ],
+   "cellcount": [
+    20,
+    28,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 1.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000031533,
+   "interior_force_rel": null
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000001513696,
+   "interior_force_rel": null
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000761082,
+   "interior_force_rel": null
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz1_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 1,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": [
+    20,
+    28,
+    1
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 1.5,
+   "elements_through_thickness": 1,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000004903,
+   "interior_force_rel": 4.734521630635912e-16
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 0.9999999999532168,
+   "interior_force_rel": 2.6975330400241404e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001135958,
+   "interior_force_rel": 8.313190282110318e-10
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz2_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 2,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    3
+   ],
+   "cellcount": [
+    20,
+    28,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000051719,
+   "interior_force_rel": 2.602955001054719e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000005051515,
+   "interior_force_rel": 3.721124021770483e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.00000000009937,
+   "interior_force_rel": 1.3838178085570323e-09
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz2_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 2,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    5
+   ],
+   "cellcount": [
+    20,
+    28,
+    2
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 3.4,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.375
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000139453,
+   "interior_force_rel": 5.14793906830333e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 0.9999999999581258,
+   "interior_force_rel": 4.018800096399136e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001225897,
+   "interior_force_rel": 1.0328973204867727e-09
+  }
+ },
+ {
+  "id": "trilinear_nt4_cz3_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 4,
+   "cz": 3,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    21,
+    29,
+    4
+   ],
+   "cellcount": [
+    20,
+    28,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 2.55,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000047116,
+   "interior_force_rel": 6.073053091779368e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000008738368,
+   "interior_force_rel": 8.72120340586368e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001430456,
+   "interior_force_rel": 1.8586796343861308e-09
+  }
+ },
+ {
+  "id": "quadratic_nt4_cz3_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 4,
+   "cz": 3,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": [
+    20,
+    28,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 2.55,
+   "elem_dy_mm": 2.5357142857142856,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000079134,
+   "interior_force_rel": 2.9848677417657054e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 0.9999999999654247,
+   "interior_force_rel": 8.366360548208011e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001341394,
+   "interior_force_rel": 1.1670023410167732e-09
+  }
+ },
+ {
+  "id": "full_corr_nt8_nz3_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 8,
+   "nz": 3,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    3
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.75,
+   "elements_through_thickness": 2,
+   "aspect_dx_over_dz": 1.7,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.75
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000001124119,
+   "interior_force_rel": 1.3396093392051614e-14
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000035624031,
+   "interior_force_rel": 2.3326195385558292e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001395248,
+   "interior_force_rel": 4.4574172034928054e-10
+  }
+ },
+ {
+  "id": "full_corr_nt8_nz7_nu0.499",
+  "config": {
+   "variant": "full_corr",
+   "nt": 8,
+   "nz": 7,
+   "nu": 0.499,
+   "dof": "full",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    7
+   ],
+   "cellcount": null,
+   "young_in_Pa": 999335.5517117865,
+   "poisson_in": 0.49800399201596807,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.25,
+   "elements_through_thickness": 6,
+   "aspect_dx_over_dz": 5.1,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000008257293,
+   "interior_force_rel": 1.0593358878686016e-11
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.000000154417083,
+   "interior_force_rel": 2.332606430114257e-06
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000002723106,
+   "interior_force_rel": 1.4857976317452983e-10
+  }
+ },
+ {
+  "id": "trilinear_nt8_cz3_nu0.499",
+  "config": {
+   "variant": "trilinear",
+   "nt": 8,
+   "cz": 3,
+   "nu": 0.499,
+   "dof": "trilinear",
+   "order": 1,
+   "count": [
+    41,
+    57,
+    4
+   ],
+   "cellcount": [
+    40,
+    56,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 2.55,
+   "node_dx_mm": 1.275,
+   "node_dz_mm": 0.5
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.0000000000007685,
+   "interior_force_rel": 2.5077617718157115e-10
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 1.0000000010712018,
+   "interior_force_rel": 1.4685549520847276e-05
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000001110483,
+   "interior_force_rel": 5.094507889244023e-09
+  }
+ },
+ {
+  "id": "quadratic_nt8_cz3_nu0.499",
+  "config": {
+   "variant": "quadratic",
+   "nt": 8,
+   "cz": 3,
+   "nu": 0.499,
+   "dof": "quadratic",
+   "order": 2,
+   "count": [
+    81,
+    113,
+    7
+   ],
+   "cellcount": [
+    40,
+    56,
+    3
+   ],
+   "young_in_Pa": 1000000.0,
+   "poisson_in": 0.499,
+   "E_target_Pa": 1000000.0,
+   "nu_target": 0.499,
+   "elem_dx_mm": 1.275,
+   "elem_dy_mm": 1.2678571428571428,
+   "elem_dz_mm": 0.5,
+   "elements_through_thickness": 3,
+   "aspect_dx_over_dz": 2.55,
+   "node_dx_mm": 0.6375,
+   "node_dz_mm": 0.25
+  },
+  "uniaxial_strain_zz": {
+   "energy_ratio": 1.000000000000876,
+   "interior_force_rel": 1.9334274040393985e-10
+  },
+  "simple_shear_xy": {
+   "energy_ratio": 0.9999999996410136,
+   "interior_force_rel": 1.1317145067416767e-05
+  },
+  "hydrostatic": {
+   "energy_ratio": 1.0000000000874605,
+   "interior_force_rel": 4.229194349792078e-09
+  }
+ }
+]

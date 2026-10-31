@@ -27,19 +27,21 @@
   <worldbody>
     <light pos="0 0 2.5" dir="0 0 -1" directional="true"/>
     <light pos="-0.6 1.6 1.4" dir="0.3 -0.8 -0.5" diffuse="0.4 0.4 0.4"/>
-    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" conaffinity="3"/>
 
     <!-- narrow pedestal under the tool at the home pose (height set by the script); the blades
          reach 74 mm past the pads, so the box must stand on something they can straddle -->
     <body name="table" pos="-0.17 0.69 0.15">
-      <geom name="table_top" type="box" size="0.015 0.03 0.15" material="cloth" friction="0.5 0.005 0.0001"/>
+      <geom name="table_top" type="box" size="0.015 0.03 0.15" material="cloth" friction="0.5 0.005 0.0001"
+            conaffinity="3"/>
     </body>
 
-    <!-- 300 g box, cardboard on NBR friction is set by the pad's priority -->
+    <!-- 300 g box, cardboard on NBR friction is set by the pad's priority; conaffinity 3 (here, table, floor):
+         bit 2 lets the PDMS flex (contype 2) touch it -->
     <body name="box" pos="-0.17 0.69 0.5">
       <freejoint name="box"/>
       <geom name="box" type="box" size="0.025 0.04 0.03" mass="0.3" material="cardboard"
-            friction="0.5 0.005 0.0001"/>
+            friction="0.5 0.005 0.0001" conaffinity="3"/>
     </body>
 
   </worldbody>

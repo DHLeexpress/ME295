@@ -69,12 +69,14 @@ python scripts_sim/ablation.py                                      # skin vs fi
 ```
 - **Demo:** [docs/media/librarian_demo.mp4](docs/media/librarian_demo.mp4). The robot approaches shelf A horizontally, slides the blades beside a book, squeezes, pulls it out and lifts it, then carries it to shelf B and shelves it in the free slot.
 - **Transfer to the robot:** the task is written against the python-urx API (`movej`, `movel`, `getj`, `get_tcp_force`, `gripper_action`, ...), so it runs on the UR10e unchanged.
-- **Deformable PDMS:** the blades' PDMS layer is simulated as a deformable body (5 × 7 elastic cells), so the skin panel shows both the contact force and the deformation of each cell.
-- **Report:** [docs/report_sim/librarian_sim.pdf](docs/report_sim/librarian_sim.pdf), 3 pages:
+- **Deformable PDMS:** the blades' 1.5 mm PDMS layer is a deformable body: 5 × 7 elastic cells by default (fast), or a MuJoCo finite-element flex (`make_blade_assets.py --pdms-model flex`). The skin panel shows, in the robot base frame (3D), the contact force and the deformation of each cell.
+- **Report:** [docs/report_sim/librarian_sim.pdf](docs/report_sim/librarian_sim.pdf), 7 pages:
   - how MuJoCo computes force and displacement;
   - what the plots show, and which parts are assumptions about the sensor;
   - the control;
-  - when the skin helps.
+  - when the skin helps;
+  - revision (Sec. 7-8): the 1.5 mm layer, the flex, the thin-layer model against exact solutions, contact and boundary conditions, the 3D panel, and when a high-level planner is needed.
+- **MuJoCo flex study:** [docs/report_flex/flex_study.pdf](docs/report_flex/flex_study.pdf) (5 pages; [one-page summary](docs/report_flex/SUMMARY.md)): how flex computes, verification against exact solutions, cell size vs accuracy and cost, two MuJoCo 3.17 defects and their workarounds, and a [close-up contact video](docs/media/flex_contact_closeup.mp4).
 - **Setup and backends:** per-OS setup, rendering backends and the controller slot are in [docs/SIM.md](docs/SIM.md); the gripper model is in [assembly/README.md](assembly/README.md).
 
 ## LLM API and keys (public repo)

@@ -255,6 +255,8 @@ def main():
     ap.add_argument("--realtime", type=float, default=1.0, help="viewer speed (1 = real time)")
     ap.add_argument("--video", type=Path, help="write the three-panel MP4 here")
     ap.add_argument("--renderer", choices=["auto", "filament", "classic"], default="auto")
+    ap.add_argument("--panel", choices=["3d", "2d"], default="3d",
+                    help="video's left panel: 3D views in the robot base frame, or the 2D taxel maps")
     ap.add_argument("--fps", type=int, default=30)
     ap.add_argument("--out", type=Path, default=ROOT / "results" / "sim_runs" / "librarian")
     ap.add_argument("--quiet", action="store_true")
@@ -293,7 +295,8 @@ def main():
         args.video.parent.mkdir(parents=True, exist_ok=True)
         renderer = SceneRenderer(rob.m, args.renderer)
         comp = Compositor(renderer, orbit_camera, close_up_camera(rob),
-                          title="Librarian demo  |  UR10e + Robotiq 2F-140 + PDMS blade fingers  |  MuJoCo")
+                          title="Librarian demo  |  UR10e + Robotiq 2F-140 + PDMS blade fingers  |  MuJoCo",
+                          panel=args.panel)
         writer = VideoWriter(args.video, fps=args.fps)
         t_frame = {"next": 0.0, "n": 0, "wall": time.time()}
 

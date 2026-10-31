@@ -1,0 +1,2565 @@
+{
+ "mujoco": "3.17.0",
+ "sim_time_per_model": 0.5,
+ "rows": [
+  {
+   "file": "bag.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 150,
+    "tolerance": 1e-05,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "string",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 128,
+     "nelem": 128,
+     "nnode": 0,
+     "young": 500000.0,
+     "poisson": 0.2,
+     "damping": 0.015,
+     "thickness": 0.0005,
+     "elastic2d": 3,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "bag",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 543,
+     "nelem": 1080,
+     "nnode": 0,
+     "young": 100000.0,
+     "poisson": 0.2,
+     "damping": 0.015,
+     "thickness": 0.0005,
+     "elastic2d": 3,
+     "radius": 0.002,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "bin",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 384,
+     "nelem": 672,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.002,
+     "margin": 0.0,
+     "solref": [
+      0.006,
+      1.0
+     ],
+     "solimp": [
+      0.99,
+      0.999,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": true,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 5.928,
+    "us_per_step": 23711.2,
+    "diverged_at_step": null,
+    "nv": 2049,
+    "ncon_end": 73,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "basket.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "box",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 260,
+     "nelem": 490,
+     "nnode": 0,
+     "young": 6000000.0,
+     "poisson": 0.2,
+     "damping": 1e-05,
+     "thickness": 0.008,
+     "elastic2d": 1,
+     "radius": 0.01,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.312,
+    "us_per_step": 623.2,
+    "diverged_at_step": null,
+    "nv": 1050,
+    "ncon_end": 140,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "bunny.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 2,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 2503,
+     "nelem": 4968,
+     "nnode": 8,
+     "young": 1000.0,
+     "poisson": 0.1,
+     "damping": 0.001,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.103,
+    "us_per_step": 206.0,
+    "diverged_at_step": null,
+    "nv": 25,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "bunny_multicell.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 2,
+     "interp": 1,
+     "cellnum": [
+      3,
+      3,
+      3
+     ],
+     "nvert": 2503,
+     "nelem": 4968,
+     "nnode": 64,
+     "young": 1000.0,
+     "poisson": 0.1,
+     "damping": 0.01,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.139,
+    "us_per_step": 556.6,
+    "diverged_at_step": null,
+    "nv": 178,
+    "ncon_end": 50,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "bunny_quadratic.xml",
+   "option": {
+    "timestep": 0.0005,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 2,
+     "interp": 2,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 2503,
+     "nelem": 4968,
+     "nnode": 27,
+     "young": 1000.0,
+     "poisson": 0.1,
+     "damping": 0.0001,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.002,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 1000,
+    "wall_s": 0.354,
+    "us_per_step": 353.5,
+    "diverged_at_step": null,
+    "nv": 82,
+    "ncon_end": 25,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "bunny_shell.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 2,
+     "interp": -1,
+     "cellnum": [
+      3,
+      3,
+      3
+     ],
+     "nvert": 2503,
+     "nelem": 4968,
+     "nnode": 64,
+     "young": 1000.0,
+     "poisson": 0.1,
+     "damping": 0.0,
+     "thickness": 0.02,
+     "elastic2d": 1,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.289,
+    "us_per_step": 1154.9,
+    "diverged_at_step": null,
+    "nv": 169,
+    "ncon_end": 28,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "bunny_with_uv.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 2,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 2503,
+     "nelem": 4968,
+     "nnode": 8,
+     "young": 1000.0,
+     "poisson": 0.1,
+     "damping": 0.001,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.106,
+    "us_per_step": 211.5,
+    "diverged_at_step": null,
+    "nv": 25,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "cloth_sdf.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "test",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 64,
+     "nelem": 98,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.005,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.256,
+    "us_per_step": 1023.5,
+    "diverged_at_step": null,
+    "nv": 198,
+    "ncon_end": 17,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "drape.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 400,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "cloth1",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 169,
+     "nelem": 288,
+     "nnode": 0,
+     "young": 20000.0,
+     "poisson": 0.2,
+     "damping": 0.01,
+     "thickness": 0.001,
+     "elastic2d": 3,
+     "radius": 0.004,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "cloth2",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 169,
+     "nelem": 288,
+     "nnode": 0,
+     "young": 20000.0,
+     "poisson": 0.2,
+     "damping": 0.01,
+     "thickness": 0.001,
+     "elastic2d": 3,
+     "radius": 0.004,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "cloth3",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 169,
+     "nelem": 288,
+     "nnode": 0,
+     "young": 20000.0,
+     "poisson": 0.2,
+     "damping": 0.01,
+     "thickness": 0.001,
+     "elastic2d": 3,
+     "radius": 0.004,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 2.601,
+    "us_per_step": 10404.6,
+    "diverged_at_step": null,
+    "nv": 1521,
+    "ncon_end": 1096,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "flag.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "flag",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 171,
+     "nelem": 288,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.132,
+    "us_per_step": 527.0,
+    "diverged_at_step": null,
+    "nv": 513,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "floppy.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 384,
+     "nelem": 1242,
+     "nnode": 0,
+     "young": 50000.0,
+     "poisson": 0.2,
+     "damping": 0.002,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.0,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.20699999999999993,
+     "rho_kg_m3": 120.77294685990391,
+     "l_min_m": 0.09999999999999987,
+     "c_p_m_s": 21.44761058952717,
+     "cfl": 0.21447610589527197,
+     "size_m": [
+      2.3000000000000003,
+      0.30000000000000004,
+      0.2999999999999998
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.242,
+    "us_per_step": 484.1,
+    "diverged_at_step": null,
+    "nv": 1153,
+    "ncon_end": 50,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "gripper.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_IMPLICITFAST",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_ELLIPTIC",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 10.0
+   },
+   "flexes": [
+    {
+     "name": "left",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 218,
+     "nelem": 384,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": true
+    },
+    {
+     "name": "right",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 218,
+     "nelem": 384,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": true
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 1.236,
+    "us_per_step": 4944.3,
+    "diverged_at_step": null,
+    "nv": 1047,
+    "ncon_end": 4,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "gripper_2d.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_IMPLICITFAST",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_ELLIPTIC",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 10.0
+   },
+   "flexes": [
+    {
+     "name": "right_fin",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 56,
+     "nelem": 66,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.004,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": true
+    },
+    {
+     "name": "left_fin",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 56,
+     "nelem": 66,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.004,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": true
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.064,
+    "us_per_step": 255.5,
+    "diverged_at_step": null,
+    "nv": 201,
+    "ncon_end": 2,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "gripper_trilinear.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_ELLIPTIC",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 10.0
+   },
+   "flexes": [
+    {
+     "name": "left",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 218,
+     "nelem": 384,
+     "nnode": 8,
+     "young": 10000.0,
+     "poisson": 0.1,
+     "damping": 0.05,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": true,
+     "volume_m3": 0.0012762591736337676,
+     "rho_kg_m3": 0.0,
+     "l_min_m": 0.01263491203797646,
+     "c_p_m_s": Infinity,
+     "cfl": Infinity,
+     "size_m": [
+      0.07411814010671594,
+      0.19318518042564392,
+      0.19318518042564392
+     ]
+    },
+    {
+     "name": "right",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 218,
+     "nelem": 384,
+     "nnode": 8,
+     "young": 10000.0,
+     "poisson": 0.1,
+     "damping": 0.05,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": true,
+     "volume_m3": 0.0012762591736337672,
+     "rho_kg_m3": 0.0,
+     "l_min_m": 0.012634912037976443,
+     "c_p_m_s": Infinity,
+     "cfl": Infinity,
+     "size_m": [
+      0.07411814010671594,
+      0.1931851804256439,
+      0.19318518042564392
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.02,
+    "us_per_step": 79.4,
+    "diverged_at_step": null,
+    "nv": 33,
+    "ncon_end": 4,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "hollow_vs_solid.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_ELLIPTIC",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "soft_mesh",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      6,
+      1,
+      6
+     ],
+     "nvert": 192,
+     "nelem": 462,
+     "nnode": 98,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.005,
+     "margin": 0.0,
+     "solref": [
+      0.001,
+      1.0
+     ],
+     "solimp": [
+      0.99,
+      0.999,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "soft_mesh_2",
+     "dim": 3,
+     "interp": -1,
+     "cellnum": [
+      6,
+      1,
+      6
+     ],
+     "nvert": 192,
+     "nelem": 462,
+     "nnode": 98,
+     "young": 10000.0,
+     "poisson": 0.3,
+     "damping": 0.0,
+     "thickness": 0.02,
+     "elastic2d": 1,
+     "radius": 0.005,
+     "margin": 0.0,
+     "solref": [
+      0.001,
+      1.0
+     ],
+     "solimp": [
+      0.99,
+      0.999,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.0024062500000000034,
+     "rho_kg_m3": 350.10866684336,
+     "l_min_m": 0.02499999999999991,
+     "c_p_m_s": 6.200774206222913,
+     "cfl": 0.49606193649783487,
+     "size_m": [
+      0.1750000000000001,
+      0.050000000000000155,
+      0.275
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.285,
+    "us_per_step": 1140.1,
+    "diverged_at_step": null,
+    "nv": 594,
+    "ncon_end": 32,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "jelly.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 512,
+     "nelem": 2058,
+     "nnode": 0,
+     "young": 50000.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.005,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.11764900000000005,
+     "rho_kg_m3": 42.499298761570415,
+     "l_min_m": 0.06999999999999995,
+     "c_p_m_s": 34.300000000000004,
+     "cfl": 0.4900000000000004,
+     "size_m": [
+      0.49000000000000005,
+      0.49000000000000005,
+      0.4900000000000001
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.436,
+    "us_per_step": 872.4,
+    "diverged_at_step": null,
+    "nv": 1536,
+    "ncon_end": 1,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "mannequin.xml",
+   "option": {
+    "timestep": 0.005,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 1.0
+   },
+   "flexes": [],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 100,
+    "wall_s": 0.003,
+    "us_per_step": 25.4,
+    "diverged_at_step": null,
+    "nv": 6,
+    "ncon_end": 8,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "mechanisms/cantilever.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 1000,
+    "tolerance": 1e-07,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "soft",
+     "dim": 3,
+     "interp": 2,
+     "cellnum": [
+      2,
+      1,
+      1
+     ],
+     "nvert": 441,
+     "nelem": 1152,
+     "nnode": 45,
+     "young": 8000000.0,
+     "poisson": 0.25,
+     "damping": 0.002,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.003464999999999998,
+     "rho_kg_m3": 0.0,
+     "l_min_m": 0.01874999999999971,
+     "c_p_m_s": Infinity,
+     "cfl": Infinity,
+     "size_m": [
+      0.8999999999999999,
+      0.07000000000000034,
+      0.05500000000000038
+     ]
+    },
+    {
+     "name": "stiff",
+     "dim": 3,
+     "interp": 2,
+     "cellnum": [
+      2,
+      1,
+      1
+     ],
+     "nvert": 441,
+     "nelem": 1152,
+     "nnode": 45,
+     "young": 16000000.0,
+     "poisson": 0.25,
+     "damping": 0.002,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.003464999999999996,
+     "rho_kg_m3": 0.0,
+     "l_min_m": 0.01874999999999971,
+     "c_p_m_s": Infinity,
+     "cfl": Infinity,
+     "size_m": [
+      0.8999999999999999,
+      0.07000000000000003,
+      0.05500000000000038
+     ]
+    },
+    {
+     "name": "damped",
+     "dim": 3,
+     "interp": 2,
+     "cellnum": [
+      2,
+      1,
+      1
+     ],
+     "nvert": 441,
+     "nelem": 1152,
+     "nnode": 45,
+     "young": 8000000.0,
+     "poisson": 0.25,
+     "damping": 0.04,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.003464999999999998,
+     "rho_kg_m3": 0.0,
+     "l_min_m": 0.01874999999999971,
+     "c_p_m_s": Infinity,
+     "cfl": Infinity,
+     "size_m": [
+      0.8999999999999999,
+      0.07000000000000034,
+      0.05500000000000038
+     ]
+    },
+    {
+     "name": "rod",
+     "dim": 1,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 24,
+     "nelem": 23,
+     "nnode": 0,
+     "young": 8000000.0,
+     "poisson": 0.0,
+     "damping": 0.002,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.015,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 3.312,
+    "us_per_step": 6623.7,
+    "diverged_at_step": null,
+    "nv": 414,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "mechanisms/dipper.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 250,
+    "tolerance": 1e-07,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "arm_flex",
+     "dim": 1,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 21,
+     "nelem": 20,
+     "nnode": 0,
+     "young": 31500000.0,
+     "poisson": 0.0,
+     "damping": 0.0067,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.0325,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.076,
+    "us_per_step": 152.5,
+    "diverged_at_step": null,
+    "nv": 86,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "mechanisms/slidercrank.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 250,
+    "tolerance": 1e-07,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "rod",
+     "dim": 1,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 21,
+     "nelem": 20,
+     "nnode": 0,
+     "young": 1800000.0,
+     "poisson": 0.0,
+     "damping": 0.0056,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.02,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.061,
+    "us_per_step": 122.0,
+    "diverged_at_step": null,
+    "nv": 67,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "pancake.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "plate",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 81,
+     "nelem": 128,
+     "nnode": 0,
+     "young": 300000.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": 0.008,
+     "elastic2d": 1,
+     "radius": 0.01,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.148,
+    "us_per_step": 295.4,
+    "diverged_at_step": null,
+    "nv": 243,
+    "ncon_end": 81,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "pinch.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "cloth",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 81,
+     "nelem": 128,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.01,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.144,
+    "us_per_step": 575.9,
+    "diverged_at_step": null,
+    "nv": 246,
+    "ncon_end": 81,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "plate.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "plate",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 256,
+     "nelem": 450,
+     "nnode": 0,
+     "young": 30000000.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": 0.01,
+     "elastic2d": 1,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.292,
+    "us_per_step": 1169.2,
+    "diverged_at_step": null,
+    "nv": 768,
+    "ncon_end": 148,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "poncho.xml",
+   "option": {
+    "timestep": 0.005,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "f1",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 484,
+     "nelem": 892,
+     "nnode": 0,
+     "young": 300000.0,
+     "poisson": 0.0,
+     "damping": 0.02,
+     "thickness": 0.008,
+     "elastic2d": 1,
+     "radius": 0.01,
+     "margin": 0.0,
+     "solref": [
+      0.003,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 2,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 100,
+    "wall_s": 0.926,
+    "us_per_step": 9258.2,
+    "diverged_at_step": null,
+    "nv": 1458,
+    "ncon_end": 51,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "poncho_edgeequality.xml",
+   "option": {
+    "timestep": 0.005,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "f1",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 484,
+     "nelem": 892,
+     "nnode": 0,
+     "young": 300000.0,
+     "poisson": 0.0,
+     "damping": 0.02,
+     "thickness": 0.008,
+     "elastic2d": 1,
+     "radius": 0.01,
+     "margin": 0.0,
+     "solref": [
+      0.003,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 100,
+    "wall_s": 0.753,
+    "us_per_step": 7532.9,
+    "diverged_at_step": null,
+    "nv": 1458,
+    "ncon_end": 25,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "press.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "A",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 64,
+     "nelem": 162,
+     "nnode": 0,
+     "young": 10000.0,
+     "poisson": 0.4,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.005,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.2160000000000001,
+     "rho_kg_m3": 23.148148148148138,
+     "l_min_m": 0.19999999999999996,
+     "c_p_m_s": 30.425553170226607,
+     "cfl": 0.15212776585113308,
+     "size_m": [
+      0.6000000000000001,
+      0.6000000000000001,
+      0.6000000000000001
+     ]
+    },
+    {
+     "name": "B",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 64,
+     "nelem": 162,
+     "nnode": 0,
+     "young": 50000.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.005,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.2160000000000001,
+     "rho_kg_m3": 23.148148148148138,
+     "l_min_m": 0.19999999999999996,
+     "c_p_m_s": 46.475800154489015,
+     "cfl": 0.23237900077244514,
+     "size_m": [
+      0.6000000000000001,
+      0.6000000000000001,
+      0.6000000000000001
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.437,
+    "us_per_step": 873.8,
+    "diverged_at_step": null,
+    "nv": 386,
+    "ncon_end": 16,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "pulley.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "cable",
+     "dim": 1,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 39,
+     "nelem": 39,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.02,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.014,
+    "us_per_step": 55.8,
+    "diverged_at_step": null,
+    "nv": 121,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "quadratic.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 3,
+     "interp": 2,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 512,
+     "nelem": 2058,
+     "nnode": 27,
+     "young": 10000.0,
+     "poisson": 0.1,
+     "damping": 0.0001,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.11764900000000007,
+     "rho_kg_m3": 100.73907854594542,
+     "l_min_m": 0.06999999999999917,
+     "c_p_m_s": 10.0758323237857,
+     "cfl": 0.14394046176836886,
+     "size_m": [
+      0.4900000000000002,
+      0.4900000000000002,
+      0.49000000000000066
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.075,
+    "us_per_step": 150.9,
+    "diverged_at_step": null,
+    "nv": 81,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "softbox.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbox",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 219,
+     "nelem": 432,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.01,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": true
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.154,
+    "us_per_step": 617.0,
+    "diverged_at_step": null,
+    "nv": 224,
+    "ncon_end": 49,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "sphere_full.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_IMPLICITFAST",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "slow",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 297,
+     "nelem": 588,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.67,
+    "us_per_step": 1340.9,
+    "diverged_at_step": null,
+    "nv": 891,
+    "ncon_end": 16,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "sphere_radial.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_DISCRETE",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "radial",
+     "dim": 3,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 297,
+     "nelem": 588,
+     "nnode": 0,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 1,
+     "rigid": false,
+     "attached_to_moving_body": true
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.548,
+    "us_per_step": 1096.0,
+    "diverged_at_step": null,
+    "nv": 302,
+    "ncon_end": 40,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "sphere_trilinear.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "soft",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 297,
+     "nelem": 588,
+     "nnode": 8,
+     "young": 1000.0,
+     "poisson": 0.49,
+     "damping": 0.1,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.06010266730334481,
+     "rho_kg_m3": 3088.4652600046866,
+     "l_min_m": 0.03617300015289458,
+     "c_p_m_s": 2.353995323333439,
+     "cfl": 0.06507603221694817,
+     "size_m": [
+      0.48029606882160736,
+      0.48029606882160736,
+      0.48029606882160747
+     ]
+    },
+    {
+     "name": "rubber",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 297,
+     "nelem": 588,
+     "nnode": 8,
+     "young": 10000.0,
+     "poisson": 0.4,
+     "damping": 0.003,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      -5000.0,
+      -10.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.06010266730334481,
+     "rho_kg_m3": 3088.4652600046866,
+     "l_min_m": 0.0361730001528945,
+     "c_p_m_s": 2.634057488316642,
+     "cfl": 0.07281833072134244,
+     "size_m": [
+      0.48029606882160747,
+      0.48029606882160736,
+      0.48029606882160747
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.086,
+    "us_per_step": 171.2,
+    "diverged_at_step": null,
+    "nv": 48,
+    "ncon_end": 26,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "strain.xml",
+   "option": {
+    "timestep": 0.002,
+    "integrator": "mjINT_IMPLICITFAST",
+    "solver": "mjSOL_NEWTON",
+    "cone": "mjCONE_ELLIPTIC",
+    "iterations": 100,
+    "tolerance": 1e-08,
+    "impratio": 10.0
+   },
+   "flexes": [
+    {
+     "name": "left",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 489,
+     "nelem": 972,
+     "nnode": 8,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "right",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 489,
+     "nelem": 972,
+     "nnode": 8,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "bottom",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 489,
+     "nelem": 972,
+     "nnode": 8,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false
+    },
+    {
+     "name": "top",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 489,
+     "nelem": 972,
+     "nnode": 8,
+     "young": 0.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 3,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 250,
+    "wall_s": 0.47,
+    "us_per_step": 1879.4,
+    "diverged_at_step": null,
+    "nv": 54,
+    "ncon_end": 171,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "trampoline.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "plate",
+     "dim": 2,
+     "interp": 0,
+     "cellnum": null,
+     "nvert": 256,
+     "nelem": 450,
+     "nnode": 0,
+     "young": 300000.0,
+     "poisson": 0.0,
+     "damping": 0.0,
+     "thickness": 0.01,
+     "elastic2d": 2,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.188,
+    "us_per_step": 375.4,
+    "diverged_at_step": null,
+    "nv": 762,
+    "ncon_end": 6,
+    "warnings": {}
+   }
+  },
+  {
+   "file": "trilinear.xml",
+   "option": {
+    "timestep": 0.001,
+    "integrator": "mjINT_EULER",
+    "solver": "mjSOL_CG",
+    "cone": "mjCONE_PYRAMIDAL",
+    "iterations": 100,
+    "tolerance": 1e-06,
+    "impratio": 1.0
+   },
+   "flexes": [
+    {
+     "name": "softbody",
+     "dim": 3,
+     "interp": 1,
+     "cellnum": [
+      1,
+      1,
+      1
+     ],
+     "nvert": 512,
+     "nelem": 2058,
+     "nnode": 8,
+     "young": 10000.0,
+     "poisson": 0.1,
+     "damping": 0.01,
+     "thickness": -1.0,
+     "elastic2d": 0,
+     "radius": 0.001,
+     "margin": 0.0,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001,
+      0.5,
+      2.0
+     ],
+     "edgeequality": 0,
+     "rigid": false,
+     "attached_to_moving_body": false,
+     "volume_m3": 0.11764900000000006,
+     "rho_kg_m3": 2719.9551207405066,
+     "l_min_m": 0.06999999999999962,
+     "c_p_m_s": 1.9390948348157426,
+     "cfl": 0.02770135478308219,
+     "size_m": [
+      0.4900000000000001,
+      0.4900000000000001,
+      0.49000000000000044
+     ]
+    }
+   ],
+   "step": {
+    "sim_time": 0.5,
+    "nstep": 500,
+    "wall_s": 0.029,
+    "us_per_step": 58.7,
+    "diverged_at_step": null,
+    "nv": 24,
+    "ncon_end": 0,
+    "warnings": {}
+   }
+  }
+ ]
+}

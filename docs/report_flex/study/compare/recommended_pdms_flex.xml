@@ -1,0 +1,54 @@
+<!-- Recommended PDMS flex for the 51.0 x 71.0 x 1.5 mm layer, MuJoCo 3.17.0 (compare task, flexstudy/compare/README.md).
+     Drop-in replacement for the <flexcomp> inside <body name="left_pdms"> of scripts_sim/make_blade_assets.py output
+     (same frame: x across the blade, y toward the tip, +z into the layer, origin at mid-thickness; the back face
+     z = +0.75 mm is bonded/pinned, the free face is z = -0.75 mm). Mirror it for right_pdms.
+
+     MATERIAL (linear elastic E = 1 MPa, nu = 0.45, 965 kg/m^3; no damping)
+       dof="full" (linear tetrahedra) in 3.17.0 uses TWICE the Lame lambda (finding F1, re-verified by
+       bench_static/patch.json: uniaxial-strain energy ratio 1.818182 at nu = 0.45). Pass the remapped inputs
+           poisson_in = nu / (2 (1 - nu)),   young_in = 2 G (1 + poisson_in),   G = E / (2 (1 + nu)):
+         nu = 0.45  -> young = 971786.83 Pa, poisson = 0.40909091   (used below)
+         nu = 0.49  -> young = 993551.96 Pa, poisson = 0.48039216
+       With these inputs the element reproduces mu = 344828 Pa, lambda = 3.1034e6 Pa exactly (patch tests 1.000000).
+       Do NOT use these remapped values for dof="trilinear"/"quadratic" (they are already exact).
+
+     CELL STRUCTURE (robot, budget ~1-5 ms per 0.5 ms step)
+       count 6 8 2 = 5 x 7 x 1 cells: one element per taxel (10.2 x 10.14 mm), one through the 1.5 mm thickness
+       (aspect 6.8). Grid lines coincide with the taxel boundaries. Measured: whole robot with both pads 6.0 ms/step
+       over the 2.7 s grasp (compare/out/robot_grasp.jsonl, tag 6x8x2_B_m1); the current 11 x 15 x 3 grid costs
+       27.3 ms/step with the same settings. Finer grids do not fit the budget (11 x 15 x 2: 21 ms/step).
+
+     CONTACT (robot): solref 0.001 1 (time constant 2h). At opt.iterations = 100, solref < 2h overloads and
+       inverts the layer on the robot (6x8x2 runs with solref 2e-4 / 3e-4 / 5e-4: 204 / 84 / 0-1 inverted tets,
+       normal force 69 +- 98 N ... 176 +- 103 N instead of 120 N). Honest consequence: with solref 0.001 the
+       contact spring (stiffness proportional to vertex mass) is ~10x softer than the layer, so on the rig the
+       apparent stiffness is ~-89 % (C1) and the taxel deformations are not the PDMS's; per-taxel normal FORCES
+       follow equilibrium and are usable (C1/C3 force-map RMS <= 0.02 of the total). If a step of ~20-40 ms is
+       acceptable, use solref 0.0001 1 with <option iterations="1000" tolerance="1e-10"> instead (robot 6x8x2:
+       21 ms/step, penetration 0.01 mm, compression 44.5 um, 120.8 +- 0.3 N per side).
+       Mass scaling of the flex (to stiffen contacts) was tested and REJECTED: x10 / x100 make the held force and
+       the compression chatter (compression std 36 / 63 um vs 3.7 um) and break no-slip convergence on the rig.
+
+     REQUIRED <option> FLAG (robot): <flag island="disable"/> (3.17.0 island-metric bug, flexstudy/robot/NOTES.md).
+
+     FIXED-RIG ALTERNATIVE (pad in a static body, quasi-static indentation, cost not critical):
+       count 41 57 3 (40 x 56 x 2 cells, 1.275 x 1.268 x 0.75 mm), spacing "0.001275 0.0012679 0.00075",
+       pin gridrange "0 0 2 40 56 2", contact solref 0.0001 1, opt.iterations >= 1000. Platen loads -12 to -14 %
+       (contact compliance -16 %, discretisation +2.6 %), shear -8 %; punch loads within +8..+10 % on average
+       only through error cancellation (discretisation +36..+65 %, contact -19 %). For a sphere or punch at a
+       known position use a graded tetrahedral mesh (flexcomp type="direct", rig2.py graded_mesh()): 0.15 mm core
+       -> sphere R = 10 mm F(30 um) within ~+11 % (uniform 40 x 56 x 2: +313 %).
+-->
+<flexcomp name="left_pdms_flex" type="grid" dim="3" dof="full" count="6 8 2"
+          spacing="0.0102000 0.0101429 0.0015000" radius="0"
+          mass="0.0052414" group="3" rgba="0.95 0.5 0.1 0.6">
+  <!-- F1-corrected inputs for E = 1 MPa, nu = 0.45 (see header); damping 0 (no Rayleigh/Kelvin-Voigt) -->
+  <elasticity young="971786.83" poisson="0.40909091" damping="0"/>
+  <!-- objects need conaffinity bit 2; condim 3 (no-slip grasp); time constant 2h = 1 ms -->
+  <contact contype="2" conaffinity="2" condim="3" priority="2" friction="1 0.005 0.0001"
+           solref="0.001 1" solimp="0.99 0.99 0.001" selfcollide="none"/>
+  <!-- back face (grid layer k = 1, z = +0.75 mm) bonded to the blade -->
+  <pin gridrange="0 0 1 5 7 1"/>
+</flexcomp>
+<!-- and in the model's <option>:  <flag island="disable" refsafe="disable"/>  (integrator="discrete" solver="CG"
+     iterations="100" cone="elliptic" impratio="100" timestep="0.0005", as now) -->

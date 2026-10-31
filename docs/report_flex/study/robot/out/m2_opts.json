@@ -1,0 +1,1 @@
+[{"con": "eq", "island": false, "tag": "m_eq_noisl", "T": 0.2}, {"con": "limit", "island": false, "tag": "m_limit_noisl", "T": 0.2}, {"con": "floor", "island": false, "tag": "m_floor_noisl", "T": 0.2}, {"con": "eq", "grid": "3 3 2", "island": false, "tag": "m_eq_g3x3x2_noisl", "T": 0.2}]

@@ -1,0 +1,37 @@
+<mujoco model="contact_video_coin">
+<option timestep="0.0005" integrator="discrete" solver="CG" cone="elliptic" impratio="100" gravity="0 0 0"
+        iterations="1000" tolerance="1e-8"><flag refsafe="disable"/></option>
+<size memory="2G"/>
+<visual><global offwidth="1920" offheight="1080"/><quality shadowsize="4096"/>
+  <headlight ambient="0.35 0.35 0.35" diffuse="0.45 0.45 0.45" specular="0.1 0.1 0.1"/></visual>
+<asset>
+  <material name="blade" rgba="0.30 0.32 0.36 1" specular="0.3" shininess="0.4"/>
+  <material name="obj" rgba="0.80 0.80 0.84 1" specular="0.6" shininess="0.6" reflectance="0.0"/>
+</asset>
+<worldbody>
+  <light pos="0.05 -0.08 0.15" dir="-0.3 0.5 -1" diffuse="0.6 0.6 0.6" castshadow="true"/>
+  <body name="rig" quat="0 1 0 0">
+    <geom name="blade" type="box" size="0.0285 0.0385 0.002" pos="0 0 0.00351" material="blade"
+          contype="0" conaffinity="0"/>
+    <body name="pad" pos="0 0 0.00075">
+      <flexcomp name="pdms" type="grid" dim="3" count="41 57 4" spacing="0.001275 0.001267857143 0.0005" radius="0"
+                mass="0.0052413975" rgba="0.95 0.55 0.15 1">
+        <elasticity young="971786.8339" poisson="0.4090909091" damping="0"/>
+        <contact contype="2" conaffinity="2" priority="2" condim="3" friction="1 0.005 0.0001" solref="0.0001 1" solimp="0.9999 0.9999 0.001 0.5 2" selfcollide="none"/>
+        <pin gridrange="0 0 3 40 56 3"/>
+      </flexcomp>
+    </body>
+    <body name="obj" pos="0.0108594864 -0.010037948 -0.00311595561">
+      <inertial pos="0 0 0" mass="0.1" diaginertia="1e-4 1e-4 1e-4"/>
+      <joint name="ox" type="slide" axis="1 0 0"/><joint name="oy" type="slide" axis="0 1 0"/>
+      <joint name="oz" type="slide" axis="0 0 1"/>
+      <geom name="obj" type="cylinder" size="0.0105722336 0.0009" quat="0.987796363 0.0335828234 -0.00516763491 -0.151999458"
+            material="obj" contype="2" conaffinity="2" condim="3" friction="1 0.005 0.0001" solref="0.0001 1" solimp="0.9999 0.9999 0.001 0.5 2"/>
+    </body>
+  </body>
+</worldbody>
+<actuator>
+  <position name="ax" joint="ox" kp="1e10" dampratio="1"/><position name="ay" joint="oy" kp="1e10" dampratio="1"/>
+  <position name="az" joint="oz" kp="1e10" dampratio="1"/>
+</actuator>
+</mujoco>

@@ -1,0 +1,93 @@
+{
+ "seg": 0,
+ "object": {
+  "name": "sphere",
+  "label": "sphere R = 7.7 mm",
+  "type": "sphere",
+  "size": [
+   0.007728298790310175
+  ],
+  "R": [
+   [
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "xy0": [
+   0.003165130730160429,
+   -0.013349049316457218
+  ],
+  "slide_m": 0.003958790065555971,
+  "slide_dir": [
+   -0.9874167885312567,
+   0.1581394502539434
+  ],
+  "F_target_N": 8.786860393935601
+ },
+ "cells": [
+  20,
+  28,
+  3
+ ],
+ "verts": [
+  21,
+  29,
+  4
+ ],
+ "iterations": 1000,
+ "young_in_Pa": 971786.8338557995,
+ "poisson_in": 0.40909090909090906,
+ "solref": [
+  1e-05,
+  1.0
+ ],
+ "solimp": [
+  0.9999,
+  0.9999,
+  0.001,
+  0.5,
+  2
+ ],
+ "mu": 1.0,
+ "timestep_s": 0.0005,
+ "nsteps": 700,
+ "nan_step": null,
+ "compile_s": 0.7355121728032827,
+ "nv": 5484,
+ "nflexvert": 2436,
+ "nelem": 10080,
+ "press_stop": null,
+ "warnings": {
+  "BADQACC": 0,
+  "CNSTRFULL": 0,
+  "CONTACTFULL": 0
+ },
+ "wall_total_s": 8.385553044266999,
+ "wall_median_ms": 13.94509500823915,
+ "Fz_max_N": 3.495084394393358,
+ "Ft_max_N": 0.24043706706047696,
+ "Fz_hold_N": null,
+ "depth_max_m": 0.00013823494618427708,
+ "uz_max_m": 0.00015221795502863442,
+ "pen_at_Fzmax_m": 2.2219911062328415e-05,
+ "uz_at_Fzmax_m": 0.00015221795502863442,
+ "ncon_max": 2,
+ "niter_max": 131,
+ "frac_steps_iter_cap": 0.0,
+ "taxsum_err_max_N": 0.0,
+ "act_vs_contact_err_hold_N": null,
+ "slide_Ft_over_Fz_max": null,
+ "z_touch_setp_m": 0.001500584513403363,
+ "n_frames": 40
+}

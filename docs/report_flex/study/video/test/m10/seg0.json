@@ -1,0 +1,95 @@
+{
+ "seg": 0,
+ "object": {
+  "name": "sphere",
+  "label": "sphere R = 7.7 mm",
+  "type": "sphere",
+  "size": [
+   0.007728298790310175
+  ],
+  "R": [
+   [
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "xy0": [
+   0.003165130730160429,
+   -0.013349049316457218
+  ],
+  "slide_m": 0.003958790065555971,
+  "slide_dir": [
+   -0.9874167885312567,
+   0.1581394502539434
+  ],
+  "F_target_N": 8.786860393935601
+ },
+ "mass_scale": 10.0,
+ "depth_cap_m": 0.00025,
+ "cells": [
+  40,
+  56,
+  3
+ ],
+ "verts": [
+  41,
+  57,
+  4
+ ],
+ "iterations": 1000,
+ "young_in_Pa": 971786.8338557995,
+ "poisson_in": 0.40909090909090906,
+ "solref": [
+  1e-05,
+  1.0
+ ],
+ "solimp": [
+  0.9999,
+  0.9999,
+  0.001,
+  0.5,
+  2
+ ],
+ "mu": 1.0,
+ "timestep_s": 0.0005,
+ "nsteps": 1000,
+ "nan_step": null,
+ "compile_s": 11.006362876389176,
+ "nv": 21036,
+ "nflexvert": 9348,
+ "nelem": 40320,
+ "press_stop": "depth_cap",
+ "warnings": {
+  "BADQACC": 0,
+  "CNSTRFULL": 0,
+  "CONTACTFULL": 0
+ },
+ "wall_total_s": 241.51741307834163,
+ "wall_median_ms": 67.07445019856095,
+ "Fz_max_N": 5.296793906641625,
+ "Ft_max_N": 0.2575359394732194,
+ "Fz_hold_N": 2.6483143667315043,
+ "depth_max_m": 0.00024963699739876223,
+ "uz_max_m": 0.000267935330536352,
+ "pen_at_Fzmax_m": 0.0002614490367802572,
+ "uz_at_Fzmax_m": 5.331632721442964e-14,
+ "ncon_max": 22,
+ "niter_max": 1000,
+ "frac_steps_iter_cap": 0.087,
+ "taxsum_err_max_N": 0.0,
+ "act_vs_contact_err_hold_N": 5.296679977327585,
+ "slide_Ft_over_Fz_max": null,
+ "z_touch_setp_m": 0.0015005835842619752,
+ "n_frames": 57
+}

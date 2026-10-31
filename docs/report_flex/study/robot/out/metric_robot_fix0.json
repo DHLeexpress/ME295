@@ -1,0 +1,90 @@
+{
+ "tag": "robot_fix0",
+ "o": {
+  "tag": "robot_fix0",
+  "model": "robot"
+ },
+ "nv": 1998,
+ "n_flexdof": 1980,
+ "n_other": 18,
+ "nisland": 1,
+ "island_nv": 1992,
+ "h": 0.0005,
+ "relerr_mono_vs_h2Kflex": {
+  "flex-flex": 0.0002496708171681253,
+  "flex-other": 116.29461113834004,
+  "other-other": 485410034378816.6,
+  "all": 0.24306103578160432
+ },
+ "relerr_mono_vs_full": {
+  "flex-flex": 0.0002496708171681253,
+  "flex-other": 116.29461113834004,
+  "other-other": 6.939532125843017e-08,
+  "all": 0.00024260720669824266
+ },
+ "norm_mono_flexflex": 2.5584450169125166,
+ "relerr_isl_vs_h2Kflex": {
+  "flex-flex": 1.0,
+  "flex-other": 1.0,
+  "other-other": 485410016238135.1,
+  "all": 1.0291154455958527
+ },
+ "relerr_isl_vs_full": {
+  "flex-flex": 1.0,
+  "flex-other": 1.0,
+  "other-other": 5.033858908507772e-10,
+  "all": 0.9717082804413507
+ },
+ "norm_isl_flexflex": 0.0,
+ "absnorm_S_mono": {
+  "flex-flex": 2.5584450169125166,
+  "flex-other": 9.805510252707681e-08,
+  "other-other": 0.6217817805684491
+ },
+ "absnorm_S_isl": {
+  "flex-flex": 0.0,
+  "flex-other": 0.0,
+  "other-other": 0.6217817573313003
+ },
+ "absnorm_ref_full": {
+  "flex-flex": 2.558131568059666,
+  "flex-other": 8.430919210942096e-10,
+  "other-other": 0.6217817571576323
+ },
+ "absnorm_mono_minus_ref": {
+  "flex-other": 9.804704711752717e-08
+ },
+ "norm_h2Kfd_flexflex": 2.558131568059666,
+ "norm_M_flexflex": 0.00047116682121531073,
+ "Kfd_asym": 5.145021672706801e-10,
+ "eig_M": {
+  "min": 1.0107025869790044e-05,
+  "max": 8.602389771280642,
+  "n_neg": 0
+ },
+ "eig_A_ref": {
+  "min": 0.0001525,
+  "max": 8.858300533453217,
+  "n_neg": 0
+ },
+ "eig_M+S_mono": {
+  "min": 0.0001525,
+  "max": 8.858300555200968,
+  "n_neg": 0
+ },
+ "eig_M+S_isl": {
+  "min": 1.0111272130561417e-05,
+  "max": 8.858300533441435,
+  "n_neg": 0
+ },
+ "eig_M+h2Kfd": {
+  "min": 0.0001525,
+  "max": 8.602389771282185,
+  "n_neg": 0
+ },
+ "eig_Kfd_flex_min_max": [
+  904.4370254460993,
+  635952.3995495066
+ ],
+ "max_eig_(M+S_isl)^-1(M+S_mono)": 15017.289892248824
+}

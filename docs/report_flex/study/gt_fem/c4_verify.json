@@ -1,0 +1,104 @@
+{
+ "full/nu0.300/uniaxial_strain_z": {
+  "max_nodal_err": 4.6629367034256575e-15,
+  "energy_ratio": 0.9999999999999983
+ },
+ "full/nu0.300/radial_plus_axial": {
+  "max_nodal_err": 1.5987211554602254e-14,
+  "energy_ratio": 0.9999999999999984
+ },
+ "full/nu0.300/quadratic_equilibrated": {
+  "max_nodal_err": 1.1546319456101628e-14,
+  "energy_ratio": 0.9999999999999963
+ },
+ "full/nu0.450/uniaxial_strain_z": {
+  "max_nodal_err": 5.551115123125783e-15,
+  "energy_ratio": 1.000000000000006
+ },
+ "full/nu0.450/radial_plus_axial": {
+  "max_nodal_err": 2.842170943040401e-14,
+  "energy_ratio": 1.0000000000000044
+ },
+ "full/nu0.450/quadratic_equilibrated": {
+  "max_nodal_err": 2.6201263381153694e-14,
+  "energy_ratio": 1.0000000000000209
+ },
+ "full/nu0.499/uniaxial_strain_z": {
+  "max_nodal_err": 2.1688564555990534e-13,
+  "energy_ratio": 0.9999999999999966
+ },
+ "full/nu0.499/radial_plus_axial": {
+  "max_nodal_err": 8.65085780787922e-13,
+  "energy_ratio": 0.9999999999999901
+ },
+ "full/nu0.499/quadratic_equilibrated": {
+  "max_nodal_err": 5.887512699587205e-13,
+  "energy_ratio": 0.9999999999976855
+ },
+ "mixed/nu0.300/uniaxial_strain_z": {
+  "max_nodal_err": 1.9984014443252818e-15,
+  "energy_ratio": 1.0000000000000002
+ },
+ "mixed/nu0.300/radial_plus_axial": {
+  "max_nodal_err": 1.0658141036401503e-14,
+  "energy_ratio": 0.9999999999999941
+ },
+ "mixed/nu0.300/quadratic_equilibrated": {
+  "max_nodal_err": 7.993605777301127e-15,
+  "energy_ratio": 0.9999999999999901
+ },
+ "mixed/nu0.450/uniaxial_strain_z": {
+  "max_nodal_err": 3.774758283725532e-15,
+  "energy_ratio": 0.9999999999999998
+ },
+ "mixed/nu0.450/radial_plus_axial": {
+  "max_nodal_err": 2.4868995751603507e-14,
+  "energy_ratio": 0.9999999999999993
+ },
+ "mixed/nu0.450/quadratic_equilibrated": {
+  "max_nodal_err": 1.9095836023552692e-14,
+  "energy_ratio": 1.0000000000000002
+ },
+ "mixed/nu0.499/uniaxial_strain_z": {
+  "max_nodal_err": 1.5654144647214707e-13,
+  "energy_ratio": 0.9999999999999966
+ },
+ "mixed/nu0.499/radial_plus_axial": {
+  "max_nodal_err": 5.790923296444817e-13,
+  "energy_ratio": 0.9999999999999967
+ },
+ "mixed/nu0.499/quadratic_equilibrated": {
+  "max_nodal_err": 5.826450433232822e-13,
+  "energy_ratio": 0.9999999999990993
+ },
+ "confined/full/nu0.450": {
+  "K_N_per_mm": 285.9932622578312,
+  "exact": 285.9932622578295,
+  "rel_err": 5.995204332975845e-15
+ },
+ "confined/full/nu0.490": {
+  "K_N_per_mm": 1290.3722845617067,
+  "exact": 1290.3722845617124,
+  "rel_err": -4.440892098500626e-15
+ },
+ "confined/full/nu0.499": {
+  "K_N_per_mm": 12599.903291115097,
+  "exact": 12599.90329111529,
+  "rel_err": -1.532107773982716e-14
+ },
+ "confined/mixed/nu0.450": {
+  "K_N_per_mm": 285.9932622578297,
+  "exact": 285.9932622578295,
+  "rel_err": 8.881784197001252e-16
+ },
+ "confined/mixed/nu0.490": {
+  "K_N_per_mm": 1290.372284561713,
+  "exact": 1290.3722845617124,
+  "rel_err": 4.440892098500626e-16
+ },
+ "confined/mixed/nu0.499": {
+  "K_N_per_mm": 12599.903291115299,
+  "exact": 12599.90329111529,
+  "rel_err": 6.661338147750939e-16
+ }
+}

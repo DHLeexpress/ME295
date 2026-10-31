@@ -117,11 +117,11 @@ These are real forces in newtons: they hold the book up against gravity and obey
 
 **Displacement** is a change of the state: body poses (`d.xpos`, `d.xquat`) and joint positions (`d.qpos`). A rigid body never strains, so deformation exists only where the model has degrees of freedom for it.
 
-- **The PDMS layer is deformable.** Each blade's layer is 5 × 7 cells, each a column of PDMS on three elastic slide joints: compression k_n = E(1−ν)/((1+ν)(1−2ν)) · A/t and shear k_s = E/(2(1+ν)) · A/t.
-  - This is the thin-layer limit of linear elasticity, valid because t = 0.5 mm is much smaller than a 10 mm cell.
-  - The joint positions are the layer's deformation: ~1.7 µm compression and ~1 µm shear while holding the 0.8 kg book, with the placeholders E = 1 MPa, ν = 0.45.
-  - MuJoCo's `discrete` integrator treats this stiffness implicitly. An explicit integrator would need a 16 µs step.
-  - A 3D flex (MuJoCo's finite-element deformable) was tried first and dropped (see `assembly/README.md`).
+- **The PDMS layer is deformable.** Each blade's layer (51 × 71 × 1.5 mm, bonded at its back face) is 5 × 7 cells, each a column of PDMS on three elastic slide joints: compression k_n = E(1−ν)/((1+ν)(1−2ν)) · A/t and shear k_s = E/(2(1+ν)) · A/t, no damping.
+  - This is the thin-layer (Winkler) limit of linear elasticity, an approximation. Against exact solutions it is 7–14 % too stiff for loads on the whole face and 21–35 % for a taxel-sized load at the placeholder ν = 0.45, and far worse for real PDMS (ν ≈ 0.49–0.4998: 1.2–30×). See `docs/report_flex/`.
+  - The joint positions are the layer's deformation: about 5 µm compression and up to about 24 µm shear while holding the 0.8 kg book, with the placeholders E = 1 MPa, ν = 0.45.
+  - MuJoCo's `discrete` integrator treats this stiffness implicitly. An explicit integrator would need a step of tens of µs.
+  - The alternative is a 3D finite-element flex (`make_blade_assets.py --pdms-model flex`). `docs/report_flex/` verifies it against exact solutions, gives the cell-size trade-off and the two MuJoCo 3.17 defects it exposed (doubled Lamé λ; island solver without flex stiffness), with workarounds. On the robot it grasps and lifts a box, but the full librarian task does not work with it yet: box contacts on the coarse flex halve its torsional grip, and MuJoCo's force/torque sensors ignore flex contacts.
 - **Contacts are slightly soft.** The solver lets geoms overlap a little (`contact.dist < 0`). The force grows with the overlap and its rate, as a spring–damper set by `solref`/`solimp` (a numerical regulariser). On the PDMS cells it stands for the compliance of the object's surface (the book cover), not of the PDMS.
 - **Friction is regularised.** There is no static/kinetic difference, and a sustained tangential load creeps slowly. `impratio = 100` keeps the creep under ~0.02 mm/s here.
 

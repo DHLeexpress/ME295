@@ -1,0 +1,24 @@
+<mujoco model="min_m_eq_g3x3x2">
+  <option integrator="discrete" solver="CG" timestep="0.0005" cone="elliptic" impratio="100">
+    <flag refsafe="disable"/>
+  </option>
+  <worldbody>
+    
+    <body name="link" pos="0 0 0">
+      <joint name="j" type="hinge" axis="0 1 0" armature="0.1" damping="2" />
+      <geom type="capsule" fromto="0 0 0 0.15 0 0" size="0.03" mass="1" contype="0" conaffinity="0"/>
+      
+      <body name="pdms" pos="0.15 0 0.04">
+        <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-12 1e-12 1e-12"/>
+        <flexcomp name="pdms_flex" type="grid" dim="3" count="3 3 2" spacing="0.0255000 0.0355000 0.0015000"
+                  radius="0" mass="0.0052414">
+          <elasticity young="1000000.0" poisson="0.45" damping="0"/>
+          <contact contype="2" conaffinity="2" condim="3" priority="2" friction="1 0.005 0.0001"
+                   solref="0.0001 1" solimp="0.99 0.99 0.001" selfcollide="none"/>
+          <pin gridrange="0 0 1 2 2 1"/>
+        </flexcomp>
+      </body>
+    </body>
+  </worldbody>
+  <equality><joint joint1="j" polycoef="0 0 0 0 0" solref="0.001 1"/></equality>
+</mujoco>

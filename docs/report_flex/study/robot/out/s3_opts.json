@@ -1,0 +1,11 @@
+[{"tag":"wheel_base"},
+ {"tag":"pymj_fix0","pymj":true,"env":{"MJ_FIX_ISLANDFLEX":"0"}},
+ {"tag":"pymj_fix1","pymj":true,"env":{"MJ_FIX_ISLANDFLEX":"1"},"T":1.0},
+ {"tag":"pymj_fix1_f1","pymj":true,"f1":true,"env":{"MJ_FIX_ISLANDFLEX":"1"},"T":1.0},
+ {"tag":"pymj_fix1_closing","pymj":true,"ctrl_fingers":255,"env":{"MJ_FIX_ISLANDFLEX":"1"},"T":1.0},
+ {"tag":"pymj_fix1_lockarm","pymj":true,"lock":["shoulder","elbow","wrist"],"env":{"MJ_FIX_ISLANDFLEX":"1"},"T":1.0},
+ {"tag":"pymj_fix1_onlywrist3","pymj":true,"lock":["shoulder","elbow","wrist_1","wrist_2","driver","follower","knuckle"],"env":{"MJ_FIX_ISLANDFLEX":"1"},"T":1.0},
+ {"tag":"pymj_fix1_21x29x3","pymj":true,"grid":"21x29x3","env":{"MJ_FIX_ISLANDFLEX":"1"},"T":0.2},
+ {"tag":"pymj_fix1_6x8x2","pymj":true,"grid":"6x8x2","env":{"MJ_FIX_ISLANDFLEX":"1"},"T":1.0},
+ {"tag":"pymj_noisland","pymj":true,"island":false,"env":{"MJ_FIX_ISLANDFLEX":"0"},"T":1.0}
+]

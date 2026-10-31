@@ -1,0 +1,50 @@
+[
+ {
+  "id": "full_corr_nt1_nz3_nu0.45",
+  "joint": "slide",
+  "Q_base": -5.273559366969494e-16,
+  "sum_free_point_forces_z": -2.612020042361416,
+  "max_point_force": 2.4808627945768733,
+  "expected_Q_base": 0.0,
+  "Q_base_over_max_point_force": 2.1256956968750592e-16
+ },
+ {
+  "id": "full_corr_nt1_nz3_nu0.45",
+  "joint": "hinge",
+  "Q_base": 1.8214596497756474e-17,
+  "sum_free_point_forces_z": -2.612020042361416,
+  "max_point_force": 2.4808627945768733
+ },
+ {
+  "id": "trilinear_nt1_cz2_nu0.45",
+  "joint": "slide",
+  "Q_base": 2.534017263984733,
+  "sum_free_point_forces_z": -2.5340172639847345,
+  "max_point_force": 1.0116632298495118,
+  "expected_Q_base": 0.0,
+  "Q_base_over_max_point_force": 2.504803168898089
+ },
+ {
+  "id": "trilinear_nt1_cz2_nu0.45",
+  "joint": "hinge",
+  "Q_base": 0.16438043439210423,
+  "sum_free_point_forces_z": -2.5340172639847345,
+  "max_point_force": 1.0116632298495118
+ },
+ {
+  "id": "quadratic_nt1_cz1_nu0.45",
+  "joint": "slide",
+  "Q_base": 0.6015449468994521,
+  "sum_free_point_forces_z": -0.6015449468994543,
+  "max_point_force": 1.234071221565808,
+  "expected_Q_base": 0.0,
+  "Q_base_over_max_point_force": 0.4874475122563857
+ },
+ {
+  "id": "quadratic_nt1_cz1_nu0.45",
+  "joint": "hinge",
+  "Q_base": 0.039176213588640124,
+  "sum_free_point_forces_z": -0.6015449468994543,
+  "max_point_force": 1.234071221565808
+ }
+]

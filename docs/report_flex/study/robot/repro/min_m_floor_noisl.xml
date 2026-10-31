@@ -1,0 +1,24 @@
+<mujoco model="min_m_floor_noisl">
+  <option integrator="discrete" solver="CG" timestep="0.0005" cone="elliptic" impratio="100">
+    <flag refsafe="disable" island="disable"/>
+  </option>
+  <worldbody>
+    <geom name="floor" type="plane" size="0 0 1" pos="0 0 -0.2"/>
+    <body name="link" pos="0 0 0">
+      <joint name="j" type="hinge" axis="0 1 0" armature="0.1" damping="2" />
+      <geom type="capsule" fromto="0 0 0 0.15 0 0" size="0.03" mass="1" contype="0" conaffinity="0"/>
+      <geom type="box" size="0.02 0.02 0.02" pos="0.15 0 -0.18" mass="0.1"/>
+      <body name="pdms" pos="0.15 0 0.04">
+        <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-12 1e-12 1e-12"/>
+        <flexcomp name="pdms_flex" type="grid" dim="3" count="11 15 3" spacing="0.0051000 0.0050714 0.0007500"
+                  radius="0" mass="0.0052414">
+          <elasticity young="1000000.0" poisson="0.45" damping="0"/>
+          <contact contype="2" conaffinity="2" condim="3" priority="2" friction="1 0.005 0.0001"
+                   solref="0.0001 1" solimp="0.99 0.99 0.001" selfcollide="none"/>
+          <pin gridrange="0 0 2 10 14 2"/>
+        </flexcomp>
+      </body>
+    </body>
+  </worldbody>
+  
+</mujoco>

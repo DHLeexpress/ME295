@@ -1,0 +1,16 @@
+[{"tag":"noisland","island":false,"T":1.0},
+ {"tag":"noisland_f1","island":false,"f1":true,"T":1.0},
+ {"tag":"noisland_f1_nu049","island":false,"f1":true,"nu":0.49,"T":1.0},
+ {"tag":"noisland_nu03","island":false,"nu":0.3,"T":1.0},
+ {"tag":"noisland_lockarm","island":false,"lock":["shoulder","elbow","wrist"],"T":1.0},
+ {"tag":"noisland_onlywrist3","island":false,"lock":["shoulder","elbow","wrist_1","wrist_2","driver","follower","knuckle"],"T":1.0},
+ {"tag":"noisland_onlyfollower","island":false,"lock":["shoulder","elbow","wrist","driver","knuckle"],"T":1.0},
+ {"tag":"noisland_6x8x2","island":false,"grid":"6x8x2","T":1.0},
+ {"tag":"noisland_11x15x2","island":false,"grid":"11x15x2","T":1.0},
+ {"tag":"noisland_21x29x3","island":false,"grid":"21x29x3","T":0.2},
+ {"tag":"noisland_h1e-3","island":false,"h":0.001,"T":1.0},
+ {"tag":"noisland_h1e-4","island":false,"h":0.0001,"T":0.2},
+ {"tag":"noisland_closing","island":false,"ctrl_fingers":255,"T":1.0},
+ {"tag":"island_onlywrist3","lock":["shoulder","elbow","wrist_1","wrist_2","driver","follower","knuckle"],"T":0.2,"stop_on_bad":true},
+ {"tag":"island_onlyfollower","lock":["shoulder","elbow","wrist","driver","knuckle"],"T":0.2}
+]

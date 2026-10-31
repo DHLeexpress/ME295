@@ -295,11 +295,16 @@ class Compositor:
     """Lays out the three panels, the title bar and the urx console."""
 
     def __init__(self, renderer: SceneRenderer, main_cam, close_cam, wrist_cam: str = "wrist_cam",
-                 title: str = ""):
+                 title: str = "", panel: str = "3d"):
         self.r = renderer
         self.main_cam, self.close_cam, self.wrist_cam = main_cam, close_cam, wrist_cam
         self.title = title
-        self.panel = SensorPanel()
+        self.panel_3d = panel == "3d"
+        if self.panel_3d:  # 3D views in the robot base frame; panel3d imports this module, so import it here
+            from panel3d import SensorPanel3D
+            self.panel = SensorPanel3D()
+        else:              # the 2D taxel maps
+            self.panel = SensorPanel()
         self.f_title, self.f_head = _font(22, True), _font(17, True)
         self.f_mono, self.f_small = _font(15), _font(13)
 
@@ -332,14 +337,16 @@ class Compositor:
         draw.text((18, 14), self.title, font=self.f_title, fill=(235, 235, 235))
         draw.text((W - 430, 16), f"t = {rob.time:6.2f} s   phase: {rec.phase}", font=self.f_head, fill=(242, 201, 76))
         top = 54
+        # once per frame: close_up_camera() low-pass filters on every call, and the 3D panel uses its view direction
+        close_cam = self.close_cam(rob.time) if callable(self.close_cam) else self.close_cam
         # left: sensor panel
-        canvas.paste(Image.fromarray(self.panel.draw(rec.frames, rec.log)), (0, top))
+        panel = self.panel.draw(rec, view=close_cam) if self.panel_3d else self.panel.draw(rec.frames, rec.log)
+        canvas.paste(Image.fromarray(panel), (0, top))
         # centre: MuJoCo views
         extra = self.force_arrows(rec)
         main = self.r.render(d, self.main_cam(rob.time) if callable(self.main_cam) else self.main_cam, (800, 600),
                              extra_geoms=extra)
-        close = self.r.render(d, self.close_cam(rob.time) if callable(self.close_cam) else self.close_cam,
-                              (800, 420), extra_geoms=extra)
+        close = self.r.render(d, close_cam, (800, 420), extra_geoms=extra)
         canvas.paste(Image.fromarray(main), (560, top))
         canvas.paste(Image.fromarray(close), (560, top + 606))
         draw.text((572, top + 8), "MuJoCo (Filament PBR)" if self.r.backend == "filament" else "MuJoCo",

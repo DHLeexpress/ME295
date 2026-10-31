@@ -48,30 +48,20 @@ Measured along the jaw from the mesh vertices; the collision geometry agrees to 
 - The fingertips travel about 24 mm toward the tip while closing. Anything that reaches above the PDMS's top edge meets the mounting block first.
 
 ## PDMS layer (deformable)
-- **Geometry:** the 0.5 mm extrusion on the blade's flat face, 51.0 × 71.0 mm, found from the STL and split out for its own colour. The blade's own collision pieces under it are cut back to the plate face (STL z = −0.32), so the PDMS is what touches.
-- **Deformable body:** the layer is **5 × 7 cells** (10.2 × 10.1 mm). Each cell is a column of PDMS bonded to the blade at its back face: a point mass on three slide joints in the PDMS frame (x across the blade, y toward the tip, z the face normal, +z into the layer).
-  - Stiffness from the material: compression k_n = E(1−ν)/((1+ν)(1−2ν)) · A/t, shear k_s = E/(2(1+ν)) · A/t, Kelvin–Voigt damping τ·k.
-  - This is the thin-layer limit of linear elasticity (Winkler foundation): with t = 0.5 mm ≪ 10 mm, each column deforms under its own traction only.
-  - The joint positions `{side}_pdms_i_j_x/y/z` are the layer's deformation (µm at grasp loads: ~6 µm compression at 120 N).
-  - Integrated by MuJoCo's `discrete` integrator, which is implicit in position; an explicit one would need a time step under ~16 µs.
-- **Why not a MuJoCo flex:** a 3D flex (6 × 8 × 2 vertices, FEM) matched the analytical shear stiffness within 17% on a fixed plate. Bolted to the moving finger, its thin elements (aspect ratio 20:1 and more) made the effective-inertia solve ill-conditioned (contact and elastic forces stopped balancing).
-- **Boundary conditions:**
-  - Back face bonded to the blade (each cell's joints are anchored to the fingertip body).
-  - Front face free, with frictional contact: one point per cell (a flat ellipsoid filling the cell), μ = 1.0, `priority = 2`.
-  - Sides free.
-  - Cells don't collide with each other (`contype=2 conaffinity=1`) or with their own blade (parent body).
-- **Placeholders** (arguments of `make_blade_assets.py`):
-  - material: E = 1 MPa, ν = 0.45 (real PDMS ≈ 0.49), τ = 1 ms, density 965 kg/m³;
-  - cell grid: 5 × 7;
-  - contact: μ = 1.0, `--solref 0.005 1 --solimp 0.9 0.95 0.002`, the compliance of the object's surface (a book cover), not of the PDMS.
-- **Readout:** `shear_agent.robot.PDMSSkin` gives, per cell, the contact force from the solver (normal, shear) and the deformation (joint positions). Quasi-statically, stiffness × deformation equals the contact force (tested).
+- **Geometry:** 51.0 × 71.0 × 1.5 mm. The 0.5 mm extrusion on the blade's flat face (found from the STL and split out for its own colour) is the part that stands proud; the other 1.0 mm sits in a pocket. The blade's own collision pieces under it are cut back to the plate face (STL z = −0.32). The PDMS frame `{side}_pdms` is at mid-thickness: x across the blade, y toward the tip, +z into the layer.
+- **Two models** (`make_blade_assets.py --pdms-model`), both bonded at the back face, free at the front and sides, linear elastic with no damping:
+  - `cells` (default, fast): 5 × 7 cells, each a column of PDMS on three slide joints with k_n = E(1−ν)/((1+ν)(1−2ν)) · A/t = 2.62e5 N/m and k_s = E/(2(1+ν)) · A/t = 2.38e4 N/m. Contact: one flat ellipsoid per cell over the protruding 0.5 mm, μ = 1, `priority = 2`, solref 0.003 1, solimp 0.9 0.95 0.002 (the object's surface compliance). This thin-layer (Winkler) model is an approximation. Against exact solutions it is 7–14 % too stiff for loads on the whole face and 21–35 % for a taxel-sized load at ν = 0.45, and 1.2–30× at ν = 0.49–0.499 (`docs/report_flex/`).
+  - `flex` (finite elements): a `flexcomp` grid of linear tetrahedra (`--flex-grid`, default 6 × 8 × 2 vertices = one element per taxel). MuJoCo 3.17's `dof="full"` flex uses twice the Lamé λ; `flex_lame_inputs()` passes the young/poisson that give it the intended (E, ν). Back-face vertices are pinned; contact on the free face with solref 0.0001 1, solimp 0.99 0.99 0.001. It grasps and lifts a box on the robot. The full librarian task does not work with it yet: a box touches the coarse flex at tet corners, which halves its torsional grip (0.58 vs 1.11 N m at 24 N per pad), and MuJoCo's force/torque sensors ignore flex contacts (`mj_rnePostConstraint`). Study, ground truth, cell-size trade-off and both MuJoCo defects: `docs/report_flex/`.
+- **Solver settings per model:** `assembly/pdms_option.xml` (written with the PDMS, included by `ur10e_2f140.xml`): Newton for the cells; CG with 1000 iterations, tolerance 1e-10 and islands disabled for the flex. The island flag works around a MuJoCo 3.17 defect: the per-island solver leaves out the stiffness of a flex pinned to a jointed body, and the layer diverges within a few steps.
+- **Placeholders** (arguments of `make_blade_assets.py`): E = 1 MPa, ν = 0.45 (real Sylgard 184 ≈ 0.495–0.4998), no damping (`--tau 0`), density 965 kg/m³, μ = 1.0, 5 × 7 cells.
+- **Readout:** `shear_agent.robot.PDMSSkin` gives, per taxel, the contact force from the solver (normal, shear) and the deformation (cell joint positions, or the flex free-face displacement binned per taxel).
 
 ## Gripper control
 - Actuator `fingers`: ctrl **0 = open … 255 = closed**, as on the Robotiq. One driven knuckle; the other five hinges follow it through joint equalities. The fingertips translate, so the blades stay parallel.
 - **Force:** stiff servo (kp = 1000 N m/rad), with `forcerange` 24 N m. That gives 120–128 N per finger on 40–100 mm objects. Objects narrower than 32 mm can't be squeezed by the PDMS. `SimRobotiqGripper` maps the Robotiq force register 0–255 to 10–125 N per finger and speed 0–255 to 30–250 mm/s.
 - **Linkage stiffness:** the mimic equalities use solref 0.001 s, so a 120 N squeeze tilts the fingertips < 0.1°. Softer settings leak normal force into the skin's shear reading.
 - **Speed:** ramp ctrl (`gripper_ramp(..., speed=150)` mm/s) rather than stepping it.
-- **Time step:** 0.5 ms, `discrete` integrator (implicit in position: stiff PDMS cells and servo gains), CG solver.
+- **Time step:** 0.5 ms, `discrete` integrator (implicit in position: stiff PDMS and servo gains); solver per PDMS model (`pdms_option.xml`).
 
 ## Contact model
 | Part | Collision geometry | friction (slide, torsion, roll) | solref |

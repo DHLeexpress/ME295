@@ -1,0 +1,74 @@
+{
+ "A_F1_ratio_by_load_case": {
+  "0.0": {
+   "uniaxial_stress_E_ratio": 1.0,
+   "uniaxial_strain_M_ratio": 1.0,
+   "hydrostatic_K_ratio": 1.0,
+   "shear_ratio": 1.0
+  },
+  "0.3": {
+   "uniaxial_stress_E_ratio": 1.0577,
+   "uniaxial_strain_M_ratio": 1.4286,
+   "hydrostatic_K_ratio": 1.6923,
+   "shear_ratio": 1.0
+  },
+  "0.4": {
+   "uniaxial_stress_E_ratio": 1.0317,
+   "uniaxial_strain_M_ratio": 1.6667,
+   "hydrostatic_K_ratio": 1.8571,
+   "shear_ratio": 1.0
+  },
+  "0.45": {
+   "uniaxial_stress_E_ratio": 1.0163,
+   "uniaxial_strain_M_ratio": 1.8182,
+   "hydrostatic_K_ratio": 1.931,
+   "shear_ratio": 1.0
+  },
+  "0.49": {
+   "uniaxial_stress_E_ratio": 1.0033,
+   "uniaxial_strain_M_ratio": 1.9608,
+   "hydrostatic_K_ratio": 1.9866,
+   "shear_ratio": 1.0
+  },
+  "0.499": {
+   "uniaxial_stress_E_ratio": 1.0003,
+   "uniaxial_strain_M_ratio": 1.996,
+   "hydrostatic_K_ratio": 1.9987,
+   "shear_ratio": 1.0
+  }
+ },
+ "B_our_layer": {
+  "0.45": {
+   "K_confined_N_per_um": 9.157,
+   "K_confined_2lambda_N_per_um": 16.648,
+   "K_shear_GA_t_N_per_um": 0.8324,
+   "thickness_P_mode_kHz": 10.45,
+   "thickness_P_mode_2lambda_kHz": 14.09,
+   "thickness_S_mode_kHz": 3.15,
+   "omega_h_P": 32.8,
+   "omega_h_P_2lambda": 44.3,
+   "omega_h_S": 9.9,
+   "zeta_discrete_numerical_S_mode_if_resolved": 4.95
+  },
+  "0.49": {
+   "K_confined_N_per_um": 41.313,
+   "K_confined_2lambda_N_per_um": 81.007,
+   "K_shear_GA_t_N_per_um": 0.8101,
+   "thickness_P_mode_kHz": 22.2,
+   "thickness_P_mode_2lambda_kHz": 31.08,
+   "thickness_S_mode_kHz": 3.11,
+   "omega_h_P": 69.7,
+   "omega_h_P_2lambda": 97.6,
+   "omega_h_S": 9.8,
+   "zeta_discrete_numerical_S_mode_if_resolved": 4.88
+  },
+  "layer_mass_g": 5.241,
+  "mean_vertex_mass_mg_11x15x3": 10.589,
+  "mean_vertex_mass_mg_21x29x4": 2.152,
+  "mean_vertex_mass_mg_41x57x5": 0.449
+ },
+ "C_checks": {
+  "badinkajink_block_uniaxial_nu0_um": 18.75,
+  "badinkajink_cap_cp_2lambda_m_s": 239.7
+ }
+}

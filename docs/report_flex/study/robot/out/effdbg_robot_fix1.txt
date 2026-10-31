@@ -1,0 +1,25 @@
+ME295 effSolve t=0.000000 it=100 relres=5.573e-08 negcurv=0 capped=1 rayleigh=[1.649e-03,4.567e-02]
+ME295 solPrimal t=0.000000 island=0 nv=1992 nefc=11 iter=46 metric=1 newton=0
+ME295 effSolve t=0.000000 it=100 relres=1.466e-07 negcurv=0 capped=1 rayleigh=[1.723e-03,2.999e-02]
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.47e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 919. Check model. Time = 0.0000.
+
+ME295 solPrimal t=0.000000 island=0 nv=1992 nefc=11 iter=100 metric=1 newton=0
+ME295 effSolve t=0.000000 it=100 relres=1.466e-07 negcurv=0 capped=1 rayleigh=[1.723e-03,2.999e-02]
+ME295 solPrimal t=0.000000 island=0 nv=1992 nefc=11 iter=100 metric=1 newton=0
+nv 1998 flex dofs 1980  opt: h 0.0005 solver 1 it 100 tol 1e-08
+step   1 t 0.0005 bad 0 ncon     0 nefc     11 niter  100 nefmdof 0 efm_active 1 | max|qacc| arm 1.504e+00 grip 1.208e+01 flex 4.552e-01 | max|qvel| arm 7.52e-04 flex 2.28e-04 | max|qpos flex| 1.14e-07
+ME295 effSolve t=0.000500 it=100 relres=2.326e-07 negcurv=0 capped=1 rayleigh=[1.324e-03,4.440e-02]
+ME295 solPrimal t=0.000500 island=0 nv=1992 nefc=11 iter=100 metric=1 newton=0
+step   2 t 0.0010 bad 0 ncon     0 nefc     11 niter  100 nefmdof 0 efm_active 1 | max|qacc| arm 1.392e+00 grip 9.163e+00 flex 4.473e-01 | max|qvel| arm 1.45e-03 flex 8.39e-05 | max|qpos flex| 1.16e-07
+ME295 effSolve t=0.001000 it=100 relres=7.884e-08 negcurv=0 capped=1 rayleigh=[1.712e-03,5.399e-02]
+ME295 solPrimal t=0.001000 island=0 nv=1992 nefc=11 iter=100 metric=1 newton=0
+step   3 t 0.0015 bad 0 ncon     0 nefc     11 niter  100 nefmdof 0 efm_active 1 | max|qacc| arm 1.262e+00 grip 6.757e+00 flex 2.094e-01 | max|qvel| arm 2.08e-03 flex 5.13e-05 | max|qpos flex| 1.07e-07
+ME295 effSolve t=0.001500 it=100 relres=9.976e-08 negcurv=0 capped=1 rayleigh=[1.789e-03,8.000e-02]
+ME295 solPrimal t=0.001500 island=0 nv=1992 nefc=11 iter=100 metric=1 newton=0
+step   4 t 0.0020 bad 0 ncon     0 nefc     11 niter  100 nefmdof 0 efm_active 1 | max|qacc| arm 1.135e+00 grip 4.912e+00 flex 1.388e-01 | max|qvel| arm 2.65e-03 flex 1.81e-05 | max|qpos flex| 1.05e-07
+ME295 effSolve t=0.002000 it=100 relres=3.552e-08 negcurv=0 capped=1 rayleigh=[1.709e-03,4.636e-02]
+ME295 solPrimal t=0.002000 island=0 nv=1992 nefc=11 iter=93 metric=1 newton=0
+step   5 t 0.0025 bad 0 ncon     0 nefc     11 niter   93 nefmdof 0 efm_active 1 | max|qacc| arm 1.019e+00 grip 3.473e+00 flex 5.450e-02 | max|qvel| arm 3.16e-03 flex 1.30e-05 | max|qpos flex| 1.10e-07
+warnings {'mjWARN_INERTIA': 6}

@@ -1,0 +1,56 @@
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.91e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 97. Check model. Time = 0.5000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.04e-06 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 13. Check model. Time = 1.2195.
+
+--- placed: t=0.000 ncon=0 bad=0 box_z=0.3834
+   box centre in left_pdms frame (mm) [  0.21  23.27 -81.2 ]; box axes in left frame (cols) [[-0.0, -1.0, 0.002], [0.0, -0.002, -1.0], [1.0, -0.0, 0.0]]
+   left flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+   right flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+--- settled: t=0.200 ncon=4 bad=0 box_z=0.3833
+   table_top        n=  4 sum_fn=    2.94 N  pos(mm, pdms frame) x[ -23.9,  24.1] y[  53.3,  53.4] z[-96.18,-66.18]  mean normal [ 0.002 -1.     0.   ]  dist[-0.108,-0.108]mm
+   box centre in left_pdms frame (mm) [  0.21  23.36 -81.18]; box axes in left frame (cols) [[0.0, -1.0, 0.002], [0.0, -0.002, -1.0], [1.0, 0.0, 0.0]]
+   left flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+   right flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+--- closing1: t=0.500 ncon=4 bad=0 box_z=0.3833
+   table_top        n=  4 sum_fn=    2.94 N  pos(mm, pdms frame) x[ -23.9,  24.1] y[  43.2,  43.3] z[-81.91,-51.91]  mean normal [ 0.002 -1.     0.   ]  dist[-0.108,-0.108]mm
+   box centre in left_pdms frame (mm) [  0.21  13.26 -66.91]; box axes in left frame (cols) [[0.0, -1.0, 0.002], [0.0, -0.002, -1.0], [1.0, 0.0, 0.0]]
+   left flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+   right flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+--- closing2: t=0.800 ncon=4 bad=0 box_z=0.3833
+   table_top        n=  4 sum_fn=    2.94 N  pos(mm, pdms frame) x[ -23.9,  24.1] y[  35.7,  35.8] z[-66.10,-36.10]  mean normal [ 0.002 -1.     0.   ]  dist[-0.108,-0.108]mm
+   box centre in left_pdms frame (mm) [  0.21   5.82 -51.1 ]; box axes in left frame (cols) [[0.0, -1.0, 0.002], [0.0, -0.002, -1.0], [1.0, 0.0, 0.0]]
+   left flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+   right flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+--- closing3: t=1.100 ncon=4 bad=0 box_z=0.3833
+   table_top        n=  4 sum_fn=    2.94 N  pos(mm, pdms frame) x[ -23.9,  24.1] y[  31.1,  31.2] z[-49.24,-19.24]  mean normal [ 0.002 -1.     0.   ]  dist[-0.108,-0.108]mm
+   box centre in left_pdms frame (mm) [  0.21   1.25 -34.24]; box axes in left frame (cols) [[0.0, -1.0, 0.002], [0.0, -0.002, -1.0], [1.0, 0.0, 0.0]]
+   left flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+   right flex: |u| max [0. 0. 0.] mm (x,y,z); u_z min/max -0.000/0.000; min vol ratio 1.000  n_inverted 0
+--- closing4: t=1.400 ncon=29 bad=0 box_z=0.3842
+   left_blade_00    n=  4 sum_fn=   95.70 N  pos(mm, pdms frame) x[ -28.3,  28.3] y[ -30.4,  30.9] z[ -0.14, -0.07]  mean normal [0. 0. 1.]  dist[-0.354,-0.216]mm
+   left_pdms_flex   n= 21 sum_fn=    0.21 N  pos(mm, pdms frame) x[  20.4,  25.5] y[  15.0,  25.4] z[ -0.02,  0.03]  mean normal [-0.001  0.001  1.   ]  dist[-0.097,-0.016]mm
+   right_blade_00   n=  4 sum_fn=   90.34 N  pos(mm, pdms frame) x[ -28.3,  28.3] y[ -30.4,  30.8] z[  0.09,  0.13]  mean normal [ 0. -0.  1.]  dist[-0.751,-0.688]mm
+   box centre in left_pdms frame (mm) [ -2.7    0.17 -24.97]; box axes in left frame (cols) [[-0.001, -1.0, 0.021], [0.001, -0.021, -1.0], [1.0, -0.001, 0.001]]
+   left flex: |u| max [0.214 0.442 2.979] mm (x,y,z); u_z min/max -0.063/2.979; min vol ratio -1.027  n_inverted 876
+   right flex: |u| max [0.132 0.444 2.962] mm (x,y,z); u_z min/max -0.004/2.962; min vol ratio -1.019  n_inverted 852
+--- lifted: t=2.400 ncon=21 bad=0 box_z=0.4350
+   left_blade_00    n=  4 sum_fn=  129.89 N  pos(mm, pdms frame) x[ -28.3,  28.3] y[ -29.4,  30.9] z[  0.17,  0.23]  mean normal [-0.  0.  1.]  dist[-0.955,-0.833]mm
+   left_pdms_flex   n=  4 sum_fn=    0.48 N  pos(mm, pdms frame) x[ -21.0, -20.4] y[  30.9,  30.9] z[  0.58,  0.59]  mean normal [0.001 0.293 0.956]  dist[-0.007,-0.006]mm
+   right_blade_00   n=  4 sum_fn=  135.13 N  pos(mm, pdms frame) x[ -28.3,  28.3] y[ -29.4,  30.6] z[  0.17,  0.22]  mean normal [-0. -0.  1.]  dist[-0.949,-0.833]mm
+   right_pdms_flex  n=  9 sum_fn=    2.17 N  pos(mm, pdms frame) x[  14.8,  25.5] y[  30.8,  30.9] z[  0.61,  0.61]  mean normal [-0.002  0.293  0.956]  dist[-0.005,-0.001]mm
+   box centre in left_pdms frame (mm) [ -3.68   0.76 -24.36]; box axes in left frame (cols) [[-0.001, -1.0, -0.005], [0.001, 0.005, -1.0], [1.0, -0.001, 0.001]]
+   left flex: |u| max [0.214 0.436 3.001] mm (x,y,z); u_z min/max -0.000/3.001; min vol ratio -1.028  n_inverted 903
+   right flex: |u| max [0.135 0.436 2.962] mm (x,y,z); u_z min/max -0.000/2.962; min vol ratio -1.019  n_inverted 852
+--- held: t=2.700 ncon=68 bad=0 box_z=0.4323
+   left_blade_00    n=  4 sum_fn=   60.87 N  pos(mm, pdms frame) x[ -28.3,  28.3] y[ -29.3,  31.0] z[  0.19,  0.24]  mean normal [ 0. -0.  1.]  dist[-0.975,-0.876]mm
+   left_pdms_flex   n= 30 sum_fn=   19.87 N  pos(mm, pdms frame) x[ -25.5,  25.5] y[  30.7,  30.9] z[  0.62,  0.65]  mean normal [0.001 0.294 0.956]  dist[-0.016,-0.000]mm
+   right_blade_00   n=  4 sum_fn=   46.50 N  pos(mm, pdms frame) x[ -28.3,  28.3] y[ -29.4,  30.6] z[  0.20,  0.25]  mean normal [ 0. -0.  1.]  dist[-0.993,-0.907]mm
+   right_pdms_flex  n= 30 sum_fn=   33.77 N  pos(mm, pdms frame) x[ -20.8,  25.5] y[  30.7,  30.9] z[  0.66,  0.67]  mean normal [-0.002  0.295  0.956]  dist[-0.021,-0.002]mm
+   box centre in left_pdms frame (mm) [ -3.68   0.79 -24.33]; box axes in left frame (cols) [[-0.0, -1.0, -0.005], [0.001, 0.005, -1.0], [1.0, -0.0, 0.001]]
+   left flex: |u| max [0.214 0.427 3.001] mm (x,y,z); u_z min/max -0.001/3.001; min vol ratio -1.028  n_inverted 903
+   right flex: |u| max [0.136 0.433 2.962] mm (x,y,z); u_z min/max -0.001/2.962; min vol ratio -1.048  n_inverted 852
+warnings {'mjWARN_INERTIA': 2961}

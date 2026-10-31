@@ -93,8 +93,8 @@ $E$ and Poisson's ratio $\nu$), and \emph{lumped} models (rigid bodies joined by
 layer is $t=0.5$\,mm thick over $51\times71$\,mm. We first built it as a 3D flex ($6\times8\times2$ vertices): on a
 fixed plate its shear stiffness was within 17\% of the analytical value, but bolted to the moving finger its thin
 elements (aspect ratio 20:1 and more) made MuJoCo's effective-inertia solve ill-conditioned (contact and elastic
-forces no longer balanced). We therefore use the \emph{thin-layer limit} of linear elasticity, which is exact when $t$ is much
-smaller than the loaded area \cite{johnson1985,shull2002}: each column of PDMS deforms under its own traction only
+forces no longer balanced). (The revision found the actual causes: two MuJoCo defects, Sec.~\ref{sec:rev-flex}.) We therefore use the \emph{thin-layer limit} of linear elasticity, a leading-order approximation when $t$ is much
+smaller than the loaded area \cite{johnson1985} (its validity is quantified in Sec.~\ref{sec:winkler}): each column of PDMS deforms under its own traction only
 (a Winkler foundation). The layer is split into $5\times7$ cells of area $A=10.2\times10.1$\,mm$^2$; each cell is a
 point mass bonded to the blade by three slide joints (compression $u_z$, shear $u_x,u_y$) with
 \begin{equation}
@@ -282,7 +282,7 @@ fixed 125\,N & 4 & 4 & 121 \\
 assumed 20\,Hz, without noise, drift or hysteresis. Calibrating the real skin's output against these quantities is
 open work, as are its resolution and rate.
 \item \textbf{Material values are placeholders.} $E=1$\,MPa, $\nu=0.45$ (real PDMS: $\approx$0.49, which makes the
-confined layer several times stiffer in compression and leaves shear unchanged), $\tau_d=1$\,ms, $\mu=1$; all are
+confined layer several times stiffer in compression and leaves shear unchanged), $\tau_d=1$\,ms (0 since the revision, Sec.~\ref{sec:rev-model}), $\mu=1$; all are
 arguments of \code{make\_blade\_assets.py}. Deformations are micrometres either way (Fig.~\ref{fig:run}).
 \item \textbf{Friction} is Coulomb with one $\mu$, no static/kinetic difference, and residual creep
 ($\approx$0.02--0.05\,mm/s under the book's twist) after raising MuJoCo's \code{impratio} to 100. Load sharing among
@@ -291,28 +291,356 @@ cells depends on the contact softness, so read the maps qualitatively; net force
 geometry, and every book rigid (its cover compliance is the contact softness).
 \end{itemize}
 
+%==============================================================================
+% Revision after the 29 October review (items 1-6). Sections 1-6 above describe the demo as first built.
+%==============================================================================
+\section{Revision after the 29 October review}\label{sec:rev}
+The review raised six points: the PDMS is 1.5\,mm thick, so retry MuJoCo's flex and see whether it converges, and
+compare it with the cell model (item~1); linear elasticity only, without damping (2); how contact and the layer's
+boundary conditions are defined (3); a 3D robot-frame view of the skin (4); a revised report (5, this section); and
+when a high-level planner is needed (6, Sec.~\ref{sec:hl}). A separate report \cite{flexstudy} covers the flex in
+depth. All numbers below are from our runs unless a source is cited.
+
+\subsection{Model changes}\label{sec:rev-model}
+The layer is now $t=1.5$\,mm thick: 0.5\,mm stands proud of the blade face and 1.0\,mm sits in a pocket. The
+PDMS frame is at mid-thickness. The material is linear elastic, with $E=1$\,MPa and $\nu=0.45$ still placeholders,
+and has no Kelvin--Voigt or Rayleigh damping. The cell model of Sec.~\ref{sec:pdms} therefore has
+$k_n=2.62\times10^5$ and $k_s=2.38\times10^4$\,N/m per cell (Eq.~\ref{eq:k} at $t=1.5$\,mm). Each cell's contact
+geom covers only the protruding 0.5\,mm. Its contact time constant is 3\,ms, so a pressed object cannot sink to
+the blade.
+The constraint solver was also changed. With CG at its default cap of 100 iterations, 95\% of the steps of the
+pull hit the cap, and the force balance on the book was off by up to 10.4\,N ($m\mathbf a$ vs.\ the contact
+forces). Newton closes it to 3\,mN at 9\% more wall time, and the demo still shelves the book (1.8\,mm centre
+error). The cell model now uses Newton. The flex needs CG (Sec.~\ref{sec:rev-flex}). The generator writes these
+options next to the PDMS model. Re-running the ablation of Sec.~\ref{sec:abl} with the revised cell model reproduces Table~\ref{tab:abl} in every
+outcome: the skin shelves 4 of 4 books at $\mu=1$ and 0 of 4 at $\mu=0.5$, and fixed grips of 10, 40, 70 and
+125\,N shelve 1, 3, 4 and 4 (and 0, 2, 3 and 4). The skin's squeeze per book is now 15, 28, 57 and 83\,N per blade.
+
+\subsection{MuJoCo flex: verification and convergence}\label{sec:rev-flex}
+\textbf{Two engine defects.} MuJoCo's tetrahedral flex (\code{dof="full"}, Saint Venant--Kirchhoff) uses twice
+the Lam\'e $\lambda$. Patch tests with exact homogeneous strains give shear exactly, but uniaxial strain 1.82$\times$
+and hydrostatic compression 1.93$\times$ too stiff at $\nu=0.45$, for every mesh, $\nu$ and parent motion tested. The
+cause is one line of the compiler, which weights $(\mathrm{tr}\,E)^2$ by $\lambda$ instead of $\lambda/2$. Entering
+$\nu_{\rm in}=\nu/(2(1-\nu))$ and $E_{\rm in}=2G(1+\nu_{\rm in})$ restores exact linear elasticity (patch ratios
+1.000000), and the generator now does so. This, not volumetric locking as we first thought, made our earlier flex runs 1.65$\times$ too
+stiff in compression. Second, mounted on the finger, the flex diverged within three steps whenever any joint upstream was
+free. MuJoCo's per-island constraint solver leaves out the stiffness of a flex pinned to a jointed body (the
+monolithic solver includes it); \code{<flag island="disable"/>} fixes it. A stiff flex contact also needs a converged
+constraint solve (CG, 1000 iterations). Otherwise transient overloads turn the layer inside out, because its
+edge-length energy has no inversion barrier. Neither defect has been reported upstream yet; drafts and minimal
+reproductions are in \cite{flexstudy}.
+
+\textbf{Convergence and cell size.} With the remap, MuJoCo's elastic operator converges to the exact solutions
+(Sec.~\ref{sec:winkler}) from the stiff side, at about first order in the cell size: +2.6\% for the whole face and
++36\% for a one-taxel punch at 1.3\,mm cells. Contact adds a penalty spring in series with the layer, whose stiffness
+scales with the vertex mass. Refining through the thickness therefore makes the vertices lighter and the reading
+worse: whole face $-12\%$ with 2 elements, $-36\%$ with 6, each element costing 1.3--1.4$\times$. More than two
+elements through the 1.5\,mm, or in-plane cells below 2.5\,mm for distributed loads, is overmeshing. Interpolated
+(\code{trilinear}/\code{quadratic}) flexes are exact in elasticity but unusable with contact: MuJoCo keeps 50
+contacts per geom, and shear fails. Table~\ref{tab:flex} gives the chosen structures.
+
+\begin{table}[t]\centering\footnotesize
+\caption{Flex structures for the pad: error against the exact solutions (\%) for the whole-face platen (no-slip) and
+the one-taxel punch, and wall time per 0.5\,ms step. Robot: whole model with both pads; rig: pad alone. ${}^a$Elastic
+operator only (no contact). ${}^b$Mean $\pm$ 95\% interval over 5 punch placements.}
+\label{tab:flex}\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lrrr@{}}\toprule
+structure (vertices) & whole face & one taxel & ms/step\\\midrule
+$11\times15\times3$, raw inputs (first try)$^a$ & +85 & +345 & --\\
+$11\times15\times3$, remapped$^a$ & +4.4 & +158 & --\\
+$6\times8\times2$, remapped, robot setting & +12 & $+452\pm106^b$ & 21\\
+$41\times57\times3$, remapped, rig & $-14$ & $+9\pm25^b$ & 36--490\\
+graded tet mesh under a known indenter & -- & $+17\pm10^b$ & 120--510\\\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{On the robot.} The robot uses $6\times8\times2$ vertices, one element per taxel, with the remapped inputs,
+islands disabled, the stiff contact (time constant 0.1\,ms) and CG with 1000 iterations. Whole-face loads, as in a
+grasp, are then within 12\%. Taxel-scale loads are not resolved on this mesh; the fixed rig is for those. With these
+settings the gripper closes on a box and lifts it without divergence. Each pad carries the 2F-140's 120\,N and the
+layer compresses 45\,$\mu$m \cite{flexstudy}.
+The full librarian task does \emph{not} yet work with the flex. In one run (35\,min wall time, 19$\times$ the cell
+model), the skins reported a friction margin of $q\approx0.7$--0.8 during the pull, against 0.53 for the cell
+model under the same pull, so the controller squeezed only 23\,N per blade instead of 28\,N. When the book left the
+shelf, its twist reached the grasp. The book slipped 45\,mm and rotated 31\textdegree{} within 0.2\,s, and the
+task aborted during shelving. Two causes are identified. (i) A box collides with whole tetrahedra of the coarse
+$6\times8\times2$ mesh at their corners, and the contact forces gather near the pad centre. In a torsion test on a
+grasped box, their force-weighted radius is 14\,mm against 19\,mm for the cells (the exact pressure under a flat
+platen is nearly uniform, 23\,mm). The box starts to turn at 0.58\,N\,m against 1.11\,N\,m for the cells at the
+same 24\,N squeeze, and at 2.2 against 4.6\,N\,m at 121\,N. The exact pressure gives $\mu\sum N\bar r=1.11$\,N\,m,
+the cells' value, so the coarse flex resists half the twist the PDMS itself would: a contact artifact, not PDMS
+physics. At 23\,N the flex's limit is about the book's 0.51\,N\,m twist. The same concentration lowers the moment term of $q$; the force term ($|T|/\mu N\approx0.1$)
+agreed with the cell model. (ii) MuJoCo's \code{mj\_rnePostConstraint} skips contacts that involve a flex, so the simulated
+wrist force/torque sensor does not see any load carried by the skins (it read 0.03\,N during the pull, against
+3.2\,N with cells). The insert and shelve guards are blind to the pads for the same reason. Fixes to try are a
+collision that samples the pad's surface vertices (MuJoCo does this only for planes), the moment term from the pad's
+own deformation, and a wrist wrench computed from the contact forces. Until then the demo of Secs.~\ref{sec:pdms}--\ref{sec:abl} keeps the cell model, with the
+errors of Table~\ref{tab:gap}.
+
+\subsection{How good is the thin-layer (Winkler) model?}\label{sec:winkler}
+\textbf{What \cite{johnson1985} and \cite{shull2002} support.} Johnson \cite{johnson1985} treats the elastic foundation in \S4.3 and layered
+bodies in \S5.8. Secondary sources place his thin-layer treatment on pp.~138--141 \cite{ciavarella_papangelo2018};
+we have not checked the book's own equation numbers. A layer bonded to a rigid base under a \emph{uniform}
+traction has $w=pt/M$, i.e.\ our $k_n$ \cite{ciavarella2019}. Johnson argued that this remains a good
+approximation for varying tractions when $t$ is small compared with the loaded area, and noted that as
+$\nu\to\frac12$ the deformation involves in-plane flow of material \cite{ciavarella2019}. The approximation keeps
+plane sections plane, which requires $t$ much smaller than the contact half-width \cite{ciavarella_papangelo2018}.
+So \cite{johnson1985} supports Eq.~(\ref{eq:k}) as an \emph{approximation}, not the claim in Sec.~\ref{sec:pdms} that it is exact
+when $t$ is small. Shull's review \cite{shull2002} does not support a local model: its flat-punch compliance,
+quoted by \cite{wang2015}, grows as $(a/t)^3$ for $a\gg t$, the non-local confinement of a nearly incompressible
+layer. We keep \cite{johnson1985} for Eq.~(\ref{eq:k}) as an approximation and cite \cite{shull2002} only for confinement.
+
+\textbf{Validity criterion.} For a layer bonded to a rigid base and loaded over a length $\ell$, the thin-layer
+asymptotics of Chandler and Vella \cite{chandler_vella2020} give
+\begin{equation}
+w=\frac{p}{k_W}-\Gamma\,\frac{t^3}{G}\nabla^2p,\qquad k_W=\frac{M}{t},
+\label{eq:cv}
+\end{equation}
+where $\Gamma(\nu)$ depends on whether the surface is free of shear or bonded. The two terms are in the ratio
+$\chi=(1-2\nu)(\ell/t)^2$: Winkler holds for $\chi\gg1$. In the incompressible limit ($\chi\ll1$) the response is
+the non-local Poisson problem $-(t^3/3G)\nabla^2p=w$ with $p=0$ on the contact edge
+\cite{argatov_mishuris_popov2016,argatov_mishuris_popov2024}. For our pad, $\chi=29$ (whole face, $\nu=0.45$) but
+$\chi=1.1$ for a load on one 10\,mm taxel, and $\chi=5.8$ and 0.22 at $\nu=0.49$. Real Sylgard 184 has
+$\nu\approx0.495$--0.4998 \cite{mueller2019,sandia_bulk,johnston2014}.
+
+\textbf{The gap, measured against exact solutions.} Table~\ref{tab:gap} compares Winkler with ground truth
+computed without MuJoCo: an exact integral-transform solution of the bonded layer with a boundary-element contact
+solve for the local loads, and a converged quadratic finite-element model for the finite pad. The two agree to
+0.12\% where they overlap \cite{flexstudy}. At the placeholder $\nu=0.45$, Winkler is 7--14\% too stiff for loads
+on the whole face and 21--35\% for a taxel-sized punch. At $\nu=0.49$ these become 22--52\% and 2.5--3.7$\times$,
+and at $\nu=0.499$, 2--4$\times$ and 16--30$\times$. Shear is local ($K_s$ within 0.5\%). The cell model is
+therefore usable only for whole-face loads at the placeholder Poisson ratio. It fails exactly where the skin carries
+information (taxel-scale loads, load edges) and for real PDMS. This is why the skin now moves to the flex.
+
+\begin{table}[t]\centering\footnotesize
+\caption{Winkler stiffness / exact stiffness for the 51$\times$71$\times$1.5\,mm pad. Cases: rigid platen over the
+whole face (no-slip, frictionless) or over taxel rows 4--6; tangential platen; frictionless disc punch $a=5$\,mm;
+square punch on the centre taxel. Exact values from \cite{flexstudy} (error bars $<0.1\%$).}
+\label{tab:gap}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccc@{}}\toprule
+case & $\nu=0.45$ & 0.49 & 0.499\\\midrule
+whole face, no-slip & 1.07 & 1.22 & 2.08\\
+whole face, frictionless & 1.14 & 1.52 & 4.40\\
+rows 4--6 (load edge) & 1.09 & 1.35 & 3.12\\
+tangential, whole face & 1.005 & 1.005 & 1.005\\
+disc punch, $a=5$\,mm & 1.35 & 3.71 & 30.4\\
+one taxel, no-slip & 1.21 & 2.45 & 15.7\\
+one taxel, frictionless & 1.31 & 3.44 & 27.4\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{How contact and boundary conditions are defined}\label{sec:contactbc}
+\textbf{In the literature.} \emph{Local} skin models decide contact and force independently at each point or cell
+from its own gap: penalty forces from the interpenetration depth at sampled tactile points \cite{tacsl2025,xu2022corl},
+MuJoCo's tactile sensor \cite{mujoco_tactile}, tactile bodies on spring-damped joints like our cells
+\cite{hu_ye2025}, and hydroelastic contact, an elastic foundation of modulus $E/H$ \cite{elandt2019,drake_hydro_docs}.
+Multi-body skins alter the contact geometry, and with compliant contacts the penetration depends on how many contact
+points the simulator detects, which can cause jumps \cite{kasolowsky2024}. \emph{Superposition} models use an
+influence matrix calibrated by FEM \cite{taxim2021,ma2019}. \emph{Volumetric} FEM/MPM simulators fix the surface
+attached to the sensor, leave the contact face free, and define contact per surface node or element by penalty,
+barrier or complementarity \cite{difftactile2024,tacipc2023,taccel2025,narang2021icra,sferrazza2019,tacchi2023}; the
+nodes are coupled through the stiffness matrix. Against FEM on a flat elastomer, the displacement error of penalty
+models is about 3$\times$ that of a propagation model \cite[Table~II]{etac2026}. MuJoCo's flex is volumetric; we found
+no published tactile pad built from it.
+
+\textbf{Boundary conditions of our layer.} The displacement field needs a condition on every boundary: $\mathbf
+u=\mathbf u_{\rm blade}$ on the bonded back face; traction-free lateral faces over the protruding 0.5\,mm (the
+pocket walls around the inner 1.0\,mm are not modelled); and on the front face, Signorini conditions ($g\ge0$,
+$p\ge0$, $gp=0$) with Coulomb friction inside the contact and zero traction outside. In the flex these are exactly
+what is imposed: pinned back-face vertices, free lateral and front faces, and MuJoCo's contact rows on the free
+surface. The Winkler laws $p=k_Ww$ and $\mathbf T=(G/t)\mathbf u$ have no in-plane derivatives, so they neither need
+nor admit edge conditions; Eq.~(\ref{eq:cv}) is second order in the plane and needs them ($p=0$ at free and
+contact edges \cite{argatov_mishuris_popov2016}).
+
+\textbf{The $+1,+2,+1$ question.} In the cell model each cell had its own contact geom, decided contact from its own
+gap and moved as a rigid plate: cells displaced by $(1,2,1)$ carried $k_n(1,2,1)$, with steps in the surface at the
+cell borders and nothing enforcing continuity. In a continuum, and in the flex through shared vertices, the surface
+is continuous and contact is decided per surface point, so cells in contact need not deform equally, but their
+responses are coupled. The exact solution shows the coupling directly: pressing the centre taxel in by $\delta$ with a
+rigid no-slip square punch moves its four neighbours \emph{outward}, by $0.035\delta$ at $\nu=0.45$ and
+$0.13\delta$ at $\nu=0.49$, because the nearly incompressible layer bulges around the punch \cite{flexstudy}. A cell
+model represents neither the bulge nor the lateral flow that makes the pressed taxel 1.2--2.5$\times$ softer than its
+confined column (Table~\ref{tab:gap}).
+
+\subsection{The skin panel in the robot frame}\label{sec:panel3d}
+The 2D maps at the top of the video's skin panel (Sec.~\ref{sec:plots}) are replaced by two 3D views in the UR10e
+base frame, both seen along the close-up camera's direction (Fig.~\ref{fig:panel3d}). Each pad's $5\times7$ cells are
+drawn at their true pose, coloured by normal force, with the force of the book on each cell as an arrow (normal plus
+shear, 10\,mm/N); the book is a wireframe, and the book's weight $m\mathbf g$ is drawn next to the sum of the pad
+forces. The second view shows each cell's displacement ($\times$1000). Checks on a full run: the panel's per-cell
+forces sum to minus MuJoCo's contact force on the book to $6\times10^{-14}$\,N; while the book is held, the summed
+pad forces equal $-m\mathbf g$ within 0.19\,N and 1.4\textdegree; the view matches MuJoCo's camera to 0.09\,px RMS;
+a frame takes 0.14\,s to draw. The old 2D panel is still available (\code{-{}-panel 2d}).
+
+\begin{figure*}[t]\centering
+\includegraphics[width=\textwidth]{fig_panel3d.png}
+\caption{The new skin panel (top of the video's left column) while the book is held ($t=16$\,s): both pads'
+$5\times7$ cells at their pose in the UR10e base frame, seen along the close-up camera. Left: normal force per cell
+(colour) and the force of the book on each cell (arrows, 10\,mm/N), with the book's weight $m\mathbf g$ (white) and
+the summed pad force $\Sigma$ (yellow). Right: compression (colour) and free-face displacement (arrows,
+$\times1000$).}
+\label{fig:panel3d}
+\end{figure*}
+
+%==============================================================================
+\section{When does the task need a high-level planner?}\label{sec:hl}
+% romano2011 is the report's existing key (the research notes call it romano2011human).
+\textbf{When.} We call for planning when the next step is a choice between contact strategies rather than a gain
+adjustment. In Suh's framing, local smoothed models plus MPC absorb contact-mode switches, leaving a global planner
+for the non-local decisions \cite{suh2025thesis,suh2025ctr}. Tactile systems likewise handle slip inside a
+primitive and sequence primitives by graph search \cite{hogan2020tactile}, stop a grip loop at a force cap
+\cite{dong2019maintaining}, and answer rotational slip with a regrasp, not more force \cite{kolamuri2021rotation}.
+For us that moment is a guard of Table~\ref{tab:phases} firing (Table~\ref{tab:hl}). The nominal scene needs no
+planner (Sec.~\ref{sec:abl}). A heavier book needs one only once the abort fires at full force (below that the
+skin adapts, 15--81\,N per blade); published remedies then change strategy, e.g.\ regrasp nearer the centre of
+mass \cite{kolamuri2021rotation} or pivot on the board \cite{hou2019pivot}, chosen by friction-cone and
+joint-torque feasibility as in \cite{holladay2021}. A narrow gap trips the insert guard. The top-edge tilt is a
+documented sensed sequence (press $\approx$8\,N, pull while rotating at constant force, close past
+15\textdegree) \cite{prats2008riai}, also run on a PR2 from procedurally generated plans
+\cite{wieczorek2022trixi}; the only VLM-planned bookshelf retrieval we found has no public code
+\cite{ma2024dexdiff}. An overestimated $\mu$ triggers nothing ($q$ stays high): slip detection or online $\mu$
+must come first \cite{su2015force,khamis2021friction}.
+
+\textbf{Switching.} \code{movel} tracking runs only while a secure-grasp predicate holds, checked every skin frame:
+grip force settled (as in Romano's StableContact \cite{romano2011}), $Q\ge q^\star$, no unexpected wrist force
+and (sim) no book--tool slip. The combination is ours, not a published rule. A violation, guard or abort calls the
+planner, as DoReMi replans and ReKep backtracks on a failed constraint check \cite{guo2024doremi,huang2024rekep}
+and a behaviour tree falls back on a failed condition \cite{colledanchise2019blended}; meanwhile the grip is held
+and the arm frozen (Hi Robot's VLM instead replans on a 1\,s timer or user input \cite{shi2025hirobot}).
+Recoveries run under force control or MPC, not open-loop tracking. This is our choice; Shirai et al.\ conclude
+that LQR on smoothed dynamics seems insufficient to stabilise contact-rich plans \cite{shirai2025linear}.
+Control returns to tracking once the predicate holds.
+
+\textbf{Repositories.} High level: Code as Policies \cite{liang2023cap} (Apache-2.0; simulated UR5e/Robotiq
+demo). An LLM writes Python that calls primitives in sensor-conditioned loops, like our urx script; its API would
+be \code{movel}, \code{speedl}, the gripper registers, the tactile controller and the guard outcomes, run only on
+planner calls. It adds no physics or monitor, and its notebooks call deprecated OpenAI models. Gemini
+Robotics-ER~2 could add image-grounded choices (which book, top edge, free slot), but is a preview model
+\cite{geminiapi2026er}. Primitives: judo, Python sampling MPC on MuJoCo \cite{li2025judo}. Exact gradients through
+stiff or discontinuous contact can be biased or high-variance \cite{suh2022icml}, and smoothed (sampled) gradients
+found descent directions where exact ones stalled \cite{suh2022bundled}; the Pang--Suh global planner needs Drake
+\cite{pang2023tro}. Predictive sampling can only control what simulates much faster than real time, and its
+authors name soft bodies as a hard case \cite{howell2022mjpc}: flex stays the plant; rollouts use a rigid skin
+unless timing allows flex.
+
+\textbf{Shown vs.\ to test.} The sources give the strategies and the switch pattern, not thresholds for our blades,
+a VLM with public code for the tilt, or a language-model planner that itself reads force or touch. To measure with
+flex: the abort mass, skin precursors of slip at low $\mu$, the insert's gap limits, the tilt's force window, and
+grip safety during a $\sim$10\,s planner call \cite{xie2024deligrasp}.
+
+\begin{table}[t]\centering\footnotesize
+\setlength{\tabcolsep}{1.8pt}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{1.95cm}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+case & our signal & level & what the literature does \\
+\midrule
+gaps secured (now) & guards silent; $Q\ge q^\star$ & none & scripted phases suffice (Sec.~\ref{sec:abl}) \\
+heavier, within 125\,N & force setting rises, $Q$ recovers; wrist $F_z$ = weight & LL & grip raised on slip
+\cite{romano2011}; ours 15--81\,N \\
+heavier than grip or twist allows & abort: $Q<0.2$ at full force for 1\,s; sim: rotation & HL & regrasp nearer
+the CoM \cite{kolamuri2021rotation}; pull, regrasp, pull \cite{prats2008uji}; pivot on the support
+\cite{hou2019pivot}; slide to a low-torque pose \cite{king2013}; pick by force feasibility \cite{holladay2021} \\
+$\mu$ over\-estimated & none on hardware ($q$ blind); sim: book--tool slip & LL first & slip detection, online
+$\mu$ \cite{su2015force,khamis2021friction,dong2019maintaining}; an LLM $\mu$ prior, set once, would share the
+blind spot \cite{xie2024deligrasp} \\
+gap too narrow & insert guard: wrist $|F|>15$\,N before 12\,cm & HL & sideways force search \cite{prats2008uji};
+compliant retries \cite{ren2024collision}; top-edge tilt \cite{prats2008riai,wieczorek2022trixi}; edge tilt by
+hybrid force--velocity control \cite{hou2019hybrid}; bookshelf planners \cite{cheng2024hidex,toussaint2020force};
+push-to-expose learned in MuJoCo \cite{zhou2022ungraspable}; VLM-chosen skill, no code found \cite{ma2024dexdiff} \\
+jam in pull-out; slot B blocked & pause and abort during pull, arm F/T; shelve guard (10\,N) & HL & abort and
+replan \cite{guo2024doremi}; explain and correct \cite{liu2023reflect}; push items aside under F/T
+\cite{hudson2025stow} \\
+which book, top edge, free slot & none yet (poses known); wrist camera & VLM & keypoints on marked images
+\cite{liu2024moka}; pointing, success checks \cite{geminiapi2026er}; ask when unsure \cite{ren2023knowno} \\
+\bottomrule
+\end{tabularx}
+\caption{When the high level (HL) is needed. LL: the existing low level suffices; VLM: a vision-language high
+level. Signals are those of Table~\ref{tab:phases}; the case boundaries are untested beyond the ablation.}
+\label{tab:hl}
+\end{table}
+
+% ---- thebibliography-ready entries, in order of first citation. romano2011 is already in librarian_sim.tex with this exact text (same paper as the research key romano2011human): keep one copy. With these entries the report needs \begin{thebibliography}{99}. ----
+
 {\footnotesize
-\begin{thebibliography}{10}\setlength{\itemsep}{0pt}
+\begin{thebibliography}{99}\setlength{\itemsep}{0pt}
 \bibitem{todorov2012mujoco} E.~Todorov, T.~Erez, Y.~Tassa, ``MuJoCo: A physics engine for model-based control,''
 \emph{IROS}, 2012.
 \bibitem{todorov2014convex} E.~Todorov, ``Convex and analytically-invertible dynamics with contacts and
 constraints: Theory and implementation in MuJoCo,'' \emph{ICRA}, 2014.
 \bibitem{mujocodocs} MuJoCo 3.17 documentation: \emph{Computation} (soft constraints, integrators) and
 \emph{Modeling: Deformable objects}, \url{https://mujoco.readthedocs.io}, 2026.
-\bibitem{johnson1985} K.~L.~Johnson, \emph{Contact Mechanics}, Cambridge Univ. Press, 1985.
-\bibitem{shull2002} K.~R.~Shull, ``Contact mechanics and the adhesion of soft solids,'' \emph{Mater. Sci. Eng. R},
-36:1--45, 2002.
-\bibitem{johnston2014} I.~D.~Johnston, D.~K.~McCluskey, C.~K.~L.~Tan, M.~C.~Tracey, ``Mechanical characterization
-of bulk Sylgard 184 for microfluidics and microengineering,'' \emph{J. Micromech. Microeng.}, 24:035017, 2014.
+\bibitem{johnson1985} K.~L.~Johnson, \emph{Contact Mechanics}, Cambridge Univ. Press, 1985, doi:10.1017/CBO9781139171731; \S4.3 (Elastic foundation model) and \S5.8 (Layered solids, plates and shells).
+\bibitem{shull2002} K.~R.~Shull, ``Contact mechanics and the adhesion of soft solids,'' \emph{Mater. Sci. Eng. R}, 36(1):1--45, 2002.
+\bibitem{johnston2014} I.~D.~Johnston, D.~K.~McCluskey, C.~K.~L.~Tan, M.~C.~Tracey, ``Mechanical characterization of bulk Sylgard 184 for microfluidics and microengineering,'' \emph{J. Micromech. Microeng.}, 24:035017, 2014.
 \bibitem{goyal1991} S.~Goyal, A.~Ruina, J.~Papadopoulos, ``Planar sliding with dry friction, Part 1: Limit surface
 and moment function,'' \emph{Wear}, 143:307--330, 1991.
 \bibitem{howe1996} R.~D.~Howe, M.~R.~Cutkosky, ``Practical force-motion models for sliding manipulation,''
 \emph{IJRR}, 15(6):557--572, 1996.
 \bibitem{wampler1986} C.~W.~Wampler, ``Manipulator inverse kinematic solutions based on vector formulations and
 damped least-squares methods,'' \emph{IEEE Trans. SMC}, 16(1):93--101, 1986.
-\bibitem{romano2011} J.~M.~Romano, K.~Hsiao, G.~Niemeyer, S.~Chitta, K.~J.~Kuchenbecker, ``Human-inspired robotic
-grasp control with tactile sensing,'' \emph{IEEE Trans. Robotics}, 27(6):1067--1079, 2011.
+\bibitem{romano2011} J.~M.~Romano, K.~Hsiao, G.~Niemeyer, S.~Chitta, K.~J.~Kuchenbecker, ``Human-inspired robotic grasp control with tactile sensing,'' \emph{IEEE Trans. Robotics}, 27(6):1067--1079, 2011.
 \bibitem{dong2017} S.~Dong, W.~Yuan, E.~H.~Adelson, ``Improved GelSight tactile sensor for measuring geometry and
 slip,'' \emph{IROS}, 2017.
+\bibitem{flexstudy} Dohyun, Jihoon, ``MuJoCo 3.17 `flex' for our bonded PDMS skin: how it computes, how it compares with exact solutions, which cell size to use, and how to run it on the robot,'' \code{docs/report\_flex/flex\_study.pdf}, Oct.~2026 (study files in \code{docs/report\_flex/study/}).
+\bibitem{ciavarella_papangelo2018} M.~Ciavarella, A.~Papangelo, ``Ultrastrong adhesion in the contact with thin elastic layers on a rigid foundation,'' arXiv:1801.00677, 2018.
+\bibitem{ciavarella2019} M.~Ciavarella, J.~Joe, A.~Papangelo, J.~R.~Barber, ``The role of adhesion in contact mechanics,'' \emph{J. R. Soc. Interface}, 16(151):20180738, 2019.
+\bibitem{wang2015} Y.~Wang, C.~Dhong, J.~Frechette, ``Out-of-contact elastohydrodynamic deformation due to lubrication forces,'' \emph{Phys. Rev. Lett.}, 115(24):248302, 2015 (Supplemental Material, Eq.~S1).
+\bibitem{chandler_vella2020} T.~G.~J.~Chandler, D.~Vella, ``Validity of Winkler's mattress model for thin elastomeric layers: beyond Poisson's ratio,'' \emph{Proc. R. Soc. A}, 476(2242):20200551, 2020.
+\bibitem{argatov_mishuris_popov2016} I.~I.~Argatov, G.~S.~Mishuris, V.~L.~Popov, ``Asymptotic modelling of the JKR adhesion contact for a thin elastic layer,'' \emph{Q. J. Mech. Appl. Math.}, 69(2):161--179, 2016.
+\bibitem{argatov_mishuris_popov2024} I.~I.~Argatov, G.~S.~Mishuris, V.~L.~Popov, ``Initiation of decohesion between a flat punch and a thin bonded incompressible layer,'' \emph{Math. Mech. Solids}, 29(10):1958--1969, 2024.
+\bibitem{mueller2019} A.~M\"uller, M.~C.~Wapler, U.~Wallrabe, ``A quick and accurate method to determine the Poisson's ratio and the coefficient of thermal expansion of PDMS,'' \emph{Soft Matter}, 15(4):779--784, 2019.
+\bibitem{sandia_bulk} Sandia National Laboratories, ``Sylgard 184: Bulk modulus at 22\,$^\circ$C,'' Polymer Properties database, \url{https://www.sandia.gov/polymer-properties/sylgard-184-bulk-modulus-at-22c/}.
+\bibitem{tacsl2025} I.~Akinola, J.~Xu, J.~Carius, D.~Fox, Y.~Narang, ``TacSL: A library for visuotactile sensor simulation and learning,'' \emph{IEEE Trans. Robot.}, 41:2645--2661, 2025 (arXiv:2408.06506).
+\bibitem{xu2022corl} J.~Xu, S.~Kim, T.~Chen, A.~Rodriguez Garcia, P.~Agrawal, W.~Matusik, S.~Sueda, ``Efficient tactile simulation with differentiability for robotic manipulation,'' \emph{CoRL 2022}, PMLR 205:1488--1498, 2023.
+\bibitem{mujoco_tactile} MuJoCo documentation, XML reference: \emph{sensor/tactile} (Laplacian post-processing), \url{https://mujoco.readthedocs.io/en/latest/XMLreference.html#sensor-tactile}, accessed 2026.
+\bibitem{hu_ye2025} X.~Hu, Y.~Ye, ``Tactile-based reinforcement learning for adaptive grasping under observation uncertainties,'' arXiv:2505.16167, 2025.
+\bibitem{elandt2019} R.~Elandt, E.~Drumwright, M.~Sherman, A.~Ruina, ``A pressure field model for fast, robust approximation of net contact force and moment between nominally rigid objects,'' \emph{IROS}, pp.~8238--8245, 2019, doi:10.1109/IROS40897.2019.8968548.
+\bibitem{drake_hydro_docs} Drake documentation, ``Hydroelastic contact user guide,'' \url{https://drake.mit.edu/doxygen_cxx/group__hydroelastic__user__guide.html}, and ``Estimation of hydroelastic parameters,'' \url{https://drake.mit.edu/doxygen_cxx/group__hydro__params.html}, accessed 2026.
+\bibitem{kasolowsky2024} U.~Kasolowsky, B.~B\"auml, ``Fine manipulation using a tactile skin: Learning in simulation and sim-to-real transfer,'' \emph{IROS}, pp.~13120--13127, 2024, doi:10.1109/IROS58592.2024.10801397.
+\bibitem{taxim2021} Z.~Si, W.~Yuan, ``Taxim: An example-based simulation model for GelSight tactile sensors,'' \emph{IEEE Robot. Autom. Lett.}, 7(2):2361--2368, 2022, doi:10.1109/LRA.2022.3142412.
+\bibitem{ma2019} D.~Ma, E.~Donlon, S.~Dong, A.~Rodriguez, ``Dense tactile force estimation using GelSlim and inverse FEM,'' \emph{ICRA}, pp.~5418--5424, 2019.
+\bibitem{difftactile2024} Z.~Si, G.~Zhang, Q.~Ben, B.~Romero, Z.~Xian, C.~Liu, C.~Gan, ``DiffTactile: A physics-based differentiable tactile simulator for contact-rich robotic manipulation,'' \emph{ICLR}, 2024.
+\bibitem{tacipc2023} W.~Du, W.~Xu, J.~Ren, Z.~Yu, C.~Lu, ``TacIPC: Intersection- and inversion-free FEM-based elastomer simulation for optical tactile sensors,'' \emph{IEEE Robot. Autom. Lett.}, 9(3):2559--2566, 2024 (arXiv:2311.05843).
+\bibitem{taccel2025} Y.~Li, W.~Du, C.~Yu, P.~Li, Z.~Zhao, T.~Liu, C.~Jiang, Y.~Zhu, S.~Huang, ``Taccel: Scaling up vision-based tactile robotics via high-performance GPU simulation,'' \emph{NeurIPS}, 2025 (arXiv:2504.12908).
+\bibitem{narang2021icra} Y.~Narang, B.~Sundaralingam, M.~Macklin, A.~Mousavian, D.~Fox, ``Sim-to-real for robotic tactile sensing via physics-based simulation and learned latent projections,'' \emph{ICRA}, 2021.
+\bibitem{sferrazza2019} C.~Sferrazza, A.~Wahlsten, C.~Trueeb, R.~D'Andrea, ``Ground truth force distribution for learning-based tactile sensing: A finite element approach,'' \emph{IEEE Access}, 7:173438--173449, 2019.
+\bibitem{tacchi2023} Z.~Chen, S.~Zhang, S.~Luo, F.~Sun, B.~Fang, ``Tacchi: A pluggable and low computational cost elastomer deformation simulator for optical tactile sensors,'' \emph{IEEE Robot. Autom. Lett.}, 8(3):1239--1246, 2023.
+\bibitem{etac2026} Z.~Xu, F.~Zhao, X.~Huang, C.~Xiao, ``ETac: A lightweight and efficient tactile simulation framework for learning dexterous manipulation,'' arXiv:2604.20295, 2026.
+\bibitem{suh2025thesis} H.~J.~T.~Suh, \emph{Leveraging Structure for Efficient and Dexterous Contact-Rich Manipulation}, Ph.D. thesis, MIT EECS, 2025, \url{https://hdl.handle.net/1721.1/158946}.
+\bibitem{suh2025ctr} H.~J.~T.~Suh, T.~Pang, T.~Zhao, R.~Tedrake, ``Dexterous contact-rich manipulation via the contact trust region,'' \emph{Int. J. Robotics Research}, 45(9):1418--1454, 2026 (online Jan.~2026; arXiv:2505.02291).
+\bibitem{hogan2020tactile} F.~R.~Hogan, J.~Ballester, S.~Dong, A.~Rodriguez, ``Tactile dexterity: Manipulation primitives with tactile feedback,'' \emph{ICRA}, pp.~8863--8869, 2020.
+\bibitem{dong2019maintaining} S.~Dong, D.~Ma, E.~Donlon, A.~Rodriguez, ``Maintaining grasps within slipping bounds by monitoring incipient slip,'' \emph{ICRA}, pp.~3818--3824, 2019.
+\bibitem{kolamuri2021rotation} R.~Kolamuri, Z.~Si, Y.~Zhang, A.~Agarwal, W.~Yuan, ``Improving grasp stability with rotation measurement from tactile sensing,'' \emph{IROS}, pp.~6809--6816, 2021.
+\bibitem{hou2019pivot} Y.~Hou, Z.~Jia, M.~T.~Mason, ``Reorienting objects in 3D space using pivoting,'' arXiv:1912.02752, 2019.
+\bibitem{holladay2021} R.~Holladay, T.~Lozano-P\'erez, A.~Rodriguez, ``Planning for multi-stage forceful manipulation,'' \emph{ICRA}, pp.~6556--6562, 2021.
+\bibitem{prats2008riai} M.~Prats, P.~J.~Sanz, E.~Mart\'inez, R.~Mar\'in, A.~P.~del~Pobil, ``Manipulaci\'on aut\'onoma multiprop\'osito en el robot de servicios Jaume-2,'' \emph{Rev. Iberoam. Autom. Inform. Ind. (RIAI)}, 5(2):25--37, 2008.
+\bibitem{wieczorek2022trixi} F.~Wieczorek, S.-C.~Liu, B.~Sygo, M.~Koshil, ``Trixi the librarian,'' arXiv:2210.10110, 2022.
+\bibitem{ma2024dexdiff} C.~Ma, H.~Yang, H.~Zhang, Z.~Liu, C.~Zhao, J.~Tang, X.~Lan, N.~Zheng, ``DexDiff: Towards extrinsic dexterity manipulation of ungraspable objects in unrestricted environments,'' arXiv:2409.05493 (v2), 2024.
+\bibitem{su2015force} Z.~Su, K.~Hausman, Y.~Chebotar, A.~Molchanov, G.~E.~Loeb, G.~S.~Sukhatme, S.~Schaal, ``Force estimation and slip detection/classification for grip control using a biomimetic tactile sensor,'' \emph{IEEE-RAS Humanoids}, pp.~297--303, 2015.
+\bibitem{khamis2021friction} H.~Khamis, B.~Xia, S.~J.~Redmond, ``Real-time friction estimation for grip force control,'' \emph{ICRA}, pp.~1608--1614, 2021.
+\bibitem{guo2024doremi} Y.~Guo, Y.-J.~Wang, L.~Zha, J.~Chen, ``DoReMi: Grounding language model by detecting and recovering from plan-execution misalignment,'' \emph{IROS}, pp.~12124--12131, 2024.
+\bibitem{huang2024rekep} W.~Huang, C.~Wang, Y.~Li, R.~Zhang, L.~Fei-Fei, ``ReKep: Spatio-temporal reasoning of relational keypoint constraints for robotic manipulation,'' \emph{CoRL}, PMLR 270:4573--4602, 2024.
+\bibitem{colledanchise2019blended} M.~Colledanchise, D.~Almeida, P.~\"Ogren, ``Towards blended reactive planning and acting using behavior trees,'' \emph{ICRA}, pp.~8839--8845, 2019.
+\bibitem{shi2025hirobot} L.~X.~Shi, B.~Ichter, M.~Equi, L.~Ke, K.~Pertsch, Q.~Vuong, \emph{et al.}, ``Hi Robot: Open-ended instruction following with hierarchical vision-language-action models,'' \emph{ICML}, PMLR 267:54919--54933, 2025.
+\bibitem{shirai2025linear} Y.~Shirai, T.~Zhao, H.~J.~T.~Suh, H.~Zhu, X.~Ni, J.~Wang, M.~Simchowitz, T.~Pang, ``Is linear feedback on smoothed dynamics sufficient for stabilizing contact-rich plans?'' \emph{ICRA}, 2025.
+\bibitem{liang2023cap} J.~Liang, W.~Huang, F.~Xia, P.~Xu, K.~Hausman, B.~Ichter, P.~Florence, A.~Zeng, ``Code as policies: Language model programs for embodied control,'' \emph{ICRA}, pp.~9493--9500, 2023.
+\bibitem{geminiapi2026er} Google, ``Gemini Robotics-ER overview'' (Gemini API documentation) and the notebook ``Gemini Quickstart: Gemini Robotics ER~2'' (GitHub repository google-gemini/robotics-samples), accessed Oct.~2026, \url{https://ai.google.dev/gemini-api/docs/robotics-overview}.
+\bibitem{li2025judo} A.~H.~Li, B.~Hung, A.~D.~Ames, J.~Wang, S.~Le~Cleac'h, P.~Culbertson, ``Judo: A user-friendly open-source package for sampling-based model predictive control,'' arXiv:2506.17184 (RSS 2025 workshop), 2025; code: \url{https://github.com/rai-opensource/judo}.
+\bibitem{suh2022icml} H.~J.~T.~Suh, M.~Simchowitz, K.~Zhang, R.~Tedrake, ``Do differentiable simulators give better policy gradients?'' \emph{ICML}, PMLR 162:20668--20696, 2022.
+\bibitem{suh2022bundled} H.~J.~T.~Suh, T.~Pang, R.~Tedrake, ``Bundled gradients through contact via randomized smoothing,'' \emph{IEEE Robotics Autom. Lett.}, 7(2):4000--4007, 2022.
+\bibitem{pang2023tro} T.~Pang, H.~J.~T.~Suh, L.~Yang, R.~Tedrake, ``Global planning for contact-rich manipulation via local smoothing of quasi-dynamic contact models,'' \emph{IEEE Trans. Robotics}, 39(6):4691--4711, 2023.
+\bibitem{howell2022mjpc} T.~Howell, N.~Gileadi, S.~Tunyasuvunakool, K.~Zakka, T.~Erez, Y.~Tassa, ``Predictive sampling: Real-time behaviour synthesis with MuJoCo,'' arXiv:2212.00541, 2022.
+\bibitem{xie2024deligrasp} W.~Xie, M.~Valentini, J.~Lavering, N.~Correll, ``DeliGrasp: Inferring object properties with LLMs for adaptive grasp policies,'' \emph{CoRL}, 2024 (arXiv:2403.07832).
+\bibitem{prats2008uji} M.~Prats, E.~Mart\'inez, P.~J.~Sanz, A.~P.~del~Pobil, ``The UJI librarian robot,'' \emph{Intelligent Service Robotics}, 1(4):321--335, 2008.
+\bibitem{king2013} J.~King, M.~Klingensmith, C.~Dellin, M.~Dogar, P.~Velagapudi, N.~Pollard, S.~Srinivasa, ``Pregrasp manipulation as trajectory optimization,'' \emph{RSS}, 2013.
+\bibitem{ren2024collision} K.~Ren, G.~Wang, A.~S.~Morgan, K.~Hang, ``Collision-inclusive manipulation planning for occluded object grasping via compliant robot motions,'' arXiv:2412.06983, 2024.
+\bibitem{hou2019hybrid} Y.~Hou, M.~T.~Mason, ``Robust execution of contact-rich motion plans by hybrid force-velocity control,'' \emph{ICRA}, pp.~1933--1939, 2019.
+\bibitem{cheng2024hidex} X.~Cheng, S.~Patil, Z.~Temel, O.~Kroemer, M.~T.~Mason, ``Enhancing dexterity in robotic manipulation via hierarchical contact exploration,'' \emph{IEEE Robotics Autom. Lett.}, 9(1):390--397, 2024.
+\bibitem{toussaint2020force} M.~Toussaint, J.-S.~Ha, D.~Driess, ``Describing physics for physical reasoning: Force-based sequential manipulation planning,'' \emph{IEEE Robotics Autom. Lett.}, 5(4):6209--6216, 2020.
+\bibitem{zhou2022ungraspable} W.~Zhou, D.~Held, ``Learning to grasp the ungraspable with emergent extrinsic dexterity,'' \emph{CoRL}, PMLR 205:150--160, 2022.
+\bibitem{liu2023reflect} Z.~Liu, A.~Bahety, S.~Song, ``REFLECT: Summarizing robot experiences for failure explanation and correction,'' \emph{CoRL}, 2023.
+\bibitem{hudson2025stow} N.~Hudson, J.~Hooks, R.~Warrier, \emph{et al.}, ``Stow: Robotic packing of items into fabric pods,'' arXiv:2505.04572, 2025.
+\bibitem{liu2024moka} K.~Fang, F.~Liu, P.~Abbeel, S.~Levine, ``MOKA: Open-world robotic manipulation through mark-based visual prompting,'' \emph{RSS}, 2024 (arXiv:2403.03174 lists F.~Liu first).
+\bibitem{ren2023knowno} A.~Z.~Ren, A.~Dixit, A.~Bodrova, S.~Singh, S.~Tu, N.~Brown, \emph{et al.}, ``Robots that ask for help: Uncertainty alignment for large language model planners,'' \emph{CoRL}, 2023.
 \end{thebibliography}}
 \end{document}

@@ -1,0 +1,34 @@
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.66e-08 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 97. Check model. Time = 0.5000.
+
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.56e-06 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 295. Check model. Time = 1.0165.
+
+--- placed: t=0.000 ncon=0 bad=0 box_z=0.3834 q_drv=0.0000 act_force=0.00
+   total contact force on box [0. 0. 0.]  weight 2.943 N  (sum should be ~ [0,0,+w] when static)
+   PDMS surface sites: left [-0.0937  0.6914  0.4067] right [-0.2546  0.691   0.4067] gap 160.90 mm; box at [-0.1741  0.6911  0.3834]
+--- settled: t=0.200 ncon=4 bad=0 box_z=0.3833 q_drv=0.0002 act_force=-0.21
+   table_top                    n=   4 sum_normal=    2.94 N  F_on_box(world)=[0.   0.   2.94]  min dist=-0.108 mm
+   total contact force on box [0.    0.    2.943]  weight 2.943 N  (sum should be ~ [0,0,+w] when static)
+   PDMS surface sites: left [-0.0937  0.6914  0.4067] right [-0.2546  0.691   0.4067] gap 160.86 mm; box at [-0.1741  0.6911  0.3833]
+--- closed: t=1.400 ncon=39 bad=0 box_z=0.3841 q_drv=0.6257 act_force=24.00
+   left_blade_00                n=   4 sum_normal=   33.50 N  F_on_box(world)=[-33.49  10.51 -13.05]  min dist=-0.901 mm
+   left_pdms_flex               n=  30 sum_normal=  129.72 N  F_on_box(world)=[-129.45  -16.36    6.05]  min dist=-0.041 mm
+   right_blade_00               n=   4 sum_normal=  143.09 N  F_on_box(world)=[143.25  -2.94  66.56]  min dist=-0.994 mm
+   table_top                    n=   1 sum_normal=    0.00 N  F_on_box(world)=[0. 0. 0.]  min dist=-0.006 mm
+   total contact force on box [-19.687  -8.797  59.558]  weight 2.943 N  (sum should be ~ [0,0,+w] when static)
+   PDMS surface sites: left [-0.1506  0.6913  0.3831] right [-0.1981  0.6909  0.3831] gap 47.54 mm; box at [-0.1744  0.6918  0.3841]
+--- lifted: t=2.400 ncon=12 bad=0 box_z=0.4343 q_drv=0.6210 act_force=24.00
+   left_blade_00                n=   4 sum_normal=   95.11 N  F_on_box(world)=[-95.11   6.82  29.66]  min dist=-0.462 mm
+   left_pdms_flex               n=   4 sum_normal=    0.63 N  F_on_box(world)=[-0.63  0.6   0.22]  min dist=-0.002 mm
+   right_blade_00               n=   4 sum_normal=   97.36 N  F_on_box(world)=[ 97.34  23.46 -22.75]  min dist=-0.859 mm
+   total contact force on box [ 1.601 30.878  7.13 ]  weight 2.943 N  (sum should be ~ [0,0,+w] when static)
+   PDMS surface sites: left [-0.1506  0.691   0.4332] right [-0.1986  0.6906  0.4333] gap 48.06 mm; box at [-0.1748  0.692   0.4343]
+--- held: t=2.700 ncon=7 bad=0 box_z=0.4329 q_drv=0.6212 act_force=24.00
+   left_blade_00                n=   3 sum_normal=  122.33 N  F_on_box(world)=[-122.28  -20.14  -57.86]  min dist=-0.233 mm
+   right_blade_00               n=   4 sum_normal=  129.45 N  F_on_box(world)=[129.55  20.28  61.25]  min dist=-0.715 mm
+   total contact force on box [7.269 0.139 3.392]  weight 2.943 N  (sum should be ~ [0,0,+w] when static)
+   PDMS surface sites: left [-0.1501  0.6913  0.4317] right [-0.1984  0.6909  0.4317] gap 48.32 mm; box at [-0.1746  0.6921  0.4329]
+warnings {'mjWARN_INERTIA': 3367}

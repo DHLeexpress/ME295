@@ -1,0 +1,13 @@
+1. Navier residuals (must be 0): 0 0
+2. closed-form residuals Czz, CL, i*Cc (Ux/p), -i*Cc (Uz/q): 0 0 0 0
+   base-traction residuals: 0 0
+   SH: C_T = tanh(k*t)/(k*mu)  residual vs tanh(kt)/(mu k): 0
+   SH base traction / q_y = 1/cosh(k*t)  residual vs 1/cosh: 0
+3. limits (t->0 series, leading terms):
+   Czz ~ t*(2*nu - 1)/(2*mu*(nu - 1))   (expect t/M = t(1+nu)(1-2nu)/(E(1-nu)) = t(1-2nu)/(2 mu (1-nu)))
+   CL  ~ t/mu   (expect t/mu)
+   Cc  ~ k*t**2*(4*nu - 1)/(4*mu*(nu - 1))
+   Czz(nu=1/2) ~ k**2*t**3/(3*mu)  (expect k^2 t^3/(3 mu))
+   t->oo: Czz*k -> 2*(1 - nu)*(3 - 4*nu)/(mu*(6 - 8*nu))  CL*k -> 2*(1 - nu)*(3 - 4*nu)/(mu*(6 - 8*nu))  Cc*k -> (8*nu**2 - 10*nu + 3)/(mu*(6 - 8*nu))
+          expect (1-nu)/mu, (1-nu)/mu, (1-2nu)/(2mu)
+   correction-form residuals: 0 0 0

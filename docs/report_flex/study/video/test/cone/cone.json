@@ -1,0 +1,7 @@
+{
+ "n_steps_with_contact": 1320,
+ "max_contactframe_ft_over_fn": 1.0000000000000002,
+ "frac_steps_ratio_gt_1p001": 0.0,
+ "max_normal_tilt_deg": 74.80913954256586,
+ "median_normal_tilt_deg_last200": 1.4613383212838107
+}

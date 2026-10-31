@@ -1,0 +1,31 @@
+t 1.1005 bad 0 it 100 ctrl  191.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1105 bad 0 it  64 ctrl  194.1 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1205 bad 0 it  48 ctrl  196.9 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1305 bad 0 it  44 ctrl  199.6 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1405 bad 0 it  14 ctrl  202.3 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1505 bad 0 it   8 ctrl  205.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1605 bad 0 it  11 ctrl  207.8 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1705 bad 0 it  17 ctrl  210.5 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1805 bad 0 it   8 ctrl  213.2 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.1905 bad 0 it   8 ctrl  216.0 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.2005 bad 0 it  14 ctrl  218.7 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | 
+t 1.2105 bad 0 it  47 ctrl  221.4 | l comp max  0.000mm inv    0 | r comp max  0.000mm inv    0 | table_top:4/22.9N
+t 1.2205 bad 0 it 100 ctrl  224.2 | l comp max  0.245mm inv    0 | r comp max  0.223mm inv    0 | left_pdms_flex:22/38.0N right_pdms_flex:19/24.6N table_top:4/22.8N
+t 1.2305 bad 0 it 100 ctrl  226.9 | l comp max  0.518mm inv    0 | r comp max  0.651mm inv    0 | left_blade_00:4/89.9N left_pdms_flex:31/103.0N right_blade_00:4/79.8N right_pdms_flex:31/163.3N table_top:4/229.2N
+t 1.2405 bad 0 it 100 ctrl  229.6 | l comp max  2.094mm inv   22 | r comp max  1.508mm inv   90 | left_blade_00:4/164.7N left_pdms_flex:50/440.5N right_blade_00:4/269.7N table_top:4/248.2N
+t 1.2505 bad 0 it 100 ctrl  232.4 | l comp max  1.504mm inv   90 | r comp max  1.503mm inv   90 | left_blade_00:4/75.7N right_blade_00:4/61.3N table_top:4/69.4N
+t 1.2605 bad 0 it 100 ctrl  235.1 | l comp max  1.513mm inv   90 | r comp max  1.503mm inv   90 | left_blade_00:4/96.5N left_pdms_flex:10/8.2N right_blade_00:4/97.6N table_top:4/73.6N
+t 1.2705 bad 0 it 100 ctrl  237.8 | l comp max  1.581mm inv   90 | r comp max  1.615mm inv   90 | left_blade_00:4/60.1N left_pdms_flex:21/78.5N right_blade_00:4/58.9N right_pdms_flex:21/81.6N table_top:4/12.2N
+t 1.2805 bad 0 it 100 ctrl  240.6 | l comp max  1.568mm inv   90 | r comp max  1.600mm inv   90 | left_blade_00:4/32.2N left_pdms_flex:21/57.7N right_blade_00:4/19.4N right_pdms_flex:21/58.6N table_top:4/10.1N
+t 1.2905 bad 0 it 100 ctrl  243.3 | l comp max  1.568mm inv   90 | r comp max  1.563mm inv   90 | left_blade_00:4/95.8N left_pdms_flex:21/62.2N right_blade_00:4/130.0N right_pdms_flex:21/40.3N table_top:4/1.4N
+t 1.3005 bad 0 it 100 ctrl  246.0 | l comp max  1.554mm inv   90 | r comp max  1.548mm inv   90 | left_blade_00:4/54.9N left_pdms_flex:21/35.9N right_blade_00:4/50.9N right_pdms_flex:18/10.4N table_top:4/53.8N
+t 1.3105 bad 0 it 100 ctrl  248.8 | l comp max  1.527mm inv   90 | r comp max  1.576mm inv   90 | left_blade_00:4/53.1N left_pdms_flex:21/39.4N right_blade_00:4/33.8N right_pdms_flex:21/29.2N table_top:4/53.2N
+t 1.3205 bad 0 it 100 ctrl  251.5 | l comp max  1.595mm inv   90 | r comp max  1.677mm inv   90 | left_blade_00:4/49.2N left_pdms_flex:21/94.4N right_blade_00:4/59.6N right_pdms_flex:21/96.3N table_top:4/43.7N
+t 1.3305 bad 0 it 100 ctrl  254.2 | l comp max  1.504mm inv   90 | r comp max  1.503mm inv   90 | left_blade_00:4/127.0N left_pdms_flex:11/7.6N right_blade_00:4/139.8N table_top:4/15.9N
+t 1.3405 bad 0 it 100 ctrl  255.0 | l comp max  1.571mm inv   90 | r comp max  1.564mm inv   90 | left_blade_00:4/99.1N left_pdms_flex:21/57.5N right_blade_00:4/98.2N right_pdms_flex:21/39.0N table_top:4/63.7N
+t 1.3505 bad 0 it 100 ctrl  255.0 | l comp max  1.609mm inv   90 | r comp max  1.655mm inv   90 | left_blade_00:4/1.6N left_pdms_flex:21/82.7N right_blade_00:4/0.0N right_pdms_flex:21/77.6N table_top:4/27.5N
+t 1.3605 bad 0 it 100 ctrl  255.0 | l comp max  1.523mm inv   90 | r comp max  1.503mm inv   90 | left_blade_00:4/98.7N left_pdms_flex:12/13.1N right_blade_00:4/103.0N table_top:4/34.4N
+t 1.3705 bad 0 it 100 ctrl  255.0 | l comp max  1.613mm inv   90 | r comp max  1.636mm inv   90 | left_blade_00:4/64.6N left_pdms_flex:21/86.2N right_blade_00:4/94.3N right_pdms_flex:21/76.9N table_top:4/34.2N
+t 1.3805 bad 0 it 100 ctrl  255.0 | l comp max  1.575mm inv   90 | r comp max  1.583mm inv   90 | left_blade_00:4/20.9N left_pdms_flex:21/39.5N right_blade_00:4/29.2N right_pdms_flex:21/20.8N table_top:4/35.0N
+t 1.3905 bad 0 it 100 ctrl  255.0 | l comp max  1.575mm inv   90 | r comp max  1.593mm inv   90 | left_blade_00:4/41.4N left_pdms_flex:21/63.7N right_blade_00:4/47.4N right_pdms_flex:21/46.8N table_top:4/10.3N
+t 1.4000 bad 0 it 100 ctrl  255.0 | l comp max  1.546mm inv   90 | r comp max  1.586mm inv   90 | left_blade_00:4/123.3N left_pdms_flex:21/48.2N right_blade_00:4/132.5N right_pdms_flex:21/33.1N table_top:4/23.7N

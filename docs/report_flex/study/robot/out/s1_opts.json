@@ -1,0 +1,251 @@
+[
+{
+"tag": "base_nu45",
+"T": 0.2
+},
+{
+"f1": true,
+"tag": "f1_nu45",
+"T": 0.2
+},
+{
+"nu": 0.3,
+"tag": "nu30",
+"T": 0.2
+},
+{
+"f1": true,
+"nu": 0.3,
+"tag": "f1_nu30",
+"T": 0.2
+},
+{
+"f1": true,
+"nu": 0.49,
+"tag": "f1_nu49",
+"T": 0.2
+},
+{
+"E": 100000.0,
+"tag": "E1e5",
+"T": 0.2
+},
+{
+"E": 10000.0,
+"tag": "E1e4",
+"T": 0.2
+},
+{
+"island": false,
+"tag": "noisl_nu45",
+"T": 0.2
+},
+{
+"island": false,
+"f1": true,
+"nu": 0.49,
+"tag": "noisl_f1_nu49",
+"T": 0.2
+},
+{
+"island": false,
+"f1": true,
+"tag": "noisl_f1_nu45",
+"T": 0.2
+},
+{
+"pymj": true,
+"tag": "pymj_nofix",
+"T": 0.2
+},
+{
+"pymj": true,
+"env": {
+"MJ_FIX_ISLANDFLEX": "1"
+},
+"tag": "pymj_fix",
+"T": 0.2
+},
+{
+"pymj": true,
+"f1": true,
+"nu": 0.49,
+"env": {
+"MJ_FIX_ISLANDFLEX": "1"
+},
+"tag": "pymj_fix_f1_nu49",
+"T": 0.2
+},
+{
+"solver": "Newton",
+"tag": "newton",
+"T": 0.2
+},
+{
+"it": 1000,
+"tag": "cg_it1000",
+"T": 0.2
+},
+{
+"tol": 1e-12,
+"it": 1000,
+"tag": "cg_tol1e-12",
+"T": 0.2
+},
+{
+"h": 0.0001,
+"tag": "h1e-4",
+"T": 0.2
+},
+{
+"h": 0.0002,
+"tag": "h2e-4",
+"T": 0.2
+},
+{
+"h": 0.001,
+"tag": "h1e-3",
+"T": 0.2
+},
+{
+"noslip": 20,
+"tag": "noslip20",
+"T": 0.2
+},
+{
+"impratio": 1,
+"tag": "impratio1",
+"T": 0.2
+},
+{
+"cone": "pyramidal",
+"tag": "pyramidal",
+"T": 0.2
+},
+{
+"memory": 2147483648,
+"tag": "mem2G",
+"T": 0.2
+},
+{
+"warmstart": false,
+"tag": "nowarm",
+"T": 0.2
+},
+{
+"solver": "Newton",
+"island": false,
+"tag": "newton_noisl",
+"T": 0.2
+},
+{
+"noeq": true,
+"tag": "noeq",
+"T": 0.2
+},
+{
+"noact": true,
+"tag": "noact",
+"T": 0.2
+},
+{
+"grav": false,
+"tag": "nograv",
+"T": 0.2
+},
+{
+"one_flex": true,
+"tag": "one_flex",
+"T": 0.2
+},
+{
+"pdms_mass": 0.01,
+"tag": "pdms_mass1e-2",
+"T": 0.2
+},
+{
+"armature0": true,
+"tag": "arm0",
+"T": 0.2
+},
+{
+"damping0": true,
+"tag": "damp0",
+"T": 0.2
+},
+{
+"lock": [
+"shoulder",
+"elbow",
+"wrist"
+],
+"tag": "lock_arm",
+"T": 0.2
+},
+{
+"lock": [
+"shoulder",
+"elbow",
+"wrist_1",
+"wrist_2"
+],
+"tag": "lock_arm_but_w3",
+"T": 0.2
+},
+{
+"lock": [
+"driver",
+"follower",
+"knuckle"
+],
+"tag": "lock_grip",
+"T": 0.2
+},
+{
+"lock": [
+"shoulder",
+"elbow",
+"wrist",
+"driver",
+"follower",
+"knuckle"
+],
+"tag": "lock_all",
+"T": 0.2
+},
+{
+"lock": [
+"shoulder",
+"elbow",
+"wrist"
+],
+"noeq": true,
+"tag": "lock_arm_noeq",
+"T": 0.2
+},
+{
+"grid": "6x8x2",
+"tag": "g6x8x2",
+"T": 0.2
+},
+{
+"grid": "21x29x3",
+"tag": "g21x29x3",
+"T": 0.2
+},
+{
+"grid": "11x15x2",
+"tag": "g11x15x2",
+"T": 0.2
+},
+{
+"lock": [
+"driver",
+"follower",
+"knuckle"
+],
+"island": false,
+"tag": "lock_grip_noisl",
+"T": 0.2
+}
+]

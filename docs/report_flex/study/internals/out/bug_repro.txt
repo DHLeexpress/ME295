@@ -1,0 +1,5 @@
+WARNING: flex 't' is not rigid and has no equality constraints or passive forces
+
+x-force on vertex 1: mujoco -1.14943  exact -0.632184  ratio 1.8182
+y-force on vertex 2: mujoco -1.03448  exact -0.517241  ratio 2.0000
+expected ratio with lambda doubled: 1.8182 (x), 2.0000 (y)

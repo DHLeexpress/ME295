@@ -1,0 +1,96 @@
+wrote docs/report_flex/study/internals/out/p0_patch_ext.json
+case                                                    lam_eff/lam  mu_eff/mu     M/M    aniso
+full StVK cube 5^3 nu=0.0                                  -0.00000    1.00000  1.0000  1.4e-06
+    ref-element fit random_small     lam/lam=0.00000 mu/mu=1.00000 resid=1.9e-12
+    ref-element fit uniaxial_1pct    lam/lam=0.00000 mu/mu=1.00000 resid=5.0e-15
+    ref-element fit shear_1pct       lam/lam=-0.00000 mu/mu=1.00000 resid=4.2e-14
+    ref-element fit general_1pct     lam/lam=0.00000 mu/mu=1.00000 resid=4.4e-14
+full StVK cube 5^3 nu=0.3                                   2.00000    1.00000  1.4286  9.4e-07
+    ref-element fit random_small     lam/lam=2.00000 mu/mu=1.00000 resid=2.4e-12
+    ref-element fit uniaxial_1pct    lam/lam=2.00000 mu/mu=1.00000 resid=1.6e-15
+    ref-element fit shear_1pct       lam/lam=2.00000 mu/mu=1.00000 resid=8.9e-14
+    ref-element fit general_1pct     lam/lam=2.00000 mu/mu=1.00000 resid=8.8e-14
+full StVK cube 5^3 nu=0.45                                  2.00000    1.00000  1.8182  6.8e-07
+    ref-element fit random_small     lam/lam=2.00000 mu/mu=1.00000 resid=2.4e-12
+    ref-element fit uniaxial_1pct    lam/lam=2.00000 mu/mu=1.00000 resid=4.5e-16
+    ref-element fit shear_1pct       lam/lam=2.00000 mu/mu=1.00000 resid=3.4e-13
+    ref-element fit general_1pct     lam/lam=2.00000 mu/mu=1.00000 resid=3.9e-14
+full StVK cube 5^3 nu=0.49                                  2.00000    1.00000  1.9608  6.2e-07
+    ref-element fit random_small     lam/lam=2.00000 mu/mu=1.00000 resid=1.9e-12
+    ref-element fit uniaxial_1pct    lam/lam=2.00000 mu/mu=1.00000 resid=3.4e-16
+    ref-element fit shear_1pct       lam/lam=2.00000 mu/mu=1.00000 resid=1.5e-12
+    ref-element fit general_1pct     lam/lam=2.00000 mu/mu=1.00000 resid=7.0e-14
+full StVK remapped nu=0.45                                  1.00000    1.00000  1.0000  7.4e-07
+    ref-element fit random_small     lam/lam=1.00000 mu/mu=1.00000 resid=2.1e-12
+    ref-element fit uniaxial_1pct    lam/lam=1.00000 mu/mu=1.00000 resid=6.1e-16
+    ref-element fit shear_1pct       lam/lam=1.00000 mu/mu=1.00000 resid=1.9e-13
+    ref-element fit general_1pct     lam/lam=1.00000 mu/mu=1.00000 resid=5.4e-14
+full StVK remapped nu=0.49                                  1.00000    1.00000  1.0000  6.3e-07
+    ref-element fit random_small     lam/lam=1.00000 mu/mu=1.00000 resid=2.6e-12
+    ref-element fit uniaxial_1pct    lam/lam=1.00000 mu/mu=1.00000 resid=4.9e-16
+    ref-element fit shear_1pct       lam/lam=1.00000 mu/mu=1.00000 resid=8.5e-13
+    ref-element fit general_1pct     lam/lam=1.00000 mu/mu=1.00000 resid=2.5e-14
+full StVK layer 11x15x3 nu=0.45                             2.00000    1.00000  1.8182  6.8e-07
+    ref-element fit random_small     lam/lam=2.00000 mu/mu=1.00000 resid=1.3e-12
+    ref-element fit uniaxial_1pct    lam/lam=2.00000 mu/mu=1.00000 resid=1.3e-14
+    ref-element fit shear_1pct       lam/lam=2.00000 mu/mu=1.00000 resid=4.0e-13
+    ref-element fit general_1pct     lam/lam=2.00000 mu/mu=1.00000 resid=3.9e-14
+full StVK rotated parent nu=0.45                            2.00000    1.00000  1.8182  6.8e-07
+    ref-element fit random_small     lam/lam=2.00000 mu/mu=1.00000 resid=7.9e-11
+    ref-element fit uniaxial_1pct    lam/lam=2.00000 mu/mu=1.00000 resid=1.3e-12
+    ref-element fit shear_1pct       lam/lam=2.00000 mu/mu=1.00000 resid=2.9e-11
+    ref-element fit general_1pct     lam/lam=2.00000 mu/mu=1.00000 resid=1.2e-12
+full StVK rotated parent w/ freejoint nu=0.45               2.00000    1.00000  1.8182  6.8e-07
+    ref-element fit random_small     lam/lam=2.00000 mu/mu=1.00000 resid=6.5e-11
+    ref-element fit uniaxial_1pct    lam/lam=2.00000 mu/mu=1.00000 resid=1.3e-12
+    ref-element fit shear_1pct       lam/lam=2.00000 mu/mu=1.00000 resid=2.9e-11
+    ref-element fit general_1pct     lam/lam=2.00000 mu/mu=1.00000 resid=1.2e-11
+full SNH (elastic3d=1) nu=0.3                               1.00000    1.00000  1.0000  6.1e-07
+    ref-element fit random_small     lam/lam=1.00000 mu/mu=1.00000 resid=2.1e-12
+    ref-element fit uniaxial_1pct    lam/lam=1.00000 mu/mu=1.00000 resid=2.4e-15
+    ref-element fit shear_1pct       lam/lam=0.00000 mu/mu=1.00000 resid=4.9e-14
+    ref-element fit general_1pct     lam/lam=1.00000 mu/mu=1.00000 resid=3.1e-14
+    warnings: ["flex 'f' is not rigid and has no equality constraints or passive forces\nElement name 'f', id 0"]
+full SNH (elastic3d=1) nu=0.45                              1.00000    1.00000  1.0000  6.2e-07
+    ref-element fit random_small     lam/lam=1.00000 mu/mu=1.00000 resid=2.0e-12
+    ref-element fit uniaxial_1pct    lam/lam=1.00000 mu/mu=1.00000 resid=6.0e-16
+    ref-element fit shear_1pct       lam/lam=0.00000 mu/mu=1.00000 resid=7.6e-14
+    ref-element fit general_1pct     lam/lam=1.00000 mu/mu=1.00000 resid=3.6e-14
+    warnings: ["flex 'f' is not rigid and has no equality constraints or passive forces\nElement name 'f', id 0"]
+trilinear cells=(1, 1, 1) nu=0.45                           1.00000    1.00000     nan  2.1e-11
+trilinear cells=(2, 2, 2) nu=0.45                           1.00000    1.00000     nan  1.1e-11
+quadratic cells=(1, 1, 1) nu=0.45                           1.00000    1.00000     nan  7.3e-12
+quadratic cells=(2, 2, 2) nu=0.45                           1.00000    1.00000     nan  3.5e-12
+trilinear cells=(2,2,2) rotated parent nu=0.45              1.00000    1.00000     nan  2.9e-09
+trilinear+strain eq nu=0.45 solref=None                     0.00000    0.00001     nan  4.3e-11
+    strain-eq: E_eff=8.31 Pa nu_eff=0.3000 rows=144 node_mass=3.7e-05 K=2.77e+03 I=0.9 R=3e+03 diagA=2.7e+04 qfrc_spring_max=0.0e+00
+trilinear+strain eq nu=0.1 solref=None                      0.00004    0.00001     nan  4.3e-11
+    strain-eq: E_eff=8.31 Pa nu_eff=0.3000 rows=144 node_mass=3.7e-05 K=2.77e+03 I=0.9 R=3e+03 diagA=2.7e+04 qfrc_spring_max=0.0e+00
+trilinear+strain eq nu=0.45 solref=0.001 1                  0.00062    0.00371     nan  4.3e-11
+    strain-eq: E_eff=3324 Pa nu_eff=0.3000 rows=144 node_mass=3.7e-05 K=1.11e+06 I=0.9 R=3e+03 diagA=2.7e+04 qfrc_spring_max=0.0e+00
+trilinear+strain eq nu=0.45 solref=0.01 1                   0.00001    0.00004     nan  4.3e-11
+    strain-eq: E_eff=33.24 Pa nu_eff=0.3000 rows=144 node_mass=3.7e-05 K=1.11e+04 I=0.9 R=3e+03 diagA=2.7e+04 qfrc_spring_max=0.0e+00
+membrane nu=0.0 thick 0.001
+    random_small    mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.00000  lam2_eff/lam3D=0.00000 resid=2.2e-12
+    uniaxial_small  mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.00000  lam2_eff/lam3D=0.00000 resid=2.3e-10
+    shear_small     mu_eff/mu=0.25000  lam2_eff/lam_planestress=-0.00003  lam2_eff/lam3D=-0.00003 resid=4.2e-10
+    biaxial_1pct    mu_eff/mu=0.12500  lam2_eff/lam_planestress=0.12500  lam2_eff/lam3D=0.12500 resid=2.8e-14
+    general_1pct    mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.00000  lam2_eff/lam3D=0.00000 resid=1.2e-13
+membrane nu=0.3 thick 0.001
+    random_small    mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87500  lam2_eff/lam3D=0.50000 resid=1.4e-12
+    uniaxial_small  mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87500  lam2_eff/lam3D=0.50000 resid=1.4e-10
+    shear_small     mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87484  lam2_eff/lam3D=0.49991 resid=8.1e-10
+    biaxial_1pct    mu_eff/mu=0.50000  lam2_eff/lam_planestress=0.58333  lam2_eff/lam3D=0.33333 resid=1.8e-14
+    general_1pct    mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87500  lam2_eff/lam3D=0.50000 resid=2.1e-13
+membrane nu=0.45 thick 0.001
+    random_small    mu_eff/mu=0.25000  lam2_eff/lam_planestress=2.75000  lam2_eff/lam3D=0.50000 resid=1.4e-12
+    uniaxial_small  mu_eff/mu=0.25000  lam2_eff/lam_planestress=2.75000  lam2_eff/lam3D=0.50000 resid=1.2e-10
+    shear_small     mu_eff/mu=0.25000  lam2_eff/lam_planestress=2.74960  lam2_eff/lam3D=0.49993 resid=3.2e-09
+    biaxial_1pct    mu_eff/mu=2.37500  lam2_eff/lam_planestress=1.45139  lam2_eff/lam3D=0.26389 resid=1.7e-14
+    general_1pct    mu_eff/mu=0.25000  lam2_eff/lam_planestress=2.75000  lam2_eff/lam3D=0.50000 resid=2.9e-13
+membrane nu=0.3 thick=2e-3 thick 0.002
+    random_small    mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87500  lam2_eff/lam3D=0.50000 resid=2.0e-12
+    uniaxial_small  mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87500  lam2_eff/lam3D=0.50000 resid=1.4e-10
+    shear_small     mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87484  lam2_eff/lam3D=0.49991 resid=8.1e-10
+    biaxial_1pct    mu_eff/mu=0.50000  lam2_eff/lam_planestress=0.58333  lam2_eff/lam3D=0.33333 resid=1.8e-14
+    general_1pct    mu_eff/mu=0.25000  lam2_eff/lam_planestress=0.87500  lam2_eff/lam3D=0.50000 resid=2.1e-13

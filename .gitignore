@@ -44,3 +44,6 @@ results/ablation/*.log
 docs/report_sim/*.aux
 docs/report_sim/*.log
 docs/report_sim/*.out
+docs/report_flex/*.aux
+docs/report_flex/*.log
+docs/report_flex/*.out

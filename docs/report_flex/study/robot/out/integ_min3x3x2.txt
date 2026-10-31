@@ -1,0 +1,60 @@
+Element name 'pdms_flex', id 0
+Euler         PGS     islands on : first BADQACC 4
+Element name 'pdms_flex', id 0
+Euler         PGS     islands off: first BADQACC 4
+Element name 'pdms_flex', id 0
+Euler         CG      islands on : first BADQACC 4
+Element name 'pdms_flex', id 0
+Euler         CG      islands off: first BADQACC 4
+Element name 'pdms_flex', id 0
+Euler         Newton  islands on : first BADQACC 4
+Element name 'pdms_flex', id 0
+Euler         Newton  islands off: first BADQACC 4
+Element name 'pdms_flex', id 0
+RK4           PGS     islands on : first BADQACC None
+Element name 'pdms_flex', id 0
+RK4           PGS     islands off: first BADQACC None
+Element name 'pdms_flex', id 0
+RK4           CG      islands on : first BADQACC None
+Element name 'pdms_flex', id 0
+RK4           CG      islands off: first BADQACC None
+Element name 'pdms_flex', id 0
+RK4           Newton  islands on : first BADQACC None
+Element name 'pdms_flex', id 0
+RK4           Newton  islands off: first BADQACC None
+Element name 'pdms_flex', id 0
+implicit      PGS     islands on : ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicit      PGS     islands off: ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicit      CG      islands on : ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicit      CG      islands off: ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicit      Newton  islands on : ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicit      Newton  islands off: ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicitfast  PGS     islands on : ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicitfast  PGS     islands off: ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicitfast  CG      islands on : ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicitfast  CG      islands off: ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicitfast  Newton  islands on : ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+implicitfast  Newton  islands off: ERROR mj_checkDiscrete: flex elasticity is no longer integrated implicitly under integrator='implicit' and 'implicit
+Element name 'pdms_flex', id 0
+discrete      PGS     islands on : ERROR mj_checkDiscrete: discrete integrator: PGS and noslip not yet supported with flex
+Element name 'pdms_flex', id 0
+discrete      PGS     islands off: ERROR mj_checkDiscrete: discrete integrator: PGS and noslip not yet supported with flex
+Element name 'pdms_flex', id 0
+discrete      CG      islands on : first BADQACC 3
+Element name 'pdms_flex', id 0
+discrete      CG      islands off: first BADQACC None
+Element name 'pdms_flex', id 0
+discrete      Newton  islands on : ERROR mj_checkDiscrete: discrete integrator: flex with general attachments requires solver='CG'
+Element name 'pdms_flex', id 0
+discrete      Newton  islands off: ERROR mj_checkDiscrete: discrete integrator: flex with general attachments requires solver='CG'

@@ -76,17 +76,18 @@
 
   <default>
     <default class="furniture">
-      <geom friction="0.5 0.005 0.0001" solref="0.004 1"/>
+      <geom friction="0.5 0.005 0.0001" solref="0.004 1" conaffinity="3"/>
     </default>
     <default class="steel">
-      <geom type="box" friction="0.4 0.005 0.0001" solref="0.004 1"/>
+      <geom type="box" friction="0.4 0.005 0.0001" solref="0.004 1" conaffinity="3"/>
     </default>
-    <!-- every book: one collision box, 0.5 friction (paper on wood), stiff contact so books do not sink -->
+    <!-- every book: one collision box, 0.5 friction (paper on wood), stiff contact so books do not sink.
+         conaffinity 3 here and in furniture/steel: bit 2 lets the PDMS flex (contype 2) touch them -->
     <default class="book">
-      <geom type="box" material="book_cloth" friction="0.5 0.005 0.0001" condim="4" solref="0.004 1"/>
+      <geom type="box" material="book_cloth" friction="0.5 0.005 0.0001" condim="4" solref="0.004 1" conaffinity="3"/>
     </default>
     <default class="book_low">
-      <geom type="box" material="book_cloth" friction="0.5 0.005 0.0001" condim="3" solref="0.004 1"/>
+      <geom type="box" material="book_cloth" friction="0.5 0.005 0.0001" condim="3" solref="0.004 1" conaffinity="3"/>
     </default>
     <!-- visual-only spine bands, labels, page blocks: no contacts, no mass, at most 0.5 mm proud of the box -->
     <default class="deco">

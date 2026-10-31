@@ -1,0 +1,27 @@
+ME295 effSolve t=0.000000 it=100 relres=5.573e-08 negcurv=0 capped=1 rayleigh=[1.649e-03,4.567e-02]
+ME295 solPrimal t=0.000000 island=0 nv=1992 nefc=11 iter=12 metric=1 newton=0
+ME295 effSolve t=0.000000 it=100 relres=1.466e-07 negcurv=0 capped=1 rayleigh=[1.723e-03,2.999e-02]
+WARNING: Flex stiffness is too ill-conditioned for the effective-metric block preconditioner: the M+K solve ran out of iterations at a relative residual of 1.47e-07 and qacc_smooth is under-converged. Reported as a singular inertia below, because M+K is the effective inertia.
+
+WARNING: Inertia matrix is too close to singular, or the effective-metric solve failed to converge, at DOF 919. Check model. Time = 0.0000.
+
+ME295 solPrimal t=0.000000 island=0 nv=1992 nefc=11 iter=6 metric=1 newton=0
+ME295 effSolve t=0.000000 it=100 relres=1.466e-07 negcurv=0 capped=1 rayleigh=[1.723e-03,2.999e-02]
+ME295 solPrimal t=0.000000 island=0 nv=1992 nefc=11 iter=6 metric=1 newton=0
+nv 1998 flex dofs 1980  opt: h 0.0005 solver 1 it 100 tol 1e-08
+step   1 t 0.0005 bad 0 ncon     0 nefc     11 niter    6 nefmdof 0 efm_active 1 | max|qacc| arm 1.495e+00 grip 1.184e+01 flex 7.952e+00 | max|qvel| arm 7.47e-04 flex 3.98e-03 | max|qpos flex| 1.99e-06
+ME295 effSolve t=0.000500 it=100 relres=3.780e-05 negcurv=0 capped=1 rayleigh=[1.501e-03,9.921e-02]
+ME295 solPrimal t=0.000500 island=0 nv=1992 nefc=11 iter=13 metric=1 newton=0
+step   2 t 0.0010 bad 0 ncon     0 nefc     11 niter   13 nefmdof 0 efm_active 1 | max|qacc| arm 4.768e+00 grip 2.163e+02 flex 1.413e+04 | max|qvel| arm 3.13e-03 flex 7.06e+00 | max|qpos flex| 3.53e-03
+ME295 effSolve t=0.001000 it=100 relres=3.827e-05 negcurv=0 capped=1 rayleigh=[2.279e-02,4.090e+00]
+ME295 solPrimal t=0.001000 island=0 nv=1992 nefc=12 iter=23 metric=1 newton=0
+step   3 t 0.0015 bad 0 ncon     0 nefc     12 niter   23 nefmdof 0 efm_active 1 | max|qacc| arm 1.521e+06 grip 7.346e+07 flex 8.107e+09 | max|qvel| arm 7.60e+02 flex 4.05e+06 | max|qpos flex| 2.03e+03
+WARNING: Too many contacts. The arena memory is full, increase arena memory allocation.(ncon = 20682) Time = 0.0015.
+
+ME295 effSolve t=0.001500 it=100 relres=8.812e-08 negcurv=0 capped=1 rayleigh=[1.006e+08,9.206e+10]
+Traceback (most recent call last):
+  File "docs/report_flex/study/robot/repro.py", line 20, in <module>
+    mujoco.mj_step(m, d)
+mujoco.FatalError: mj_stackAlloc: out of memory, stack overflow at PrimalAllocate, line 1366
+  max = 20391560, available = 20391536, requested = 32365688, narena = 67108864 (increase <size memory="..."/>)
+  nefc = 62063, ncon = 20682

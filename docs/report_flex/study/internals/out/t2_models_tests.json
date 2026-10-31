@@ -1,0 +1,4616 @@
+{
+ "models": [
+  {
+   "file": "model/flex/bag.xml",
+   "young": [
+    "1e5",
+    "5e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "dof": [],
+   "solref": [
+    "0.006 1"
+   ],
+   "solimp": [
+    ".99 .999 .001"
+   ],
+   "elastic2d": [
+    "both"
+   ],
+   "integrator": "discrete",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 128,
+     "radius": 0.001,
+     "edge_mm": 15.455,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 543,
+     "radius": 0.002,
+     "edge_mm": 34.828,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 384,
+     "radius": 0.002,
+     "edge_mm": 19.083,
+     "stiff": false,
+     "solref": [
+      0.006,
+      1.0
+     ],
+     "solimp": [
+      0.99,
+      0.999,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/basket.xml",
+   "young": [
+    "6e6"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 260,
+     "radius": 0.01,
+     "edge_mm": 100.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/bunny.xml",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [
+    "none"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 1,
+     "nvert": 2503,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/bunny_multicell.xml",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [
+    "none"
+   ],
+   "integrator": "discrete",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 1,
+     "nvert": 2503,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/bunny_quadratic.xml",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "quadratic"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [
+    "none"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.0005,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 2,
+     "nvert": 2503,
+     "radius": 0.002,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/bunny_shell.xml",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "discrete",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": -1,
+     "nvert": 2503,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/bunny_with_uv.xml",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [
+    "none"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 1,
+     "nvert": 2503,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/cloth_sdf.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 64,
+     "radius": 0.005,
+     "edge_mm": 200.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/drape.xml",
+   "young": [
+    "2e4"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [
+    "both"
+   ],
+   "integrator": "discrete",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 169,
+     "radius": 0.004,
+     "edge_mm": 55.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    },
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 169,
+     "radius": 0.004,
+     "edge_mm": 55.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    },
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 169,
+     "radius": 0.004,
+     "edge_mm": 55.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/flag.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 171,
+     "radius": 0.001,
+     "edge_mm": 50.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/floppy.xml",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 384,
+     "radius": 0.0,
+     "edge_mm": 141.421,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/gripper.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [
+    "0.95 0.99 0.001 0.5 2"
+   ],
+   "elastic2d": [],
+   "integrator": "implicitfast",
+   "timestep": 0.002,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 218,
+     "radius": 0.001,
+     "edge_mm": 17.317,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 218,
+     "radius": 0.001,
+     "edge_mm": 17.317,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/gripper_2d.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [
+    "2d"
+   ],
+   "solref": [
+    "0.001 1"
+   ],
+   "solimp": [
+    "0.99 0.999 0.0001 0.5 2"
+   ],
+   "elastic2d": [],
+   "integrator": "implicitfast",
+   "timestep": 0.002,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 56,
+     "radius": 0.004,
+     "edge_mm": 4.466,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 56,
+     "radius": 0.004,
+     "edge_mm": 4.466,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/gripper_trilinear.xml",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "discrete",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 218,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 218,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/hollow_vs_solid.xml",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [
+    "0.001 1"
+   ],
+   "solimp": [
+    "0.99 0.999 0.001"
+   ],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 192,
+     "radius": 0.005,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.001,
+      1.0
+     ],
+     "solimp": [
+      0.99,
+      0.999,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": -1,
+     "nvert": 192,
+     "radius": 0.005,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.001,
+      1.0
+     ],
+     "solimp": [
+      0.99,
+      0.999,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/jelly.xml",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 512,
+     "radius": 0.005,
+     "edge_mm": 98.995,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/mechanisms/cantilever.xml",
+   "young": [
+    "1.6e+07",
+    "8e+06"
+   ],
+   "poisson": [
+    ".25"
+   ],
+   "dof": [
+    "quadratic"
+   ],
+   "solref": [
+    ".003 1"
+   ],
+   "solimp": [
+    ".99 .999 .001"
+   ],
+   "elastic2d": [],
+   "integrator": "discrete",
+   "timestep": 0.001,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 2,
+     "nvert": 441,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 2,
+     "nvert": 441,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 2,
+     "nvert": 441,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 1,
+     "interp": 0,
+     "nvert": 24,
+     "radius": 0.015,
+     "edge_mm": 40.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/mechanisms/dipper.xml",
+   "young": [
+    "3.15e7"
+   ],
+   "poisson": [],
+   "dof": [],
+   "solref": [
+    ".003 1"
+   ],
+   "solimp": [
+    ".99 .999 .001"
+   ],
+   "elastic2d": [],
+   "integrator": "discrete",
+   "timestep": 0.001,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 1,
+     "interp": 0,
+     "nvert": 21,
+     "radius": 0.0325,
+     "edge_mm": 80.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/mechanisms/slidercrank.xml",
+   "young": [
+    "1.8e6"
+   ],
+   "poisson": [],
+   "dof": [],
+   "solref": [
+    ".003 1"
+   ],
+   "solimp": [
+    ".99 .999 .001"
+   ],
+   "elastic2d": [],
+   "integrator": "discrete",
+   "timestep": 0.001,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 1,
+     "interp": 0,
+     "nvert": 21,
+     "radius": 0.02,
+     "edge_mm": 45.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/pancake.xml",
+   "young": [
+    "3e5"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 81,
+     "radius": 0.01,
+     "edge_mm": 40.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/pinch.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 81,
+     "radius": 0.01,
+     "edge_mm": 50.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/plate.xml",
+   "young": [
+    "3e7"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 256,
+     "radius": 0.001,
+     "edge_mm": 50.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/poncho.xml",
+   "young": [
+    "3e5"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "dof": [],
+   "solref": [
+    "0.003",
+    "0.003 1"
+   ],
+   "solimp": [],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "discrete",
+   "timestep": 0.005,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 484,
+     "radius": 0.01,
+     "edge_mm": 100.992,
+     "stiff": true,
+     "solref": [
+      0.003,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/poncho_edgeequality.xml",
+   "young": [
+    "3e5"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "dof": [],
+   "solref": [
+    "0.003",
+    "0.003 1"
+   ],
+   "solimp": [],
+   "elastic2d": [
+    "bend"
+   ],
+   "integrator": "discrete",
+   "timestep": 0.005,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 484,
+     "radius": 0.01,
+     "edge_mm": 100.992,
+     "stiff": true,
+     "solref": [
+      0.003,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/press.xml",
+   "young": [
+    "1e4",
+    "5e4"
+   ],
+   "poisson": [
+    "0",
+    "0.4"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [],
+   "integrator": "discrete",
+   "timestep": 0.001,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 64,
+     "radius": 0.005,
+     "edge_mm": 200.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 64,
+     "radius": 0.005,
+     "edge_mm": 200.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/pulley.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 1,
+     "interp": 0,
+     "nvert": 39,
+     "radius": 0.02,
+     "edge_mm": 150.0,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/quadratic.xml",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "quadratic"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 2,
+     "nvert": 512,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/softbox.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [
+    "radial"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.002,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 219,
+     "radius": 0.01,
+     "edge_mm": 56.569,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/sphere_full.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "implicitfast",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 297,
+     "radius": 0.001,
+     "edge_mm": 63.705,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/sphere_radial.xml",
+   "young": [
+    "6e2"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "dof": [
+    "radial"
+   ],
+   "solref": [
+    ".02 1"
+   ],
+   "solimp": [
+    "0 0.9 0.01"
+   ],
+   "elastic2d": [],
+   "integrator": "discrete",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 0,
+     "nvert": 297,
+     "radius": 0.001,
+     "edge_mm": 63.705,
+     "stiff": false,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/sphere_trilinear.xml",
+   "young": [
+    "1e3",
+    "1e4"
+   ],
+   "poisson": [
+    "0.4",
+    "0.49"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [
+    "-5000 -10"
+   ],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 297,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 297,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      -5000.0,
+      -10.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/strain.xml",
+   "young": [],
+   "poisson": [],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "implicitfast",
+   "timestep": 0.002,
+   "solver": 2,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 489,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 489,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 489,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    },
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 489,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/trampoline.xml",
+   "young": [
+    "3e5"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "dof": [],
+   "solref": [
+    "0.01 1"
+   ],
+   "solimp": [
+    ".95 .99 .0001"
+   ],
+   "elastic2d": [
+    "stretch"
+   ],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 2,
+     "interp": 0,
+     "nvert": 256,
+     "radius": 0.001,
+     "edge_mm": 100.0,
+     "stiff": true,
+     "solref": [
+      0.01,
+      1.0
+     ],
+     "solimp": [
+      0.95,
+      0.99,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "file": "model/flex/trilinear.xml",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "dof": [
+    "trilinear"
+   ],
+   "solref": [],
+   "solimp": [],
+   "elastic2d": [],
+   "integrator": "Euler",
+   "timestep": 0.001,
+   "solver": 1,
+   "flexes": [
+    {
+     "dim": 3,
+     "interp": 1,
+     "nvert": 512,
+     "radius": 0.001,
+     "edge_mm": 0.0,
+     "stiff": true,
+     "solref": [
+      0.02,
+      1.0
+     ],
+     "solimp": [
+      0.9,
+      0.95,
+      0.001
+     ]
+    }
+   ]
+  }
+ ],
+ "tests": [
+  {
+   "file": "test/batch/batch_test.cc",
+   "test": "BatchTest.SetConstGroupsMatchAllGroups",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.PairGapVertexTriangleGradient",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.AdvanceCapsCrossing",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.CandidatesFindApproachingPairs",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.CandidatesFollowCollisionFiltering",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.CandidatesCoverTheSweep",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.SmoothGeomFeatures",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_continuous_test.cc",
+   "test": "ContinuousCollisionTest.CandidatesCoverARotatingTriangle",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_convex_test.cc",
+   "test": "MjcConvexTest.HFieldMarginAndGap",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.FilterStaticFlex",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.FilterStaticFlexSelfCollision",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.PinchingSucceeds",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.MaxContact",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.VertexFlexContactsAreNotLimited",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.ReducibleFlexContactLimitIsPerGeom",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.Flex3DActiveLayersMidphaseDisabled",
+   "young": [
+    "300"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    ")"
+   ]
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.InterpolatedSelfCollisionNoContactsAtRest",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.InterpolatedSelfCollisionExcludesSharedNodes",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.InterpolatedSelfCollisionMidphaseParity",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.InterpolatedSelfCollisionBoundarySymmetry",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_driver_test.cc",
+   "test": "MjCollisionTest.InterpolatedSelfCollisionPressedPillow",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_sdf_test.cc",
+   "test": "SdfTest.SdfPrimitive",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_collision_sdf_test.cc",
+   "test": "SdfTest.FlexSdfCollision",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.DoflessContactsExcluded",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.ConstraintUpdateImpl",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.FlexvertEquality",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.FlexvertEqualityWithPin",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.BoxShellPinnedParentWithFreejoint",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.StrainConstraintNoPinning",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.StrainConstraintQuadratic",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "quadratic"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.ShellModeBendZeroForceAtRest",
+   "young": [
+    "0"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.QuadraticPassiveForceStability",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "quadratic"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.QuadraticAnisotropicStrain",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "quadratic"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.JdotvFwdInvIdentity",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.ShellModeContactJacobian",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_constraint_test.cc",
+   "test": "CoreConstraintTest.SparseRotationalJacobianMatchesDense",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_smooth_test.cc",
+   "test": "CoreSmoothTest.FlexVertLengthScaling",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_smooth_test.cc",
+   "test": "CoreSmoothTest.FlexvertJSparsitySkippedFlex",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_smooth_test.cc",
+   "test": "CoreSmoothTest.FlexVertStability",
+   "young": [
+    "3e5"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_core_util_test.cc",
+   "test": "FlexGatherStateTest.mju_flexGatherState_Grid",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_util_test.cc",
+   "test": "FlexGatherStateTest.mju_flexGatherState_ShellMode",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_core_util_test.cc",
+   "test": "JacobianTest.JacDifPairSameSimpleBody",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.DCMotorThermalDerivative",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexInterpDerivatives",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexInterpDerivativesDeformed",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexBendDerivativesRotated",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexBendMetricDropsConcaveStencils",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexHessianCacheLifetime",
+   "young": [
+    "1000"
+   ],
+   "poisson": [
+    ".3"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.SNHStiffnessThroughInversion",
+   "young": [
+    "1000"
+   ],
+   "poisson": [
+    ".3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.SNHProjectionSpectralReference",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexStretchDerivativesTensile",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexStretchDerivatives",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexStiffAssemble",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexRodHessianAtRest",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexRodStiffAssemble",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexStiffAssembleInterp",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.FlexInterpShellDerivatives",
+   "young": [
+    "100",
+    "1e4"
+   ],
+   "poisson": [
+    ".3",
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.EffSolve",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    ".2",
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full"
+   ]
+  },
+  {
+   "file": "test/engine/engine_derivative_test.cc",
+   "test": "DerivativeTest.EffSolveCapWarns",
+   "young": [
+    "1e9"
+   ],
+   "poisson": [
+    "0.45"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.FlexTrilinearInstability",
+   "young": [
+    "865067.00"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.FlexDampingRigidMotion",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.FlexParentCoupling",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.TrilinearPinnedParentWithFreejoint",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ActuatorDampingTest.DampingVsKvGearScaling",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "implicitfast"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.PassiveFlexContactInMetric",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.PassiveFlexContactDenseJacobian",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.PassiveFlexContactMovingBase",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.PassiveFlexContactUnsupportedShape",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "implicitfast"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.PassiveFlexContactOnlyInMetric",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.FlexContactEnergy",
+   "young": [
+    "3e6"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.BendingDampingDecaysEnergy",
+   "young": [
+    "1e6"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ImplicitIntegratorTest.InterpStretchEnergy",
+   "young": [
+    "1e6"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscreteFlexInverseConsistency",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscretePassiveDisableFlags",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscreteFlexDisableFlags",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.SNHRequiresDiscreteIntegrator",
+   "young": [
+    "1000"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.ImplicitFlexElasticityRequiresMetric",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.StrainEqualityIsNotElasticity",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "implicitfast"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscreteUnsupportedOptions",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0",
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscreteNewtonMatchesCG",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full"
+   ]
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscreteTendonThreeTreeIsland",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_forward_test.cc",
+   "test": "ForwardTest.DiscreteFlexIslandsMatchMonolithic",
+   "young": [
+    "1e3",
+    "2e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full",
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.MeshFeatures",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.FlagOverridesPassiveContact",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.ConstraintForceReported",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.ContactFlagAndMasksFilterGeomPairs",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.FreeFall",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SharedVertexBodyMakesNoContact",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.ContactBlocksTunneling",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.PinnedPaddleCarriesCloth",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SlideCarrierMovesOnce",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.PinnedPaddleStopsOnPlane",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.NativeCollisionSkipsTheModesPairs",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SmoothGeomsCoverTriangleInterior",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SelfContactConservesMomentum",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.ContactRecoversFromPenetration",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.DelayedSensorsMatchDiscrete",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.AccelerationSensorsSeeContact",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.ArticulatedCapsuleDoesNotTunnel",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.ArticulatedKineticInFlexMatchesTree",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.RejectsIncompatibleOptions",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.NativeRowsExcludedForIpcPairs",
+   "young": [],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.NativeRowsKeptForUnsupportedGeoms",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.FoldDenseComponentOverCap",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.FoldDenseBlocksSolveMatches",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.MulAddScratchBounds",
+   "young": [
+    "1e4",
+    "1e5"
+   ],
+   "poisson": [
+    ".2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SparseFactorPatternChange",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SparseFactorCoverage",
+   "young": [
+    "1e4",
+    "1e5"
+   ],
+   "poisson": [
+    ".2",
+    ".3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ipc_test.cc",
+   "test": "IpcTest.SingleAndMultiThreadedMatch",
+   "young": [
+    "5e3"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_island_test.cc",
+   "test": "IslandTest.ProductionFlexEqualityRescansRows",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_island_test.cc",
+   "test": "IslandTest.IslandFlex",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_island_test.cc",
+   "test": "IslandTest.FlexStiffnessUnionsTrees",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": [
+    "full"
+   ]
+  },
+  {
+   "file": "test/engine/engine_island_test.cc",
+   "test": "IslandTest.FlexContactWithZeroRow",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "PassiveTest.DisableFlags",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "TendonTest.SpringrangeDeadband",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.FlexCompatibility",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.ElasticEnergyShell",
+   "young": [
+    "2"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.CurvedShell",
+   "young": [
+    "2"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.ElasticEnergyMembrane",
+   "young": [
+    "2"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.ElasticEnergySolid",
+   "young": [
+    "2"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.SNHEnergySolid",
+   "young": [
+    "2"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.SNHForceThroughInversion",
+   "young": [
+    "1000"
+   ],
+   "poisson": [
+    ".3"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.SNHInversionRecovery",
+   "young": [
+    "1000"
+   ],
+   "poisson": [
+    ".3"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "PassiveTest.PolynomialDampingTendon",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.ShellModeZeroForceAtRest",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.StretchDampingZeroVelocity",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.StretchDisableFlags",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.InterpBendingZeroForceAtRest",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.InterpBendingRigidRotationInvariance",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.TrilinearEmptyFirstCell",
+   "young": [
+    "100"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [
+    "INTEGRATOR"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.TrilinearShellElastic2d",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.PinnedVertexBendingForce",
+   "young": [
+    "1"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.TrilinearParentBodyRotation",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.1"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.BendParentBodyRotation",
+   "young": [
+    "1e5"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.StretchParentBodyRotation",
+   "young": [
+    "1e5",
+    "1e7"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingCompile",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingRequiresStraightReference",
+   "young": [
+    "%s",
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingCurvedPose",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingWithEdgeEquality",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingDamping",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingCantilever",
+   "young": [
+    "1e9"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingBoxSection",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingSkipsRigid",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingSkipsInterpolated",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingMocapRequiresZeroDamping",
+   "young": [
+    "1e7"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_passive_test.cc",
+   "test": "ElasticityTest.RodBendingMetricCholesky",
+   "young": [
+    "1e9"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ray_test.cc",
+   "test": "RayTest.RayHfield",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_ray_test.cc",
+   "test": "RayTest.RayNormal",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sensor_test.cc",
+   "test": "SensorTest.TactileCutoff",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sensor_test.cc",
+   "test": "SensorTest.InsideSiteFlexBody",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sensor_test.cc",
+   "test": "SensorTest.TactileSpinningContactVelocity",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sensor_test.cc",
+   "test": "SensorTest.FlexContactSensors",
+   "young": [
+    "5e4"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_setconst_test.cc",
+   "test": "SetConstTest.DampRatioInertia",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_setconst_test.cc",
+   "test": "SetConstTest.RankDeficientBendingFactor",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full"
+   ]
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.InitFailureWarnsAndLeavesTreesAwake",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexEdgeSleep",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexNoConstraintNeverSleeps",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexSleepState",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexWakeContact",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.HollowVsSolidSleep",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexSleepDiscrete",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full",
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.PassiveFlexSleepDiscrete",
+   "young": [
+    "1e3",
+    "2e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": [
+    "full",
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexStaticContact",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_sleep_test.cc",
+   "test": "SleepTest.FlexMocapContact",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_solver_test.cc",
+   "test": "SolverTest.NewtonFallsBackToCGOnArenaExhaustion",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete",
+    "implicitfast"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "InterpolationTest.mju_flexInterpState_MultiCell",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "HistoryTest.CubicInterpolation",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.NodeIndicesSingleCell",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.NodeIndicesMultiCell",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.NodeIndicesNonCubicGrid",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.DataGathering",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.IdentityRotationAxisAligned",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.RotatedCubeRotation",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_util_misc_test.cc",
+   "test": "FaceStateTest.RotationConsistencyWith3D",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_vis_visualize_test.cc",
+   "test": "MjvSceneTest.UpdateScene",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/engine/engine_vis_visualize_test.cc",
+   "test": "MjvSceneTest.FlexDim2FlatskinNormalsPointOutward",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/fixture_test.cc",
+   "test": "MujocoTestTest.BenignWarningDoesNotFailTest",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/plugin/decoder/decoder_test.cc",
+   "test": "DecoderPluginTest.GmshDecoder41",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/plugin/decoder/decoder_test.cc",
+   "test": "DecoderPluginTest.GmshDecoder22",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/plugin/decoder/decoder_test.cc",
+   "test": "DecoderPluginTest.GmshFlexcompInModel",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_api_test.cc",
+   "test": "MujocoTest.CompileWarningCount",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_api_test.cc",
+   "test": "MujocoTest.RecompileClearsCompileWarnings",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_api_test.cc",
+   "test": "MujocoTest.LoadXMLWarningInErrorBuffer",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_api_test.cc",
+   "test": "MujocoTest.CompileWarningChainedToHandler",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_api_test.cc",
+   "test": "MujocoTest.CompilationWarningsClearedOnRecompile",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.SNHSpecOnly",
+   "young": [
+    "1000"
+   ],
+   "poisson": [
+    ".3"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.Elastic3DNotInMJCF",
+   "young": [
+    "1000"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.Elastic3DInvalidSelector",
+   "young": [
+    "1000"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.SNHRequiresStandard3D",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.SNHRequiresDiscreteIntegrator",
+   "young": [
+    "1000"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.ParentMustHaveName",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.InvalidDim",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.CountTooSmall",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.CellnumZeroInterpolated",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.SpacingGreaterThanGeometry",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.ScaleMinValue",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MassMinValue",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.PointSizeNotMultipleOf3",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.ElementSize",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.PointAndElementNotInDirect",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.UnknownFlexCompType",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.InvalidPinid",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MeshFileMissing",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.VertexOrFaceDataMissing",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.RigidFlex",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexNotCollide",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.BoundingBoxCoordinates",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.InterpolatedFlexCanSelfCollide",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    ")"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.InterpolatedCellcountAllTypes",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    ")"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.TrilinearInterpolation",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.StiffnessMatrix",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.StiffnessCacheDiffersByGeometry",
+   "young": [
+    "1"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadTexture",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHBinary_41_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHBinary_22_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHSurfaceBinary_41_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHSurfaceBinary_22_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHBinaryFTETWILD_22_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHASCII_41_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHASCII_22_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHSurfaceASCII_41_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHSurfaceASCII_22_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHASCIIFTETWILD_22_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHTruncatedHeader_Fail",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHMissingNodesSection_Fail",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHMissingElementsSection_Fail",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHEndMarkerAtEOF_Success",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHASCII_dim_missing_in_xml",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHVolumetric_dim_mismatch_fails",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.LoadMSHSurface_dim_mismatch_fails",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.TrilinearUnusedVertices_Crash",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MeshNodePinning",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshLoadsFromVFS",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexAttachConstraintPreserved",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexNoConstraintsWarning",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.EmptyCellNodePinning",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MechanismRods",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.EmptyCellNodePinningMesh",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.EmptyCellNodePinningQuadratic",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "quadratic"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.EmptyCellDetectsElements",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.TotalMassTrilinear",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.TotalMassQuadratic",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "quadratic"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.Dof2d",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "2d",
+    "full"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.Vert0RotationInvariant",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.Load1DFlexFromOBJ",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.PinBendingAcceptsMovingBody",
+   "young": [
+    "1"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.PinBendingAcceptsStaticBody",
+   "young": [
+    "1"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlatIrregularHingeHasNoRestBendingForce",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexConstraintsAndElasticityError",
+   "young": [
+    "1"
+   ],
+   "poisson": [
+    "0"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexConstraintsAndEdgeStiffnessError",
+   "young": [
+    "10"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.AllowsDampingOnPinnedParent",
+   "young": [
+    "10"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetVolumetric",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetDimMismatch",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetSurface2D",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetSurface3DWithOrigin",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetSurface3DWithoutOriginFails",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetNotFound",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAndFileMutuallyExclusive",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetBuiltinGrid3D",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetBuiltinGrid2D",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetBuiltinBox",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetBuiltinDisc",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompBoxTexcoord",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetAppliesMeshTransforms",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetGrid2DStaysInPlane",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MeshAssetNodeOnlyBuiltinsRejected",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetGmshSurface",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompGmshDecoderErrorIsForwarded",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MeshAssetSharedByGeomAndFlexcomp",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetCacheHit",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.MakeFlexFileOrMeshName",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.ShellSwitchedToSolidStiffness",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.RecompileResetsDerivedState",
+   "young": [
+    "100",
+    "1e3"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexcompMeshAssetWrongType",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.InterpolatedShellElastic2dStiffness",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.FlexStrainEqualityValidation",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.InterpolatedElastic2dSwitchValidation",
+   "young": [
+    "1e4"
+   ],
+   "poisson": [
+    "0.3"
+   ],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_flex_test.cc",
+   "test": "UserFlexTest.DefaultArenaSize",
+   "young": [
+    "1e2",
+    "1e3"
+   ],
+   "poisson": [],
+   "integrator": [
+    "discrete"
+   ],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_mesh_test.cc",
+   "test": "MjCMeshTest.InterpolatedFlexStrainEnergy",
+   "young": [
+    "2"
+   ],
+   "poisson": [
+    "%g"
+   ],
+   "integrator": [],
+   "dof": [
+    "%s"
+   ]
+  },
+  {
+   "file": "test/user/user_mesh_test.cc",
+   "test": "MjCMeshTest.Flex2DElasticityRequiresPositiveThickness",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "2d"
+   ]
+  },
+  {
+   "file": "test/user/user_mesh_test.cc",
+   "test": "MjCMeshTest.InterpolatedFlexSupportsBendElasticityWithWarning",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_mesh_test.cc",
+   "test": "MjCMeshTest.InterpolatedFlexSupportsBothElasticityWithWarning",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/user/user_mesh_test.cc",
+   "test": "MjCMeshTest.Flex2DElasticityRequires2DFlex",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "2d"
+   ]
+  },
+  {
+   "file": "test/user/user_model_test.cc",
+   "test": "FuseStaticTest.FuseStaticSkinReferencedBody",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_model_test.cc",
+   "test": "FuseStaticTest.FuseStaticFlexReferencedBody",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_model_test.cc",
+   "test": "FrameScaleTest.MeshInstancesDelete",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_model_test.cc",
+   "test": "FrameScaleTest.MeshInstanceMakeFlex",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_model_test.cc",
+   "test": "FrameScaleTest.ShellMeshMass",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_model_test.cc",
+   "test": "FrameScaleTest.Flexes",
+   "young": [
+    "1e3"
+   ],
+   "poisson": [
+    "0.2"
+   ],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_resolver_test.cc",
+   "test": "MujocoTest.AttachWarningBoundaryAndPreservation",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/user/user_util_test.cc",
+   "test": "UserUtilTest.EigendecomposeConvergence",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/xml/schema_defaults_test.cc",
+   "test": "SchemaDefaultsTest.DeclaredDefaultsMatchConstructors",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/xml/xml_native_reader_test.cc",
+   "test": "XMLReaderTest.ReadsSkinGroups",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/xml/xml_native_writer_test.cc",
+   "test": "XMLWriterTest.WritesSkin",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/xml/xml_native_writer_test.cc",
+   "test": "XMLWriterTest.WritesPinnedFlexNodes",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "trilinear"
+   ]
+  },
+  {
+   "file": "test/xml/xml_native_writer_test.cc",
+   "test": "XMLWriterTest.KeepsEmptyFlexCells",
+   "young": [
+    "1"
+   ],
+   "poisson": [],
+   "integrator": [],
+   "dof": [
+    "quadratic"
+   ]
+  },
+  {
+   "file": "test/xml/xml_native_writer_test.cc",
+   "test": "XMLWriterTest.SetPrecisionVectors",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  },
+  {
+   "file": "test/xml/xml_utils_test.cc",
+   "test": "MujocoTest.GetXMLDependenciesTest",
+   "young": [],
+   "poisson": [],
+   "integrator": [],
+   "dof": []
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+[{"tag":"g_wheel_island","save":"out/g_wheel_island.npz"},
+ {"tag":"g_wheel_noisland","island":false,"save":"out/g_wheel_noisland.npz"},
+ {"tag":"g_wheel_noisland_f1","island":false,"f1":true,"save":"out/g_wheel_noisland_f1.npz"},
+ {"tag":"g_pymj_fix1","pymj":true,"env":{"MJ_FIX_ISLANDFLEX":"1"},"save":"out/g_pymj_fix1.npz"},
+ {"tag":"g_pymj_fix1_f1","pymj":true,"f1":true,"env":{"MJ_FIX_ISLANDFLEX":"1"},"save":"out/g_pymj_fix1_f1.npz"},
+ {"tag":"g_wheel_noisland_f1_21x29x3","grid":"21x29x3","island":false,"f1":true,"save":"out/g_wheel_noisland_f1_21x29x3.npz"},
+ {"tag":"g_wheel_noisland_f1_6x8x2","grid":"6x8x2","island":false,"f1":true,"save":"out/g_wheel_noisland_f1_6x8x2.npz"}
+]

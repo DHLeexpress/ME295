@@ -1,0 +1,90 @@
+{
+ "tag": "min11x15x3_fix0",
+ "o": {
+  "tag": "min11x15x3_fix0",
+  "xml": "docs/report_flex/study/robot/repro/min_m_eq.xml"
+ },
+ "nv": 991,
+ "n_flexdof": 990,
+ "n_other": 1,
+ "nisland": 1,
+ "island_nv": 991,
+ "h": 0.0005,
+ "relerr_mono_vs_h2Kflex": {
+  "flex-flex": 1.3604147206816707e-08,
+  "flex-other": 53856.6968576414,
+  "other-other": 1015819438895.1661,
+  "all": 0.0005511084198206887
+ },
+ "relerr_mono_vs_full": {
+  "flex-flex": 1.3604147206816707e-08,
+  "flex-other": 53856.6968576414,
+  "other-other": 2.9107392858597705e-05,
+  "all": 1.2881273620318905e-06
+ },
+ "norm_mono_flexflex": 1.814582761529061,
+ "relerr_isl_vs_h2Kflex": {
+  "flex-flex": 1.0,
+  "flex-other": 1.0,
+  "other-other": 1015789871899.3058,
+  "all": 1.0000001518505641
+ },
+ "relerr_isl_vs_full": {
+  "flex-flex": 1.0,
+  "flex-other": 1.0,
+  "other-other": 9.81636646967412e-13,
+  "all": 0.999999848149459
+ },
+ "norm_isl_flexflex": 0.0,
+ "absnorm_S_mono": {
+  "flex-flex": 1.814582761529061,
+  "flex-other": 1.6525811251822935e-06,
+  "other-other": 0.0010000291073938403
+ },
+ "absnorm_S_isl": {
+  "flex-flex": 0.0,
+  "flex-other": 0.0,
+  "other-other": 0.001
+ },
+ "absnorm_ref_full": {
+  "flex-flex": 1.8145827620699904,
+  "flex-other": 3.068477929504462e-11,
+  "other-other": 0.0010000000000009817
+ },
+ "absnorm_mono_minus_ref": {
+  "flex-other": 1.6525808566368494e-06
+ },
+ "norm_h2Kfd_flexflex": 1.8145827620699904,
+ "norm_M_flexflex": 0.0003331652543514566,
+ "Kfd_asym": 9.676172127193387e-11,
+ "eig_M": {
+  "min": 1.0580425995029662e-05,
+  "max": 0.10898326465545041,
+  "n_neg": 0
+ },
+ "eig_A_ref": {
+  "min": 0.00024676419243778154,
+  "max": 0.1594347521843703,
+  "n_neg": 0
+ },
+ "eig_M+S_mono": {
+  "min": 0.0002467641565062254,
+  "max": 0.1594347520825486,
+  "n_neg": 0
+ },
+ "eig_M+S_isl": {
+  "min": 1.0580501112534711e-05,
+  "max": 0.1099832645803329,
+  "n_neg": 0
+ },
+ "eig_M+h2Kfd": {
+  "min": 0.00024676419240204125,
+  "max": 0.15943475218436784,
+  "n_neg": 0
+ },
+ "eig_Kfd_flex_min_max": [
+  944.7020378261308,
+  637696.6539895702
+ ],
+ "max_eig_(M+S_isl)^-1(M+S_mono)": 15057.084489959005
+}

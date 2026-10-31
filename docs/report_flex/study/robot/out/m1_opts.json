@@ -1,0 +1,138 @@
+[
+{
+"con": "none",
+"tag": "m_none",
+"T": 0.2
+},
+{
+"con": "eq",
+"tag": "m_eq",
+"T": 0.2
+},
+{
+"con": "limit",
+"tag": "m_limit",
+"T": 0.2
+},
+{
+"con": "floor",
+"tag": "m_floor",
+"T": 0.2
+},
+{
+"con": "eq",
+"island": false,
+"tag": "m_eq_noisl",
+"T": 0.2
+},
+{
+"con": "limit",
+"island": false,
+"tag": "m_limit_noisl",
+"T": 0.2
+},
+{
+"con": "floor",
+"island": false,
+"tag": "m_floor_noisl",
+"T": 0.2
+},
+{
+"con": "eq",
+"pymj": true,
+"env": {
+"MJ_FIX_ISLANDFLEX": "1"
+},
+"tag": "m_eq_fix",
+"T": 0.2
+},
+{
+"con": "limit",
+"pymj": true,
+"env": {
+"MJ_FIX_ISLANDFLEX": "1"
+},
+"tag": "m_limit_fix",
+"T": 0.2
+},
+{
+"con": "floor",
+"pymj": true,
+"env": {
+"MJ_FIX_ISLANDFLEX": "1"
+},
+"tag": "m_floor_fix",
+"T": 0.2
+},
+{
+"con": "eq",
+"pymj": true,
+"tag": "m_eq_pymj_nofix",
+"T": 0.2
+},
+{
+"fixed": true,
+"con": "none",
+"tag": "m_fixed",
+"T": 0.2
+},
+{
+"con": "eq",
+"joint": "slide",
+"tag": "m_eq_slide",
+"T": 0.2
+},
+{
+"con": "eq",
+"grid": "3 3 2",
+"tag": "m_eq_g3x3x2",
+"T": 0.2
+},
+{
+"con": "eq",
+"grid": "2 2 2",
+"tag": "m_eq_g2x2x2",
+"T": 0.2
+},
+{
+"con": "eq",
+"poisson": 0.3,
+"tag": "m_eq_nu30",
+"T": 0.2
+},
+{
+"con": "eq",
+"young": 1000.0,
+"tag": "m_eq_E1e3",
+"T": 0.2
+},
+{
+"con": "eq",
+"h": 0.0001,
+"tag": "m_eq_h1e-4",
+"T": 0.2
+},
+{
+"con": "eq",
+"pdms_mass": 1.0,
+"tag": "m_eq_pm1",
+"T": 0.2
+},
+{
+"con": "eq",
+"grid": "3 3 2",
+"pymj": true,
+"env": {
+"MJ_FIX_ISLANDFLEX": "1"
+},
+"tag": "m_eq_g3x3x2_fix",
+"T": 0.2
+},
+{
+"con": "eq",
+"grid": "3 3 2",
+"island": false,
+"tag": "m_eq_g3x3x2_noisl",
+"T": 0.2
+}
+]

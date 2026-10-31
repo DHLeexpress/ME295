@@ -1,0 +1,85 @@
+{
+ "figures": {
+  "fig_candidates_robot": {
+   "title": "Robot candidates on the rig (nu = 0.45): total error vs exact, 95% CI over 5 placements",
+   "configs": [
+    [
+     "full_corr 5x7x1 robotB it100 m1 nu0.45",
+     "CHOSEN robot: 6x8x2 vertices, solref 1e-3, CG 100"
+    ],
+    [
+     "full_corr 5x7x1 stiff it1000 m1 nu0.45",
+     "6x8x2, solref 1e-4, CG 1000 (setting A)"
+    ],
+    [
+     "full_corr 10x14x2 robotB it100 m1 nu0.45",
+     "11x15x3 (current grid), solref 1e-3, CG 100"
+    ],
+    [
+     "full_corr 10x14x1 robotB it100 m1 nu0.45",
+     "11x15x2, solref 1e-3, CG 100"
+    ],
+    [
+     "full_corr 5x7x1 robotB it100 m1 nu0.49",
+     "CHOSEN robot at nu = 0.49"
+    ]
+   ]
+  },
+  "fig_candidates_rig": {
+   "title": "Fixed-rig candidates (nu = 0.45): total error vs exact, 95% CI over placements",
+   "configs": [
+    [
+     "full_corr 40x56x2 stiff it1000 m1 nu0.45",
+     "CHOSEN rig, uniform: 41x57x3 vertices, solref 1e-4, CG 1000"
+    ],
+    [
+     "full_corr 20x28x2 stiff it1000 m1 nu0.45",
+     "21x29x3 vertices, solref 1e-4, CG 1000"
+    ],
+    [
+     "graded_h0.5mm_nz3 1x1x1 stiff it1000 m1 nu0.45",
+     "graded tets, 0.5 mm core (C4/C6 only)"
+    ],
+    [
+     "graded_h0.2mm_nz4 1x1x1 stiff it1000 m1 nu0.45",
+     "graded tets, 0.2 mm core (C5 only)"
+    ],
+    [
+     "graded_h0.15mm_nz5 1x1x1 stiff it1000 m1 nu0.45",
+     "graded tets, 0.15 mm core (C5 only)"
+    ],
+    [
+     "full_corr 40x56x2 stiff it1000 m1 nu0.49",
+     "CHOSEN rig, uniform, at nu = 0.49"
+    ]
+   ]
+  }
+ },
+ "choice": {
+  "robot": {
+   "element": "dof=full (linear tet, F1-corrected inputs)",
+   "vertex_grid": "6 x 8 x 2 (5 x 7 x 1 cells, one element per taxel, one through the thickness)",
+   "cell_mm": [
+    10.2,
+    10.14,
+    1.5
+   ],
+   "aspect": 6.8,
+   "contact": "solref 0.001 1 (= 2h), solimp 0.99 0.99 0.001, priority 2, friction 1",
+   "options": "integrator discrete, CG iterations 100, elliptic, impratio 100, refsafe disabled, island DISABLED"
+  },
+  "fixed_rig": {
+   "element": "dof=full (linear tet, F1-corrected inputs)",
+   "vertex_grid": "41 x 57 x 3 (40 x 56 x 2 cells)",
+   "cell_mm": [
+    1.275,
+    1.268,
+    0.75
+   ],
+   "aspect": 1.7,
+   "contact": "solref 0.0001 1, solimp 0.99 0.99 0.001, refsafe disabled",
+   "options": "CG iterations >= 1000 (no-slip), elliptic, impratio 100",
+   "local_indenter_option": "graded tet mesh (flexcomp type=direct) refined to <= 0.2 mm under a fixed indenter"
+  }
+ }
+}

@@ -1,0 +1,19 @@
+--- a/src/engine/engine_metric.c
++++ b/src/engine/engine_metric.c
+@@ -2486,8 +2486,14 @@
+   if (m->flex_interp[f]) {
+     return !interp_asm && mjd_flexInterp_processed(m, f);
+   }
+-  return mjd_flexStiff_active(m, f, /*flg_bend=*/1, /*flg_stretch=*/1) &&
+-         (!d->nefmK || !mj_flexSimple(m, f));
++  // mirror the monolithic mj_effMulAdd selection: mjd_flexStiff_active is the CSR assembler gate and
++  // returns 0 for every flex that is not mj_flexSimple, so a flex with general (articulated)
++  // attachments was neither assembled nor applied matrix-free, and its stiffness was missing from
++  // the island metric used by the constraint solver
++  if (m->flex_rigid[f] || (m->flex_dim[f] == 1 && m->flex_bendingadr[f] < 0)) {
++    return 0;
++  }
++  return mj_effFlexStiffPossible(m, f) && (!d->nefmK || !mj_flexSimple(m, f));
+ }
+ 
+ 
