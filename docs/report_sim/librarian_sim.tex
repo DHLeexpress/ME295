@@ -369,7 +369,7 @@ grasped box, their force-weighted radius is 14\,mm against 19\,mm for the cells 
 platen is nearly uniform, 23\,mm). The box starts to turn at 0.58\,N\,m against 1.11\,N\,m for the cells at the
 same 24\,N squeeze, and at 2.2 against 4.6\,N\,m at 121\,N. The exact pressure gives $\mu\sum N\bar r=1.11$\,N\,m,
 the cells' value, so the coarse flex resists half the twist the PDMS itself would: a contact artifact, not PDMS
-physics. A finer $11\times15\times2$ pad does not cure it (0.49\,N\,m). At 23\,N the flex's limit is about the book's 0.51\,N\,m twist. The same concentration lowers the moment term of $q$; the force term ($|T|/\mu N\approx0.1$)
+physics. Finer pads do not cure it ($11\times15\times2$: 0.49, $11\times15\times3$: 0.31\,N\,m). At 23\,N the flex's limit is about the book's 0.51\,N\,m twist. The same concentration lowers the moment term of $q$; the force term ($|T|/\mu N\approx0.1$)
 agreed with the cell model. (ii) MuJoCo's \code{mj\_rnePostConstraint} skips contacts that involve a flex, so the simulated
 wrist force/torque sensor does not see any load carried by the skins (it read 0.03\,N during the pull, against
 3.2\,N with cells). The insert and shelve guards are blind to the pads for the same reason. Fixes to try are a

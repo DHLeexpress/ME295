@@ -36,7 +36,7 @@ the Winkler cell model.
    which pulls the contact force toward the pad centre and halves the torsional grip (the box starts to turn at
    0.58 N m on the 6×8×2 flex vs 1.11 N m on the cells and in the exact solution, at 24 N per pad), and MuJoCo's
    force/torque sensors skip flex contacts (`mj_rnePostConstraint`), so the wrist F/T and its guards do not see the
-   pads. The demo therefore stays on the cell model for now. A finer 11×15×2 pad does not close the gap (0.49 N m): the flex's contacts reach only ~30 mm from the pad centre, against 38–40 mm for the cells.
+   pads. The demo therefore stays on the cell model for now. Finer pads do not close the gap: 11×15×2 gives 0.49 N m (the flex's contacts reach only ~30 mm from the pad centre, against 38–40 mm for the cells), and 11×15×3 spreads them to 38 mm but makes them softer (0.31 N m).
 7. **Contact is not defined per taxel.** It exists where surfaces touch; taxels only bin the contact forces. Pressing
    one taxel makes its neighbours bulge slightly *outward* (3.5 % of the indentation at ν = 0.45, 13 % at 0.49, 20 %
    at 0.499), and they carry no force. A "+1, +2, +1" pattern means the outer cells are touched too, or the mesh is

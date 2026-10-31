@@ -432,8 +432,9 @@ reported $q\approx0.7$--0.8 during the pull (cells 0.53), so the controller sque
 (i) In a torsion test (\code{study/torsion/}) the box turns at 0.58\,N\,m on the 6$\times$8$\times$2 flex against
 1.11\,N\,m on the cells at 24\,N per pad (2.21 vs 4.61 at 121\,N); the exact pressure (radius 22.7\,mm) gives
 $\mu\sum N\bar r=1.11$\,N\,m, the cells' value. Box--tet contacts sit at tet corners and pull the force toward the
-pad centre, halving the torsional grip; a finer 11$\times$15$\times$2 pad does not cure it (0.49\,N\,m; flex contacts reach
-$\approx$30\,mm from the centre, cells 38--40\,mm). (ii) \code{mj\_rnePostConstraint} skips flex contacts
+pad centre, halving the torsional grip. Finer pads do not cure it: 11$\times$15$\times$2 gives 0.49\,N\,m (contacts reach
+$\approx$30\,mm from the centre, cells 38--40\,mm), and 11$\times$15$\times$3 spreads them to 38\,mm but makes them softer,
+0.31\,N\,m (the layer's own twist would need 18\,N\,m per degree). (ii) \code{mj\_rnePostConstraint} skips flex contacts
 (\src{engine\_core\_smooth.c:2531}), so \code{cfrc\_ext} and force/torque sensors ignore loads on the pads (wrist F/T
 0.03\,N during the pull vs 3.2\,N with cells).
 
