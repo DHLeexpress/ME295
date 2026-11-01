@@ -1,14 +1,23 @@
-<p align="center">
-  <img src="docs/figures/hero.png" width="100%" alt="A parallel-jaw gripper approaches a packed shelf horizontally, slides thin tactile-skin fingers into the gaps beside one book and pulls it out sideways; side panels show the measured shear field, the friction-cone margin controller, and an LLM agent calling tactile tools.">
-</p>
-
 # Shear-Aware Agentic Grasping
 
 **A thin tactile skin lets a parallel-jaw gripper feel shear; an LLM agent uses that touch as a tool to grasp gently and pull books off a shelf.**
 
 AM/ME/CE 295 research project (Caltech, Fall 2026) · Dohyun ([@DHLeexpress](https://github.com/DHLeexpress)) · Jihoon ([@jhahn2](https://github.com/jhahn2))
 
-> **Status: week 2, laying the foundation.** The topic is drafted, not locked. Latest report: [Lab Report 1](reports/LR1_week02.md) ([Word version](reports/LR1_week02.docx)) · running log: [LOG.md](LOG.md) · [draft proposal](docs/proposal_draft.md) · [related work](docs/related_work.md)
+<p align="center">
+  <img src="docs/media/librarian_demo.gif" width="64%" alt="Simulated UR10e with a Robotiq 2F-140 and PDMS-skin blade fingers slides the blades beside a book, pulls it sideways out of a packed shelf, carries it and shelves it in a second bookcase.">
+</p>
+<p align="center">
+  <img src="docs/media/flex_contact_closeup.gif" width="92%" alt="Close-up of the 1.5 mm PDMS skin modelled as a MuJoCo finite-element flex: a sphere, a box edge and a cube press and slide on it; right, the free surface with the displacement exaggerated 40 times.">
+</p>
+<p align="center">
+  <b>Top:</b> the librarian task in MuJoCo (2.5&times; speed): insert beside the book, squeeze with the tactile controller, pull, carry, shelve.
+  <b>Bottom:</b> the PDMS skin (FEM flex) under a sphere, a box edge and a cube, true-scale render and surface &times;40.<br>
+  Full videos: <a href="docs/media/librarian_demo.mp4">librarian demo with the 3D skin panel (MP4, 37 s)</a> ·
+  <a href="docs/media/flex_contact_closeup.mp4">skin close-up, 8 objects (MP4, 42 s)</a>
+</p>
+
+> **Status: week 2 (Lab Report 2, v0).** Latest report: [Lab Report 2, week 2 v0 (PDF, 6 pages)](reports/LR2_week2_v0/LR2_week2_v0.pdf): agent design, the simulator and the verified skin model, evaluation plan · [Lab Report 1](reports/LR1_week02.md) · running log: [LOG.md](LOG.md) · [draft proposal](docs/proposal_draft.md) · [related work](docs/related_work.md)
 
 ## Idea
 Parallel-jaw grippers know how far they closed and roughly how hard they squeeze, but not how close each contact is to slipping. Vision cannot see that either, least of all inside a packed shelf. Our thin tactile skin on a Robotiq 2F-140 finger measures the shear-strain field at the contact (~50 ms per frame today). We use it at three levels:
@@ -36,7 +45,7 @@ scripts_sim/           librarian demo (viewer / video / real robot), gripper che
 scripts/               run_toy_benchmark.py · run_agent.py · check_llm_api.py · make_hero.py
 tests/                 unit tests (stdlib unittest; pytest also works), no API key needed
 docs/                  proposal draft, related-work note, refs.bib, figures
-reports/               biweekly lab reports (Markdown + Word)
+reports/               biweekly lab reports (LR1: Markdown + Word; LR2: LaTeX + PDF)
 results/               small generated tables (raw data and agent logs stay out of git)
 .githooks/             pre-commit hook that blocks API keys and .env files
 .github/workflows/     CI: tests, offline agent episode, key scan
