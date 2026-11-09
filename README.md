@@ -68,7 +68,8 @@ python scripts/run_agent.py                   # same episode with the real model
 ```
 Scripts and tests add `src/` to the path themselves, so no install is required.
 
-## MuJoCo simulation
+## MuJoCo simulation (v0)
+**How to use it: [docs/MuJoCo_simulator_v0.md](docs/MuJoCo_simulator_v0.md)** (install, commands, Python API, skin options, known limits). v0 is a working draft: it runs the full task, but the skin model and visuals are still being improved.
 ```bash
 python -m mujoco.viewer --mjcf assembly/scene_bookshelf.xml        # browse the cell
 python scripts_sim/run_librarian.py --viewer                        # live task + HUD (macOS: mjpython ...)
