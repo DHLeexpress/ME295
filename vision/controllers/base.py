@@ -129,11 +129,12 @@ class TopDownGraspController(Controller):
     def __init__(self, register_for_width: Callable[[float], int], force: int = 80, lift: float = 0.10,
                  hold: float = 1.0, v_lift: float = 0.05, k_rot: float = 2.0, w_max: float = 0.5,
                  close_timeout: float = 3.0, reach_tol: float = 0.0025, blocked_close: float = 0.3,
-                 blocked_abort: float = 2.0):
+                 blocked_abort: float = 2.0, align_deg: float = 3.0):
         self.register_for_width = register_for_width
         self.force, self.lift, self.hold, self.v_lift = force, lift, hold, v_lift
         self.k_rot, self.w_max, self.close_timeout, self.reach_tol = k_rot, w_max, close_timeout, reach_tol
         self.blocked_close, self.blocked_abort = blocked_close, blocked_abort
+        self.align_deg = align_deg
         self.filter = GoalFilter()
 
     # ------------------------------------------------------------------ interface
@@ -157,6 +158,10 @@ class TopDownGraspController(Controller):
     def wants_perception(self, obs: GraspObservation) -> bool:
         return self.closed_loop and self.phase == "approach" and not self.filter.frozen
 
+    def rot_error_deg(self, obs: GraspObservation) -> float:
+        R = rotvec_to_mat(obs.tcp_pose[3:])
+        return float(np.degrees(np.linalg.norm(rotvec(self.goal.T_tcp[:3, :3] @ R.T))))
+
     def rot_velocity(self, obs: GraspObservation, R_goal: np.ndarray) -> np.ndarray:
         R = rotvec_to_mat(obs.tcp_pose[3:])
         w = self.k_rot * rotvec(R_goal @ R.T)
@@ -174,6 +179,12 @@ class TopDownGraspController(Controller):
                 self.open_reg = self.register_for_width(self.goal.opening)
             v, reached = self.approach(obs, self.goal)
             w = self.rot_velocity(obs, self.goal.T_tcp[:3, :3])
+            # orientation gate: never go below the pre-grasp height before the jaws are aligned (slow rotations on
+            # the real robot would otherwise reach the object still turning)
+            if self.rot_error_deg(obs) > self.align_deg and obs.tcp_pose[2] < self.goal.T_pre[2, 3] + 0.005:
+                v = np.array(v, float)
+                v[2] = max(v[2], 0.0)
+                reached = False
             # the safety barrier holds the gripper above the table: if it does so with the jaws over the object,
             # this is as low as is safe -> grasp here; blocked elsewhere for long -> give up
             if obs.barrier:

@@ -87,6 +87,7 @@ class SafetyConfig:
     v_max: float = 0.20                     # TCP speed cap (m/s)
     w_max: float = 0.60                     # angular speed cap (rad/s)
     gamma: float = 4.0                      # barrier rate (1/s): at 5 cm clearance, descend at most 0.2 m/s
+    point_v_max: Optional[float] = None     # cap on the speed of EVERY tool point + the flange (rotation included)
     tool_points: np.ndarray = field(default_factory=lambda: np.vstack([box_corners(*b) for b in ENVELOPE_BOXES]))
 
 
@@ -210,8 +211,14 @@ class SafetyFilter:
             lin = lin * (c.v_max / sl)
         if sa > c.w_max:
             ang = ang * (c.w_max / sa)
-        capped = not np.allclose(np.r_[lin, ang], out)
-        out = np.r_[lin, ang]
+        out2 = np.r_[lin, ang]
+        if c.point_v_max is not None:            # slowest uniform scaling that keeps every point under the cap
+            P = np.vstack([self.tool_points(T_base_flange), T_base_flange[:3, 3], tcp_xyz])
+            sp = np.linalg.norm(lin[None, :] + np.cross(ang[None, :], P - tcp_xyz), axis=1).max()
+            if sp > c.point_v_max:
+                out2 = out2 * (c.point_v_max / sp)
+        capped = not np.allclose(out2, out)
+        out = out2
         self.interventions += int(barrier)
         self.speed_caps += int(capped and not barrier)
         return out, barrier

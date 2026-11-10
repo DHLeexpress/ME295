@@ -13,11 +13,15 @@ vision/
   safety.py        table / workspace safety filter: joint-path checks + barrier filter on every velocity command
   tabletop.py      table plane, objects on it, top-down parallel-jaw grasp
   controllers/     grasp ablation: scripted (open loop), PBVS (closed loop), MPC (OSQP)   [docs/controllers.md]
-  real_robot.py    RTDERobot (urx-style calls on ur_rtde) + background grasp estimator
+  real_robot.py    RTDERobot (urx-style calls on ur_rtde, hard speed caps) + background grasp estimator
+  grippers.py      finger profiles: ME295 blade + skin fingers, bare 2F-140 (widths, TCP, tips, envelope)
+  motion_check.py  slow joint moves: speed of every point, table and self-collision along the path
   sim/tabletop.py  simulated tabletop cell (random objects) + the top-down view configuration Q_VIEW
   look.py, shelf.py, pipeline.py   bookshelf perception for the librarian task (run_librarian.py --perception)
   charuco.py       the calibration board, for a live calibration check
-  scripts/         zed_check.py, zed_live.py, grasp_ablation.py, grasp_real.py, eval_sim_perception.py
+  scripts/         zed_check.py, zed_live.py, real_session.py (real robot), grasp_ablation.py, grasp_real.py,
+                   eval_sim_perception.py
+  zed_calibration_live/  live calibration check / recapture (side folder; zed_calibration/ stays as delivered)
   tests/           python -m unittest discover -s vision/tests -t .   (simulator only, ~2 s)
   zed_calibration/ original calibration bundle: README_camera_extrinsic.md, calibration/ (scripts + results),
                    perception/, ur10e_description/
@@ -98,14 +102,61 @@ Bookshelf perception (`eval_sim_perception.py`, the VLA baseline's held-out suit
 - `scripts_sim/run_librarian.py --perception sim` runs the whole librarian task from vision. The book is shelved
   2.4 mm from the slot centre.
 
+## 3. Real robot: slow, checked picks (`scripts/real_session.py`)
+```bash
+python vision/scripts/real_session.py status                       # read-only: remote mode, joints, TCP, safety
+python vision/scripts/real_session.py goto-view --v-max 0.04 [--execute]
+sg zed -c "python vision/scripts/real_session.py observe"          # objects on the table (read-only)
+sg zed -c "python vision/scripts/real_session.py pick-all --pick bottle:0.177:-0.465 --pick apple:0.265:-0.597 \
+          --pick cylinder:-0.010:-0.490 --v-max 0.04 --execute"   # per-object grip force, wrist-ZED video
+python vision/scripts/real_session.py rehearse                     # the same sequence in MuJoCo, from the real joints
+```
+Nothing moves without `--execute`.
+
+**Safety layers:**
+1. Joint moves are planned so that the fastest point of the arm, gripper and camera stays at 95 % of `--v-max`
+   (`motion_check.py`). They are checked against the table and for self-collision on the MuJoCo collision model
+   (relative to the start pose).
+2. Every `speedL` twist passes the barrier filter (`safety.py`): table, workspace, and a cap on the speed of every
+   tool point. `RTDERobot.speedl` adds a hard cap.
+3. A monitor thread stops everything if the flange moves faster than 2.5 × `--v-max` or the safety mode leaves
+   NORMAL.
+4. Before each pick: two looks 1.5 s apart must agree (nobody is placing objects), nothing tall may reach into the
+   view, and the pre-grasp, grasp and lift poses are checked with IK.
+
+**Gripper:** `--gripper bare` (default on the real robot) is the plain 2F-140 with standard fingertips
+(`grippers.py`). `blade` is ME295's skin fingers, the simulator's model.
+
+**2026-11-09:** at ≤ 4 cm/s, with the scripted (open-loop) controller, all three picks succeeded. Each object was
+lifted 5 cm, held 2 s and put back.
+
+| object | force per finger | why |
+|---|---|---|
+| bottle | 15 N | assumed full, 0.55 kg, μ 0.35 |
+| apple | 10 N | the gripper's minimum; needs 1.6 N |
+| cylinder | 10 N | thin-walled container |
+
+Videos stay local (`results/vision/real_session/`, git-ignored); a 2× edit is `docs/media/real_picks_wrist.mp4`.
+
+**Findings:**
+- **The gripper's fingertips were measured with the camera.** The mounted gripper had no blade fingers, so the blade
+  model would have closed the jaws 7 cm too high.
+- **A grey textureless cone has no stereo depth** at 0.75 m. It needs RGB segmentation or a closer look.
+- **A `moveJ` sent while `ur_rtde` is still in `speedL` mode is ignored.** Call `speedStop()` first.
+- **Someone arranged objects during one attempt.** That is why the scene check exists.
+
 ## Known limits
-- **No ZED SDK access yet.** Depth on hardware and the `pyzed` path are untested until this account can read
-  `/usr/local/zed`. The UVC stream works, and the sim gripper silhouette roughly matches the real view (fingertips
-  within ~2–4°). That check used a raw, unrectified frame, so it is not a precision test.
-- **The calibration was solved with the LEAP hand mounted** (2026-10-13). If the camera bracket moved when the
-  2F-140 went on, recalibrate. The live board check shows it.
-- **The gripper model is the 2F-140 + blade v1 + PDMS skin.** Another finger set needs its envelope
-  (`safety.ENVELOPE_BOXES`) and width / TCP table (`tabletop.GripperSpec`).
+- **ZED SDK 5.4 needs the `zed` group.** Until you log in again after being added, run with `sg zed -c ...`.
+  `pyzed` installs into the venv with `/usr/local/zed/get_python_api.py`. Pin OpenCV < 5: 5.0's Python API dropped
+  `calibrateHandEye`.
+- **Calibration.** The 2026-10-13 hand-eye calibration (solved with the LEAP hand) was re-checked on 2026-11-09 with
+  the 2F-140: 15 new poses agree to 6.1 ± 0.9 mm / 0.32°, so it is kept
+  (`zed_calibration_live/captures/20261109_205947/VALIDATION.md`). The SDK now reports fx = 726.8 px, against 770.9
+  in the bundle's README.
+- **Finger sets.** Two profiles exist in `grippers.py` (blade skin fingers, bare 2F-140). Another finger set needs
+  its own profile: widths, TCP, tips and envelope.
+- **Only the scripted controller has run on hardware.** PBVS and MPC are validated in the simulator only, so their
+  near-object behaviour on real depth, with the occlusion guard, is untested.
 - **The simulator's ZED is an ideal stereo camera with a simple noise model.** Real NEURAL depth blurs edges:
   measure with `zed_check.py` before trusting the 18 mm jaw clearance.
 - **One object at a time.** `segment_objects` returns all of them, largest first; the grasp scripts take the first.

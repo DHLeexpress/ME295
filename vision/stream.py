@@ -143,6 +143,7 @@ class CalibratedStream:
         self.n = 0
         self.t_start = time.time()
         self._times = deque(maxlen=30)
+        self.listeners = []             # callables(frame), e.g. a video recorder: every frame read reaches them
 
     def read(self) -> RGBDFrame:
         f = self.camera.grab()
@@ -154,6 +155,11 @@ class CalibratedStream:
         self.n += 1
         f.meta = {**(f.meta or {}), "T_base_flange": T_flange, "robot_speed": info["speed"], "pose_skew_s": info["skew_s"],
                   "q": info["q"], "frame_age_s": now - f.stamp if f.stamp > 1e9 else 0.0, "fps": self.fps}
+        for cb in list(self.listeners):
+            try:
+                cb(f)
+            except Exception:  # noqa: BLE001
+                pass
         return f
 
     @property

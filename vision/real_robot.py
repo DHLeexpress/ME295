@@ -28,8 +28,10 @@ def _mp(T):
 
 
 class RTDERobot:
-    def __init__(self, host: str, control: bool = True):
+    def __init__(self, host: str, control: bool = True, v_cap: float = 0.25, w_cap: float = 0.6, acc_cap: float = 0.5):
+        """v_cap / w_cap / acc_cap: hard limits applied to every speedl here, below any controller or filter."""
         import rtde_receive
+        self.v_cap, self.w_cap, self.acc_cap = v_cap, w_cap, acc_cap
         self.rr = rtde_receive.RTDEReceiveInterface(host)
         self.rc = None
         if control:
@@ -60,10 +62,15 @@ class RTDERobot:
         return list(self.rr.getActualTCPForce())
 
     def speedl(self, v, acc=0.5, min_time=0.04):
-        v = np.asarray(v, float)
+        v = np.asarray(v, float).copy()
+        n, w = np.linalg.norm(v[:3]), np.linalg.norm(v[3:])
+        if n > self.v_cap:
+            v[:3] *= self.v_cap / n
+        if w > self.w_cap:
+            v[3:] *= self.w_cap / w
         r = self.flange_pose()[:3, :3] @ self.T_tcp[:3, 3]
         vf = np.r_[v[:3] - np.cross(v[3:], r), v[3:]]
-        self.rc.speedL(vf.tolist(), float(acc), float(min_time))
+        self.rc.speedL(vf.tolist(), float(min(acc, self.acc_cap)), float(min_time))
 
     def stopl(self, acc=0.5):
         self.rc.speedStop(float(acc))
@@ -89,12 +96,14 @@ class AsyncGraspEstimator:
     nearest to the previous one). perceive() never blocks: it returns the newest estimate (stamp = image time)."""
 
     def __init__(self, stream, params: TabletopParams = TabletopParams(), yaw_hint: Callable[[], float] = lambda: None,
-                 z_table: Optional[float] = None):
+                 z_table: Optional[float] = None, track_xy=None, profile=None, segment_every: int = 1):
         self.stream, self.params, self.yaw_hint, self.z_table = stream, params, yaw_hint, z_table
+        self.profile = profile
+        self.segment_every = max(1, int(segment_every))   # read every frame (for listeners), segment every k-th
         self.latest: Optional[TopDownGrasp] = None
         self.frame: Optional[RGBDFrame] = None
         self.n = 0
-        self.prev = None
+        self.prev = None if track_xy is None else np.asarray(track_xy, float)[:2]
         self.error: Optional[str] = None
         self._stop = False
         self.t_last = time.time()
@@ -105,14 +114,17 @@ class AsyncGraspEstimator:
         while not self._stop:
             try:
                 f = self.stream.read()
-                objs, zt = segment_objects(f, f.meta.get("T_base_flange"), self.params)
                 self.frame = f
                 self.t_last = time.time()
+                self._k = getattr(self, "_k", -1) + 1
+                if self._k % self.segment_every:
+                    continue
+                objs, zt = segment_objects(f, f.meta.get("T_base_flange"), self.params)
                 if not objs or zt is None:
                     continue
                 o = min(objs, key=lambda o: np.linalg.norm(o.center[:2] - self.prev)) if self.prev is not None else objs[0]
                 self.prev = o.center[:2].copy()
-                self.latest = plan_topdown_grasp(o, self.z_table, prefer_yaw=self.yaw_hint(), stamp=f.stamp)
+                self.latest = plan_topdown_grasp(o, self.z_table, prefer_yaw=self.yaw_hint(), stamp=f.stamp, profile=self.profile)
                 self.n += 1
             except Exception as e:  # noqa: BLE001
                 self.error = repr(e)

@@ -17,7 +17,42 @@ AM/ME/CE 295 research project (Caltech, Fall 2026) · Dohyun ([@DHLeexpress](htt
   <a href="docs/media/flex_contact_closeup.mp4">skin close-up, 8 objects (MP4, 42 s)</a>
 </p>
 
-> **Status: week 2 (Lab Report 2, v0).** Latest report: [Lab Report 2, week 2 v0 (PDF, 6 pages)](reports/LR2_week2_v0/LR2_week2_v0.pdf): agent design, the simulator and the verified skin model, evaluation plan · [Lab Report 1](reports/LR1_week02.md) · running log: [LOG.md](LOG.md) · [draft proposal](docs/proposal_draft.md) · [related work](docs/related_work.md)
+> **Status: week 2 (Lab Report 2, v0); first real-robot picks with the wrist camera on 2026-11-09 (below).** Latest report: [Lab Report 2, week 2 v0 (PDF, 6 pages)](reports/LR2_week2_v0/LR2_week2_v0.pdf): agent design, the simulator and the verified skin model, evaluation plan · [Lab Report 1](reports/LR1_week02.md) · running log: [LOG.md](LOG.md) · [draft proposal](docs/proposal_draft.md) · [related work](docs/related_work.md)
+
+## First real-robot test: zero-shot top-down picks with the wrist camera (2026-11-09)
+<p align="center">
+  <img src="docs/media/real_picks_wrist.gif" width="72%" alt="View from the wrist ZED Mini on the real UR10e: the open 2F-140 jaws come down over an upright plastic bottle, an apple and a white plastic cylinder in turn, close and lift each one; 3x speed.">
+</p>
+<p align="center">
+  The real UR10e picks three objects it has never seen, seen from its wrist camera (3&times; speed). Full run, all
+  three picks with put-back: <a href="docs/media/real_picks_wrist.mp4">MP4, 73 s at 2&times;</a>.
+</p>
+
+A first, deliberately simple end-to-end example, with no learning:
+- **Perception:** the calibrated wrist ZED Mini looks once from a top-down view pose. A table plane is fitted, and the
+  objects on it are segmented.
+- **Grasp plan:** a top-down grasp across each object's narrow side.
+- **Control:** a scripted open-loop controller (look, plan, move; `vision/controllers/scripted.py`). It goes above
+  the object, aligns the jaws, descends, closes, lifts 5 cm, holds, puts the object back and retreats. Its speed limit is 4 cm/s
+  (one return move peaked at 4.1 cm/s; moves are now planned 5 % under the limit), and every command passes a
+  table / workspace safety filter.
+- **Grip force per object:** force ≥ 2 × m g / (2 μ) per finger, at least the gripper's 10 N minimum.
+
+| object | grip force per finger | why |
+|---|---|---|
+| plastic bottle (could be full, 0.55 kg; smooth PET, μ ≈ 0.35) | 15 N | 7.7 N needed, × 2 margin |
+| apple (0.2 kg) | 10 N (minimum) | 1.6 N needed; any more would bruise it |
+| plastic cylinder (0.15 kg) | 10 N (minimum) | thin walls |
+
+**What it is not:**
+- It was a plain 2F-140 with standard fingertips, not our skin fingers.
+- It has no contact reasoning: no force or touch feedback after the jaws close.
+- A grey textureless cone was invisible to the stereo depth and was skipped.
+
+Contact-rich manipulation (pulling a book from a packed shelf) needs a closed loop through contact. Either a
+VLA-assisted policy fine-tuned to close the sim-to-real gap (baseline: [baseline/](baseline/README.md)), or a
+hand-crafted closed-loop policy driven by touch and force, which is what the skin is for. Setup, safety layers,
+calibration check and the simulated controller ablation (scripted / PBVS / MPC): [vision/README.md](vision/README.md).
 
 ## Idea
 Parallel-jaw grippers know how far they closed and roughly how hard they squeeze, but not how close each contact is to slipping. Vision cannot see that either, least of all inside a packed shelf. Our thin tactile skin on a Robotiq 2F-140 finger measures the shear-strain field at the contact (~50 ms per frame today). We use it at three levels:

@@ -2,6 +2,35 @@
 
 Newest first. One entry per working session: **what we did → result → next**. Bottlenecks are tagged **[block]**.
 
+## 2026-11-09 (Mon, night) · Dohyun
+- **ZED SDK access.** Joined the `zed` / `video` groups; installed `pyzed` 5.4 into the venv. OpenCV is pinned
+  < 5, because 5.0's Python API lost `calibrateHandEye`.
+- **Calibration check.** Captured 15 new poses of the ChArUco board (`vision/zed_calibration_live/`). The
+  2026-10-13 hand-eye calibration explains them to 6.1 ± 0.9 mm / 0.32°. A fresh solve from these poses was worse
+  (board ~1.1 m away, few tilts), and a joint refit with the old session gains only ~1 mm. **Kept the 2026-10-13
+  calibration.**
+- **First real-robot picks** (`vision/scripts/real_session.py`, video `docs/media/real_picks_wrist.mp4`):
+  - Bottle, apple and plastic cylinder were picked, lifted 5 cm, held and put back. All 3 succeeded on the first
+    run at ≤ 4 cm/s. An earlier 9 mm/s run picked the bottle, then stopped on the `moveJ` bug noted below.
+  - Controller: the **scripted open-loop** one. One look from a top-down view pose, a plan, then align, descend,
+    close and lift.
+  - Grip force per object: F ≥ 2 m g / (2 μ), at least 10 N. Bottle 15 N, apple and cylinder 10 N.
+  - Safety layers: speed-planned joint moves checked for table and self-collision, a barrier filter on every twist,
+    a speed / safety-mode monitor, and a "nobody in the workspace" scene check before each pick.
+- **Found:**
+  - The mounted gripper was a plain 2F-140, not our blade + skin fingers. Measured with the camera; a `bare` gripper
+    profile was added.
+  - A grey textureless cone gives no stereo depth (skipped).
+  - `ur_rtde` ignores a `moveJ` sent while it is still in `speedL` mode.
+  - The cylinder's return move peaked at 41 mm/s against the 40 mm/s limit; joint moves now plan at 95 % of the
+    limit.
+- **Next:**
+  - Contact-rich manipulation needs a closed loop through contact. Options: a VLA-assisted policy fine-tuned to close
+    the sim-to-real gap (`baseline/`), or a hand-crafted closed-loop policy on touch and force.
+  - Mount the skin fingers again (then re-check the calibration).
+  - Run PBVS / MPC on hardware.
+  - RGB segmentation for textureless objects.
+
 ## 2026-11-09 (Mon, evening) · Dohyun
 - **Real vision: the wrist ZED Mini (`vision/`).** Brought the lab's ZED hand-eye calibration bundle into the repo
   (`vision/zed_calibration/`). Checked its frames against the simulator: sim flange kinematics match the recorded urx

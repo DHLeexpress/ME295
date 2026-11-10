@@ -72,3 +72,5 @@ baseline/reel/*/voice/*.wav
 
 # live calibration captures: images stay local (poses.npz / results are small and kept)
 vision/zed_calibration_live/captures/**/*.png
+# real-robot sessions: videos and frames stay local (large)
+results/vision/real_session/

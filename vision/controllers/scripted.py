@@ -39,23 +39,26 @@ class ScriptedGrasp(TopDownGraspController):
     def reset_approach(self, obs):
         self.plan = None
 
+    def _segment(self, t0, start, end, v):
+        L = float(np.linalg.norm(end - start))
+        T, s = _trapezoid(L, v, self.acc)
+        return (t0, T, start.copy(), end.copy(), L, s)
+
     def approach(self, obs, goal):
         p = obs.tcp_pose[:3]
-        if self.plan is None:
-            segs, t, start = [], obs.t, p.copy()
-            for end, v in ((goal.T_pre[:3, 3], self.v_approach), (goal.position, self.v_descend)):
-                L = float(np.linalg.norm(end - start))
-                T, s = _trapezoid(L, v, self.acc)
-                segs.append((t, T, start.copy(), end.copy(), L, s))
-                t, start = t + T, end
-            self.plan = segs
-        for t0, T, a, b, L, s in self.plan:
-            if obs.t <= t0 + T:
-                u = (b - a) / L if L > 1e-9 else np.zeros(3)
-                tau = obs.t - t0
-                ref = a + u * s(tau)
-                vref = u * (s(tau + 1e-3) - s(tau)) / 1e-3
-                return vref + self.kp * (ref - p), False
-        end = self.plan[-1][3]
-        err = end - p
+        if self.plan is None:                                   # 1: straight to the pre-grasp
+            self.plan = self._segment(obs.t, p, goal.T_pre[:3, 3], self.v_approach)
+            self.stage = "pre"
+        t0, T, a, b, L, s = self.plan
+        if obs.t <= t0 + T:
+            u = (b - a) / L if L > 1e-9 else np.zeros(3)
+            tau = obs.t - t0
+            vref = u * (s(tau + 1e-3) - s(tau)) / 1e-3
+            return vref + self.kp * (a + u * s(tau) - p), False
+        err = b - p
+        if self.stage == "pre":
+            if np.linalg.norm(err) < 0.003 and self.rot_error_deg(obs) <= self.align_deg:
+                self.plan = self._segment(obs.t, p, goal.position, self.v_descend)   # 2: straight down
+                self.stage = "down"
+            return self.kp * err, False
         return self.kp * err, bool(np.linalg.norm(err) < self.reach_tol)

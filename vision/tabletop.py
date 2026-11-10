@@ -41,6 +41,8 @@ class TabletopParams:
     top_percentile: float = 95.0
     stride: int = 1
     robot_pad: float = 0.01            # padding of the gripper envelope when removing the robot's own points
+    top_slice: float = 0.05            # the grasp footprint / centre come from the points this far below the top
+    envelope: tuple = ENVELOPE_BOXES   # gripper boxes (flange frame) for removing the robot's own points
 
 
 @dataclass
@@ -78,7 +80,8 @@ class GripperSpec:
 
     def tcp_z(self, width: float) -> float:
         w, z = np.array(self.tcp_table).T
-        return float(np.interp(width, w, z))
+        o = np.argsort(w)                       # np.interp needs increasing widths (profiles list open -> closed)
+        return float(np.interp(width, w[o], z[o]))
 
 
 @dataclass
@@ -211,12 +214,12 @@ def fit_table_plane(pts: np.ndarray, guess: float, search: float, max_tilt_deg: 
     return coef
 
 
-def robot_mask(points: np.ndarray, T_base_flange: np.ndarray, pad: float) -> np.ndarray:
+def robot_mask(points: np.ndarray, T_base_flange: np.ndarray, pad: float, boxes=ENVELOPE_BOXES) -> np.ndarray:
     """True for points inside the gripper + camera envelope (the robot seeing itself)."""
     Tinv = np.linalg.inv(T_base_flange)
     pf = points @ Tinv[:3, :3].T + Tinv[:3, 3]
     inside = np.zeros(len(points), bool)
-    for lo, hi in ENVELOPE_BOXES:
+    for lo, hi in boxes:
         inside |= np.all((pf >= np.asarray(lo) - pad) & (pf <= np.asarray(hi) + pad), axis=1)
     return inside
 
@@ -231,7 +234,7 @@ def segment_objects(frame: RGBDFrame, T_base_flange: Optional[np.ndarray] = None
            & (pts[:, 1] < P.y_range[1]) & (pts[:, 2] < P.z_max) & (pts[:, 2] > P.z_table_guess - P.table_search))
     pts, rgb = pts[box], rgb[box]
     if T_base_flange is not None and len(pts):
-        keep = ~robot_mask(pts, T_base_flange, P.robot_pad)
+        keep = ~robot_mask(pts, T_base_flange, P.robot_pad, P.envelope)
         pts, rgb = pts[keep], rgb[keep]
     plane = fit_table_plane(pts, P.z_table_guess, P.table_search, P.max_tilt_deg) if len(pts) else None
     if plane is None:
@@ -258,10 +261,16 @@ def segment_objects(frame: RGBDFrame, T_base_flange: Optional[np.ndarray] = None
         if sel.sum() < P.min_points:
             continue
         p = pts[sel]
-        cells = np.argwhere(lab == k)
+        top = float(np.percentile(p[:, 2], P.top_percentile))
+        # footprint of the part the jaws will meet: the cells holding points within top_slice of the top (a tall
+        # bottle touching a low box is grasped by its own top part, not by both)
+        up = p[:, 2] > top - P.top_slice
+        ijk = np.unique(ij[sel][up], axis=0)
+        if len(ijk) < 3:
+            ijk = np.argwhere(lab == k)
+        cells = ijk
         corners = np.concatenate([origin + (cells + np.array(o)) * P.cell for o in ((0, 0), (1, 0), (0, 1), (1, 1))])
         c2, yaw, L, W = min_area_rect(corners)
-        top = float(np.percentile(p[:, 2], P.top_percentile))
         zb = float(plane @ [c2[0], c2[1], 1.0])
         h = top - zb
         objs.append(TableObject(points=p, rgb=rgb[sel], center=np.array([c2[0], c2[1], zb + 0.5 * h]), yaw=yaw,
@@ -282,12 +291,19 @@ def tcp_pose(position: Sequence[float], yaw: float) -> np.ndarray:
 
 
 def plan_topdown_grasp(obj: TableObject, z_table: Optional[float] = None, grip: GripperSpec = GripperSpec(),
-                       prefer_yaw: Optional[float] = None, stamp: float = 0.0) -> TopDownGrasp:
+                       prefer_yaw: Optional[float] = None, stamp: float = 0.0, profile=None) -> TopDownGrasp:
     """Grasp across the footprint's short side. z_table: the table height the safety filter enforces; the grasp is
     planned against the higher of it and the fitted plane under the object (obj.z_base), so the goal is always one
     the safety filter lets the gripper reach. prefer_yaw: of the two equivalent jaw directions (yaw, yaw + pi), take the one closer to this (e.g.
     the current tool yaw) to avoid needless wrist turns."""
     z_table = obj.z_base if z_table is None else max(z_table, obj.z_base)
+    if profile is not None:          # another finger set (vision.grippers): its widths, TCP and tips
+        from dataclasses import replace
+        grip = replace(grip, max_open=profile.max_open, min_width=profile.min_width,
+                       tcp_table=tuple((w, z) for w, z, _ in profile.width_table))
+        tip_z = profile.tip_z
+    else:
+        tip_z = TIP_Z
     yaw = obj.yaw + np.pi / 2
     if prefer_yaw is not None:
         alt = yaw + np.pi
@@ -297,7 +313,7 @@ def plan_topdown_grasp(obj: TableObject, z_table: Optional[float] = None, grip: 
     width = obj.width
     opening = min(grip.max_open, width + 2 * grip.clearance)
     # the TCP is set between the pads at the object's width; the gripper's lowest point is TIP_Z - tcp_z below it
-    z = max(z_table + grip.table_margin + (TIP_Z - grip.tcp_z(width)), obj.top_z - grip.grasp_depth)
+    z = max(z_table + grip.table_margin + (tip_z - grip.tcp_z(width)), obj.top_z - grip.grasp_depth)
     pos = np.array([obj.center[0], obj.center[1], z])
     ok, why = True, ""
     if width + 2 * 0.005 > grip.max_open:
