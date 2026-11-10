@@ -2,6 +2,33 @@
 
 Newest first. One entry per working session: **what we did → result → next**. Bottlenecks are tagged **[block]**.
 
+## 2026-11-09 (Mon) · Dohyun
+- **Explainers for the VLA results table.** A 60 s paper-reel explainer with voice-over and sim footage; the results
+  table and the failure-mode table are built on screen as they are read (`baseline/results/media/reel_results_60s.mp4`,
+  source in `baseline/reel/`). Two figures: one test case per suite
+  (`fig_suites`) and key frames per outcome (`fig_outcomes`), plus a 6-clip GIF. The clips are high-resolution re-runs
+  of evaluation test cases (`evaluate.py --media`, `sim/media.py`); they are not counted in the results.
+- **Correction:** most "jams" are **push-ins**. In 12 of the 17 episodes, the blade tips push the book 55-64 mm deeper
+  into the shelf and the pads never touch it (8 of the 12 are 44-45 mm books). So the inner-face skin is blind to this
+  failure; a blade-tip sensor or the F/T during insertion would see it. Only 5 are true jams (pads squeeze, book
+  stuck). `analyze_failures.py`, `RESULTS.md` §3.2-3.4.
+- **Next:** unchanged: skin-set grip force on the heavy / low-friction suite.
+
+## 2026-11-08 (Sun) · Dohyun
+- **VLA baseline in the MuJoCo cell (`baseline/`).** Literature check (arXiv, Nov 2026) → π0.5 (openpi) is the open VLA
+  to beat: it wins most independent 2026 comparisons after fine-tuning and is the backbone and vision-only baseline
+  of the 2026 tactile-VLA papers (e.g. TacVLA: LoRA on `pi05_base` vs fine-tuned π0.5). `baseline/docs/SOTA_survey.md`.
+- **Modular kinematics.** One TOML card per component, as in `model/DESCRIPTION.md` (UR10e → coupling → 2F-140 → blade
+  v1 → PDMS skin); FK matches MuJoCo to 1e-15 m. TCP between the pads: 292.3 mm from the flange at a 40 mm grasp,
+  moves 23.7 mm as the jaw closes; blade + skin 3.5 mm thick. A new blade is a new card.
+- **Result** ("pick up the {colour} book", success %): zero-shot π0.5-DROID 0 / 0 (nominal / randomized; hits the
+  shelf, UR protective stop). π0.5 fine-tuned with LoRA on 251 scripted demos: 100 / 72 / 73 / 43 % (nominal /
+  randomized / narrow gaps / heavy + μ 0.5); privileged expert 100 / 100 / 100 / 57 %. Fine-tuned failures: jams
+  beside 44-45 mm books (it does not size the jaw to the book), shoving neighbours in narrow gaps, slips under the
+  fixed 67 N grip. `baseline/RESULTS.md`.
+- **Next:** same backbone + same episodes (skin maps and F/T already in the dataset) with touch: first the skin setting
+  the grip force on the heavy / low-friction suite.
+
 ## 2026-10-17 (Sat) · Dohyun
 - **Repo.** Created the public repo [DHLeexpress/ME295](https://github.com/DHLeexpress/ME295) and pointed the local repo at it (`origin`). Next: add Jihoon (@jhahn2) as a collaborator.
 - **Hero figure.** Redrew it so the book comes out *sideways*, not lifted. Real shelves leave no headroom, so the gripper approaches horizontally, slides the thin fingers into the gaps, pinches and pulls. Added a top-view inset of the gap showing book | skin | finger | next book, with the shear direction.

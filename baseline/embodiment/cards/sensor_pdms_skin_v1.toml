@@ -1,0 +1,11 @@
+# The tactile skin on each blade: PDMS layer 51 x 71 x 1.5 mm. Pad frame at mid-thickness: x across the blade,
+# y toward the tip, +z into the layer (the free face, which touches the object, is at z = -thickness/2).
+kind = "pad_sensor"
+name = "PDMS shear skin v1"
+size = [0.051, 0.071]
+thickness = 0.0015
+taxels = [5, 7]
+source = "assembly/pdms_left.xml (scripts_sim/make_blade_assets.py from the PDMS extrusion found in the blade STL)"
+[mount]              # pad frame in the blade (tool) frame
+pos = [0.00606, 0.03469, -0.00007]
+rpy = [0.0, 0.0, 0.0]

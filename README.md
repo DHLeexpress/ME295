@@ -42,6 +42,8 @@ src/shear_agent/
 model/                 CAD: UR10e, Robotiq 2F-140, blade gripper_dohyun_v1 (+ PDMS), AGC tip (reference)
 assembly/              MuJoCo models: robot + gripper, test scene, desk + bookshelf scene
 scripts_sim/           librarian demo (viewer / video / real robot), gripper checks, asset generators
+baseline/              VLA baseline (π0.5 via openpi) in the same MuJoCo cell + modular gripper/sensor kinematics:
+                       baseline/README.md
 scripts/               run_toy_benchmark.py · run_agent.py · check_llm_api.py · make_hero.py
 tests/                 unit tests (stdlib unittest; pytest also works), no API key needed
 docs/                  proposal draft, related-work note, refs.bib, figures

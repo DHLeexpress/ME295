@@ -1,0 +1,16 @@
+# The robot used by the simulator and the lab: UR10e + Robotiq coupling + 2F-140 + blade v1 + PDMS skin v1.
+kind = "assembly"
+name = "ur10e_2f140_dohyun_v1"
+arm = "arm_ur10e.toml"
+coupling = "coupling_robotiq.toml"
+gripper = "gripper_robotiq_2f140.toml"
+tool = "tool_blade_dohyun_v1.toml"
+sensor = "sensor_pdms_skin_v1.toml"
+
+[mjcf]               # the MuJoCo model this assembly must reproduce (python -m baseline.embodiment.check)
+scene = "assembly/scene_bookshelf.xml"
+flange_site = "attachment_site"
+driver_joint = "left_driver_joint"
+fingertip_body = { left = "left_fingertip", right = "right_fingertip" }
+pad_body = { left = "left_pdms", right = "right_pdms" }
+pad_site = { left = "left_pdms_surface", right = "right_pdms_surface" }

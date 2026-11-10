@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>paper-reel piece</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #1b1714; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; }
+  canvas { height: min(100vh, calc(100vw * 16 / 9)); width: auto; aspect-ratio: 9 / 16; display: block; cursor: pointer; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+"use strict";
+// =====================================================================
+//  PAPER-REEL PIECE — 9:16, 30fps. The voice is the clock: VOICE (voice.json) is injected by build.mjs.
+//  One scene per spoken line (SCENES[<line id>] in src/scenes.js); SPLITS add a second cut inside a line on a word.
+//  The shot list and TIMELINE are assembled at the end of src/scenes.js.
+// =====================================================================
+const FPS = 30, W = 1080, H = 1920;
+const DURATION = VOICE.duration;
+const NFRAMES = Math.round(DURATION * FPS);
+const LOOP_T = NFRAMES / FPS;
+const SAFE = { top: 120, bottom: 300, right: 120 };
+const HAND = '"Chalkboard SE", "Comic Sans MS", cursive';
+const CX = 540;
+const VL = (id) => VOICE.lines.find((l) => l.id === id);
+// VW(id, word, n): the n-th (0-based) occurrence of `word` in line `id` -> { t0, t1 } (falls back to the line)
+const VW = (id, word, n = 0) => { const L = VL(id), k = word.toLowerCase(); const hits = L.words.filter((w) => w.w.toLowerCase().replace(/[^a-z0-9']/g, '') === k); return hits[n] || hits[0] || { t0: L.t0, t1: L.t1 }; };
+const CUT = (id) => Math.max(0, VL(id).t0 - 0.1);   // a line's scene starts just before it is spoken

@@ -1,0 +1,11 @@
+# UR10e arm: standard DH, flange = UR tool0 (+z out of the flange face).
+kind = "dh_arm"
+name = "UR10e"
+source = "Universal Robots, 'DH parameters for calculations of kinematics and dynamics' (UR10e); the same link offsets are in assembly/ur10e_2f140.xml, whose world frame is the controller's base frame"
+convention = "standard"
+d = [0.1807, 0.0, 0.0, 0.17415, 0.11985, 0.11655]
+a = [0.0, -0.6127, -0.57155, 0.0, 0.0, 0.0]
+alpha = [1.5707963267948966, 0.0, 0.0, 1.5707963267948966, -1.5707963267948966, 0.0]
+q_home = [-1.5708, -1.5708, 1.5708, -1.5708, -1.5708, 0.0]
+q_min = [-6.2832, -6.2832, -3.1415, -6.2832, -6.2832, -6.2832]
+q_max = [6.2832, 6.2832, 3.1415, 6.2832, 6.2832, 6.2832]
