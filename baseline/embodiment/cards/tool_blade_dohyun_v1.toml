@@ -1,0 +1,14 @@
+# Custom blade that replaces the AGC fingertip, bolted through the shared lug hole. Tool frame = blade STL axes
+# (metres), which are the fingertip axes; STL -z faces the object.
+# A new blade version: copy this card, change mesh + mount (+ thickness), regenerate the MuJoCo assets with
+# scripts_sim/make_blade_assets.py, point an assembly card at it and run python -m baseline.embodiment.check.
+kind = "finger_tool"
+name = "gripper_dohyun_v1 blade"
+version = "v1"
+mesh = "model/gripper_dohyun_v1.stl"
+mass = 0.12          # kg, placeholder (111 cm3 printed polymer)
+thickness = 0.0035   # m, plate + proud PDMS through the pad (median of rays along z; python -m baseline.embodiment.check)
+source = "assembly/README.md (How the blade is mounted); frame left_blade_mount in assembly/ur10e_2f140.xml"
+[mount]
+pos = [-0.00627, 0.04313, 0.01325]
+rpy = [0.0, 0.0, 0.0]

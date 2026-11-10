@@ -1,0 +1,7 @@
+# Robotiq ISO coupling between the UR flange and the gripper base.
+kind = "mount"
+name = "Robotiq coupling (GRP-CPL-062 style), 13.9 mm"
+source = "assembly/ur10e_2f140.xml: body gripper_base at pos 0 0 0.0139 in the flange"
+[mount]
+pos = [0.0, 0.0, 0.0139]
+rpy = [0.0, 0.0, 0.0]

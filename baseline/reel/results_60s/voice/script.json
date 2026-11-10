@@ -1,0 +1,90 @@
+{
+ "lead": 0.15,
+ "tail": 1.3,
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Could the best open robot model pick one named book out of a packed bookcase?",
+   "after": 0.1,
+   "file": "hook.wav"
+  },
+  {
+   "id": "setup",
+   "text": "We tested Pi 0.5 on our robot arm in simulation, on four test suites.",
+   "say": "We tested pie zero point five on our robot arm in simulation, on four test suites.",
+   "after": 0.1,
+   "file": "setup.wav"
+  },
+  {
+   "id": "suites",
+   "text": "Its training scene, shuffled layouts, narrower gaps, and heavy, slippery books.",
+   "after": 0.1,
+   "file": "suites.wav"
+  },
+  {
+   "id": "zero",
+   "text": "Out of the box, it scored 0 for 20. It crashed into the bookcase.",
+   "say": "Out of the box, it scored zero for twenty. It crashed into the bookcase.",
+   "after": 0.1,
+   "file": "zero.wav"
+  },
+  {
+   "id": "tuned",
+   "text": "Fine tuned on 251 demos, it went 50 for 50 in the scene it trained on.",
+   "say": "Fine tuned on two hundred fifty one demos, it went fifty for fifty in the scene it trained on.",
+   "after": 0.1,
+   "file": "tuned.wav"
+  },
+  {
+   "id": "table",
+   "text": "On shuffled shelves it drops to 72 percent. Narrower gaps: 73. Heavy, slippery books: just 43.",
+   "say": "On shuffled shelves it drops to seventy two percent. Narrower gaps: seventy three. Heavy, slippery books: just forty three.",
+   "after": 0.1,
+   "file": "table.wav"
+  },
+  {
+   "id": "expert",
+   "text": "A scripted expert that knows every pose sets the ceiling: perfect, except heavy books, at 57.",
+   "say": "A scripted expert that knows every pose sets the ceiling: perfect, except heavy books, at fifty seven.",
+   "after": 0.1,
+   "file": "expert.wav"
+  },
+  {
+   "id": "contact",
+   "text": "So where do the 39 misses happen? 33 of them, at contact.",
+   "say": "So where do the thirty nine misses happen? Thirty three of them, at contact.",
+   "after": 0.1,
+   "file": "contact.wav"
+  },
+  {
+   "id": "push",
+   "text": "On thick books, the blade tips push the book deeper into the shelf. The pads never touch it.",
+   "after": 0.1,
+   "file": "push.wav"
+  },
+  {
+   "id": "shove",
+   "text": "In narrow gaps, it opens as wide as in training and shoves the neighbors aside.",
+   "after": 0.1,
+   "file": "shove.wav"
+  },
+  {
+   "id": "slip",
+   "text": "And heavy books slip out of the fixed grip, for the policy and the expert alike.",
+   "after": 0.1,
+   "file": "slip.wav"
+  },
+  {
+   "id": "catch",
+   "text": "The catch: this is simulation, with scripted demos and one training run.",
+   "after": 0.1,
+   "file": "catch.wav"
+  },
+  {
+   "id": "next",
+   "text": "Cameras can't feel slip. Our tactile skin can. That's the next test.",
+   "after": 0.1,
+   "file": "next.wav"
+  }
+ ]
+}

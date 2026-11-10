@@ -1,0 +1,14 @@
+# Franka Emika Panda / FR3 (same kinematics), modified (Craig) DH, flange 0.107 m past joint 7.
+# Used only as the *virtual* arm when retargeting the DROID-trained policy (pi05_droid) to the UR10e.
+kind = "dh_arm"
+name = "Franka Panda"
+source = "Franka Control Interface documentation, Robot and interface specifications (modified DH parameters, joint limits)"
+convention = "modified"
+a = [0.0, 0.0, 0.0, 0.0825, -0.0825, 0.0, 0.088]
+d = [0.333, 0.0, 0.316, 0.0, 0.384, 0.0, 0.0]
+alpha = [0.0, -1.5707963267948966, 1.5707963267948966, 1.5707963267948966, -1.5707963267948966, 1.5707963267948966, 1.5707963267948966]
+q_home = [0.0, -0.6283185307179586, 0.0, -2.5132741228718345, 0.0, 1.8849555921538759, 0.0]   # DROID reset pose
+q_min = [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, -0.0175, -2.8973]
+q_max = [2.8973, 1.7628, 2.8973, -0.0698, 2.8973, 3.7525, 2.8973]
+[flange]
+pos = [0.0, 0.0, 0.107]

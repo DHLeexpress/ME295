@@ -1,0 +1,18 @@
+# The DROID robot as seen by pi05_droid: a Franka with a Robotiq 2F-85 on the flange. The TCP follows the common
+# TCP convention of baseline/embodiment/assembly.py (+z approach, +y jaw axis). Approximate: the 2F-85 grasp centre is
+# taken 0.157 m past the flange (coupling + 2F-85 base-to-pad centre), the jaw axis along the flange y axis turned by
+# -45 deg (as the Franka hand). base_in_world places the virtual Franka base in the UR10e base frame so that the
+# librarian task's TCP poses (horizontal approach into shelf A) fall where the Franka reaches them with joints mostly
+# inside DROID's state distribution (x 0.45-0.70 m, z 0.55-0.75 m from its base). Check with
+# python -m baseline.policies.adapters (check_retarget). Nearer the shelf front the Franka cannot hold a horizontal
+# approach on its centreline.
+kind = "fixed_tcp_arm"
+name = "virtual DROID Franka + Robotiq 2F-85"
+arm = "arm_franka_panda.toml"
+source = "DROID platform (Khazatsky et al., RSS 2024): Franka Panda + Robotiq 2F-85; TCP offset approximate"
+[tcp]
+pos = [0.0, 0.0, 0.157]
+rpy = [0.0, 0.0, -0.7853981633974483]
+[base_in_world]
+pos = [0.0, 0.14, -0.10]
+rpy = [0.0, 0.0, 1.5707963267948966]

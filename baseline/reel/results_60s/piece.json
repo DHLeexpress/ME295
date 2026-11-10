@@ -1,0 +1,27 @@
+{
+  "name": "results_60s",
+  "title": "VLA baseline results in 60 s (baseline/RESULTS.md: headline table + failure modes)",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "storyFormat": "voice-cut list: question -> setup -> suites (table rows) -> zero-shot -> fine-tuned -> table fills -> expert ceiling -> failure table -> push-in / shove / slip -> caveats -> what touch adds (table + touch column)",
+  "style": "paper-reel",
+  "scenes": [
+    "src/clips.js",
+    "src/scenes.js"
+  ],
+  "voice": {
+    "file": "voice/voice.wav",
+    "music": -13
+  },
+  "review": {
+    "safe": {
+      "top": 120,
+      "bottom": 300,
+      "right": 120
+    },
+    "refs": {}
+  }
+}
