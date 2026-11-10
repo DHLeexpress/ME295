@@ -1,0 +1,23 @@
+{
+  "num_poses": 15,
+  "consistency_new_mm": [
+    18.935904627105877,
+    11.033068885177467
+  ],
+  "consistency_new_deg": [
+    1.5328079844054394,
+    1.0823319352073164
+  ],
+  "consistency_active_mm": [
+    6.1320172458945255,
+    0.8996666105853548
+  ],
+  "consistency_active_deg": [
+    0.31651974392412935,
+    0.09974417510203638
+  ],
+  "new_vs_active_mm": 25.56210101497878,
+  "new_vs_active_deg": 2.155548619901047,
+  "source": "ZED SDK, rectified",
+  "recommendation": "keep the active calibration (the new solve is not better)"
+}

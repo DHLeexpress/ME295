@@ -3,6 +3,11 @@ matplotlib>=3.7
 mujoco>=3.17          # simulation: assembly/, scripts_sim/, src/shear_agent/robot (Filament renderer: 3.17+)
 trimesh>=4            # blade meshes (exact gaps, figures)
 imageio-ffmpeg        # ffmpeg binary for the demo videos
+# vision (vision/): camera, robot over RTDE, MPC; the ZED SDK's pyzed comes from /usr/local/zed/get_python_api.py
+opencv-contrib-python>=4.8,<5    # 4.13 as in the calibration env; 5.0 dropped calibrateHandEye from the Python API
+ur_rtde>=1.5
+osqp>=0.6
+scipy>=1.10
 # dev
 pytest>=7
 # regenerate blade assets / figures only: pip install coacd shapely  (gmsh for STEP -> STL)

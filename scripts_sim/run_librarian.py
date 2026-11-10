@@ -9,8 +9,13 @@ shelf B. Written against the python-urx API, so the same task runs in MuJoCo (de
     python scripts_sim/run_librarian.py --controller fixed --grip-force 128   # the no-skin baseline
     python scripts_sim/run_librarian.py --controller mppi    # plug-in slot (raises until implemented)
     python scripts_sim/run_librarian.py --backend urx --host 192.168.1.10   # real robot (see real_ur.py)
+    python scripts_sim/run_librarian.py --perception sim                    # find the book with the simulated wrist ZED
+    python scripts_sim/run_librarian.py --backend urx --host 192.168.0.2 --perception zed --colour red
+                                                                            # real robot, real ZED (asks before moving)
 
 Phases (urx calls; the contact-rich part runs in a controller loop):
+  look       (--perception sim | zed) movel to the look pose, one wrist-ZED frame -> spine plane, books, gaps;
+             the book to take ("the --colour book", else the widest gaps) replaces the constants below
   approach   movel to 10 cm in front of shelf A's spines, gripper opened to the book + 2 x 3 mm
   insert     guarded movel: the blades slide 20 mm past the spines beside the book (stop on > 15 N)
   grasp      controller loop at 50 Hz (speedl + Robotiq registers): close, pull the book out 21 cm, lift 8 cm
@@ -35,12 +40,14 @@ if sys.platform.startswith("linux") and not os.environ.get("DISPLAY"):
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts_sim"))
+sys.path.insert(0, str(ROOT))
 
 import mujoco  # noqa: E402
 import numpy as np  # noqa: E402
 
 from shear_agent.control import CONTROLLERS, run  # noqa: E402
 from shear_agent.robot import mat_to_rotvec, rotvec_to_mat  # noqa: E402
+from vision.pipeline import BookTarget  # noqa: E402
 
 SCENE = ROOT / "assembly" / "scene_bookshelf.xml"
 # shelf A (source, assembly/scene_bookshelf.xml): book spines at y = 0.82, target book 40 x 170 x 230 mm
@@ -63,6 +70,17 @@ B_HEADING = np.radians(-45.0)             # into-shelf axis = Rz(B_HEADING) (0, 
 B_SPINE = 0.02                             # spines 20 mm behind the front edge
 B_BOARD = 0.33                             # top of the middle board
 SET_DOWN_CLEARANCE = 0.020                 # book bottom above the board while sliding in (a 2.4 kg book droops ~10 mm)
+BLADE = 0.0035                             # blade + PDMS skin through the pad (baseline/embodiment check)
+CONSTANTS = BookTarget(x=float(BOOK_CENTER[0]), z=float(BOOK_CENTER[2]), spine_y=SPINE_Y, thickness=BOOK_THICKNESS,
+                       gap_left=0.010, gap_right=0.010, colour="dark blue", source="constants")
+
+
+def insert_clearance(target: BookTarget) -> float:
+    """Air between each pad and the book while inserting: CLEARANCE, or half of what is left beside the blade in
+    narrower gaps (as baseline/sim/env.py)."""
+    gaps = [g for g in (target.gap_left, target.gap_right) if g is not None]
+    gap = min(gaps) if gaps else 2 * CLEARANCE + BLADE + 0.001
+    return CLEARANCE if gap - BLADE >= CLEARANCE + 0.001 else max(0.0005, 0.5 * (gap - BLADE))
 
 
 def pose(p, r=HORIZONTAL):
@@ -112,18 +130,17 @@ def guarded_movel(rob, target, acc, vel, limit, axis=None) -> bool:
     return False
 
 
-def task(rob, gripper, controller, model, rec=None, skins=None, say=print):
-    """The librarian task, urx calls only (+ the controller loop). Returns True if the book was shelved."""
+def task(rob, gripper, controller, model, rec=None, skins=None, say=print, target: BookTarget = CONSTANTS):
+    """The librarian task, urx calls only (+ the controller loop). Returns True if the book was shelved.
+    target: where the book is (default: the scene's constants; --perception: from the wrist ZED)."""
     def phase(name):
         if rec is not None:
             rec.phase = name
         say(f"--- {name}")
 
-    open_reg = gap_to_register(model, BOOK_THICKNESS + 2 * CLEARANCE)
-    pre = BOOK_CENTER.copy()
-    pre[1] = SPINE_Y - 0.10
-    insert = BOOK_CENTER.copy()
-    insert[1] = SPINE_Y + INSERT_DEPTH
+    open_reg = gap_to_register(model, target.thickness + 2 * insert_clearance(target))
+    pre = np.array([target.x, target.spine_y - 0.10, target.z])
+    insert = np.array([target.x, target.spine_y + INSERT_DEPTH, target.z])
 
     phase("approach shelf A")
     gripper.gripper_action(open_reg)
@@ -213,12 +230,19 @@ def shelved(m, d, book: str = BOOK) -> dict:
 
 
 def make_sim(controller="margin", grip_force=128, mu=None, mu_assumed=None, book_mass=None, verbose=True,
-             skin_rate=20.0):
+             skin_rate=20.0, zed=False):
     """SimRobot + gripper + skins (+ Recorder) for the librarian scene. mu: true PDMS friction (model);
-    mu_assumed: what the skin's margin assumes (default: the model's); book_mass: kg (inertia scaled)."""
+    mu_assumed: what the skin's margin assumes (default: the model's); book_mass: kg (inertia scaled);
+    zed: add the calibrated wrist ZED Mini (camera "zed_cam" + a visual-only housing; dynamics unchanged)."""
     from librarian_media import Recorder
     from shear_agent.robot import PDMSSkin, SimRobot, SimRobotiqGripper, SkinSensor
-    m = mujoco.MjModel.from_xml_path(str(SCENE))
+    if zed:
+        from vision.sim_zed import add_wrist_zed
+        spec = mujoco.MjSpec.from_file(str(SCENE))
+        add_wrist_zed(spec)
+        m = spec.compile()
+    else:
+        m = mujoco.MjModel.from_xml_path(str(SCENE))
     if book_mass is not None:
         b = m.body(BOOK).id
         m.body_inertia[b] *= book_mass / m.body_mass[b]
@@ -260,7 +284,16 @@ def main():
     ap.add_argument("--fps", type=int, default=30)
     ap.add_argument("--out", type=Path, default=ROOT / "results" / "sim_runs" / "librarian")
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--perception", choices=["none", "sim", "zed"], default="none",
+                    help="find the book with the wrist ZED first: sim (simulated camera, --backend sim) or zed "
+                         "(real camera, --backend urx); none = the scene's constants")
+    ap.add_argument("--colour", default=None, help='book to take, e.g. "dark blue" (default: widest gaps)')
+    ap.add_argument("--look-distance", type=float, default=0.45, help="camera to spines at the look pose (m)")
     args = ap.parse_args()
+    if args.perception == "zed" and args.backend != "urx":
+        ap.error("--perception zed is the real camera: use --backend urx (or --perception sim in the simulator)")
+    if args.perception == "sim" and args.backend != "sim":
+        ap.error("--perception sim needs --backend sim")
 
     if args.backend == "urx":
         from shear_agent.robot.real_ur import connect
@@ -278,14 +311,22 @@ def main():
             return
         model = mujoco.MjModel.from_xml_path(str(SCENE))  # gripper geometry for the width -> register map
         rob, gripper = connect(args.host, tcp=TCP)
-        rob.movej(list(start_q_from_model(model)), acc=0.5, vel=0.3)
-        task(rob, gripper, controller, model)
-        rob.close()
+        try:
+            rob.movej(list(start_q_from_model(model)), acc=0.5, vel=0.3)
+            target = CONSTANTS
+            if args.perception == "zed":
+                target = look_real(rob, args)
+                if target is None:
+                    return
+            task(rob, gripper, controller, model, target=target)
+        finally:
+            rob.close()
         return
 
     from librarian_media import Compositor, VideoWriter, ViewerHUD
 
-    rob, gripper, skins, rec, controller = make_sim(args.controller, args.grip_force, verbose=not args.quiet)
+    rob, gripper, skins, rec, controller = make_sim(args.controller, args.grip_force, verbose=not args.quiet,
+                                                    zed=args.perception == "sim")
     hud = writer = comp = None
     if args.viewer:
         hud = ViewerHUD(rec, realtime=args.realtime)
@@ -314,7 +355,10 @@ def main():
     ok = False
     try:
         rob.sleep(0.5)
-        ok = task(rob, gripper, controller, rob.m, rec=rec, skins=skins, say=lambda s: rob._say(s))
+        target = CONSTANTS
+        if args.perception == "sim":
+            target = look_sim(rob, args)
+        ok = task(rob, gripper, controller, rob.m, rec=rec, skins=skins, say=lambda s: rob._say(s), target=target)
         rob.sleep(1.0)
     except KeyboardInterrupt:
         print("stopped (viewer closed or Ctrl+C)")
@@ -332,6 +376,42 @@ def main():
     print(f"task {'completed' if ok else 'aborted'}; book {'shelved in shelf B' if res['shelved'] else 'NOT shelved'} "
           f"(centre error {np.round(res['err_mm'], 1)} mm, tilt {res['tilt_deg']:.1f} deg, yaw {res['yaw_deg']:.1f} deg); "
           f"log -> {args.out}")
+
+
+def look_sim(rob, args) -> BookTarget:
+    """--perception sim: the simulated wrist ZED finds the book; prints the error against the scene's truth."""
+    from vision import WristCamera
+    from vision.pipeline import look_and_pick
+    from vision.sim_zed import SimZedCamera
+    wrist = WristCamera.active()
+    cam = SimZedCamera(rob.m)
+    try:
+        target, est, _ = look_and_pick(rob, lambda: cam.grab(rob.d), wrist, TCP, colour=args.colour,
+                                       distance=args.look_distance, out=args.out, say=lambda s: rob._say(s))
+    finally:
+        cam.close()
+    b = rob.m.body(BOOK).id
+    gt = rob.d.xpos[b]
+    rob._say(f"vision vs truth ({BOOK}): x {1e3 * (target.x - gt[0]):+.1f} mm, spines "
+             f"{1e3 * (target.spine_y - SPINE_Y):+.1f} mm, thickness {1e3 * (target.thickness - BOOK_THICKNESS):+.1f} mm,"
+             f" grasp height {1e3 * (target.z - gt[2]):+.1f} mm; overlay -> {args.out / 'look.jpg'}")
+    return target
+
+
+def look_real(rob, args):
+    """--perception zed: the real wrist ZED finds the book; the operator confirms it before anything else moves.
+    Returns the BookTarget, or None if the operator declines."""
+    from vision import WristCamera
+    from vision.pipeline import look_and_pick
+    from vision.zed import ZedCamera
+    wrist = WristCamera.active()
+    with ZedCamera(serial=wrist.serial or None) as cam:
+        target, est, _ = look_and_pick(rob, cam.grab, wrist, TCP, colour=args.colour,
+                                       distance=args.look_distance, acc=0.3, vel=0.08, out=args.out)
+    print(f"overlay: {args.out / 'look.jpg'}")
+    if input(f"Take this book? {target.describe()} [yes/N] ") != "yes":
+        return None
+    return target
 
 
 def start_q_from_model(model):

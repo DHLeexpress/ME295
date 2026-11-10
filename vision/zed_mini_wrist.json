@@ -1,0 +1,44 @@
+{
+  "model": "ZED-M",
+  "serial": 18982088,
+  "source": "zed_calibration/calibration/captures_ur10e/20261013_121056/hand_eye_calibration_ur10e_result.npz",
+  "frames": "T_flange_cam: p_flange = T @ p_cam; flange = UR tool0; cam = ZED left, IMAGE coords (x right, y down, z forward)",
+  "T_flange_cam": [
+    [
+      -0.998518,
+      0.050897,
+      0.019248,
+      0.024599
+    ],
+    [
+      -0.054415,
+      -0.934203,
+      -0.352566,
+      0.101565
+    ],
+    [
+      3.7e-05,
+      -0.353091,
+      0.935589,
+      0.014393
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 726.8298950195312,
+    "fy": 726.8298950195312,
+    "cx": 627.8302612304688,
+    "cy": 364.7385559082031
+  },
+  "notes": {
+    "num_poses": 18,
+    "intrinsics": "1280x720 from the camera 2026-11-09"
+  }
+}

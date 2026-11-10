@@ -193,7 +193,9 @@ def instruction_for(v: Variation, template: str = "pick up the {color} book") ->
     return template.format(color=v.color)
 
 
-def build(v: Variation, ext_cam: dict = EXT_CAM) -> Tuple[mujoco.MjModel, SceneInfo]:
+def build(v: Variation, ext_cam: dict = EXT_CAM, edit=None) -> Tuple[mujoco.MjModel, SceneInfo]:
+    """Compile the variation. edit(spec), if given, runs just before compiling (e.g. add the wrist ZED:
+    vision.sim_zed.add_wrist_zed)."""
     spec = mujoco.MjSpec.from_file(str(SCENE))
     dims = _book_dims(spec)
     if not v.keep_original:
@@ -223,6 +225,8 @@ def build(v: Variation, ext_cam: dict = EXT_CAM) -> Tuple[mujoco.MjModel, SceneI
     cam.alt.type = mujoco.mjtOrientation.mjORIENTATION_XYAXES
     cam.alt.xyaxes = look_at_xyaxes(ext_cam["pos"], ext_cam["lookat"])
     cam.fovy = ext_cam["fovy"]
+    if edit is not None:
+        edit(spec)
     m = spec.compile()
     b = m.body(v.designated).id
     g = m.geom(v.designated).id

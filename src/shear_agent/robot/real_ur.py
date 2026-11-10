@@ -22,6 +22,12 @@ def connect(host: str, tcp=(0, 0, 0.292, 0, 0, 0), payload: float = 1.0, cog=(0,
 
     rob = urx.Robot(host)
     rob.sleep = time.sleep
+    set_tcp = rob.set_tcp
+
+    def set_tcp_and_remember(t):   # vision.flange_pose() needs the TCP to turn get_pose() into the flange pose
+        set_tcp(t)
+        rob.tcp = tuple(float(v) for v in t)
+    rob.set_tcp = set_tcp_and_remember
     rob.set_tcp(tcp)
     rob.set_payload(payload, cog)
     time.sleep(0.2)  # let the controller process the setup (python-urx README)

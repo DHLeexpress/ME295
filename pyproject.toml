@@ -15,6 +15,7 @@ dependencies = ["numpy>=1.24", "matplotlib>=3.7"]
 dev = ["pytest>=7"]
 sim = ["mujoco>=3.17", "trimesh>=4", "imageio-ffmpeg", "coacd", "shapely", "gmsh"]
 real = ["urx"]
+vision = ["opencv-contrib-python>=4.8,<5", "ur_rtde>=1.5", "osqp>=0.6", "scipy>=1.10"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

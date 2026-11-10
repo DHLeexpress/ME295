@@ -44,6 +44,8 @@ assembly/              MuJoCo models: robot + gripper, test scene, desk + booksh
 scripts_sim/           librarian demo (viewer / video / real robot), gripper checks, asset generators
 baseline/              VLA baseline (π0.5 via openpi) in the same MuJoCo cell + modular gripper/sensor kinematics:
                        baseline/README.md
+vision/                wrist ZED Mini: hand-eye calibration bundle, real-time calibrated RGB-D, shelf + tabletop
+                       perception, table safety filter, grasp controllers (scripted / PBVS / MPC): vision/README.md
 scripts/               run_toy_benchmark.py · run_agent.py · check_llm_api.py · make_hero.py
 tests/                 unit tests (stdlib unittest; pytest also works), no API key needed
 docs/                  proposal draft, related-work note, refs.bib, figures

@@ -2,6 +2,23 @@
 
 Newest first. One entry per working session: **what we did → result → next**. Bottlenecks are tagged **[block]**.
 
+## 2026-11-09 (Mon, evening) · Dohyun
+- **Real vision: the wrist ZED Mini (`vision/`).** Brought the lab's ZED hand-eye calibration bundle into the repo
+  (`vision/zed_calibration/`). Checked its frames against the simulator: sim flange kinematics match the recorded urx
+  poses to 0.02 mm. Added the calibrated ZED (real HD720 intrinsics, calibrated mount) to MuJoCo, one RGB-D frame
+  type for the real and simulated camera, and a real-time calibrated stream (robot pose over RTDE, interpolated at
+  each image's timestamp).
+- **Bookshelf perception.** From one look, ray casting onto the fitted spine plane gives each book's edges, thickness
+  and gaps. On the baseline's held-out suites (90 cases, exact or noisy depth) it picks the instructed book every
+  time, with ±1 mm centre and −1.2 mm gap error. Pessimistic stereo edge fattening narrows gaps by ~3 mm and breaks the
+  7 mm suite. `run_librarian.py --perception sim` shelves the book end to end from vision.
+- **Top-down grasp ablation** in a simulated tabletop with the same safety filter for the real robot: scripted vs
+  PBVS vs MPC (`vision/README.md`).
+- **Found:** the ZED's optical axis crosses the tool axis at the pads, so the gripper fills ~30–45 % of the image;
+  perception must happen from a look / view pose, not at insertion.
+- **[block]** This account cannot read the ZED SDK (`/usr/local/zed`, group `zed`): no depth or `pyzed` on hardware
+  yet. The raw UVC stream works.
+
 ## 2026-11-09 (Mon) · Dohyun
 - **Explainers for the VLA results table.** A 60 s paper-reel explainer with voice-over and sim footage; the results
   table and the failure-mode table are built on screen as they are read (`baseline/results/media/reel_results_60s.mp4`,

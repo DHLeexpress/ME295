@@ -48,6 +48,16 @@ docs/report_flex/*.aux
 docs/report_flex/*.log
 docs/report_flex/*.out
 
+# vision/: raw camera frames, live captures and real-robot runs stay local (summaries are tracked)
+results/vision/**/*.npz
+results/vision/**/*.ply
+results/vision/live/
+results/vision/zed_check/
+results/vision/grasp_real/
+results/vision/*.log
+vision/zed_calibration/**/captures_pointcloud/
+vision/zed_calibration/**/pose*_wrist.png
+
 # VLA baseline (baseline/): cloned third-party code, demos, LeRobot dataset, checkpoints, raw eval logs and videos
 baseline/third_party/
 baseline/data/
@@ -59,3 +69,6 @@ baseline/reel/*/renders/
 baseline/reel/*/frames/
 baseline/reel/*/assets/
 baseline/reel/*/voice/*.wav
+
+# live calibration captures: images stay local (poses.npz / results are small and kept)
+vision/zed_calibration_live/captures/**/*.png
